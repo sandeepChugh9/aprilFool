@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     var BUILD_PATH = 'build',
@@ -16,7 +16,7 @@
         Constants = require('./constants'),
         webpack = require('gulp-webpack');
 
-    gulp.task('sass', ['clean'], function () {
+    gulp.task('sass', ['clean'], function() {
         gulp.src('sass/app.scss')
             .pipe(sass().on('error', sass.logError))
             .pipe(gulp.dest(DEV_PATH))
@@ -25,43 +25,43 @@
             .pipe(gulp.dest(PROD_PATH));
     });
 
-    gulp.task('clean', function (cb) {
+    gulp.task('clean', function(cb) {
         del(BUILD_PATH, cb);
     });
 
-    gulp.task('copyImages', ['clean'], function () {
+    gulp.task('copyImages', ['clean'], function() {
         return gulp.src('images/*')
             .pipe(gulp.dest(DEV_PATH + '/images'))
             .pipe(gulp.dest(STAGING_PATH + '/images'))
             .pipe(gulp.dest(PROD_PATH + '/images'));
     });
 
-    gulp.task('stub', ['clean'], function () {
+    gulp.task('stub', ['clean'], function() {
         return gulp.src('stub.js')
             .pipe(gulp.dest(DEV_PATH));
     });
 
-    gulp.task('devCopy', ['clean', 'stub'], function () {
+    gulp.task('devCopy', ['clean', 'stub'], function() {
         return gulp.src('app.html')
             .pipe(replace('{{basePath}}', ''))
             .pipe(gulp.dest(DEV_PATH));
     });
 
-    gulp.task('stagingCopy', ['clean'], function () {
+    gulp.task('stagingCopy', ['clean'], function() {
         return gulp.src('app.html')
             .pipe(stripLine('stub.js'))
             .pipe(replace('ENVIRONMENT', Constants.STAGING_ENV))
             .pipe(gulp.dest(STAGING_PATH));
     });
 
-    gulp.task('prodCopy', ['clean'], function () {
+    gulp.task('prodCopy', ['clean'], function() {
         return gulp.src('app.html')
             .pipe(stripLine('stub.js'))
             .pipe(replace('ENVIRONMENT', Constants.PROD_ENV))
             .pipe(gulp.dest(PROD_PATH));
     });
 
-    gulp.task('js', ['clean'], function () {
+    gulp.task('js', ['clean'], function() {
         return gulp.src('app.js')
             .pipe(webpack(webpackConfig))
             .pipe(gulp.dest(DEV_PATH))
@@ -70,7 +70,7 @@
             .pipe(gulp.dest(PROD_PATH));
     });
 
-    gulp.task('watch', function () {
+    gulp.task('watch', function() {
         gulp.watch([
             'sass/*',
             'templates/**/*',

@@ -40,7 +40,7 @@
         var that = this;
 
         that.el = document.createElement('div');
-        that.el.className = 'valentineContainer animation_fadein noselect';
+        that.el.className = 'animation_fadein noselect';
 
 
 
