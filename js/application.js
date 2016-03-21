@@ -2,6 +2,7 @@
     'use strict';
 
     var WorkspaceController = require('./controllers/workspace'),
+        AttachSmellController = require('./controllers/attachSmell'),
 
         Router = require('./util/router'),
         utils = require('./util/utils'),
@@ -80,6 +81,7 @@
         this.router = new Router();
 
         this.workspaceController = new WorkspaceController();
+        this.attachSmellController = new AttachSmellController();
 
         this.TxService = new TxService();
         this.ValentineServices = new ValentineServices(this.TxService); //communication layer
@@ -187,10 +189,18 @@
                 utils.toggleBackNavigation(false);
             });
 
+            //
+            this.router.route('attachSmell', function(data) {
+                self.container.innerHTML = '';
+                self.attachSmellController.render(self.container, self, data);
+                utils.toggleBackNavigation(false);
+            });
 
 
 
-            self.router.navigateTo('/');
+
+
+            self.router.navigateTo('attachSmell');
 
 
 
