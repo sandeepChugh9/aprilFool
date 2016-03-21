@@ -4499,12 +4499,13 @@
 	    'use strict';
 
 	    var WorkspaceController = __webpack_require__(8),
+	        AttachSmellController = __webpack_require__(10),
 
-	        Router = __webpack_require__(10),
+	        Router = __webpack_require__(12),
 	        utils = __webpack_require__(4),
 
-	        TxService = __webpack_require__(11),
-	        ValentineServices = __webpack_require__(12);
+	        TxService = __webpack_require__(13),
+	        ValentineServices = __webpack_require__(14);
 
 	    // Full Screen Loader
 	    var loader = document.getElementById('loader');
@@ -4577,6 +4578,7 @@
 	        this.router = new Router();
 
 	        this.workspaceController = new WorkspaceController();
+	        this.attachSmellController = new AttachSmellController();
 
 	        this.TxService = new TxService();
 	        this.ValentineServices = new ValentineServices(this.TxService); //communication layer
@@ -4684,10 +4686,18 @@
 	                utils.toggleBackNavigation(false);
 	            });
 
+	            //
+	            this.router.route('attachSmell', function(data) {
+	                self.container.innerHTML = '';
+	                self.attachSmellController.render(self.container, self, data);
+	                utils.toggleBackNavigation(false);
+	            });
 
 
 
-	            self.router.navigateTo('/');
+
+
+	            self.router.navigateTo('attachSmell');
 
 
 
@@ -4715,29 +4725,6 @@
 	    WorkspaceController.prototype.bind = function(App) {
 	        var $el = $(this.el);
 
-	        valentineSubscribe.addEventListener('click', function(ev) {
-	            events.publish('update.loader', { show: true });
-
-	            // Subscribe The User Here       
-	            if (platformSdk.bridgeEnabled) {
-
-
-
-
-
-
-	            }
-	        });
-
-
-	        homebutton.addEventListener('click', function(ev) {
-
-	        });
-
-	        TandC.addEventListener('click', function(ev) {
-
-	        });
-
 	    };
 
 	    WorkspaceController.prototype.render = function(ctr, App, data) {
@@ -4750,7 +4737,7 @@
 
 
 
-	        that.el.innerHTML = Mustache.render(unescape(that.template), { subscribeScreen: "test" });
+	        that.el.innerHTML = Mustache.render(unescape(that.template));
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
 
@@ -4774,6 +4761,57 @@
 
 /***/ },
 /* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	(function(W, platformSdk, events) {
+	    'use strict';
+
+	    var utils = __webpack_require__(4);
+
+	    var AttachSmellController = function(options) {
+	        this.template = __webpack_require__(11);
+	    };
+
+	    AttachSmellController.prototype.bind = function(App) {
+	        var $el = $(this.el);
+
+
+	    };
+
+	    AttachSmellController.prototype.render = function(ctr, App, data) {
+
+	        var that = this;
+
+	        that.el = document.createElement('div');
+	        that.el.className = 'animation_fadein noselect';
+
+
+
+
+	        that.el.innerHTML = Mustache.render(unescape(that.template));
+	        ctr.appendChild(that.el);
+	        events.publish('update.loader', { show: false });
+
+
+	        that.bind(App);
+	    };
+
+	    AttachSmellController.prototype.destroy = function() {
+
+	    };
+
+	    module.exports = AttachSmellController;
+
+	})(window, platformSdk, platformSdk.events);
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"attachSmell\">\n    <div>\n        <div>\n            <div> Img </div>\n            <div> Text</div>\n        </div>\n        <div>\n            <div> Img </div>\n            <div> Text</div>\n        </div>\n        <div>\n            <div> Img </div>\n            <div> Text</div>\n        </div>\n    </div>\n    <div>\n        <div>\n            <div> Img </div>\n            <div> Text</div>\n        </div>\n        <div>\n            <div> Img </div>\n            <div> Text</div>\n        </div>\n        <div>\n            <div> Img </div>\n            <div> Text</div>\n        </div>\n    </div>\n    <div>\n        <div>\n            <div> Img </div>\n            <div> Text</div>\n        </div>\n        <div>\n            <div> Img </div>\n            <div> Text</div>\n        </div>\n        <div>\n            <div> Img </div>\n            <div> Text</div>\n        </div>\n    </div>\n    <div>\n        <div class=\"openCamera\"> Camera </div>\n        <div> Add from surrounding</div>\n    </div>\n</div>"
+
+/***/ },
+/* 12 */
 /***/ function(module, exports) {
 
 	(function (W, events) {
@@ -4864,7 +4902,7 @@
 	})(window, platformSdk.events);
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (W, platformSdk, events) {
@@ -5016,7 +5054,7 @@
 	})(window, platformSdk, platformSdk.events);
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function(W, platformSdk) {

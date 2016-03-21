@@ -3,39 +3,17 @@
 
     var utils = require('../util/utils');
 
-    var WorkspaceController = function(options) {
+    var AttachSmellController = function(options) {
         this.template = require('raw!../../templates/attachSmell.html');
     };
 
-    WorkspaceController.prototype.bind = function(App) {
+    AttachSmellController.prototype.bind = function(App) {
         var $el = $(this.el);
 
-        valentineSubscribe.addEventListener('click', function(ev) {
-            events.publish('update.loader', { show: true });
-
-            // Subscribe The User Here       
-            if (platformSdk.bridgeEnabled) {
-
-
-
-
-
-
-            }
-        });
-
-
-        homebutton.addEventListener('click', function(ev) {
-
-        });
-
-        TandC.addEventListener('click', function(ev) {
-
-        });
 
     };
 
-    WorkspaceController.prototype.render = function(ctr, App, data) {
+    AttachSmellController.prototype.render = function(ctr, App, data) {
 
         var that = this;
 
@@ -45,7 +23,7 @@
 
 
 
-        that.el.innerHTML = Mustache.render(unescape(that.template), { subscribeScreen: "test" });
+        that.el.innerHTML = Mustache.render(unescape(that.template));
         ctr.appendChild(that.el);
         events.publish('update.loader', { show: false });
 
@@ -53,10 +31,10 @@
         that.bind(App);
     };
 
-    WorkspaceController.prototype.destroy = function() {
+    AttachSmellController.prototype.destroy = function() {
 
     };
 
-    module.exports = WorkspaceController;
+    module.exports = AttachSmellController;
 
 })(window, platformSdk, platformSdk.events);
