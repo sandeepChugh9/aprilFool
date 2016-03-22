@@ -4657,26 +4657,25 @@
 	            this.router.back();
 	        },
 
-	        resumeHikeSmell: function(){
+	        resumeHikeSmell: function() {
 	            console.log("Hike Smell Resumed");
 	            events.publish('update.loader', { show: false });
 	            var that = this;
 
-	            if(platformSdk.appData.helperData.attachSmellCalled){
+	            if (platformSdk.appData.helperData.attachSmellCalled) {
 	                platformSdk.appData.helperData.attachSmellCalled = 0;
-	                platformSdk.updateHelperData (platformSdk.appData.helperData );
+	                platformSdk.updateHelperData(platformSdk.appData.helperData);
 	                console.log("Taking To detect Aroma");
 	                // Detecting Aroma 
 	                that.router.navigateTo('/detectAroma', {});
 	                // Attaching Aroma Screen
-	                setTimeout(function(){ 
+	                setTimeout(function() {
 	                    that.router.navigateTo('/attachAroma', {});
 	                }, 5000);
-	            }
-	            else{
+	            } else {
 	                return;
 	            }
-	            
+
 	        },
 
 	        getRoute: function() {
@@ -5000,7 +4999,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "\t<div class=\"smellMessageWrapper align-center\">\n\t\t<div class=\"smellMessageIcon\"></div>\n\t</div>\n\n\t<div class=\"messageSender\">Sent By: Hemank</div>\n\t<div class=\"trySmellButton\">Try Now</div>\n"
+	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\">\n        <div class=\"thirdRipple\"> </div>\n    </div>\n</div>\n<div class=\"messageSender\">Sent By: Hemank</div>\n<div class=\"trySmellButton\">Try Now</div>"
 
 /***/ },
 /* 16 */

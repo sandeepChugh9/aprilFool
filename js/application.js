@@ -157,26 +157,25 @@
             this.router.back();
         },
 
-        resumeHikeSmell: function(){
+        resumeHikeSmell: function() {
             console.log("Hike Smell Resumed");
             events.publish('update.loader', { show: false });
             var that = this;
 
-            if(platformSdk.appData.helperData.attachSmellCalled){
+            if (platformSdk.appData.helperData.attachSmellCalled) {
                 platformSdk.appData.helperData.attachSmellCalled = 0;
-                platformSdk.updateHelperData (platformSdk.appData.helperData );
+                platformSdk.updateHelperData(platformSdk.appData.helperData);
                 console.log("Taking To detect Aroma");
                 // Detecting Aroma 
                 that.router.navigateTo('/detectAroma', {});
                 // Attaching Aroma Screen
-                setTimeout(function(){ 
+                setTimeout(function() {
                     that.router.navigateTo('/attachAroma', {});
                 }, 5000);
-            }
-            else{
+            } else {
                 return;
             }
-            
+
         },
 
         getRoute: function() {
