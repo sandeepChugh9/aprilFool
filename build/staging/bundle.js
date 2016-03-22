@@ -109,6 +109,9 @@
 
 	        application.start();
 
+	        window.onResume = application.resumeHikeSmell.bind(application);
+	        
+
 	    });
 
 	})(window);
@@ -4654,6 +4657,28 @@
 	            this.router.back();
 	        },
 
+	        resumeHikeSmell: function(){
+	            console.log("Hike Smell Resumed");
+	            events.publish('update.loader', { show: false });
+	            var that = this;
+
+	            if(platformSdk.appData.helperData.attachSmellCalled){
+	                platformSdk.appData.helperData.attachSmellCalled = 0;
+	                platformSdk.updateHelperData (platformSdk.appData.helperData );
+	                console.log("Taking To detect Aroma");
+	                // Detecting Aroma 
+	                that.router.navigateTo('/detectAroma', {});
+	                // Attaching Aroma Screen
+	                setTimeout(function(){ 
+	                    that.router.navigateTo('/attachAroma', {});
+	                }, 5000);
+	            }
+	            else{
+	                return;
+	            }
+	            
+	        },
+
 	        getRoute: function() {
 	            var that = this;
 
@@ -4990,15 +5015,37 @@
 	        this.template = __webpack_require__(17);
 	    };
 
-	    attachAromaController.prototype.bind = function(App) {
+	    attachAromaController.prototype.bind = function(App,data) {
 	        var $el = $(this.el);
 
-	        var attachAromaButton = this.el.getElementsByClassName( 'attachAromaButton' )[0];
-	    
+	        var attachAromaButton = this.el.getElementsByClassName('attachAromaButton')[0];
+
 	        attachAromaButton.addEventListener('click', function(ev) {
-	            // Write Message Input Router Here
 	            console.log("Smell Attached :: Sending Card Message");
+	            var card = {
+
+	                fwdObject: {
+	                    "ld": {
+	                        "hikeAromaMessage":platformSdk.appData.helperData.attachSmellMessage,
+	                        "hikeAromaBackground":"smellTemplate"
+	                    },
+	                    "hd": {},
+	                    "layoutId": "http://static.platform.hike.in/download/microapp/popup/foolcard2.zip",
+	                    "push": "silent",
+	                    "notifText": "News Article",
+	                    "h": 200
+	                }
+	            };
+
+
+	            card.fwdObject.notifText = 'Hike Aroma';
+	            var hm = 'test card' + ' \n ' + "http://www.google.com";
+
+	            if (platformSdk.bridgeEnabled)
+	                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
+
 	            //App.router.navigateTo( '/', {} );
+
 	        });
 
 
@@ -5014,7 +5061,7 @@
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
 
-	        that.bind(App);
+	        that.bind(App,data);
 	    };
 
 	    attachAromaController.prototype.destroy = function() {
@@ -5025,11 +5072,12 @@
 
 	})(window, platformSdk, platformSdk.events);
 
+
 /***/ },
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "\t<div class=\"attachAromaWrapper align-center\">\n\t\t<div class=\"attachAromaIcon\"></div>\n\t\t<div class=\"attachAromaHeading\">Aroma Successfully attached</div>\n\t\t<div class=\"attachAromaButton\">Next</div>\n\t</div>"
+	module.exports = "\t<div class=\"attachAromaWrapper align-center\">\n\t\t<div class=\"attachAromaIcon\"></div>\n\t\t<div class=\"attachAromaHeading\">Aroma Successfully attached</div>\n\t\t<div class=\"attachAromaButton\">Share</div>\n\t</div>"
 
 /***/ },
 /* 18 */
@@ -5121,7 +5169,7 @@
 	            } else {
 	                console.log(aromaMessage.value);
 	                console.log("Send the value forward to select the smell");
-	                App.router.navigateTo('/attachSmell', {});
+	                App.router.navigateTo('/attachSmell', {hm:aromaMessage.value});
 	            }
 	        });
 
@@ -5167,8 +5215,11 @@
 	        this.template = __webpack_require__(23);
 	    };
 
-	    AttachSmellController.prototype.bind = function(App) {
+	    AttachSmellController.prototype.bind = function(App,data) {
 	        var $el = $(this.el);
+
+	        platformSdk.appData.helperData.attachSmellMessage = data.hm;
+	        platformSdk.updateHelperData(platformSdk.appData.helperData);
 
 	        var smellIcon = document.getElementsByClassName('smellSection');
 	        var nextBtn = document.getElementsByClassName('btnContainer')[0];
@@ -5178,11 +5229,9 @@
 	        for (var n, i = 0; n = smellIcon.length, i < n; i++)
 	            smellIcon[i].addEventListener('click', highlightSmell, false);
 
-
-
 	        function highlightSmell() {
 	            removeSelection();
-	            this.classList.add('selectedStateSmell')
+	            this.classList.add('selectedStateSmell');
 	            captureSmell.classList.add('hide');
 	            nextBtn.classList.remove('hide');
 
@@ -5200,11 +5249,14 @@
 	            var card = {
 
 	                fwdObject: {
-	                    "ld": {},
+	                    "ld": {
+	                        "hikeAromaMessage":platformSdk.appData.helperData.attachSmellMessage,
+	                        "hikeAromaBackground":"smellTemplate"
+	                    },
 	                    "hd": {},
-	                    "layoutId": "http://static.platform.hike.in/download/microapp/popup/someCard.zip ",
+	                    "layoutId": "http://static.platform.hike.in/download/microapp/popup/foolcard2.zip",
 	                    "push": "silent",
-	                    "notifText": "News Article",
+	                    "notifText": "Hike Aroma Message",
 	                    "h": 200
 	                }
 	            };
@@ -5221,6 +5273,15 @@
 	        // Invoke the camera
 	        openCamera.addEventListener('click', function() {
 
+	            if(platformSdk.appData.helperData.attachSmellCalled){
+	                platformSdk.appData.helperData.attachSmellCalled = 1;
+	            }else{
+	                platformSdk.appData.helperData.attachSmellCalled = 1;    
+	            }
+	            platformSdk.updateHelperData (platformSdk.appData.helperData ); 
+
+	            events.publish('update.loader', { show: true });
+	        
 	            try {
 	                if (platformSdk.bridgeEnabled)
 	                    platformSdk.nativeReq({
@@ -5228,7 +5289,18 @@
 	                        fn: 'chooseFile',
 	                        data: 'true',
 	                        success: function(res) {
-	                            //  App.router.navigateTo('/smellDetect', res)
+	                            console.log("Image Selected From The Gallery");
+	                            if(platformSdk.appData.helperData.attachSmellCalled){
+	                                platformSdk.appData.helperData.attachSmellCalled = 0;
+	                                platformSdk.updateHelperData (platformSdk.appData.helperData );
+	                                console.log("Taking To detect Aroma");
+	                                // Detecting Aroma 
+	                                that.router.navigateTo('/detectAroma', {});
+	                                // Attaching Aroma Screen
+	                                setTimeout(function(){ 
+	                                    that.router.navigateTo('/attachAroma', {});
+	                                }, 5000);
+	                            }
 	                        }
 	                    });
 
@@ -5251,7 +5323,7 @@
 	        that.el.innerHTML = Mustache.render(unescape(that.template));
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
-	        that.bind(App);
+	        that.bind(App,data);
 	    };
 
 	    AttachSmellController.prototype.destroy = function() {

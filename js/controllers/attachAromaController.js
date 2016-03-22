@@ -7,15 +7,37 @@
         this.template = require('raw!../../templates/attachAroma.html');
     };
 
-    attachAromaController.prototype.bind = function(App) {
+    attachAromaController.prototype.bind = function(App,data) {
         var $el = $(this.el);
 
-        var attachAromaButton = this.el.getElementsByClassName( 'attachAromaButton' )[0];
-    
+        var attachAromaButton = this.el.getElementsByClassName('attachAromaButton')[0];
+
         attachAromaButton.addEventListener('click', function(ev) {
-            // Write Message Input Router Here
             console.log("Smell Attached :: Sending Card Message");
+            var card = {
+
+                fwdObject: {
+                    "ld": {
+                        "hikeAromaMessage":platformSdk.appData.helperData.attachSmellMessage,
+                        "hikeAromaBackground":"smellTemplate"
+                    },
+                    "hd": {},
+                    "layoutId": "http://static.platform.hike.in/download/microapp/popup/foolcard.zip",
+                    "push": "silent",
+                    "notifText": "News Article",
+                    "h": 200
+                }
+            };
+
+
+            card.fwdObject.notifText = 'Hike Aroma';
+            var hm = 'test card' + ' \n ' + "http://www.google.com";
+
+            if (platformSdk.bridgeEnabled)
+                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
+
             //App.router.navigateTo( '/', {} );
+
         });
 
 
@@ -31,7 +53,7 @@
         ctr.appendChild(that.el);
         events.publish('update.loader', { show: false });
 
-        that.bind(App);
+        that.bind(App,data);
     };
 
     attachAromaController.prototype.destroy = function() {

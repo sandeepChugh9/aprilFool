@@ -106,3 +106,26 @@ body {
 .bottomSection div {
     display: inline-block;
 }
+
+.cardTxt {
+    font-size: 24px;
+    color: #FFFFFF;
+    font-weight: 500;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    left: 50%;
+}
+
+
+.sentBy{
+    font-weight:400;font-size:14px;color:rgba(153,153,153,0.40);line-height:19px;
+}
+
+.aromaIcon img{
+    height:9px;width:12px
+}
+
+.aromaHeading{
+    font-weight:400;font-size:14px;color:#20003B;line-height:19px;
+}
