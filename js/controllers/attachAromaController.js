@@ -7,7 +7,7 @@
         this.template = require('raw!../../templates/attachAroma.html');
     };
 
-    attachAromaController.prototype.bind = function(App,data) {
+    attachAromaController.prototype.bind = function(App, data) {
         var $el = $(this.el);
 
         var attachAromaButton = this.el.getElementsByClassName('attachAromaButton')[0];
@@ -18,13 +18,12 @@
 
                 fwdObject: {
                     "ld": {
-                        "hikeAromaMessage":platformSdk.appData.helperData.attachSmellMessage,
-                        "hikeAromaBackground":"smellTemplate"
+                        "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
+                        "hikeAromaBackground": "smellTemplate"
                     },
                     "hd": {},
-                    "layoutId": "http://static.platform.hike.in/download/microapp/popup/foolcard.zip",
+                    "layoutId": "card.html",
                     "push": "silent",
-                    "notifText": "News Article",
                     "h": 200
                 }
             };
@@ -53,7 +52,7 @@
         ctr.appendChild(that.el);
         events.publish('update.loader', { show: false });
 
-        that.bind(App,data);
+        that.bind(App, data);
     };
 
     attachAromaController.prototype.destroy = function() {

@@ -5,29 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,user-scalable=0" />
     <title>Hike Aroma</title>
-    <link rel="stylesheet" type="text/css" href="{{basePath}}assets/css/font.css">
-    <link rel="stylesheet" type="text/css" href="{{basePath}}assets/css/cards.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/cards.css">
 </head>
 
 <body>
-    <div class="card quote-card" id="aromaCard">
-        <div class=" row ">
-            <div class="title">{{hikeAromaMessage}}</div>
-            <div class="centerContainer"><img src="{{basePath}}assets/images/{{hikeAromaBackground}}.png">
-                <div class="cardTxt">Tap to smell</div>
-            </div>
-        </div>
-        <div class="share-container" id="shareCard">
-            <img id="share-icon" src="{{basePath}}assets/images/share.png" alt="share icon">
-        </div>
-        <div class="bottomSection">
-            <div class="sentBy">Sent By</div>
-            <div class="aromaIcon"><img src="{{basePath}}assets/images/aroma.png"></div>
-            <div class="aromaHeading">Hike Aroma</div>
+    <div class="card quote-card" id="aromaCard" style="background:url('assets/images/smellTemplate.png'); background-size: cover;    background-color: rgba(0, 0, 0, 0.50)">
+        <!-- Updated upstream
+            {{hikeAromaMessage}}
+            {{hikeAromaBackground}}.png">
+             
+!-->
+        <div class="title">Hey Guys just check out this cool stuff </div>
+        <div class="bottomContainer">
+            <div class="lFloat disp-inlineBlock"><img class="aromaIcon" src="assets/images/aroma.png"> <span class="aromaName"> Aroma name </span></div>
+            <div class="rFloat disp-inlineBlock tapSmell">Tap to smell</div>
         </div>
     </div>
-    <script language="javascript" type="text/javascript" src="{{basePath}}assets/js/platform.js"></script>!
-    <script language="javascript" type="text/javascript" src="{{basePath}}assets/js/card.js"></script>
+    <script language="javascript" type="text/javascript" src="assets/js/platform.js"></script>
+    <script language="javascript" type="text/javascript" src="assets/js/card.js"></script>
 </body>
 
 </html>

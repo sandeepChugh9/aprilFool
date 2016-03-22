@@ -29,6 +29,18 @@
     text-align: center;
 }
 
+.rFloat {
+    float: right;
+}
+
+.lFloat {
+    float: left;
+}
+
+.disp-inlineBlock {
+    display: inline-block;
+}
+
 a {
     display: block;
     text-decoration: none;
@@ -54,78 +66,47 @@ body {
 }
 
 .card {
-    background-color: #fff;
-    width: 100%;
+    margin: 4px;
+    border-radius: 4px;
     min-height: 1px;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
 }
 
-.share-container {
-    position: absolute;
-    right: -18px;
-    bottom: 25%;
-    height: 66px;
-    width: 70px;
-    -webkit-transform: skewX(-45deg);
-}
-
-.share-container img {
-    width: 19px;
-    position: absolute;
-    left: 17px;
-    bottom: 13px;
-    -webkit-transform: skewX(45deg);
-}
-
-.centerContainer {
-    height: 100%;
-    margin-right: 16px;
-    margin-left: 16px;
-}
-
-.centerContainer img {
-    height: 100%;
-    width: 100%;
-}
-
 .title {
-    font-size: 16px;
-    color: #424242;
+    font-size: 14px;
+    color: #ffffff;
     font-weight: 400;
-    line-height: 21px;
-    margin: 16px;
+    line-height: 20px;
+    max-width: 86%;
+    margin: 35px 0px 45px 7%;
+    text-align: center;
 }
 
-.bottomSection {
-    margin: 16px;
-    text-align: right;
+.bottomContainer {
+    margin: 0 20px 15px 20px;
+    overflow: hidden;
 }
 
-.bottomSection div {
-    display: inline-block;
+.aromaName {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.60);
+    font-weight: 400;
+    line-height: 12px;
 }
 
-.cardTxt {
-    font-size: 24px;
-    color: #FFFFFF;
-    font-weight: 500;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    left: 50%;
+.tapSmell {
+    font-size: 14px;
+    color: #7ED321;
+    font-weight: 400;
+    line-height: 23px;
+    margin-top: 2px;
 }
 
-
-.sentBy{
-    font-weight:400;font-size:14px;color:rgba(153,153,153,0.40);line-height:19px;
-}
-
-.aromaIcon img{
-    height:9px;width:12px
-}
-
-.aromaHeading{
-    font-weight:400;font-size:14px;color:#20003B;line-height:19px;
+.aromaIcon {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
 }

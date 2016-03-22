@@ -4787,7 +4787,7 @@
 
 
 
-	            self.router.navigateTo('/');
+	            self.router.navigateTo('/smellMesssage');
 
 	        }
 	    };
@@ -5015,7 +5015,7 @@
 	        this.template = __webpack_require__(17);
 	    };
 
-	    attachAromaController.prototype.bind = function(App,data) {
+	    attachAromaController.prototype.bind = function(App, data) {
 	        var $el = $(this.el);
 
 	        var attachAromaButton = this.el.getElementsByClassName('attachAromaButton')[0];
@@ -5026,13 +5026,12 @@
 
 	                fwdObject: {
 	                    "ld": {
-	                        "hikeAromaMessage":platformSdk.appData.helperData.attachSmellMessage,
-	                        "hikeAromaBackground":"smellTemplate"
+	                        "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
+	                        "hikeAromaBackground": "smellTemplate"
 	                    },
 	                    "hd": {},
-	                    "layoutId": "http://static.platform.hike.in/download/microapp/popup/foolcard2.zip",
+	                    "layoutId": "card.html",
 	                    "push": "silent",
-	                    "notifText": "News Article",
 	                    "h": 200
 	                }
 	            };
@@ -5061,7 +5060,7 @@
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
 
-	        that.bind(App,data);
+	        that.bind(App, data);
 	    };
 
 	    attachAromaController.prototype.destroy = function() {
@@ -5071,7 +5070,6 @@
 	    module.exports = attachAromaController;
 
 	})(window, platformSdk, platformSdk.events);
-
 
 /***/ },
 /* 17 */
@@ -5131,7 +5129,7 @@
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"detectAromaWrapper align-center\">\n    <div class=\"detectAromaIcon\"></div>\n    <div class=\"detectAromaHeading\">Detecting Aroma Particles<br>\n        Please wait<div class=\"loading\"></div>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"detectAromaWrapper align-center\">\n    <div class=\"detectAromaIcon\">\n        <div class=\"aromaBar\"></div>\n    </div>\n    <div class=\"detectAromaHeading\">Detecting Aroma Particles\n        <br> Please wait\n        <div class=\"loading\"></div>\n    </div>\n</div>"
 
 /***/ },
 /* 20 */
@@ -5215,7 +5213,7 @@
 	        this.template = __webpack_require__(23);
 	    };
 
-	    AttachSmellController.prototype.bind = function(App,data) {
+	    AttachSmellController.prototype.bind = function(App, data) {
 	        var $el = $(this.el);
 
 	        platformSdk.appData.helperData.attachSmellMessage = data.hm;
@@ -5250,11 +5248,14 @@
 
 	                fwdObject: {
 	                    "ld": {
-	                        "hikeAromaMessage":platformSdk.appData.helperData.attachSmellMessage,
-	                        "hikeAromaBackground":"smellTemplate"
+	                        "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
+	                        "hikeAromaBackground": "smellTemplate"
 	                    },
 	                    "hd": {},
-	                    "layoutId": "http://static.platform.hike.in/download/microapp/popup/foolcard2.zip",
+	                    "layoutId": "card.html",
+	                    "appName": "foolcard2",
+	                    "appVersion": "0.1",
+	                    "appPackage": "http://static.platform.hike.in/download/microapp/popup/foolcard2.zip",
 	                    "push": "silent",
 	                    "notifText": "Hike Aroma Message",
 	                    "h": 200
@@ -5273,15 +5274,15 @@
 	        // Invoke the camera
 	        openCamera.addEventListener('click', function() {
 
-	            if(platformSdk.appData.helperData.attachSmellCalled){
+	            if (platformSdk.appData.helperData.attachSmellCalled) {
 	                platformSdk.appData.helperData.attachSmellCalled = 1;
-	            }else{
-	                platformSdk.appData.helperData.attachSmellCalled = 1;    
+	            } else {
+	                platformSdk.appData.helperData.attachSmellCalled = 1;
 	            }
-	            platformSdk.updateHelperData (platformSdk.appData.helperData ); 
+	            platformSdk.updateHelperData(platformSdk.appData.helperData);
 
 	            events.publish('update.loader', { show: true });
-	        
+
 	            try {
 	                if (platformSdk.bridgeEnabled)
 	                    platformSdk.nativeReq({
@@ -5290,14 +5291,14 @@
 	                        data: 'true',
 	                        success: function(res) {
 	                            console.log("Image Selected From The Gallery");
-	                            if(platformSdk.appData.helperData.attachSmellCalled){
+	                            if (platformSdk.appData.helperData.attachSmellCalled) {
 	                                platformSdk.appData.helperData.attachSmellCalled = 0;
-	                                platformSdk.updateHelperData (platformSdk.appData.helperData );
+	                                platformSdk.updateHelperData(platformSdk.appData.helperData);
 	                                console.log("Taking To detect Aroma");
 	                                // Detecting Aroma 
 	                                that.router.navigateTo('/detectAroma', {});
 	                                // Attaching Aroma Screen
-	                                setTimeout(function(){ 
+	                                setTimeout(function() {
 	                                    that.router.navigateTo('/attachAroma', {});
 	                                }, 5000);
 	                            }
@@ -5323,7 +5324,7 @@
 	        that.el.innerHTML = Mustache.render(unescape(that.template));
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
-	        that.bind(App,data);
+	        that.bind(App, data);
 	    };
 
 	    AttachSmellController.prototype.destroy = function() {
@@ -5338,7 +5339,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"attachSmellSection\">\n    <div class=\"row\">\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt\"> Add from surrounding</div>\n    </div>\n    <div class=\"btnContainer hide\">\n        Next\n    </div>\n</div>\n</div>"
+	module.exports = "<div class=\"attachSmellSection\">\n    <div class=\"row\">\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt\"> Add from surrounding</div>\n    </div>\n    <div class=\"btnContainer hide smellButton\">\n        Next\n    </div>\n</div>\n</div>"
 
 /***/ },
 /* 24 */

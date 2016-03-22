@@ -287,7 +287,7 @@
 
 
 
-            self.router.navigateTo('/');
+            self.router.navigateTo('/smellMesssage');
 
         }
     };

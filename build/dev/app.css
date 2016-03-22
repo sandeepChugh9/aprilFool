@@ -152,7 +152,7 @@
   -webkit-transform: translate(-50%, -50%); }
 
 .detectAromaIcon {
-  background: url(images/detecting_aroma.png);
+  background: url(images/circle2.png);
   -webkit-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
@@ -160,7 +160,32 @@
   background-position: center;
   width: 256px;
   height: 256px;
-  margin: 0px auto; }
+  margin: 0px auto;
+  position: relative; }
+
+.aromaBar {
+  background: url(images/line2.png);
+  -webkit-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 105px;
+  height: 140px;
+  margin: 0px auto;
+  position: absolute;
+  top: 45%;
+  left: 38%;
+  -webkit-animation: detector 2s infinite;
+  animation: detector 2s infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-transform-origin: 100% 0;
+  -moz-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  -o-transform-origin: 100% 0;
+  transform-origin: 30% 8%;
+  z-index: -2; }
 
 .detectAromaHeading {
   color: #FFF;
@@ -188,6 +213,24 @@
 @-webkit-keyframes ellipsis {
   to {
     width: 20px; } }
+
+@-moz-keyframes detector {
+  from {
+    -moz-transform: rotate(0deg); }
+  to {
+    -moz-transform: rotate(360deg); } }
+
+@-webkit-keyframes detector {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes detector {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
 
 /* form starting stylings ------------------------------- */
 .group {
@@ -351,6 +394,8 @@ input:focus ~ .highlight {
     font-weight: 400;
     line-height: 18px;
     margin-top: 24px; }
+  .attachSmellSection .btnContainer {
+    margin-top: 80px; }
 
 html,
 body,

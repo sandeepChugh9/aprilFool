@@ -1,24 +1,13 @@
 (function() {
-	var setDataCallback = platformSdk.events.subscribe('webview/data/loaded', function() {
+    var setDataCallback = platformSdk.events.subscribe('webview/data/loaded', function() {
 
-		platformSdk.card =  "books";
 
-		var shareCardIcon = document.getElementById("shareCard");
-		var cardTxt = document.getElementsByClassName('cardTxt')[0];
-		var shareMessage;
-		var captionText;
+        var cardTxt = document.getElementsByClassName('tapSmell')[0];
+        cardTxt.addEventListener('click', function(ev) {
+            console.log("Opening Microapp");
 
-		if (shareCardIcon) {
-			shareCardIcon.addEventListener('click', function(e) {
-                platformSdk.bridge.forwardToChat(null);    
-			});
-		}
-
-		cardTxt.addEventListener('click', function(ev) {
-			console.log("Opening Microapp");
-
-			var serverUrl = 'http://mapps.platform.hike.in/mapps/api/v1/apps/';
-			var appName = '+hikearoma+';
+            var serverUrl = 'http://mapps.platform.hike.in/mapps/api/v1/apps/';
+            var appName = '+hikearoma+';
 
             platformSdk.nativeReq({
                 fn: 'openNonMessagingBot',
@@ -68,10 +57,10 @@
                     platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
                 }
             });
-        	
+
         });
 
 
-		setDataCallback.remove();
-	});
+        setDataCallback.remove();
+    });
 })();

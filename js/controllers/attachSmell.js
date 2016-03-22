@@ -7,7 +7,7 @@
         this.template = require('raw!../../templates/attachSmell.html');
     };
 
-    AttachSmellController.prototype.bind = function(App,data) {
+    AttachSmellController.prototype.bind = function(App, data) {
         var $el = $(this.el);
 
         platformSdk.appData.helperData.attachSmellMessage = data.hm;
@@ -42,11 +42,14 @@
 
                 fwdObject: {
                     "ld": {
-                        "hikeAromaMessage":platformSdk.appData.helperData.attachSmellMessage,
-                        "hikeAromaBackground":"smellTemplate"
+                        "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
+                        "hikeAromaBackground": "smellTemplate"
                     },
                     "hd": {},
-                    "layoutId": "http://static.platform.hike.in/download/microapp/popup/foolcard2.zip",
+                    "layoutId": "card.html",
+                    "appName": "foolcard2",
+                    "appVersion": "0.1",
+                    "appPackage": "http://static.platform.hike.in/download/microapp/popup/foolcard2.zip",
                     "push": "silent",
                     "notifText": "Hike Aroma Message",
                     "h": 200
@@ -65,15 +68,15 @@
         // Invoke the camera
         openCamera.addEventListener('click', function() {
 
-            if(platformSdk.appData.helperData.attachSmellCalled){
+            if (platformSdk.appData.helperData.attachSmellCalled) {
                 platformSdk.appData.helperData.attachSmellCalled = 1;
-            }else{
-                platformSdk.appData.helperData.attachSmellCalled = 1;    
+            } else {
+                platformSdk.appData.helperData.attachSmellCalled = 1;
             }
-            platformSdk.updateHelperData (platformSdk.appData.helperData ); 
+            platformSdk.updateHelperData(platformSdk.appData.helperData);
 
             events.publish('update.loader', { show: true });
-        
+
             try {
                 if (platformSdk.bridgeEnabled)
                     platformSdk.nativeReq({
@@ -82,14 +85,14 @@
                         data: 'true',
                         success: function(res) {
                             console.log("Image Selected From The Gallery");
-                            if(platformSdk.appData.helperData.attachSmellCalled){
+                            if (platformSdk.appData.helperData.attachSmellCalled) {
                                 platformSdk.appData.helperData.attachSmellCalled = 0;
-                                platformSdk.updateHelperData (platformSdk.appData.helperData );
+                                platformSdk.updateHelperData(platformSdk.appData.helperData);
                                 console.log("Taking To detect Aroma");
                                 // Detecting Aroma 
                                 that.router.navigateTo('/detectAroma', {});
                                 // Attaching Aroma Screen
-                                setTimeout(function(){ 
+                                setTimeout(function() {
                                     that.router.navigateTo('/attachAroma', {});
                                 }, 5000);
                             }
@@ -115,7 +118,7 @@
         that.el.innerHTML = Mustache.render(unescape(that.template));
         ctr.appendChild(that.el);
         events.publish('update.loader', { show: false });
-        that.bind(App,data);
+        that.bind(App, data);
     };
 
     AttachSmellController.prototype.destroy = function() {
