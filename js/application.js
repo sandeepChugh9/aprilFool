@@ -1,7 +1,13 @@
 (function(W, events) {
     'use strict';
 
-    var WorkspaceController = require('./controllers/workspace'),
+    var WorkspaceController     = require('./controllers/workspace'),
+        SmellFtueController     = require('./controllers/smellFtueController'),
+        HowToSmellController    = require('./controllers/howToSmellController'),
+        SmellMessageController  = require('./controllers/smellMessageController'),
+        AttachAromaController   = require('./controllers/attachAromaController'),
+        DetectAromaController   = require('./controllers/detectAromaController'),
+        WriteMessageController  = require('./controllers/writeMessageController'),
 
         Router = require('./util/router'),
         utils = require('./util/utils'),
@@ -80,6 +86,12 @@
         this.router = new Router();
 
         this.workspaceController = new WorkspaceController();
+        this.howToSmellController = new HowToSmellController();
+        this.smellMessageController = new SmellMessageController();
+        this.smellFtueController = new SmellFtueController();
+        this.attachAromaController = new AttachAromaController();
+        this.detectAromaController = new DetectAromaController();
+        this.writeMessageController = new WriteMessageController();
 
         this.TxService = new TxService();
         this.ValentineServices = new ValentineServices(this.TxService); //communication layer
@@ -88,38 +100,55 @@
     Application.prototype = {
 
         // Setting Up The Three Dot Menu
-        initOverflowMenu: function() {
-
-            var that = this;
-
+        initOverflowMenu: function () {
             var omList = [{
-                    'title': platformSdk.appData.block === 'true' ? 'Unblock' : 'Block',
-                    'en': 'true',
-                    'eventName': 'app.menu.om.block'
-                },
-
+                "title": platformSdk.appData.block === "true" ? "Unblock" : "Block",
+                "en": "true",
+                "eventName": "app.menu.om.block"
+            },
                 {
-                    'title': 'FAQ',
-                    'en': 'true',
-                    'eventName': 'app.menu.om.faq'
-                },
-            ];
+                    "title": "Notifications",
+                    "en": "true",
+                    "eventName": "app.menu.om.mute",
+                    "is_checked": platformSdk.appData.mute === "true" ? "false" : "true"
+                }];
 
             // Notifications
-            platformSdk.events.subscribe('app.menu.om.block', function(id) {
-
+            platformSdk.events.subscribe('app.menu.om.mute', function (id) {
+                id = "" + platformSdk.retrieveId('app.menu.om.mute');
+                if (platformSdk.appData.mute == "true") {
+                    platformSdk.appData.mute = "false";
+                    platformSdk.muteChatThread();
+                    platformSdk.updateOverflowMenu(id, {
+                        "is_checked": "true"
+                    });
+                } else {
+                    platformSdk.appData.mute = "true";
+                    platformSdk.muteChatThread();
+                    platformSdk.updateOverflowMenu(id, {
+                        "is_checked": "false"
+                    });
+                }
             });
-
-
-
-            // Edit Profile
-            platformSdk.events.subscribe('app.menu.om.editprofile', function(id) {
-
+            // Block
+            platformSdk.events.subscribe('app.menu.om.block', function (id) {
+                id = "" + platformSdk.retrieveId('app.menu.om.block');
+                if (platformSdk.appData.block === "true") {
+                    unBlockApp();
+                } else {
+                    platformSdk.appData.block = "true";
+                    platformSdk.blockChatThread();
+                    platformSdk.events.publish('app.state.block.show');
+                    platformSdk.updateOverflowMenu(id, {
+                        "title": "Unblock"
+                    });
+                    utils.toggleBackNavigation(false);
+                    events.publish('app/block', {show: true});
+                    events.publish('app/offline', {show: false});
+                }
             });
-
 
             platformSdk.setOverflowMenu(omList);
-
         },
 
         backPressTrigger: function() {
@@ -158,11 +187,9 @@
 
             self.initOverflowMenu();
 
-
             utils.toggleBackNavigation(false);
             document.querySelector('.unblockButton').addEventListener('click', function() {
-
-
+                unBlockApp();
             }, false);
 
             // No Internet Connection Tab
@@ -180,20 +207,56 @@
                 self.backPressTrigger();
             });
 
-            // Subscribe :: Workspace
+            // Subscribe :: Home Screen Aroma FTUE
+            this.router.route('/smellFtue', function(data) {
+                self.container.innerHTML = '';
+                self.smellFtueController.render(self.container, self, data);
+                utils.toggleBackNavigation(false);
+            });
+
+            // Subscribe :: Home Screen Aroma
             this.router.route('/', function(data) {
                 self.container.innerHTML = '';
                 self.workspaceController.render(self.container, self, data);
                 utils.toggleBackNavigation(false);
             });
 
+            // ANY SMELL PART 1
+            this.router.route('/howToSmell', function(data) {
+                self.container.innerHTML = '';
+                self.howToSmellController.render(self.container, self, data);
+                utils.toggleBackNavigation(false);
+            });
 
+            // ANY SMELL PART 2
+            this.router.route('/smellMesssage', function(data) {
+                self.container.innerHTML = '';
+                self.smellMessageController.render(self.container, self, data);
+                utils.toggleBackNavigation(false);
+            });
 
+            // Detect The Aroma
+            this.router.route('/detectAroma', function(data) {
+                self.container.innerHTML = '';
+                self.detectAromaController.render(self.container, self, data);
+                utils.toggleBackNavigation(false);
+            });
 
-            self.router.navigateTo('/');
+            // Attach the Aroma
+            this.router.route('/attachAroma', function(data) {
+                self.container.innerHTML = '';
+                self.attachAromaController.render(self.container, self, data);
+                utils.toggleBackNavigation(false);
+            });
 
+            // Construct Message For Aroma
+            this.router.route('/writeMessage', function(data) {
+                self.container.innerHTML = '';
+                self.writeMessageController.render(self.container, self, data);
+                utils.toggleBackNavigation(false);
+            });
 
-
+            self.router.navigateTo('/writeMessage');
 
         }
     };

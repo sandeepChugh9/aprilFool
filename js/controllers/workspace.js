@@ -10,29 +10,13 @@
     WorkspaceController.prototype.bind = function(App) {
         var $el = $(this.el);
 
-        valentineSubscribe.addEventListener('click', function(ev) {
-            events.publish('update.loader', { show: true });
-
-            // Subscribe The User Here       
-            if (platformSdk.bridgeEnabled) {
-
-
-
-
-
-
-            }
+        var smellButton = this.el.getElementsByClassName( 'smellButton' )[0];
+    
+        smellButton.addEventListener('click', function(ev) {
+            // Write Message Input Router Here
+            console.log("Moving To Message Input Router");
+            //App.router.navigateTo( '/', res );
         });
-
-
-        homebutton.addEventListener('click', function(ev) {
-
-        });
-
-        TandC.addEventListener('click', function(ev) {
-
-        });
-
     };
 
     WorkspaceController.prototype.render = function(ctr, App, data) {
@@ -40,12 +24,8 @@
         var that = this;
 
         that.el = document.createElement('div');
-        that.el.className = 'animation_fadein noselect';
-
-
-
-
-        that.el.innerHTML = Mustache.render(unescape(that.template), { subscribeScreen: "test" });
+        that.el.className = 'smellOptInContainer animation_fadein noselect';
+        that.el.innerHTML = Mustache.render(unescape(that.template), {});
         ctr.appendChild(that.el);
         events.publish('update.loader', { show: false });
 

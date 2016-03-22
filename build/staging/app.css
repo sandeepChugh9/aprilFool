@@ -1,3 +1,314 @@
+.howToSmellContainer {
+  display: table-cell;
+  vertical-align: middle;
+  background: #242739;
+  position: fixed;
+  width: 100%;
+  height: 100%; }
+
+.howToSmellWrapper {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%); }
+
+.howToSmellIcon {
+  background: url(images/howtosmell_icon.png);
+  -webkit-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 200px;
+  height: 183px;
+  margin: 0px auto; }
+
+.howToSmellHeading {
+  font-weight: 400;
+  color: #FFFFFF;
+  opacity: 0.60;
+  font-size: 14px;
+  margin-bottom: 72px;
+  margin-top: 60px;
+  line-height: 21px;
+  padding: 0px 56px; }
+
+.howToSmellButton {
+  background: none;
+  border: 1px solid #fff;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  width: 12%;
+  color: #FFF;
+  margin: 0px auto; }
+
+.smellMessageContainer {
+  display: table-cell;
+  vertical-align: middle;
+  background: #242739;
+  position: fixed;
+  width: 100%;
+  height: 100%; }
+
+.smellMessageWrapper {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%); }
+
+.smellMessageIcon {
+  background: url(images/message_smell_icon.png);
+  -webkit-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 360px;
+  height: 360px;
+  margin: 0px auto; }
+
+.messageSender {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #FFF;
+  opacity: 0.70; }
+
+.trySmellButton {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  color: #7ED321;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase; }
+
+.attachAromaContainer {
+  display: table-cell;
+  vertical-align: middle;
+  background: #242739;
+  position: fixed;
+  width: 100%;
+  height: 100%; }
+
+.attachAromaWrapper {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%); }
+
+.attachAromaIcon {
+  background: url(images/attaching_aroma.png);
+  -webkit-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 256px;
+  height: 256px;
+  margin: 0px auto; }
+
+.attachAromaHeading {
+  color: #FFF;
+  opacity: 0.40;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  padding: 0px 75;
+  margin-top: 34px;
+  margin-bottom: 50px; }
+
+.attachAromaButton {
+  background: none;
+  text-transform: uppercase;
+  padding: 12px 33px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  width: 12%;
+  color: #FFF;
+  border: 1px solid #fff;
+  margin: 0px auto; }
+
+.detectAromaContainer {
+  display: table-cell;
+  vertical-align: middle;
+  background: #242739;
+  position: fixed;
+  width: 100%;
+  height: 100%; }
+
+.detectAromaWrapper {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%); }
+
+.detectAromaIcon {
+  background: url(images/detecting_aroma.png);
+  -webkit-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 256px;
+  height: 256px;
+  margin: 0px auto; }
+
+.detectAromaHeading {
+  color: #FFF;
+  opacity: 0.40;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  padding: 0px 75;
+  margin-top: 34px; }
+
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+  animation: ellipsis steps(4, end) 900ms infinite;
+  content: "\2026";
+  /* ascii code for the ellipsis character */
+  width: 0px; }
+
+@keyframes ellipsis {
+  to {
+    width: 20px; } }
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 20px; } }
+
+/* form starting stylings ------------------------------- */
+.group {
+  position: relative;
+  margin-top: 64px;
+  margin-left: 15px; }
+
+input {
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #757575; }
+
+input:focus {
+  outline: none; }
+
+/* LABEL ======================================= */
+label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all; }
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #242739; }
+
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: 315px; }
+
+.bar:before, .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #242739;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all; }
+
+.bar:before {
+  left: 50%; }
+
+.bar:after {
+  right: 50%; }
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width: 50%; }
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5; }
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease; }
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #242739; }
+  to {
+    width: 0;
+    background: transparent; } }
+
+@-moz-keyframes inputHighlighter {
+  from {
+    background: #242739; }
+  to {
+    width: 0;
+    background: transparent; } }
+
+@keyframes inputHighlighter {
+  from {
+    background: #242739; }
+  to {
+    width: 0;
+    background: transparent; } }
+
+.writeMessageButton {
+  color: #fff;
+  display: block;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: #7ED321;
+  margin: 0px auto;
+  text-transform: uppercase;
+  padding: 14px 45px;
+  width: 10%;
+  position: absolute;
+  bottom: 27px;
+  left: 0px;
+  right: 0px;
+  text-align: center; }
+
+.hide {
+  display: none !important; }
+
 html,
 body,
 div,
@@ -220,76 +531,55 @@ a:visited {
 .align-left {
   text-align: left; }
 
-.valentineContainer {
+.smellOptInContainer {
+  display: table-cell;
   vertical-align: middle;
+  background: #242739;
+  position: fixed;
   width: 100%;
-  height: 100%;
-  background-color: #FA5643;
-  position: relative; }
+  height: 100%; }
 
-.valentineContainer .optInWrapper {
+.smellWrapper {
   width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%); }
 
-.termsAndConditions {
-  position: absolute;
-  bottom: 20px;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  margin: 0px auto;
-  left: 0px;
-  right: 0px; }
-
-.redBg {
-  background-color: #FA5643; }
-
-.valentineHeader {
-  background: url(images/ftue-image-red.png);
+.smellIcon {
+  background: url(images/aroma_icon.png);
+  -webkit-background-size: contain;
+  -o-background-size: contain;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 280px;
-  height: 154px;
-  margin: 0px auto;
-  background-position: center; }
+  width: 290px;
+  height: 290px;
+  margin: 0px auto; }
 
-.valentineContainer .vDayHeading {
-  font-size: 20px;
+.smellHeading {
+  font-weight: 400;
   color: #FFF;
-  font-weight: 500;
-  margin-top: 40px;
-  margin-bottom: 16px; }
+  font-size: 28px;
+  margin-bottom: 18px;
+  margin-top: -40px; }
 
-.valentineContainer p.vdintro {
+.smellSubText {
+  font-weight: 400;
   color: #FFF;
   font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  margin-bottom: 48px;
-  padding: 0px 32px;
-  margin-top: 28px; }
+  margin-bottom: 110px;
+  line-height: 21px;
+  padding: 0px 68px; }
 
-.valentineButton .valentineSubscribe {
-  background-color: #FFF;
-  display: inline-block;
+.smellButton {
+  background: #7ED321;
   text-transform: uppercase;
-  color: #FA5643;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 16px 0px;
+  padding: 18px 66px;
+  -webkit-border-radius: 4px;
   border-radius: 4px;
-  vertical-align: middle;
-  width: 84%; }
-
-.valentineContainer .notInterested {
+  width: 18%;
   color: #FFF;
-  font-weight: 400;
-  font-size: 14px;
-  margin-top: 24px;
-  margin-bottom: 30px; }
+  margin: 0px auto; }
 
 .spinner-ctr {
   margin-top: -12.5px;

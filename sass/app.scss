@@ -7,6 +7,12 @@
     margin-right: $right;
 }
 
+@import 'howToSmell';
+@import 'smellMessage';
+@import 'attachAroma';
+@import 'detectAroma';
+@import 'writeMessage';
+
 html,
 body,
 div,
@@ -259,15 +265,18 @@ a:visited {
     text-align: left;
 }
 
-.valentineContainer {
+// Hike Aroma CSS Begins Here
+
+.smellOptInContainer{
+    display: table-cell;
     vertical-align: middle;
+    background: #242739; 
+    position: fixed;
     width: 100%;
-    height: 100%;
-    background-color: #FA5643;
-    position: relative;
+    height: 100%;  
 }
 
-.valentineContainer .optInWrapper {
+.smellWrapper{
     width: 100%;
     position: absolute;
     top: 50%;
@@ -275,68 +284,43 @@ a:visited {
     -webkit-transform: translate(-50%, -50%);
 }
 
-.termsAndConditions {
-    position: absolute;
-    bottom: 20px;
-    font-size: 14px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.80);
-    margin: 0px auto;
-    left: 0px;
-    right: 0px;
-}
-
-.redBg {
-    background-color: #FA5643;
-}
-
-.valentineHeader {
-    background: url(images/ftue-image-red.png);
+.smellIcon{
+    background: url(images/aroma_icon.png);
+    -webkit-background-size: contain; 
+    -o-background-size: contain; 
     background-size: contain;
-    background-repeat: no-repeat;
-    width: 280px;
-    height: 154px;
-    margin: 0px auto;
-    background-position: center;
+    background-repeat: no-repeat ;
+    width: 290px;
+    height: 290px;    
+    margin: 0px auto; 
 }
 
-.valentineContainer .vDayHeading {
-    font-size: 20px;
+.smellHeading{
+    font-weight: 400;
     color: #FFF;
-    font-weight: 500;
-    margin-top: 40px;
-    margin-bottom: 16px;
+    font-size: 28px;
+    margin-bottom: 18px;
+    margin-top: -40px;     
 }
 
-.valentineContainer p.vdintro {
+.smellSubText{
+    font-weight: 400;
     color: #FFF;
     font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    margin-bottom: 48px;
-    padding: 0px 32px;
-    margin-top: 28px;
+    margin-bottom: 110px;
+    line-height: 21px;
+    padding: 0px 68px;   
 }
 
-.valentineButton .valentineSubscribe {
-    background-color: #FFF;
-    display: inline-block;
-    text-transform: uppercase;
-    color: #FA5643;
-    font-weight: 500;
-    font-size: 14px;
-    padding: 16px 0px;
-    border-radius: 4px;
-    vertical-align: middle;
-    width: 84%;
-}
-
-.valentineContainer .notInterested {
+.smellButton {
+    background: #7ED321;
+    text-transform: uppercase ;
+    padding: 18px 66px;  
+    -webkit-border-radius: 4px; 
+    border-radius: 4px; 
+    width: 18%;
     color: #FFF;
-    font-weight: 400;
-    font-size: 14px;
-    margin-top: 24px;
-    margin-bottom: 30px;
+    margin: 0px auto;   
 }
 
 .spinner-ctr {
