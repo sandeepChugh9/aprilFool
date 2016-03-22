@@ -26,6 +26,9 @@
         that.el = document.createElement('div');
         that.el.className = 'smellOptInContainer animation_fadein noselect';
         that.el.innerHTML = Mustache.render(unescape(that.template), {});
+        that.el.className = 'animation_fadein noselect';
+
+        that.el.innerHTML = Mustache.render(unescape(that.template));
         ctr.appendChild(that.el);
         events.publish('update.loader', { show: false });
 

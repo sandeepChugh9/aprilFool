@@ -4724,7 +4724,6 @@
 	                self.howToSmellController.render(self.container, self, data);
 	                utils.toggleBackNavigation(false);
 	            });
-
 	            // ANY SMELL PART 2
 	            this.router.route('/smellMesssage', function(data) {
 	                self.container.innerHTML = '';
@@ -4745,7 +4744,7 @@
 	                self.attachAromaController.render(self.container, self, data);
 	                utils.toggleBackNavigation(false);
 	            });
-
+	            
 	            // Construct Message For Aroma
 	            this.router.route('/writeMessage', function(data) {
 	                self.container.innerHTML = '';
@@ -4794,6 +4793,9 @@
 	        that.el = document.createElement('div');
 	        that.el.className = 'smellOptInContainer animation_fadein noselect';
 	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
+	        that.el.className = 'animation_fadein noselect';
+
+	        that.el.innerHTML = Mustache.render(unescape(that.template));
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
 
