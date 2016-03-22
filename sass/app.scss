@@ -7,13 +7,19 @@
     margin-right: $right;
 }
 
+@mixin fontStyle($color, $size, $weight, $lineHeight) {
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $lineHeight;
+}
+
 @import 'howToSmell';
 @import 'smellMessage';
 @import 'attachAroma';
 @import 'detectAroma';
 @import 'writeMessage';
 @import "attachSmell";
-
 html,
 body,
 div,
@@ -267,17 +273,16 @@ a:visited {
 }
 
 // Hike Aroma CSS Begins Here
-
-.smellOptInContainer{
+.smellOptInContainer {
     display: table-cell;
     vertical-align: middle;
-    background: #242739; 
+    background: #242739;
     position: fixed;
     width: 100%;
-    height: 100%;  
+    height: 100%;
 }
 
-.smellWrapper{
+.smellWrapper {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -285,43 +290,43 @@ a:visited {
     -webkit-transform: translate(-50%, -50%);
 }
 
-.smellIcon{
+.smellIcon {
     background: url(images/aroma_icon.png);
-    -webkit-background-size: contain; 
-    -o-background-size: contain; 
+    -webkit-background-size: contain;
+    -o-background-size: contain;
     background-size: contain;
-    background-repeat: no-repeat ;
+    background-repeat: no-repeat;
     width: 290px;
-    height: 290px;    
-    margin: 0px auto; 
+    height: 290px;
+    margin: 0px auto;
 }
 
-.smellHeading{
+.smellHeading {
     font-weight: 400;
     color: #FFF;
     font-size: 28px;
     margin-bottom: 18px;
-    margin-top: -40px;     
+    margin-top: -40px;
 }
 
-.smellSubText{
+.smellSubText {
     font-weight: 400;
     color: #FFF;
     font-size: 16px;
     margin-bottom: 110px;
     line-height: 21px;
-    padding: 0px 68px;   
+    padding: 0px 68px;
 }
 
 .smellButton {
     background: #7ED321;
-    text-transform: uppercase ;
-    padding: 18px 66px;  
-    -webkit-border-radius: 4px; 
-    border-radius: 4px; 
+    text-transform: uppercase;
+    padding: 18px 66px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
     width: 18%;
     color: #FFF;
-    margin: 0px auto;   
+    margin: 0px auto;
 }
 
 .spinner-ctr {

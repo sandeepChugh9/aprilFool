@@ -4498,19 +4498,20 @@
 	(function(W, events) {
 	    'use strict';
 
-	    var WorkspaceController     = __webpack_require__(8),
-	        SmellFtueController     = __webpack_require__(10),
-	        HowToSmellController    = __webpack_require__(12),
-	        SmellMessageController  = __webpack_require__(14),
-	        AttachAromaController   = __webpack_require__(16),
-	        DetectAromaController   = __webpack_require__(18),
-	        WriteMessageController  = __webpack_require__(20),
+	    var WorkspaceController = __webpack_require__(8),
+	        SmellFtueController = __webpack_require__(10),
+	        HowToSmellController = __webpack_require__(12),
+	        SmellMessageController = __webpack_require__(14),
+	        AttachAromaController = __webpack_require__(16),
+	        DetectAromaController = __webpack_require__(18),
+	        WriteMessageController = __webpack_require__(20),
+	        AttachSmellController = __webpack_require__(22),
 
-	        Router = __webpack_require__(22),
+	        Router = __webpack_require__(24),
 	        utils = __webpack_require__(4),
 
-	        TxService = __webpack_require__(23),
-	        ValentineServices = __webpack_require__(24);
+	        TxService = __webpack_require__(25),
+	        ValentineServices = __webpack_require__(26);
 
 	    // Full Screen Loader
 	    var loader = document.getElementById('loader');
@@ -4589,6 +4590,8 @@
 	        this.attachAromaController = new AttachAromaController();
 	        this.detectAromaController = new DetectAromaController();
 	        this.writeMessageController = new WriteMessageController();
+	        this.attachSmellController = new AttachSmellController();
+
 
 	        this.TxService = new TxService();
 	        this.ValentineServices = new ValentineServices(this.TxService); //communication layer
@@ -4597,21 +4600,20 @@
 	    Application.prototype = {
 
 	        // Setting Up The Three Dot Menu
-	        initOverflowMenu: function () {
+	        initOverflowMenu: function() {
 	            var omList = [{
 	                "title": platformSdk.appData.block === "true" ? "Unblock" : "Block",
 	                "en": "true",
 	                "eventName": "app.menu.om.block"
-	            },
-	                {
-	                    "title": "Notifications",
-	                    "en": "true",
-	                    "eventName": "app.menu.om.mute",
-	                    "is_checked": platformSdk.appData.mute === "true" ? "false" : "true"
-	                }];
+	            }, {
+	                "title": "Notifications",
+	                "en": "true",
+	                "eventName": "app.menu.om.mute",
+	                "is_checked": platformSdk.appData.mute === "true" ? "false" : "true"
+	            }];
 
 	            // Notifications
-	            platformSdk.events.subscribe('app.menu.om.mute', function (id) {
+	            platformSdk.events.subscribe('app.menu.om.mute', function(id) {
 	                id = "" + platformSdk.retrieveId('app.menu.om.mute');
 	                if (platformSdk.appData.mute == "true") {
 	                    platformSdk.appData.mute = "false";
@@ -4628,7 +4630,7 @@
 	                }
 	            });
 	            // Block
-	            platformSdk.events.subscribe('app.menu.om.block', function (id) {
+	            platformSdk.events.subscribe('app.menu.om.block', function(id) {
 	                id = "" + platformSdk.retrieveId('app.menu.om.block');
 	                if (platformSdk.appData.block === "true") {
 	                    unBlockApp();
@@ -4640,8 +4642,8 @@
 	                        "title": "Unblock"
 	                    });
 	                    utils.toggleBackNavigation(false);
-	                    events.publish('app/block', {show: true});
-	                    events.publish('app/offline', {show: false});
+	                    events.publish('app/block', { show: true });
+	                    events.publish('app/offline', { show: false });
 	                }
 	            });
 
@@ -4744,7 +4746,7 @@
 	                self.attachAromaController.render(self.container, self, data);
 	                utils.toggleBackNavigation(false);
 	            });
-	            
+
 	            // Construct Message For Aroma
 	            this.router.route('/writeMessage', function(data) {
 	                self.container.innerHTML = '';
@@ -4752,7 +4754,15 @@
 	                utils.toggleBackNavigation(false);
 	            });
 
-	            self.router.navigateTo('/writeMessage');
+	            this.router.route('/attachSmell', function(data) {
+	                self.container.innerHTML = '';
+	                self.attachSmellController.render(self.container, self, data);
+	                utils.toggleBackNavigation(false);
+	            });
+
+
+
+	            self.router.navigateTo('/');
 
 	        }
 	    };
@@ -4777,12 +4787,12 @@
 	    WorkspaceController.prototype.bind = function(App) {
 	        var $el = $(this.el);
 
-	        var smellButton = this.el.getElementsByClassName( 'smellButton' )[0];
-	    
+	        var smellButton = this.el.getElementsByClassName('smellButton')[0];
+
 	        smellButton.addEventListener('click', function(ev) {
 	            // Write Message Input Router Here
 	            console.log("Moving To Message Input Router");
-	            //App.router.navigateTo( '/', res );
+	            App.router.navigateTo('/writeMessage', {});
 	        });
 	    };
 
@@ -4793,9 +4803,7 @@
 	        that.el = document.createElement('div');
 	        that.el.className = 'smellOptInContainer animation_fadein noselect';
 	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
-	        that.el.className = 'animation_fadein noselect';
 
-	        that.el.innerHTML = Mustache.render(unescape(that.template));
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
 
@@ -5093,27 +5101,27 @@
 	    writeMessageController.prototype.bind = function(App) {
 	        var $el = $(this.el);
 
-	        var writeMessageButton = this.el.getElementsByClassName( 'writeMessageButton' )[0];
+	        var writeMessageButton = this.el.getElementsByClassName('writeMessageButton')[0];
 	        var aromaMessage = this.el.getElementsByClassName('aromaMessage')[0];
 
 	        aromaMessage.addEventListener('keyup', function(ev) {
 	            console.log(this.value.length);
-	            if(this.value.length === 0){
+	            if (this.value.length === 0) {
 	                writeMessageButton.classList.add('hide');
-	            }else{
+	            } else {
 	                writeMessageButton.classList.remove('hide');
 	            }
 	        });
 
 	        writeMessageButton.addEventListener('click', function(ev) {
 	            // Write Message Input Router Here
-	            if(aromaMessage.value.length === 0 ){
+	            if (aromaMessage.value.length === 0) {
 	                console.log("Please Enter a Message To Proceed");
 	                platformSdk.ui.showToast('Please enter a message');
-	            }else{
+	            } else {
 	                console.log(aromaMessage.value);
 	                console.log("Send the value forward to select the smell");
-	                //App.router.navigateTo( '/smellMesssage', {} );
+	                App.router.navigateTo('/attachSmell', {});
 	            }
 	        });
 
@@ -5148,6 +5156,120 @@
 
 /***/ },
 /* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	(function(W, platformSdk, events) {
+	    'use strict';
+
+	    var utils = __webpack_require__(4);
+
+	    var AttachSmellController = function(options) {
+	        this.template = __webpack_require__(23);
+	    };
+
+	    AttachSmellController.prototype.bind = function(App) {
+	        var $el = $(this.el);
+
+	        var smellIcon = document.getElementsByClassName('smellSection');
+	        var nextBtn = document.getElementsByClassName('btnContainer')[0];
+	        var captureSmell = document.getElementsByClassName('captureSmell')[0];
+	        var openCamera = document.getElementsByClassName('openCamera')[0];
+
+	        for (var n, i = 0; n = smellIcon.length, i < n; i++)
+	            smellIcon[i].addEventListener('click', highlightSmell, false);
+
+
+
+	        function highlightSmell() {
+	            removeSelection();
+	            this.classList.add('selectedStateSmell')
+	            captureSmell.classList.add('hide');
+	            nextBtn.classList.remove('hide');
+
+	        }
+
+	        function removeSelection() {
+	            var selectedStateSmellObjs = document.getElementsByClassName('selectedStateSmell');
+	            for (var k, l = 0; k = selectedStateSmellObjs.length, l < k; l++)
+	                selectedStateSmellObjs[l].classList.remove('selectedStateSmell');
+	        }
+
+
+	        // Forward the card object 
+	        nextBtn.addEventListener('click', function() {
+	            var card = {
+
+	                fwdObject: {
+	                    "ld": {},
+	                    "hd": {},
+	                    "layoutId": "http://static.platform.hike.in/download/microapp/popup/someCard.zip ",
+	                    "push": "silent",
+	                    "notifText": "News Article",
+	                    "h": 200
+	                }
+	            };
+
+
+	            card.fwdObject.notifText = 'Hike Aroma';
+	            var hm = 'test card' + ' \n ' + "http://www.google.com";
+
+	            if (platformSdk.bridgeEnabled)
+	                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
+
+	        });
+
+	        // Invoke the camera
+	        openCamera.addEventListener('click', function() {
+
+	            try {
+	                if (platformSdk.bridgeEnabled)
+	                    platformSdk.nativeReq({
+	                        ctx: self,
+	                        fn: 'chooseFile',
+	                        data: 'true',
+	                        success: function(res) {
+	                            //  App.router.navigateTo('/smellDetect', res)
+	                        }
+	                    });
+
+
+	            } catch (err) {
+	                if (platformSdk.bridgeEnabled)
+	                    platformSdk.ui.showToast('Error while capturing smell..');
+	            }
+
+
+	        });
+
+	    };
+
+	    AttachSmellController.prototype.render = function(ctr, App, data) {
+
+	        var that = this;
+	        that.el = document.createElement('div');
+	        that.el.className = 'animation_fadein noselect';
+	        that.el.innerHTML = Mustache.render(unescape(that.template));
+	        ctr.appendChild(that.el);
+	        events.publish('update.loader', { show: false });
+	        that.bind(App);
+	    };
+
+	    AttachSmellController.prototype.destroy = function() {
+
+	    };
+
+	    module.exports = AttachSmellController;
+
+	})(window, platformSdk, platformSdk.events);
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"attachSmellSection\">\n    <div class=\"row\">\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt\"> Add from surrounding</div>\n    </div>\n    <div class=\"btnContainer hide\">\n        Next\n    </div>\n</div>\n</div>"
+
+/***/ },
+/* 24 */
 /***/ function(module, exports) {
 
 	(function (W, events) {
@@ -5238,7 +5360,7 @@
 	})(window, platformSdk.events);
 
 /***/ },
-/* 23 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (W, platformSdk, events) {
@@ -5390,7 +5512,7 @@
 	})(window, platformSdk, platformSdk.events);
 
 /***/ },
-/* 24 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function(W, platformSdk) {

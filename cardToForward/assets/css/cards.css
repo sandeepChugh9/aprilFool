@@ -1,150 +1,108 @@
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  -webkit-tap-highlight-color: transparent;
-  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
-  outline: none !important; }
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
+    outline: none !important;
+}
 
 .noselect {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 .alignLeft {
-  text-align: left; }
+    text-align: left;
+}
 
 .alignRight {
-  text-align: right; }
+    text-align: right;
+}
 
 .alignCenter {
-  text-align: center; }
+    text-align: center;
+}
 
 a {
-  display: block;
-  text-decoration: none; }
+    display: block;
+    text-decoration: none;
+}
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #fff;
-  margin: 0px;
-  padding: 0px; }
-
-.slide-up, .slide-down {
-  max-height: 0;
-  overflow-y: hidden;
-  -webkit-transition: max-height 0.5s ease-in-out;
-  -moz-transition: max-height 0.5s ease-in-out;
-  -o-transition: max-height 0.5s ease-in-out;
-  transition: max-height 0.5s ease-in-out; }
-
-.slide-down {
-  max-height: 15em; }
+    font-family: 'Roboto', sans-serif;
+    background: #fff;
+    margin: 0px;
+    padding: 0px;
+}
 
 .hide {
-  display: none; }
+    display: none;
+}
 
 .show {
-  display: block; }
+    display: block;
+}
 
 .inlineBlock {
-  display: inline-block; }
+    display: inline-block;
+}
 
 .card {
-  background-color: #fff;
-  width: 100%;
-  min-height: 1px;
-  box-sizing: border-box; 
-  position: relative;
-  overflow: hidden;
+    background-color: #fff;
+    width: 100%;
+    min-height: 1px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
-
-.row {
-  border-bottom: 1px solid #eee;
-  padding: 20px 25px; }
-
-.row:last-of-type {
-  border-bottom: 0px; }
-
-.column {
-  display: inline-block;
-  width: 32%;
-  text-align: center;
-  vertical-align: top; }
-
-.column--10 {
-  width: 11%; }
-
-.column--40 {
-  width: 40%; }
-
-.column--80 {
-  width: 80%;
-  max-width: 250px; }
-
-.clearfix:after {
-  content: " ";
-  /* Older browser do not support empty content */
-  visibility: hidden;
-  display: block;
-  height: 0;
-  clear: both; }
-
-.quote-card {
-  min-height: 100px;
-  background-size: cover;
-  width: 100%;
-  background-repeat: no-repeat;
-  min-width: 100%;
-  background:#de5f5f;
-
-  background:linear-gradient( #de5f5f, #90285f);
-  }
-  .quote-card .title {
-    color: #fff;
-    font-size: 20px;
-    margin-bottom: 30px;
-    font-weight: 300;
-     }
-  .quote-card .description {
-    color: #fff;
-    font-size: 20px;
-    margin-bottom: 30px;
-    text-align: center;
-        font-weight: 300;
-
-     }
-  .quote-card .person {
-    text-align: center;
-    font-size: 14px;
-    margin-top: 44px;
-    margin-bottom: 0px;
-    color: #fff; 
-    opacity: 0.6;
-    font-weight: 400;
-text-transform: uppercase;
-  }
-  .quote-card .title--quote {
-    text-align: center;
-    font-size: 32px; }
 
 .share-container {
-  position: absolute;
-  right: -35px;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.15);
-  height: 66px;
-  width: 70px;
-  -webkit-transform: skewX(-45deg);
+    position: absolute;
+    right: -18px;
+    bottom: 25%;
+    height: 66px;
+    width: 70px;
+    -webkit-transform: skewX(-45deg);
 }
+
 .share-container img {
     width: 19px;
-  position: absolute;
-  left: 17px;
-  bottom: 13px;
-  -webkit-transform: skewX(45deg);
+    position: absolute;
+    left: 17px;
+    bottom: 13px;
+    -webkit-transform: skewX(45deg);
+}
+
+.centerContainer {
+    height: 100%;
+    margin-right: 16px;
+    margin-left: 16px;
+}
+
+.centerContainer img {
+    height: 100%;
+    width: 100%;
+}
+
+.title {
+    font-size: 16px;
+    color: #424242;
+    font-weight: 400;
+    line-height: 21px;
+    margin: 16px;
+}
+
+.bottomSection {
+    margin: 16px;
+    text-align: right;
+}
+
+.bottomSection div {
+    display: inline-block;
 }

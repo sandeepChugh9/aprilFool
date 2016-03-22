@@ -1,0 +1,51 @@
+.attachSmellSection {
+    margin: 36px 25px 65px 25px;
+    text-align: center;
+    .row {
+        margin-bottom: 33px;
+    }
+    .openCamera {
+        margin-top: 65px;
+        background: url('images/camera.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 72px;
+        width: 100%;
+    }
+    .smellSection {
+        display: inline-block;
+        width: 32%;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+    .smellDimension {
+        height: 33px;
+        width: 33px;
+    }
+    .smell1 {
+        background: url('images/Bitmap.png');
+        background-size: contain;
+        background-position: center;
+        width: 100%;
+        background-repeat: no-repeat;
+    }
+    .selectedStateSmell {
+        background: rgba(126, 211, 33, 0.16);
+        border-radius: 4px;
+    }
+    .smellTxt {
+        @include fontStyle(#222222,
+        15px,
+        400,
+        20px);
+        margin-top: 15px;
+    }
+    .captureTxt {
+        @include fontStyle(#B1B1B1,
+        14px,
+        400,
+        18px);
+        margin-top: 24px;
+    }
+}

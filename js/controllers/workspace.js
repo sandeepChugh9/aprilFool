@@ -10,12 +10,12 @@
     WorkspaceController.prototype.bind = function(App) {
         var $el = $(this.el);
 
-        var smellButton = this.el.getElementsByClassName( 'smellButton' )[0];
-    
+        var smellButton = this.el.getElementsByClassName('smellButton')[0];
+
         smellButton.addEventListener('click', function(ev) {
             // Write Message Input Router Here
             console.log("Moving To Message Input Router");
-            //App.router.navigateTo( '/', res );
+            App.router.navigateTo('/writeMessage', {});
         });
     };
 
@@ -26,9 +26,7 @@
         that.el = document.createElement('div');
         that.el.className = 'smellOptInContainer animation_fadein noselect';
         that.el.innerHTML = Mustache.render(unescape(that.template), {});
-        that.el.className = 'animation_fadein noselect';
 
-        that.el.innerHTML = Mustache.render(unescape(that.template));
         ctr.appendChild(that.el);
         events.publish('update.loader', { show: false });
 

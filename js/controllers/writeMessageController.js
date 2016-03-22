@@ -10,27 +10,27 @@
     writeMessageController.prototype.bind = function(App) {
         var $el = $(this.el);
 
-        var writeMessageButton = this.el.getElementsByClassName( 'writeMessageButton' )[0];
+        var writeMessageButton = this.el.getElementsByClassName('writeMessageButton')[0];
         var aromaMessage = this.el.getElementsByClassName('aromaMessage')[0];
 
         aromaMessage.addEventListener('keyup', function(ev) {
             console.log(this.value.length);
-            if(this.value.length === 0){
+            if (this.value.length === 0) {
                 writeMessageButton.classList.add('hide');
-            }else{
+            } else {
                 writeMessageButton.classList.remove('hide');
             }
         });
 
         writeMessageButton.addEventListener('click', function(ev) {
             // Write Message Input Router Here
-            if(aromaMessage.value.length === 0 ){
+            if (aromaMessage.value.length === 0) {
                 console.log("Please Enter a Message To Proceed");
                 platformSdk.ui.showToast('Please enter a message');
-            }else{
+            } else {
                 console.log(aromaMessage.value);
                 console.log("Send the value forward to select the smell");
-                //App.router.navigateTo( '/smellMesssage', {} );
+                App.router.navigateTo('/attachSmell', {});
             }
         });
 
