@@ -5252,11 +5252,14 @@
 	                    },
 	                    "hd": {},
 	                    "layoutId": "card.html",
+<<<<<<< Updated upstream
 	                    "appName": "foolcard2",
 	                    "appVersion": "0.1",
 	                    "appPackage": "http://static.platform.hike.in/download/microapp/popup/foolcard2.zip",
+=======
+>>>>>>> Stashed changes
 	                    "push": "silent",
-	                    "notifText": "Hike Aroma Message",
+	                    "notifText": "Hike Aroma recieved",
 	                    "h": 200
 	                }
 	            };

@@ -43,15 +43,13 @@
                 fwdObject: {
                     "ld": {
                         "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
-                        "hikeAromaBackground": "smellTemplate"
+                        "hikeAromaBackground": "smellTemplate",
+                        "isCamera":platformSdk.appData.helperData.isCamera
                     },
                     "hd": {},
                     "layoutId": "card.html",
-                    "appName": "foolcard2",
-                    "appVersion": "0.1",
-                    "appPackage": "http://static.platform.hike.in/download/microapp/popup/foolcard2.zip",
                     "push": "silent",
-                    "notifText": "Hike Aroma Message",
+                    "notifText": "Hike Aroma recieved",
                     "h": 200
                 }
             };
@@ -70,8 +68,10 @@
 
             if (platformSdk.appData.helperData.attachSmellCalled) {
                 platformSdk.appData.helperData.attachSmellCalled = 1;
+                platformSdk.appData.helperData.isCamera = true;
             } else {
                 platformSdk.appData.helperData.attachSmellCalled = 1;
+                platformSdk.appData.helperData.isCamera = true;
             }
             platformSdk.updateHelperData(platformSdk.appData.helperData);
 

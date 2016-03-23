@@ -19,7 +19,8 @@
                 fwdObject: {
                     "ld": {
                         "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
-                        "hikeAromaBackground": "smellTemplate"
+                        "hikeAromaBackground": "smellTemplate",
+                        "isCamera":platformSdk.appData.helperData.isCamera
                     },
                     "hd": {},
                     "layoutId": "card.html",
@@ -27,7 +28,6 @@
                     "h": 200
                 }
             };
-
 
             card.fwdObject.notifText = 'Hike Aroma';
             var hm = 'test card' + ' \n ' + "http://www.google.com";
