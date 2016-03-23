@@ -110,8 +110,7 @@
 	        application.start();
 
 	        window.onResume = application.resumeHikeSmell.bind(application);
-	        
-
+	        window.intentData = application.getIntentData.bind(application);
 	    });
 
 	})(window);
@@ -4653,6 +4652,20 @@
 	            platformSdk.setOverflowMenu(omList);
 	        },
 
+	        getIntentData: function(data){
+	            var that = this;
+	            console.log( data );
+	            data = decodeURIComponent( data );
+
+	            if(data){
+	                that.router.navigateTo('/howToSmell',{});
+	            }
+	            else{
+	                that.router.navigateTo('/',{});   
+	            }
+	            
+	        },
+
 	        backPressTrigger: function() {
 	            this.router.back();
 	        },
@@ -5016,7 +5029,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\">\n    </div>\n\t<div class=\"refreshText hide\">Please refresh if unable to sense the aroma for the first time</div>\n\t<div class=\"refreshButton hide\">REFRESH</div>\n</div>\n<div class=\"messageSender\">Sent By: Hemank</div>\n<div class=\"trySmellButton align-center\">Try Hike Aroma</div>"
+	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\">\n    </div>\n\t<div class=\"refreshText hide\">Please refresh if unable to sense the aroma for the first time</div>\n\t<div class=\"refreshButton hide\">REFRESH</div>\n</div>\n<!-- <div class=\"messageSender\">Sent By: Hemank</div> -->\n<div class=\"trySmellButton align-center\">Try Hike Aroma</div>"
 
 /***/ },
 /* 16 */
@@ -5367,7 +5380,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"attachSmellSection\">\n    <div class=\"selectedStateSmell hide\"> </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt\"> Add from surrounding</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide smellButton disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide smellButton disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n</div>"
+	module.exports = "<div class=\"attachSmellSection\">\n    <div class=\"selectedStateSmell hide\"> </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt\"> Add aroma from your surroundings</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide smellButton disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide smellButton disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n</div>"
 
 /***/ },
 /* 24 */

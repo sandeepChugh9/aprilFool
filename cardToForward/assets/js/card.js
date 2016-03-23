@@ -9,10 +9,10 @@
             var serverUrl = 'http://mapps.platform.hike.in/mapps/api/v1/apps/';
             var appName = '+hikearoma+';
 
-            platformSdk.nativeReq({
+            platformSdk.nativeReqT({
                 fn: 'openNonMessagingBot',
                 ctx: this,
-                data: appName,
+                data: [appName,true],
                 success: function(response) {
                     if (response == 'Failure') {
                         platformSdk.ui.showToast('Some error occured, please try again after some time!');

@@ -986,6 +986,21 @@ platformSdk.events = function(window, platformSdk) {
 		}
 	};
 
+	platformSdk.nativeReqT = function(param) {
+
+		var callBackId = "" + getNewId();
+
+		callbacks[callBackId] = {
+			context: param.ctx,
+			callback: param.success
+		};
+
+		if (platformSdk.bridgeEnabled) {
+			if (param.data === "" || param.data === undefined || param.data === null) PlatformBridge[param.fn](callBackId);
+			else PlatformBridge[param.fn](callBackId, param.data[0],param.data[1]);
+		}
+	};
+
 	platformSdk.setOverflowMenu = function(omList) {
 		for (var i = 0; i < omList.length; i++){
 			var omItem = omList[i];

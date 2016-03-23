@@ -64,8 +64,7 @@
         application.start();
 
         window.onResume = application.resumeHikeSmell.bind(application);
-        
-
+        window.intentData = application.getIntentData.bind(application);
     });
 
 })(window);

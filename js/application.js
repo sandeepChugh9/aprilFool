@@ -153,6 +153,20 @@
             platformSdk.setOverflowMenu(omList);
         },
 
+        getIntentData: function(data){
+            var that = this;
+            console.log( data );
+            data = decodeURIComponent( data );
+
+            if(data){
+                that.router.navigateTo('/howToSmell',{});
+            }
+            else{
+                that.router.navigateTo('/',{});   
+            }
+            
+        },
+
         backPressTrigger: function() {
             this.router.back();
         },
