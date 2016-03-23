@@ -20,7 +20,7 @@
                     "ld": {
                         "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
                         "hikeAromaBackground": "smellTemplate",
-                        "isCamera":platformSdk.appData.helperData.isCamera
+                        "aromaName": false
                     },
                     "hd": {},
                     "layoutId": "card.html",

@@ -30,7 +30,7 @@
             } else {
                 console.log(aromaMessage.value);
                 console.log("Send the value forward to select the smell");
-                App.router.navigateTo('/attachSmell', {hm:aromaMessage.value});
+                App.router.navigateTo('/attachSmell', { hm: aromaMessage.value });
             }
         });
 

@@ -13,19 +13,25 @@
         platformSdk.appData.helperData.attachSmellMessage = data.hm;
         platformSdk.updateHelperData(platformSdk.appData.helperData);
 
-        var smellIcon = document.getElementsByClassName('smellSection');
-        var nextBtn = document.getElementsByClassName('btnContainer')[0];
-        var captureSmell = document.getElementsByClassName('captureSmell')[0];
-        var openCamera = document.getElementsByClassName('openCamera')[0];
+        var smellIcon = document.getElementsByClassName('smellSection'),
+            nextBtn = document.getElementsByClassName('nextBtn')[0],
+            cancelBtn = document.getElementsByClassName('cancelBtn')[0],
+            captureSmell = document.getElementsByClassName('captureSmell')[0],
+            openCamera = document.getElementsByClassName('openCamera')[0],
+            selectedSmellName, selectedSmellImg;
 
         for (var n, i = 0; n = smellIcon.length, i < n; i++)
             smellIcon[i].addEventListener('click', highlightSmell, false);
 
         function highlightSmell() {
             removeSelection();
+
             this.classList.add('selectedStateSmell');
             captureSmell.classList.add('hide');
             nextBtn.classList.remove('hide');
+            cancelBtn.classList.remove('hide');
+            selectedSmellName = this.getAttribute('aromaName');
+            selectedSmellImg = this.getAttribute('aromaImg');
 
         }
 
@@ -33,7 +39,15 @@
             var selectedStateSmellObjs = document.getElementsByClassName('selectedStateSmell');
             for (var k, l = 0; k = selectedStateSmellObjs.length, l < k; l++)
                 selectedStateSmellObjs[l].classList.remove('selectedStateSmell');
+
+            nextBtn.classList.add('hide');
+            cancelBtn.classList.add('hide');
+
         }
+
+        cancelBtn.addEventListener('click', function() {
+            removeSelection();
+        });
 
 
         // Forward the card object 
@@ -43,8 +57,8 @@
                 fwdObject: {
                     "ld": {
                         "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
-                        "hikeAromaBackground": "smellTemplate",
-                        "isCamera":platformSdk.appData.helperData.isCamera
+                        "hikeAromaBackground": selectedSmellImg,
+                        "aromaName": selectedSmellName
                     },
                     "hd": {},
                     "layoutId": "card.html",
@@ -68,10 +82,8 @@
 
             if (platformSdk.appData.helperData.attachSmellCalled) {
                 platformSdk.appData.helperData.attachSmellCalled = 1;
-                platformSdk.appData.helperData.isCamera = true;
             } else {
                 platformSdk.appData.helperData.attachSmellCalled = 1;
-                platformSdk.appData.helperData.isCamera = true;
             }
             platformSdk.updateHelperData(platformSdk.appData.helperData);
 

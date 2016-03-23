@@ -164,7 +164,6 @@
 
             if (platformSdk.appData.helperData.attachSmellCalled) {
                 platformSdk.appData.helperData.attachSmellCalled = 0;
-                platformSdk.appData.helperData.isCamera = false;
                 platformSdk.updateHelperData(platformSdk.appData.helperData);
                 console.log("Taking To detect Aroma");
                 // Detecting Aroma 
@@ -287,7 +286,8 @@
 
 
 
-            self.router.navigateTo('/smellMesssage');
+            //self.router.navigateTo('/attachSmell', { hm: "safsdfsd" });
+            self.router.navigateTo('/writeMessage', );
 
         }
     };

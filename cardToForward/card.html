@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,user-scalable=0" />
     <title>Hike Aroma</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/font.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/cards.css">
+    <link rel="stylesheet" type="text/css" href="{{basePath}}assets/css/font.css">
+    <link rel="stylesheet" type="text/css" href="{{basePath}}assets/css/cards.css">
 </head>
 
 <body>
-    <div class="card quote-card" id="aromaCard" style="background:url('assets/images/smellTemplate.png'); background-size: cover;    background-color: #242739;">
-        <!-- Updated upstream
-            {{hikeAromaMessage}}
-            {{hikeAromaBackground}}.png">
-             
-!-->
-        <div class="title">Hey Guys just check out this cool stuff </div>
+    <div class="card quote-card" id="aromaCard" style="background:url('{{basePath}}assets/images/{{hikeAromaBackground}}.png'); background-size: cover;   background-color: #242739;">
+        <div class="title"> {{hikeAromaMessage}} </div>
         <div class="bottomContainer">
-            <div class="lFloat disp-inlineBlock"><img class="aromaIcon" src="assets/images/aroma.png"> <span class="aromaName"> Aroma name </span></div>
+            {{#aromaName}}
+            <div class="lFloat disp-inlineBlock"><img class="aromaIcon" src="{{basePath}}assets/images/aroma.png"> <span class="aromaName">  
+                {{aromaName}}
+            </span>
+            </div>
+            {{/aromaName}}
             <div class="rFloat disp-inlineBlock tapSmell">Tap to smell</div>
         </div>
     </div>
-    <script language="javascript" type="text/javascript" src="assets/js/platform.js"></script>
-    <script language="javascript" type="text/javascript" src="assets/js/card.js"></script>
+    <script language="javascript" type="text/javascript" src="{{basePath}}assets/js/platform.js"></script>
+    <script language="javascript" type="text/javascript" src="{{basePath}}assets/js/card.js"></script>
 </body>
 
 </html>
