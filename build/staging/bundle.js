@@ -4999,7 +4999,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\">\n        <div class=\"thirdRipple\"> </div>\n    </div>\n</div>\n<div class=\"messageSender\">Sent By: Hemank</div>\n<div class=\"trySmellButton\">Try Now</div>"
+	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\">\n    </div>\n</div>\n<div class=\"messageSender\">Sent By: Hemank</div>\n<div class=\"trySmellButton\">Try Now</div>"
 
 /***/ },
 /* 16 */
