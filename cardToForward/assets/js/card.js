@@ -1,9 +1,9 @@
 (function() {
     var setDataCallback = platformSdk.events.subscribe('webview/data/loaded', function() {
 
-
-        var cardTxt = document.getElementsByClassName('tapSmell')[0];
-        cardTxt.addEventListener('click', function(ev) {
+        platformSdk.bridgeEnabled = true;
+        
+        document.addEventListener('click', function(ev) {
             console.log("Opening Microapp");
 
             var serverUrl = 'http://mapps.platform.hike.in/mapps/api/v1/apps/';

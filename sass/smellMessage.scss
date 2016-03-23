@@ -11,8 +11,10 @@ $aroma: #E424C3;
 .smellMessageWrapper {
     width: 100%;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
+    margin: 0px auto; 
+    -webkit-transform: translate(-50%, -50%);
 }
 
 .smellMessageIcon {
@@ -20,6 +22,7 @@ $aroma: #E424C3;
     background: #E424C3;
     height: 12px;
     width: 12px;
+    margin: 0px auto; 
     position: relative;
     -webkit-animation: ripple 1s linear infinite;
 }
@@ -51,4 +54,27 @@ $aroma: #E424C3;
     100% {
         box-shadow: 0 0 0 1em rgba($aroma, 0.2), 0 0 0 4em rgba($aroma, 0.2), 0 0 0 6em rgba($aroma, 0.2), 0 0 0 9em rgba($aroma, 0);
     }
+}
+
+.refreshText{
+    color: #fff;
+    opacity: 0.60;
+    line-height: 21px;
+    position: absolute;
+    padding: 140px 40px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.refreshButton{
+    position: absolute;
+    margin: 0px auto;
+    left: 0px;
+    right: 0px;
+    border: 1px solid #fff;
+    width: 20%;
+    border-radius: 4px;
+    margin-top: 220px;
+    padding: 12px 20px;
+    color: white;   
 }

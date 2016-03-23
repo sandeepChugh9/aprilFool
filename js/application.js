@@ -284,10 +284,7 @@
                 utils.toggleBackNavigation(false);
             });
 
-
-
-            //self.router.navigateTo('/attachSmell', { hm: "safsdfsd" });
-            self.router.navigateTo('/writeMessage', );
+            self.router.navigateTo('/');
 
         }
     };

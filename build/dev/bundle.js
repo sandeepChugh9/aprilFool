@@ -4784,10 +4784,7 @@
 	                utils.toggleBackNavigation(false);
 	            });
 
-
-
-	            //self.router.navigateTo('/attachSmell', { hm: "safsdfsd" });
-	            self.router.navigateTo('/writeMessage', { hm: "safsdfsd" });
+	            self.router.navigateTo('/');
 
 	        }
 	    };
@@ -4965,7 +4962,26 @@
 	        var $el = $(this.el);
 
 	        var trySmellButton = this.el.getElementsByClassName( 'trySmellButton' )[0];
-	    
+	        var refreshText = this.el.getElementsByClassName('refreshText')[0];
+	        var refreshButton = this.el.getElementsByClassName('refreshButton')[0];
+	        var smellMessageIcon = this.el.getElementsByClassName('smellMessageIcon')[0];
+	        
+	        // Animation Stop and Show Refresh Classes
+	        setTimeout(function(){
+	            smellMessageIcon.style.WebkitAnimationPlayState = "paused";
+	            refreshText.classList.remove('hide');
+	            refreshButton.classList.remove('hide');
+	         }, 5000);
+
+	        refreshButton.addEventListener('click', function(ev) {
+	            // Write Message Input Router Here
+	            console.log("Run smell Animation Again");
+	            smellMessageIcon.style.WebkitAnimationPlayState = "running";
+	            refreshText.classList.add('hide');
+	            refreshButton.classList.add('hide');
+	            //App.router.navigateTo( '/', {} );
+	        });
+
 	        trySmellButton.addEventListener('click', function(ev) {
 	            // Write Message Input Router Here
 	            console.log("Take To Home Screen Of Hike Aroma To Try The User");
@@ -5000,7 +5016,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\">\n    </div>\n</div>\n<div class=\"messageSender\">Sent By: Hemank</div>\n<div class=\"trySmellButton\">Try Now</div>"
+	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\">\n    </div>\n\t<div class=\"refreshText hide\">Please refresh if unable to sense the aroma for the first time</div>\n\t<div class=\"refreshButton hide\">REFRESH</div>\n</div>\n<div class=\"messageSender\">Sent By: Hemank</div>\n<div class=\"trySmellButton align-center\">Try Hike Aroma</div>"
 
 /***/ },
 /* 16 */
@@ -5167,7 +5183,7 @@
 	            } else {
 	                console.log(aromaMessage.value);
 	                console.log("Send the value forward to select the smell");
-	                App.router.navigateTo('/attachSmell', {hm:aromaMessage.value});
+	                App.router.navigateTo('/attachSmell', { hm: aromaMessage.value });
 	            }
 	        });
 
@@ -5198,7 +5214,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"group\">\n    <input class=\"aromaMessage\" type=\"text\" required>\n    <span class=\"highlight\"></span>\n    <span class=\"bar\"></span>\n    <label>Name</label>\n</div>\n\n<div class=\"writeMessageButton hide\">Next</div>"
+	module.exports = "<div class=\"group\">\n    <input class=\"aromaMessage\" type=\"text\" required>\n    <span class=\"highlight\"></span>\n    <span class=\"bar\"></span>\n    <label>Type your Message ...</label>\n</div>\n\n<div class=\"writeMessageButton hide\">Next</div>"
 
 /***/ },
 /* 22 */

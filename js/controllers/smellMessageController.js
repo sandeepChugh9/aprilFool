@@ -11,7 +11,26 @@
         var $el = $(this.el);
 
         var trySmellButton = this.el.getElementsByClassName( 'trySmellButton' )[0];
-    
+        var refreshText = this.el.getElementsByClassName('refreshText')[0];
+        var refreshButton = this.el.getElementsByClassName('refreshButton')[0];
+        var smellMessageIcon = this.el.getElementsByClassName('smellMessageIcon')[0];
+        
+        // Animation Stop and Show Refresh Classes
+        setTimeout(function(){
+            smellMessageIcon.style.WebkitAnimationPlayState = "paused";
+            refreshText.classList.remove('hide');
+            refreshButton.classList.remove('hide');
+         }, 5000);
+
+        refreshButton.addEventListener('click', function(ev) {
+            // Write Message Input Router Here
+            console.log("Run smell Animation Again");
+            smellMessageIcon.style.WebkitAnimationPlayState = "running";
+            refreshText.classList.add('hide');
+            refreshButton.classList.add('hide');
+            //App.router.navigateTo( '/', {} );
+        });
+
         trySmellButton.addEventListener('click', function(ev) {
             // Write Message Input Router Here
             console.log("Take To Home Screen Of Hike Aroma To Try The User");
