@@ -86,8 +86,11 @@ body {
 }
 
 .bottomContainer {
-    margin: 0 20px 15px 20px;
+    margin: 0 5% 15px 5%;
     overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    width: 90%;
 }
 
 .aromaName {

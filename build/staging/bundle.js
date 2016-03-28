@@ -4652,18 +4652,17 @@
 	            platformSdk.setOverflowMenu(omList);
 	        },
 
-	        getIntentData: function(data){
+	        getIntentData: function(data) {
 	            var that = this;
-	            console.log( data );
-	            data = decodeURIComponent( data );
+	            console.log(data);
+	            data = decodeURIComponent(data);
 
-	            if(data){
-	                that.router.navigateTo('/howToSmell',{});
+	            if (data) {
+	                that.router.navigateTo('/howToSmell', {});
+	            } else {
+	                that.router.navigateTo('/', {});
 	            }
-	            else{
-	                that.router.navigateTo('/',{});   
-	            }
-	            
+
 	        },
 
 	        backPressTrigger: function() {
@@ -4982,52 +4981,75 @@
 	        var refreshButton = this.el.getElementsByClassName('refreshButton')[0];
 	        var smellMessageIcon = this.el.getElementsByClassName('smellMessageIcon')[0];
 	        var foolIcon = this.el.getElementsByClassName('foolIcon')[0];
+	        var maxTries = platformSdk.appData.helperData.totalTries;
+	        var tries = 0;
 
 	        // Animation Stop and Show Refresh Classes
 	        setTimeout(function() {
 	            smellMessageIcon.style.WebkitAnimationPlayState = "paused";
 	            refreshText.classList.remove('hide');
 	            refreshButton.classList.remove('hide');
-	        }, 5000);
+	        }, 4000);
 
 	        refreshButton.addEventListener('click', function(ev) {
 
-	            // Date Defination
-	            var foolDate = new Date('04-02-2016 00:00:00');
-	            var currDate = new Date();
 
-	            // Write Message Input Router Here
-	            console.log("Run smell Animation Again");
-	            smellMessageIcon.style.WebkitAnimationPlayState = "running";
 
-	            refreshText.classList.add('hide');
-	            refreshButton.classList.add('hide');
+	            /* // Date Defination
+	             var foolDate = new Date('04-02-2016 00:00:00');
+	             var currDate = new Date();
 
-	            // If true Then revealed on april 2 else only revealing at refresh
+	             // Write Message Input Router Here
+	             console.log("Run smell Animation Again");
+	             smellMessageIcon.style.WebkitAnimationPlayState = "running";
 
-	            if (platformSdk.appData.helperData.flowReveal) {
-	                if (foolDate <= currDate) {
-	                    console.log("Reveal April Fool");
-	                    smellMessageIcon.remove();
-	                    foolIcon.classList.remove('hide');
-	                    refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
-	                    refreshText.classList.add('changePadding');
+	             refreshText.classList.add('hide');
+	             refreshButton.classList.add('hide');
+
+	             // If true Then revealed on april 2 else only revealing at refresh
+
+	             if (platformSdk.appData.helperData.flowReveal) {
+	                 if (foolDate <= currDate) {
+	                     console.log("Reveal April Fool");
+	                     smellMessageIcon.remove();
+	                     foolIcon.classList.remove('hide');
+	                     refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
+	                     refreshText.classList.add('changePadding');
+	                     refreshText.classList.remove('hide');
+	                     trySmellButton.classList.remove('hide');
+	                 } else {
+	                     console.log("Dont Reveal April Fool :: until the date");
+	                     trySmellButton.classList.remove('hide');
+	                 }
+	             } else {
+	                 console.log("As soon as refresh is clicked :: Katta Sticker Comes");
+	                 smellMessageIcon.remove();
+	                 foolIcon.classList.remove('hide');
+	                 refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
+	                 refreshText.classList.add('changePadding');
+	                 refreshText.classList.remove('hide');
+	                 trySmellButton.classList.remove('hide');
+	             }*/
+	            if (tries < maxTries) {
+	                tries++;
+	                smellMessageIcon.style.WebkitAnimationPlayState = "running";
+	                refreshText.classList.add('hide');
+	                refreshButton.classList.add('hide');
+	                setTimeout(function() {
+	                    smellMessageIcon.style.WebkitAnimationPlayState = "paused";
 	                    refreshText.classList.remove('hide');
-	                    trySmellButton.classList.remove('hide');
-	                } else {
-	                    console.log("Dont Reveal April Fool :: until the date");
-	                    trySmellButton.classList.remove('hide');
-	                }
+	                    refreshButton.classList.remove('hide');
+	                }, 4000);
 	            } else {
-	                console.log("As soon as refresh is clicked :: Katta Sticker Comes");
 	                smellMessageIcon.remove();
 	                foolIcon.classList.remove('hide');
 	                refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
 	                refreshText.classList.add('changePadding');
 	                refreshText.classList.remove('hide');
 	                trySmellButton.classList.remove('hide');
+
 	            }
-	            //App.router.navigateTo( '/', {} );
+
 	        });
 
 	        trySmellButton.addEventListener('click', function(ev) {
@@ -5059,7 +5081,6 @@
 	    module.exports = smellMessageController;
 
 	})(window, platformSdk, platformSdk.events);
-
 
 /***/ },
 /* 15 */
@@ -5280,7 +5301,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"group\">\n</div>\n<div class=\"writeMessageButton\">Next</div>\n<textarea class=\"aromaMessage\" rows=\"1\" placeholder=\"{{defaultMessage}}\"></textarea>"
+	module.exports = "<div class=\"group\">\n</div>\n<div class=\"writeMessageButton\">Next</div>\n<textarea autofocus class=\"aromaMessage\" rows=\"1\" placeholder=\"{{defaultMessage}}\"></textarea>"
 
 /***/ },
 /* 22 */

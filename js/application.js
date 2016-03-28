@@ -153,18 +153,17 @@
             platformSdk.setOverflowMenu(omList);
         },
 
-        getIntentData: function(data){
+        getIntentData: function(data) {
             var that = this;
-            console.log( data );
-            data = decodeURIComponent( data );
+            console.log(data);
+            data = decodeURIComponent(data);
 
-            if(data){
-                that.router.navigateTo('/howToSmell',{});
+            if (data) {
+                that.router.navigateTo('/howToSmell', {});
+            } else {
+                that.router.navigateTo('/', {});
             }
-            else{
-                that.router.navigateTo('/',{});   
-            }
-            
+
         },
 
         backPressTrigger: function() {
