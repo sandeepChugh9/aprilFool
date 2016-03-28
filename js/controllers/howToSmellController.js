@@ -15,7 +15,7 @@
         howToSmellButton.addEventListener('click', function(ev) {
             // Write Message Input Router Here
             console.log("Getting your Message Aroma");
-            App.router.navigateTo( '/smellMesssage', {} );
+            App.router.navigateTo( '/smellMessage', {} );
         });
 
     };

@@ -10,7 +10,7 @@
     WorkspaceController.prototype.bind = function(App) {
         var $el = $(this.el);
 
-        var smellButton = this.el.getElementsByClassName('smellButton')[0];
+        var smellButton = this.el.getElementsByClassName('smellButtonHome')[0];
 
         smellButton.addEventListener('click', function(ev) {
             // Write Message Input Router Here

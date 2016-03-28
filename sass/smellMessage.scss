@@ -13,7 +13,7 @@ $aroma: #E424C3;
     position: absolute;
     top: 40%;
     left: 50%;
-    margin: 0px auto; 
+    margin: 0px auto;
     -webkit-transform: translate(-50%, -50%);
 }
 
@@ -22,9 +22,20 @@ $aroma: #E424C3;
     background: #E424C3;
     height: 12px;
     width: 12px;
-    margin: 0px auto; 
+    margin: 0px auto;
     position: relative;
     -webkit-animation: ripple 1s linear infinite;
+}
+
+.foolIcon {
+    background: url(images/katta_sticker.png);
+    height: 200px;
+    width: 200px;
+    margin: 0px auto;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .messageSender {
@@ -40,11 +51,16 @@ $aroma: #E424C3;
 .trySmellButton {
     position: absolute;
     bottom: 24px;
-    right: 24px;
+    right: 0px;
     color: #7ED321;
     font-weight: 500;
     font-size: 14px;
     text-transform: uppercase;
+    left: 0px;
+}
+
+.changePadding {
+    padding: 60px 40px !important;
 }
 
 @-webkit-keyframes ripple {
@@ -56,7 +72,7 @@ $aroma: #E424C3;
     }
 }
 
-.refreshText{
+.refreshText {
     color: #fff;
     opacity: 0.60;
     line-height: 21px;
@@ -66,7 +82,7 @@ $aroma: #E424C3;
     font-weight: 400;
 }
 
-.refreshButton{
+.refreshButton {
     position: absolute;
     margin: 0px auto;
     left: 0px;
@@ -76,5 +92,15 @@ $aroma: #E424C3;
     border-radius: 4px;
     margin-top: 220px;
     padding: 12px 20px;
-    color: white;   
+    color: white;
+}
+
+@media screen and (max-width: 340px) {
+    .refreshButton {
+        margin-top: 200px;
+        font-size: 12px; 
+    }
+    .refreshText{
+        padding: 130px 40px; 
+    }
 }

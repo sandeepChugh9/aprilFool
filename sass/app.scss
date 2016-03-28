@@ -320,10 +320,10 @@ a:visited {
     font-size: 16px;
     margin-bottom: 60px;
     line-height: 21px;
-    padding: 0px 68px;
+    padding: 0px 50px;
 }
 
-.smellButton {
+.smellButtonHome {
     background: #7ED321;
     text-transform: uppercase;
     padding: 18px 66px;
@@ -814,15 +814,19 @@ a:visited {
 }
 
 @media screen and (max-width: 340px) {
-    .valentineHeader {
-        width: 240px;
-        height: 133px;
+    .smellButtonHome {
+        padding: 18px 50px;
+        width: 20%;
     }
-    .valentineContainer p.vdintro {
-        font-size: 14px;
-        margin-bottom: 36px;
+    .smellSubText{
+        margin-bottom :38px;  
+        font-size: 15px;
     }
-    .tnc {
-        bottom: 24px;
+    .smellIcon{
+        width: 260px;
+        height: 260px;  
+    }
+    .smellHeading{
+        font-size: 24px; 
     }
 }

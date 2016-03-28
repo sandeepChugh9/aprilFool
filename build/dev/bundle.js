@@ -4764,7 +4764,7 @@
 	                utils.toggleBackNavigation(false);
 	            });
 	            // ANY SMELL PART 2
-	            this.router.route('/smellMesssage', function(data) {
+	            this.router.route('/smellMessage', function(data) {
 	                self.container.innerHTML = '';
 	                self.smellMessageController.render(self.container, self, data);
 	                utils.toggleBackNavigation(false);
@@ -4774,7 +4774,7 @@
 	            this.router.route('/detectAroma', function(data) {
 	                self.container.innerHTML = '';
 	                self.detectAromaController.render(self.container, self, data);
-	                utils.toggleBackNavigation(false);
+	                utils.toggleBackNavigation(true);
 	            });
 
 	            // Attach the Aroma
@@ -4788,15 +4788,14 @@
 	            this.router.route('/writeMessage', function(data) {
 	                self.container.innerHTML = '';
 	                self.writeMessageController.render(self.container, self, data);
-	                utils.toggleBackNavigation(false);
+	                utils.toggleBackNavigation(true);
 	            });
 
 	            this.router.route('/attachSmell', function(data) {
 	                self.container.innerHTML = '';
 	                self.attachSmellController.render(self.container, self, data);
-	                utils.toggleBackNavigation(false);
+	                utils.toggleBackNavigation(true);
 	            });
-
 
 
 	            //self.router.navigateTo('/attachSmell', { hm: "safsdfsd" });
@@ -4825,7 +4824,7 @@
 	    WorkspaceController.prototype.bind = function(App) {
 	        var $el = $(this.el);
 
-	        var smellButton = this.el.getElementsByClassName('smellButton')[0];
+	        var smellButton = this.el.getElementsByClassName('smellButtonHome')[0];
 
 	        smellButton.addEventListener('click', function(ev) {
 	            // Write Message Input Router Here
@@ -4862,7 +4861,7 @@
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"smellWrapper align-center\">\n    <div class=\"smellIcon\"></div>\n    <div class=\"smellHeading\">Hike Aroma</div>\n    <div class=\"smellSubText\">Now send an aroma along with your message</div>\n    <div class=\"smellButton\">Try Now</div>\n</div>\n"
+	module.exports = "<div class=\"smellWrapper align-center\">\n    <div class=\"smellIcon\"></div>\n    <div class=\"smellHeading\">Hike Aroma</div>\n    <div class=\"smellSubText\">Now send an aroma along with your message</div>\n    <div class=\"smellButtonHome\">Try Now</div>\n</div>\n"
 
 /***/ },
 /* 10 */
@@ -4930,7 +4929,7 @@
 	        howToSmellButton.addEventListener('click', function(ev) {
 	            // Write Message Input Router Here
 	            console.log("Getting your Message Aroma");
-	            App.router.navigateTo( '/smellMesssage', {} );
+	            App.router.navigateTo( '/smellMessage', {} );
 	        });
 
 	    };
@@ -4978,31 +4977,63 @@
 	    smellMessageController.prototype.bind = function(App) {
 	        var $el = $(this.el);
 
-	        var trySmellButton = this.el.getElementsByClassName( 'trySmellButton' )[0];
+	        var trySmellButton = this.el.getElementsByClassName('trySmellButton')[0];
 	        var refreshText = this.el.getElementsByClassName('refreshText')[0];
 	        var refreshButton = this.el.getElementsByClassName('refreshButton')[0];
 	        var smellMessageIcon = this.el.getElementsByClassName('smellMessageIcon')[0];
-	        
+	        var foolIcon = this.el.getElementsByClassName('foolIcon')[0];
+
 	        // Animation Stop and Show Refresh Classes
-	        setTimeout(function(){
+	        setTimeout(function() {
 	            smellMessageIcon.style.WebkitAnimationPlayState = "paused";
 	            refreshText.classList.remove('hide');
 	            refreshButton.classList.remove('hide');
-	         }, 5000);
+	        }, 5000);
 
 	        refreshButton.addEventListener('click', function(ev) {
+
+	            // Date Defination
+	            var foolDate = new Date('04-02-2016 00:00:00');
+	            var currDate = new Date();
+
 	            // Write Message Input Router Here
 	            console.log("Run smell Animation Again");
 	            smellMessageIcon.style.WebkitAnimationPlayState = "running";
+
 	            refreshText.classList.add('hide');
 	            refreshButton.classList.add('hide');
+
+	            // If true Then revealed on april 2 else only revealing at refresh
+
+	            if (platformSdk.appData.helperData.flowReveal) {
+	                if (foolDate <= currDate) {
+	                    console.log("Reveal April Fool");
+	                    smellMessageIcon.remove();
+	                    foolIcon.classList.remove('hide');
+	                    refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
+	                    refreshText.classList.add('changePadding');
+	                    refreshText.classList.remove('hide');
+	                    trySmellButton.classList.remove('hide');
+	                } else {
+	                    console.log("Dont Reveal April Fool :: until the date");
+	                    trySmellButton.classList.remove('hide');
+	                }
+	            } else {
+	                console.log("As soon as refresh is clicked :: Katta Sticker Comes");
+	                smellMessageIcon.remove();
+	                foolIcon.classList.remove('hide');
+	                refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
+	                refreshText.classList.add('changePadding');
+	                refreshText.classList.remove('hide');
+	                trySmellButton.classList.remove('hide');
+	            }
 	            //App.router.navigateTo( '/', {} );
 	        });
 
 	        trySmellButton.addEventListener('click', function(ev) {
 	            // Write Message Input Router Here
 	            console.log("Take To Home Screen Of Hike Aroma To Try The User");
-	            App.router.navigateTo( '/', {} );
+	            App.router.navigateTo('/', {});
 	        });
 
 
@@ -5029,11 +5060,12 @@
 
 	})(window, platformSdk, platformSdk.events);
 
+
 /***/ },
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\">\n    </div>\n\t<div class=\"refreshText hide\">Please refresh if unable to sense the aroma for the first time</div>\n\t<div class=\"refreshButton hide\">REFRESH</div>\n</div>\n<!-- <div class=\"messageSender\">Sent By: Hemank</div> -->\n<div class=\"trySmellButton align-center\">Try Hike Aroma</div>"
+	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\"></div>\n    <div class=\"foolIcon hide\"></div>\n\t<div class=\"refreshText hide\">Please refresh if unable to sense the aroma for the first time</div>\n\t<div class=\"refreshButton hide\">REFRESH</div>\n</div>\n<!-- <div class=\"messageSender\">Sent By: Hemank</div> -->\n<div class=\"trySmellButton align-center hide\">Try Hike Aroma</div>"
 
 /***/ },
 /* 16 */
@@ -5142,7 +5174,7 @@
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"detectAromaWrapper align-center\">\n    <div class=\"detect-wrapper\">\n        <div class=\"bar\"></div>\n        <div class=\"inner-circle\">\n            <div class=\"inner-circle-success\"></div>\n        </div>\n        <div class=\"radial\"></div>\n        <div class=\"back\"></div>\n        <div class=\"a1\"></div>\n        <div class=\"a2\"></div>\n        <div class=\"a3\"></div>\n        <div class=\"a4\"></div>\n        <div class=\"a5\"></div>\n    </div>\n</div>\n<div class=\"detectAromaHeading\">Detecting Aroma Particles\n    <br> Please wait\n    <div class=\"loading\"></div>\n</div>"
+	module.exports = "<div class=\"detectAromaWrapper align-center\">\n    <div class=\"detect-wrapper\">\n        <div class=\"bar\"></div>\n        <div class=\"inner-circle\">\n            <div class=\"inner-circle-success\"></div>\n        </div>\n        <div class=\"radial\"></div>\n        <div class=\"back\"></div>\n        <div class=\"a1\"></div>\n        <div class=\"a2\"></div>\n        <div class=\"a3\"></div>\n        <div class=\"a4\"></div>\n        <div class=\"a5\"></div>\n    </div>\n</div>\n\n<div class=\"detectAromaHeading\">Detecting Aroma Particles<br>Please wait<div class=\"loading\"></div></div>\n"
 
 /***/ },
 /* 20 */
@@ -5383,7 +5415,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"attachSmellSection\">\n    <div class=\"selectedStateSmell hide\"> </div>\n    <div class=\"row\">\n        <!-- sandeep !-->\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt\"> Add aroma from your surroundings</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide smellButton disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide smellButton disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n</div>"
+	module.exports = "<div class=\"attachSmellWrap\">\n    <div class=\"attachSmellSection\">\n        <div class=\"selectedStateSmell hide\"> </div>\n        <div class=\"row\">\n            <!-- sandeep !-->\n            <div class=\"smellSection\" aromaName=\"Rose\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Rose</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fart\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Fart</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Rain\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Rain</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Garbage\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Garbage</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Cheese\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Cheese</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fish\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Fish</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Socks\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Socks</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Wine\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Wine</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Petrol\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Petrol</div>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"buttonsWrapper\">\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt align-center\">Detect aroma from your surroundings</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 24 */

@@ -265,7 +265,7 @@
                 utils.toggleBackNavigation(false);
             });
             // ANY SMELL PART 2
-            this.router.route('/smellMesssage', function(data) {
+            this.router.route('/smellMessage', function(data) {
                 self.container.innerHTML = '';
                 self.smellMessageController.render(self.container, self, data);
                 utils.toggleBackNavigation(false);
@@ -275,7 +275,7 @@
             this.router.route('/detectAroma', function(data) {
                 self.container.innerHTML = '';
                 self.detectAromaController.render(self.container, self, data);
-                utils.toggleBackNavigation(false);
+                utils.toggleBackNavigation(true);
             });
 
             // Attach the Aroma
@@ -289,15 +289,14 @@
             this.router.route('/writeMessage', function(data) {
                 self.container.innerHTML = '';
                 self.writeMessageController.render(self.container, self, data);
-                utils.toggleBackNavigation(false);
+                utils.toggleBackNavigation(true);
             });
 
             this.router.route('/attachSmell', function(data) {
                 self.container.innerHTML = '';
                 self.attachSmellController.render(self.container, self, data);
-                utils.toggleBackNavigation(false);
+                utils.toggleBackNavigation(true);
             });
-
 
 
             //self.router.navigateTo('/attachSmell', { hm: "safsdfsd" });
