@@ -275,7 +275,9 @@ a:visited {
     text-align: left;
 }
 
-// Hike Aroma CSS Begins Here
+
+/* Hike Aroma CSS Begins Here */
+
 .smellOptInContainer {
     display: table-cell;
     vertical-align: middle;
@@ -473,11 +475,12 @@ a:visited {
 }
 
 .exploreContainer {
-  width: 90%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%); }
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+}
 
 .exploreMatchBtn {
     background: none;
@@ -491,21 +494,23 @@ a:visited {
 }
 
 .exploreText .heading {
-  color: #FA5643;
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 400; }
+    color: #FA5643;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+}
 
 .exploreText .subheading {
-  color: #808080;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 400;
-  padding-top: 3px; }
+    color: #808080;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    padding-top: 3px;
+}
 
 .exploreText {
-  margin: 40px 20px; }
-
+    margin: 40px 20px;
+}
 
 #nointernet {
     background-color: #242739;

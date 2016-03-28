@@ -12,26 +12,60 @@
 
         var writeMessageButton = this.el.getElementsByClassName('writeMessageButton')[0];
         var aromaMessage = this.el.getElementsByClassName('aromaMessage')[0];
+        var limitChar = platformSdk.appData.helperData.charLimit;
+        var initialH = aromaMessage.scrollHeight;
+        var messageToSend;
 
-        aromaMessage.addEventListener('keyup', function(ev) {
+        aromaMessage.addEventListener('keydown', function(ev) {
+
+            var outerHeight = parseInt(window.getComputedStyle(this).height, 10);
+            var diff = outerHeight - this.clientHeight;
+
+            this.style.height = 0;
+            this.style.height = Math.max(initialH, this.scrollHeight + diff) + 'px';
+
             console.log(this.value.length);
-            if (this.value.length === 0) {
-                writeMessageButton.classList.add('hide');
-            } else {
-                writeMessageButton.classList.remove('hide');
-            }
+
+
+
+            if (this.value.length <= limitChar)
+                return true;
+
+
+            this.value = this.value.substr(0, limitChar);
         });
 
         writeMessageButton.addEventListener('click', function(ev) {
-            // Write Message Input Router Here
-            if (aromaMessage.value.length === 0) {
-                console.log("Please Enter a Message To Proceed");
-                platformSdk.ui.showToast('Please enter a message');
-            } else {
-                console.log(aromaMessage.value);
-                console.log("Send the value forward to select the smell");
-                App.router.navigateTo('/attachSmell', { hm: aromaMessage.value });
-            }
+
+            if (aromaMessage.value.length > 0)
+                messageToSend = aromaMessage.value;
+            else
+                messageToSend = platformSdk.appData.helperData.defaultMessage;
+
+
+            var card = {
+
+                fwdObject: {
+                    "ld": {
+                        "hikeAromaMessage": messageToSend,
+                        "hikeAromaBackground": platformSdk.appData.helperData.selectedSmellImg,
+                        "aromaName": platformSdk.appData.helperData.selectedSmellName
+                    },
+                    "hd": {},
+                    "layoutId": "card.html",
+                    "push": "silent",
+                    "notifText": "Hike Aroma recieved",
+                    "h": 200
+                }
+            };
+
+
+            card.fwdObject.notifText = 'Hike Aroma';
+            var hm = 'test card' + ' \n ' + "http://www.google.com";
+
+            if (platformSdk.bridgeEnabled)
+                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
+
         });
 
     };
@@ -40,9 +74,12 @@
 
         var that = this;
 
+
+
+
         that.el = document.createElement('div');
         that.el.className = 'writeMessageContainer animation_fadein noselect';
-        that.el.innerHTML = Mustache.render(unescape(that.template), {});
+        that.el.innerHTML = Mustache.render(unescape(that.template), { defaultMessage: platformSdk.appData.helperData.defaultMessage });
         ctr.appendChild(that.el);
         events.publish('update.loader', { show: false });
 

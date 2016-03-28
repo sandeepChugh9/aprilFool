@@ -4797,6 +4797,9 @@
 	                utils.toggleBackNavigation(false);
 	            });
 
+
+
+	            //self.router.navigateTo('/attachSmell', { hm: "safsdfsd" });
 	            self.router.navigateTo('/');
 
 	        }
@@ -4826,8 +4829,9 @@
 
 	        smellButton.addEventListener('click', function(ev) {
 	            // Write Message Input Router Here
-	            console.log("Moving To Message Input Router");
-	            App.router.navigateTo('/writeMessage', {});
+
+	            console.log("Moving To AttachSmell router");
+	            App.router.navigateTo('/attachSmell', {});
 	        });
 	    };
 
@@ -5050,30 +5054,10 @@
 	        var attachAromaButton = this.el.getElementsByClassName('attachAromaButton')[0];
 
 	        attachAromaButton.addEventListener('click', function(ev) {
-	            console.log("Smell Attached :: Sending Card Message");
-	            var card = {
-
-	                fwdObject: {
-	                    "ld": {
-	                        "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
-	                        "hikeAromaBackground": "smellTemplate",
-	                        "aromaName": false
-	                    },
-	                    "hd": {},
-	                    "layoutId": "card.html",
-	                    "push": "silent",
-	                    "h": 200
-	                }
-	            };
-
-	            card.fwdObject.notifText = 'Hike Aroma';
-	            var hm = 'test card' + ' \n ' + "http://www.google.com";
-
-	            if (platformSdk.bridgeEnabled)
-	                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
-
-	            //App.router.navigateTo( '/', {} );
-
+	            platformSdk.appData.helperData.selectedSmellName = false;
+	            platformSdk.appData.helperData.selectedSmellImg = platformSdk.appData.helperData.defaultImg;
+	            platformSdk.updateHelperData(platformSdk.appData.helperData);
+	            App.router.navigateTo('/writeMessage', {});
 	        });
 
 
@@ -5158,7 +5142,7 @@
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"detectAromaWrapper align-center\">\n    <div class=\"detectAromaIcon\">\n        <div class=\"aromaBar\"></div>\n    </div>\n    <div class=\"detectAromaHeading\">Detecting Aroma Particles\n        <br> Please wait\n        <div class=\"loading\"></div>\n    </div>\n</div>"
+	module.exports = "<div class=\"detectAromaWrapper align-center\">\n    <div class=\"detect-wrapper\">\n        <div class=\"bar\"></div>\n        <div class=\"inner-circle\">\n            <div class=\"inner-circle-success\"></div>\n        </div>\n        <div class=\"radial\"></div>\n        <div class=\"back\"></div>\n        <div class=\"a1\"></div>\n        <div class=\"a2\"></div>\n        <div class=\"a3\"></div>\n        <div class=\"a4\"></div>\n        <div class=\"a5\"></div>\n    </div>\n</div>\n<div class=\"detectAromaHeading\">Detecting Aroma Particles\n    <br> Please wait\n    <div class=\"loading\"></div>\n</div>"
 
 /***/ },
 /* 20 */
@@ -5178,26 +5162,60 @@
 
 	        var writeMessageButton = this.el.getElementsByClassName('writeMessageButton')[0];
 	        var aromaMessage = this.el.getElementsByClassName('aromaMessage')[0];
+	        var limitChar = platformSdk.appData.helperData.charLimit;
+	        var initialH = aromaMessage.scrollHeight;
+	        var messageToSend;
 
-	        aromaMessage.addEventListener('keyup', function(ev) {
+	        aromaMessage.addEventListener('keydown', function(ev) {
+
+	            var outerHeight = parseInt(window.getComputedStyle(this).height, 10);
+	            var diff = outerHeight - this.clientHeight;
+
+	            this.style.height = 0;
+	            this.style.height = Math.max(initialH, this.scrollHeight + diff) + 'px';
+
 	            console.log(this.value.length);
-	            if (this.value.length === 0) {
-	                writeMessageButton.classList.add('hide');
-	            } else {
-	                writeMessageButton.classList.remove('hide');
-	            }
+
+
+
+	            if (this.value.length <= limitChar)
+	                return true;
+
+
+	            this.value = this.value.substr(0, limitChar);
 	        });
 
 	        writeMessageButton.addEventListener('click', function(ev) {
-	            // Write Message Input Router Here
-	            if (aromaMessage.value.length === 0) {
-	                console.log("Please Enter a Message To Proceed");
-	                platformSdk.ui.showToast('Please enter a message');
-	            } else {
-	                console.log(aromaMessage.value);
-	                console.log("Send the value forward to select the smell");
-	                App.router.navigateTo('/attachSmell', { hm: aromaMessage.value });
-	            }
+
+	            if (aromaMessage.value.length > 0)
+	                messageToSend = aromaMessage.value;
+	            else
+	                messageToSend = platformSdk.appData.helperData.defaultMessage;
+
+
+	            var card = {
+
+	                fwdObject: {
+	                    "ld": {
+	                        "hikeAromaMessage": messageToSend,
+	                        "hikeAromaBackground": platformSdk.appData.helperData.selectedSmellImg,
+	                        "aromaName": platformSdk.appData.helperData.selectedSmellName
+	                    },
+	                    "hd": {},
+	                    "layoutId": "card.html",
+	                    "push": "silent",
+	                    "notifText": "Hike Aroma recieved",
+	                    "h": 200
+	                }
+	            };
+
+
+	            card.fwdObject.notifText = 'Hike Aroma';
+	            var hm = 'test card' + ' \n ' + "http://www.google.com";
+
+	            if (platformSdk.bridgeEnabled)
+	                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
+
 	        });
 
 	    };
@@ -5206,9 +5224,12 @@
 
 	        var that = this;
 
+
+
+
 	        that.el = document.createElement('div');
 	        that.el.className = 'writeMessageContainer animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
+	        that.el.innerHTML = Mustache.render(unescape(that.template), { defaultMessage: platformSdk.appData.helperData.defaultMessage });
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
 
@@ -5227,7 +5248,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"group\">\n    <input class=\"aromaMessage\" type=\"text\" required>\n    <span class=\"highlight\"></span>\n    <span class=\"bar\"></span>\n    <label>Type your Message ...</label>\n</div>\n\n<div class=\"writeMessageButton hide\">Next</div>"
+	module.exports = "<div class=\"group\">\n</div>\n<div class=\"writeMessageButton\">Next</div>\n<textarea class=\"aromaMessage\" rows=\"1\" placeholder=\"{{defaultMessage}}\"></textarea>"
 
 /***/ },
 /* 22 */
@@ -5245,8 +5266,7 @@
 	    AttachSmellController.prototype.bind = function(App, data) {
 	        var $el = $(this.el);
 
-	        platformSdk.appData.helperData.attachSmellMessage = data.hm;
-	        platformSdk.updateHelperData(platformSdk.appData.helperData);
+
 
 	        var smellIcon = document.getElementsByClassName('smellSection'),
 	            nextBtn = document.getElementsByClassName('nextBtn')[0],
@@ -5260,13 +5280,16 @@
 
 	        function highlightSmell() {
 	            removeSelection();
-
 	            this.classList.add('selectedStateSmell');
 	            captureSmell.classList.add('hide');
 	            nextBtn.classList.remove('hide');
 	            cancelBtn.classList.remove('hide');
 	            selectedSmellName = this.getAttribute('aromaName');
 	            selectedSmellImg = this.getAttribute('aromaImg');
+
+	            platformSdk.appData.helperData.selectedSmellName = selectedSmellName;
+	            platformSdk.appData.helperData.selectedSmellImg = selectedSmellImg;
+	            platformSdk.updateHelperData(platformSdk.appData.helperData);
 
 	        }
 
@@ -5277,6 +5300,7 @@
 
 	            nextBtn.classList.add('hide');
 	            cancelBtn.classList.add('hide');
+	            captureSmell.classList.remove('hide');
 
 	        }
 
@@ -5287,28 +5311,7 @@
 
 	        // Forward the card object 
 	        nextBtn.addEventListener('click', function() {
-	            var card = {
-
-	                fwdObject: {
-	                    "ld": {
-	                        "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
-	                        "hikeAromaBackground": selectedSmellImg,
-	                        "aromaName": selectedSmellName
-	                    },
-	                    "hd": {},
-	                    "layoutId": "card.html",
-	                    "push": "silent",
-	                    "notifText": "Hike Aroma recieved",
-	                    "h": 200
-	                }
-	            };
-
-
-	            card.fwdObject.notifText = 'Hike Aroma';
-	            var hm = 'test card' + ' \n ' + "http://www.google.com";
-
-	            if (platformSdk.bridgeEnabled)
-	                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
+	            App.router.navigateTo('/writeMessage', {});
 
 	        });
 
@@ -5380,7 +5383,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"attachSmellSection\">\n    <div class=\"selectedStateSmell hide\"> </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt\"> Add aroma from your surroundings</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide smellButton disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide smellButton disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n</div>"
+	module.exports = "<div class=\"attachSmellSection\">\n    <div class=\"selectedStateSmell hide\"> </div>\n    <div class=\"row\">\n        <!-- sandeep !-->\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n        <div class=\"smellSection\" aromaName=\"aromaName\" aromaImg=\"smellTemplate\">\n            <div class=\"smell1 smellDimension\"> </div>\n            <div class=\"smellTxt\"> Text</div>\n        </div>\n    </div>\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt\"> Add aroma from your surroundings</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide smellButton disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide smellButton disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n</div>"
 
 /***/ },
 /* 24 */

@@ -10,8 +10,7 @@
     AttachSmellController.prototype.bind = function(App, data) {
         var $el = $(this.el);
 
-        platformSdk.appData.helperData.attachSmellMessage = data.hm;
-        platformSdk.updateHelperData(platformSdk.appData.helperData);
+
 
         var smellIcon = document.getElementsByClassName('smellSection'),
             nextBtn = document.getElementsByClassName('nextBtn')[0],
@@ -25,13 +24,16 @@
 
         function highlightSmell() {
             removeSelection();
-
             this.classList.add('selectedStateSmell');
             captureSmell.classList.add('hide');
             nextBtn.classList.remove('hide');
             cancelBtn.classList.remove('hide');
             selectedSmellName = this.getAttribute('aromaName');
             selectedSmellImg = this.getAttribute('aromaImg');
+
+            platformSdk.appData.helperData.selectedSmellName = selectedSmellName;
+            platformSdk.appData.helperData.selectedSmellImg = selectedSmellImg;
+            platformSdk.updateHelperData(platformSdk.appData.helperData);
 
         }
 
@@ -42,6 +44,7 @@
 
             nextBtn.classList.add('hide');
             cancelBtn.classList.add('hide');
+            captureSmell.classList.remove('hide');
 
         }
 
@@ -52,28 +55,7 @@
 
         // Forward the card object 
         nextBtn.addEventListener('click', function() {
-            var card = {
-
-                fwdObject: {
-                    "ld": {
-                        "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
-                        "hikeAromaBackground": selectedSmellImg,
-                        "aromaName": selectedSmellName
-                    },
-                    "hd": {},
-                    "layoutId": "card.html",
-                    "push": "silent",
-                    "notifText": "Hike Aroma recieved",
-                    "h": 200
-                }
-            };
-
-
-            card.fwdObject.notifText = 'Hike Aroma';
-            var hm = 'test card' + ' \n ' + "http://www.google.com";
-
-            if (platformSdk.bridgeEnabled)
-                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
+            App.router.navigateTo('/writeMessage', {});
 
         });
 

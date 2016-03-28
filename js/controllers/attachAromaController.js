@@ -13,30 +13,10 @@
         var attachAromaButton = this.el.getElementsByClassName('attachAromaButton')[0];
 
         attachAromaButton.addEventListener('click', function(ev) {
-            console.log("Smell Attached :: Sending Card Message");
-            var card = {
-
-                fwdObject: {
-                    "ld": {
-                        "hikeAromaMessage": platformSdk.appData.helperData.attachSmellMessage,
-                        "hikeAromaBackground": "smellTemplate",
-                        "aromaName": false
-                    },
-                    "hd": {},
-                    "layoutId": "card.html",
-                    "push": "silent",
-                    "h": 200
-                }
-            };
-
-            card.fwdObject.notifText = 'Hike Aroma';
-            var hm = 'test card' + ' \n ' + "http://www.google.com";
-
-            if (platformSdk.bridgeEnabled)
-                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
-
-            //App.router.navigateTo( '/', {} );
-
+            platformSdk.appData.helperData.selectedSmellName = false;
+            platformSdk.appData.helperData.selectedSmellImg = platformSdk.appData.helperData.defaultImg;
+            platformSdk.updateHelperData(platformSdk.appData.helperData);
+            App.router.navigateTo('/writeMessage', {});
         });
 
 

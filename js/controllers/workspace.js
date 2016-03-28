@@ -14,8 +14,9 @@
 
         smellButton.addEventListener('click', function(ev) {
             // Write Message Input Router Here
-            console.log("Moving To Message Input Router");
-            App.router.navigateTo('/writeMessage', {});
+
+            console.log("Moving To AttachSmell router");
+            App.router.navigateTo('/attachSmell', {});
         });
     };
 
