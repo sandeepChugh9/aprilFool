@@ -66,12 +66,12 @@ body {
 }
 
 .card {
-    margin: 4px;
     border-radius: 4px;
     min-height: 1px;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    height: 156px;
 }
 
 .title {
@@ -82,6 +82,7 @@ body {
     max-width: 86%;
     margin: 35px 0px 45px 7%;
     text-align: center;
+    word-break: break-word;
 }
 
 .bottomContainer {
