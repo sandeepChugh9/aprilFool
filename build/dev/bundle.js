@@ -5002,8 +5002,8 @@
 	        var tries = 0;
 	        var currArr;
 
-	        var revealArr = platformSdk.appData.helperData.revealArr;
-	        var noRevealArr = platformSdk.appData.helperData.noRevealArr;
+	        var revealArr = platformSdk.appData.helperData.revealArr.slice();
+	        var noRevealArr = platformSdk.appData.helperData.noRevealArr.slice();
 
 
 
@@ -5366,7 +5366,7 @@
 
 
 	            card.fwdObject.notifText = 'Hike Aroma';
-	            var hm = 'A smell has been received' + messageToSend + "Note: Hike Smell works only on the latest version of Android.";
+	            var hm = 'A smell has been received'+' '+ messageToSend + ' ' +"Note: Hike Smell works only on the latest version of Android.";
 
 	            if (platformSdk.bridgeEnabled)
 	                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);

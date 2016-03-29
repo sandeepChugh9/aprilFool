@@ -19,8 +19,8 @@
         var tries = 0;
         var currArr;
 
-        var revealArr = platformSdk.appData.helperData.revealArr;
-        var noRevealArr = platformSdk.appData.helperData.noRevealArr;
+        var revealArr = platformSdk.appData.helperData.revealArr.slice();
+        var noRevealArr = platformSdk.appData.helperData.noRevealArr.slice();
 
 
 
