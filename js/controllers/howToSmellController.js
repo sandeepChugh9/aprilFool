@@ -10,12 +10,13 @@
     howToSmellController.prototype.bind = function(App) {
         var $el = $(this.el);
 
-        var howToSmellButton = this.el.getElementsByClassName( 'howToSmellButton' )[0];
-    
+        var howToSmellButton = this.el.getElementsByClassName('howToSmellButton')[0];
+
         howToSmellButton.addEventListener('click', function(ev) {
             // Write Message Input Router Here
             console.log("Getting your Message Aroma");
-            App.router.navigateTo( '/smellMessage', {} );
+            App.ValentineServices.logData({ 'et': 'afsmellnowclick' });
+            App.router.navigateTo('/smellMessage', {});
         });
 
     };
@@ -24,10 +25,9 @@
 
         var that = this;
 
-        try{
-             PlatformBridge.changeBotTitle('Hike Smell');
-        }
-        catch(e){
+        try {
+            PlatformBridge.changeBotTitle('Hike Smell');
+        } catch (e) {
             console.log('Error in changing bot title');
         }
 

@@ -16,6 +16,8 @@
             platformSdk.appData.helperData.selectedSmellName = false;
             platformSdk.appData.helperData.selectedSmellImg = platformSdk.appData.helperData.defaultImg;
             platformSdk.updateHelperData(platformSdk.appData.helperData);
+
+            App.ValentineServices.logData({ 'et': 'afcamerasmellattachclick' });
             App.router.navigateTo('/writeMessage', {});
         });
 
@@ -26,10 +28,9 @@
 
         var that = this;
 
-        try{
-             PlatformBridge.changeBotTitle('Hike Smell');
-        }
-        catch(e){
+        try {
+            PlatformBridge.changeBotTitle('Hike Smell');
+        } catch (e) {
             console.log('Error in changing bot title');
         }
 

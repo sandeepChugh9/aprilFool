@@ -15,15 +15,17 @@
 
     ValentineServices.prototype = {
 
-        logData:function(obj){
-             var analyticEvents = {};
+        logData: function(obj) {
+            var analyticEvents = {};
 
-             if(obj)
-                 for(var key in obj){
+            if (obj)
+                for (var key in obj) {
                     analyticEvents[key] = obj[key];
-                 }
+                }
 
-             platformSdk.utils.logAnalytics("true", "click", analyticEvents);
+            analyticEvents['ek'] = "aprilFool";
+
+            platformSdk.utils.logAnalytics("true", "click", analyticEvents);
         }
 
 

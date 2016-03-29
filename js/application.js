@@ -114,9 +114,10 @@
             }];
 
             // FAQ Event From Three Dot
-            platformSdk.events.subscribe( 'app.menu.om.how', function( id ) {
+            platformSdk.events.subscribe('app.menu.om.how', function(id) {
                 //that.ValentineServices.logData({ 'ek': 'hvFaq' });
-                that.router.navigateTo('/smellFtue',{});
+                that.ValentineServices.logData({ 'et': 'affaqopen' });
+                that.router.navigateTo('/smellFtue', {});
             });
 
             // Notifications
@@ -163,6 +164,7 @@
             data = decodeURIComponent(data);
 
             if (data) {
+                that.ValentineServices.logData({ 'et': 'afcardsmellclick' });
                 that.router.navigateTo('/howToSmell', {});
             } else {
                 that.router.navigateTo('/', {});

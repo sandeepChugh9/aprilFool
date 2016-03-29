@@ -49,12 +49,15 @@
         }
 
         cancelBtn.addEventListener('click', function() {
+            App.ValentineServices.logData({ 'et': 'afdefaultsmellcancelclick', 'smellName': platformSdk.appData.helperData.selectedSmellName });
             removeSelection();
         });
 
 
         // Forward the card object 
         nextBtn.addEventListener('click', function() {
+
+            App.ValentineServices.logData({ 'et': 'afdefaultsmellnextclick', 'smellName': platformSdk.appData.helperData.selectedSmellName });
             App.router.navigateTo('/writeMessage', {});
 
         });
@@ -70,6 +73,8 @@
             platformSdk.updateHelperData(platformSdk.appData.helperData);
 
             events.publish('update.loader', { show: true });
+
+            App.ValentineServices.logData({ 'et': 'afcamerastartclick' });
 
             try {
                 if (platformSdk.bridgeEnabled)

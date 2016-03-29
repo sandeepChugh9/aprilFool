@@ -49,6 +49,11 @@
             refreshText.classList.add('hide');
             trySmellButton.classList.add('hide');
 
+            if (revealFlag)
+                App.ValentineServices.logData({ 'et': 'afrefreshclickRevealFlow' });
+            else
+                App.ValentineServices.logData({ 'et': 'afrefreshclickNoRevealFlow' });
+
 
 
             setTimeout(function() {
@@ -88,65 +93,22 @@
 
 
 
-            /* // Date Defination
-             var foolDate = new Date('04-02-2016 00:00:00');
-             var currDate = new Date();
-
-             // Write Message Input Router Here
-             console.log("Run smell Animation Again");
-             smellMessageIcon.style.WebkitAnimationPlayState = "running";
-
-             refreshText.classList.add('hide');
-             refreshButton.classList.add('hide');
-
-             // If true Then revealed on april 2 else only revealing at refresh
-
-             if (platformSdk.appData.helperData.flowReveal) {
-                 if (foolDate <= currDate) {
-                     console.log("Reveal April Fool");
-                     smellMessageIcon.remove();
-                     foolIcon.classList.remove('hide');
-                     refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
-                     refreshText.classList.add('changePadding');
-                     refreshText.classList.remove('hide');
-                     trySmellButton.classList.remove('hide');
-                 } else {
-                     console.log("Dont Reveal April Fool :: until the date");
-                     trySmellButton.classList.remove('hide');
-                 }
-             } else {
-                 console.log("As soon as refresh is clicked :: Katta Sticker Comes");
-                 smellMessageIcon.remove();
-                 foolIcon.classList.remove('hide');
-                 refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
-                 refreshText.classList.add('changePadding');
-                 refreshText.classList.remove('hide');
-                 trySmellButton.classList.remove('hide');
-             }*/
-            // if (tries < maxTries) {
-            //     tries++;
-            //     smellMessageIcon.style.WebkitAnimationPlayState = "running";
-            //     refreshText.classList.add('hide');
-            //     refreshButton.classList.add('hide');
-            //     setTimeout(function() {
-            //         smellMessageIcon.style.WebkitAnimationPlayState = "paused";
-            //         refreshText.classList.remove('hide');
-            //         refreshButton.classList.remove('hide');
-            //     }, 4000);
-            // } else {
-            //     smellMessageIcon.remove();
-            //     foolIcon.classList.remove('hide');
-            //     refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
-            //     refreshText.classList.add('changePadding');
-            //     refreshText.classList.remove('hide');
-            //     trySmellButton.classList.remove('hide');
-
-            // }
-
         });
 
         trySmellButton.addEventListener('click', function(ev) {
             // Write Message Input Router Here
+
+            if (trySmellButton.innerHTML === "FOOL YOUR FRIENDS NOW")
+                App.ValentineServices.logData({ 'et': 'affoolfriendsclick' });
+            else {
+                if (revealFlag)
+                    App.ValentineServices.logData({ 'et': 'aftryhikesmellRevealflowclick' });
+                else
+                    App.ValentineServices.logData({ 'et': 'aftryhikesmellNorevealflowclick' });
+            }
+
+
+
             console.log("Take To Home Screen Of Hike Aroma To Try The User");
             App.router.navigateTo('/', {});
         });

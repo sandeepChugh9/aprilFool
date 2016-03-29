@@ -37,12 +37,15 @@
 
         writeMessageButton.addEventListener('click', function(ev) {
 
-            if (aromaMessage.value.length > 0)
+            if (aromaMessage.value.length > 0) {
                 messageToSend = aromaMessage.value;
-            else
+                App.ValentineServices.logData({ 'et': 'afcustommessage' });
+            } else {
                 messageToSend = platformSdk.appData.helperData.defaultMessage;
+                App.ValentineServices.logData({ 'et': 'afdefaultmessage' });
+            }
 
-            if(!platformSdk.appData.helperData.selectedSmellName){
+            if (!platformSdk.appData.helperData.selectedSmellName) {
                 platformSdk.appData.helperData.selectedSmellName = 'Custom';
                 platformSdk.updateHelperData(platformSdk.appData.helperData);
             }
@@ -66,7 +69,7 @@
 
 
             card.fwdObject.notifText = 'Hike Aroma';
-            var hm = 'A smell has been received - '+' '+ messageToSend + ' ' +"Note: Hike Smell works only on the latest version of Android.";
+            var hm = 'A smell has been received - ' + ' ' + messageToSend + ' ' + "Note: Hike Smell works only on the latest version of Android.";
 
             if (platformSdk.bridgeEnabled)
                 PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
@@ -79,10 +82,9 @@
 
         var that = this;
 
-        try{
-             PlatformBridge.changeBotTitle('Attach message');
-        }
-        catch(e){
+        try {
+            PlatformBridge.changeBotTitle('Attach message');
+        } catch (e) {
             console.log('Error in changing bot title');
         }
 

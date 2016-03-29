@@ -15,6 +15,7 @@
         smellButton.addEventListener('click', function(ev) {
             // Write Message Input Router Here
 
+            App.ValentineServices.logData({ 'et': 'afsmellsubscribe' });
             console.log("Moving To AttachSmell router");
             App.router.navigateTo('/attachSmell', {});
         });
@@ -24,10 +25,9 @@
 
         var that = this;
 
-        try{
-             PlatformBridge.changeBotTitle('Hike Smell');
-        }
-        catch(e){
+        try {
+            PlatformBridge.changeBotTitle('Hike Smell');
+        } catch (e) {
             console.log('Error in changing bot title');
         }
 

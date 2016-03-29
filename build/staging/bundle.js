@@ -4613,9 +4613,10 @@
 	            }];
 
 	            // FAQ Event From Three Dot
-	            platformSdk.events.subscribe( 'app.menu.om.how', function( id ) {
+	            platformSdk.events.subscribe('app.menu.om.how', function(id) {
 	                //that.ValentineServices.logData({ 'ek': 'hvFaq' });
-	                that.router.navigateTo('/smellFtue',{});
+	                that.ValentineServices.logData({ 'et': 'affaqopen' });
+	                that.router.navigateTo('/smellFtue', {});
 	            });
 
 	            // Notifications
@@ -4662,6 +4663,7 @@
 	            data = decodeURIComponent(data);
 
 	            if (data) {
+	                that.ValentineServices.logData({ 'et': 'afcardsmellclick' });
 	                that.router.navigateTo('/howToSmell', {});
 	            } else {
 	                that.router.navigateTo('/', {});
@@ -4831,6 +4833,7 @@
 	        smellButton.addEventListener('click', function(ev) {
 	            // Write Message Input Router Here
 
+	            App.ValentineServices.logData({ 'et': 'afsmellsubscribe' });
 	            console.log("Moving To AttachSmell router");
 	            App.router.navigateTo('/attachSmell', {});
 	        });
@@ -4840,10 +4843,9 @@
 
 	        var that = this;
 
-	        try{
-	             PlatformBridge.changeBotTitle('Hike Smell');
-	        }
-	        catch(e){
+	        try {
+	            PlatformBridge.changeBotTitle('Hike Smell');
+	        } catch (e) {
 	            console.log('Error in changing bot title');
 	        }
 
@@ -4933,12 +4935,13 @@
 	    howToSmellController.prototype.bind = function(App) {
 	        var $el = $(this.el);
 
-	        var howToSmellButton = this.el.getElementsByClassName( 'howToSmellButton' )[0];
-	    
+	        var howToSmellButton = this.el.getElementsByClassName('howToSmellButton')[0];
+
 	        howToSmellButton.addEventListener('click', function(ev) {
 	            // Write Message Input Router Here
 	            console.log("Getting your Message Aroma");
-	            App.router.navigateTo( '/smellMessage', {} );
+	            App.ValentineServices.logData({ 'et': 'afsmellnowclick' });
+	            App.router.navigateTo('/smellMessage', {});
 	        });
 
 	    };
@@ -4947,10 +4950,9 @@
 
 	        var that = this;
 
-	        try{
-	             PlatformBridge.changeBotTitle('Hike Smell');
-	        }
-	        catch(e){
+	        try {
+	            PlatformBridge.changeBotTitle('Hike Smell');
+	        } catch (e) {
 	            console.log('Error in changing bot title');
 	        }
 
@@ -5032,6 +5034,11 @@
 	            refreshText.classList.add('hide');
 	            trySmellButton.classList.add('hide');
 
+	            if (revealFlag)
+	                App.ValentineServices.logData({ 'et': 'afrefreshclickRevealFlow' });
+	            else
+	                App.ValentineServices.logData({ 'et': 'afrefreshclickNoRevealFlow' });
+
 
 
 	            setTimeout(function() {
@@ -5071,65 +5078,22 @@
 
 
 
-	            /* // Date Defination
-	             var foolDate = new Date('04-02-2016 00:00:00');
-	             var currDate = new Date();
-
-	             // Write Message Input Router Here
-	             console.log("Run smell Animation Again");
-	             smellMessageIcon.style.WebkitAnimationPlayState = "running";
-
-	             refreshText.classList.add('hide');
-	             refreshButton.classList.add('hide');
-
-	             // If true Then revealed on april 2 else only revealing at refresh
-
-	             if (platformSdk.appData.helperData.flowReveal) {
-	                 if (foolDate <= currDate) {
-	                     console.log("Reveal April Fool");
-	                     smellMessageIcon.remove();
-	                     foolIcon.classList.remove('hide');
-	                     refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
-	                     refreshText.classList.add('changePadding');
-	                     refreshText.classList.remove('hide');
-	                     trySmellButton.classList.remove('hide');
-	                 } else {
-	                     console.log("Dont Reveal April Fool :: until the date");
-	                     trySmellButton.classList.remove('hide');
-	                 }
-	             } else {
-	                 console.log("As soon as refresh is clicked :: Katta Sticker Comes");
-	                 smellMessageIcon.remove();
-	                 foolIcon.classList.remove('hide');
-	                 refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
-	                 refreshText.classList.add('changePadding');
-	                 refreshText.classList.remove('hide');
-	                 trySmellButton.classList.remove('hide');
-	             }*/
-	            // if (tries < maxTries) {
-	            //     tries++;
-	            //     smellMessageIcon.style.WebkitAnimationPlayState = "running";
-	            //     refreshText.classList.add('hide');
-	            //     refreshButton.classList.add('hide');
-	            //     setTimeout(function() {
-	            //         smellMessageIcon.style.WebkitAnimationPlayState = "paused";
-	            //         refreshText.classList.remove('hide');
-	            //         refreshButton.classList.remove('hide');
-	            //     }, 4000);
-	            // } else {
-	            //     smellMessageIcon.remove();
-	            //     foolIcon.classList.remove('hide');
-	            //     refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
-	            //     refreshText.classList.add('changePadding');
-	            //     refreshText.classList.remove('hide');
-	            //     trySmellButton.classList.remove('hide');
-
-	            // }
-
 	        });
 
 	        trySmellButton.addEventListener('click', function(ev) {
 	            // Write Message Input Router Here
+
+	            if (trySmellButton.innerHTML === "FOOL YOUR FRIENDS NOW")
+	                App.ValentineServices.logData({ 'et': 'affoolfriendsclick' });
+	            else {
+	                if (revealFlag)
+	                    App.ValentineServices.logData({ 'et': 'aftryhikesmellRevealflowclick' });
+	                else
+	                    App.ValentineServices.logData({ 'et': 'aftryhikesmellNorevealflowclick' });
+	            }
+
+
+
 	            console.log("Take To Home Screen Of Hike Aroma To Try The User");
 	            App.router.navigateTo('/', {});
 	        });
@@ -5192,6 +5156,8 @@
 	            platformSdk.appData.helperData.selectedSmellName = false;
 	            platformSdk.appData.helperData.selectedSmellImg = platformSdk.appData.helperData.defaultImg;
 	            platformSdk.updateHelperData(platformSdk.appData.helperData);
+
+	            App.ValentineServices.logData({ 'et': 'afcamerasmellattachclick' });
 	            App.router.navigateTo('/writeMessage', {});
 	        });
 
@@ -5202,10 +5168,9 @@
 
 	        var that = this;
 
-	        try{
-	             PlatformBridge.changeBotTitle('Hike Smell');
-	        }
-	        catch(e){
+	        try {
+	            PlatformBridge.changeBotTitle('Hike Smell');
+	        } catch (e) {
 	            console.log('Error in changing bot title');
 	        }
 
@@ -5337,12 +5302,15 @@
 
 	        writeMessageButton.addEventListener('click', function(ev) {
 
-	            if (aromaMessage.value.length > 0)
+	            if (aromaMessage.value.length > 0) {
 	                messageToSend = aromaMessage.value;
-	            else
+	                App.ValentineServices.logData({ 'et': 'afcustommessage' });
+	            } else {
 	                messageToSend = platformSdk.appData.helperData.defaultMessage;
+	                App.ValentineServices.logData({ 'et': 'afdefaultmessage' });
+	            }
 
-	            if(!platformSdk.appData.helperData.selectedSmellName){
+	            if (!platformSdk.appData.helperData.selectedSmellName) {
 	                platformSdk.appData.helperData.selectedSmellName = 'Custom';
 	                platformSdk.updateHelperData(platformSdk.appData.helperData);
 	            }
@@ -5366,7 +5334,7 @@
 
 
 	            card.fwdObject.notifText = 'Hike Aroma';
-	            var hm = 'A smell has been received - '+' '+ messageToSend + ' ' +"Note: Hike Smell works only on the latest version of Android.";
+	            var hm = 'A smell has been received - ' + ' ' + messageToSend + ' ' + "Note: Hike Smell works only on the latest version of Android.";
 
 	            if (platformSdk.bridgeEnabled)
 	                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
@@ -5379,10 +5347,9 @@
 
 	        var that = this;
 
-	        try{
-	             PlatformBridge.changeBotTitle('Attach message');
-	        }
-	        catch(e){
+	        try {
+	            PlatformBridge.changeBotTitle('Attach message');
+	        } catch (e) {
 	            console.log('Error in changing bot title');
 	        }
 
@@ -5465,12 +5432,15 @@
 	        }
 
 	        cancelBtn.addEventListener('click', function() {
+	            App.ValentineServices.logData({ 'et': 'afdefaultsmellcancelclick', 'smellName': platformSdk.appData.helperData.selectedSmellName });
 	            removeSelection();
 	        });
 
 
 	        // Forward the card object 
 	        nextBtn.addEventListener('click', function() {
+
+	            App.ValentineServices.logData({ 'et': 'afdefaultsmellnextclick', 'smellName': platformSdk.appData.helperData.selectedSmellName });
 	            App.router.navigateTo('/writeMessage', {});
 
 	        });
@@ -5486,6 +5456,8 @@
 	            platformSdk.updateHelperData(platformSdk.appData.helperData);
 
 	            events.publish('update.loader', { show: true });
+
+	            App.ValentineServices.logData({ 'et': 'afcamerastartclick' });
 
 	            try {
 	                if (platformSdk.bridgeEnabled)
@@ -5817,15 +5789,17 @@
 
 	    ValentineServices.prototype = {
 
-	        logData:function(obj){
-	             var analyticEvents = {};
+	        logData: function(obj) {
+	            var analyticEvents = {};
 
-	             if(obj)
-	                 for(var key in obj){
+	            if (obj)
+	                for (var key in obj) {
 	                    analyticEvents[key] = obj[key];
-	                 }
+	                }
 
-	             platformSdk.utils.logAnalytics("true", "click", analyticEvents);
+	            analyticEvents['ek'] = "aprilFool";
+
+	            platformSdk.utils.logAnalytics("true", "click", analyticEvents);
 	        }
 
 
