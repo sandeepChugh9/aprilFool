@@ -7,7 +7,7 @@
             console.log("Opening Microapp");
 
             var serverUrl = 'http://mapps.platform.hike.in/mapps/api/v1/apps/';
-            var appName = '+hikearoma+';
+            var appName = '+hikesmell+';
 
             platformSdk.nativeReqT({
                 fn: 'openNonMessagingBot',

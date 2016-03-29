@@ -104,51 +104,55 @@
 
         // Setting Up The Three Dot Menu
         initOverflowMenu: function() {
+
+            var that = this;
+
             var omList = [{
-                "title": platformSdk.appData.block === "true" ? "Unblock" : "Block",
+                "title": "How it works",
                 "en": "true",
-                "eventName": "app.menu.om.block"
-            }, {
-                "title": "Notifications",
-                "en": "true",
-                "eventName": "app.menu.om.mute",
-                "is_checked": platformSdk.appData.mute === "true" ? "false" : "true"
+                "eventName": "app.menu.om.how"
             }];
 
+            // FAQ Event From Three Dot
+            platformSdk.events.subscribe( 'app.menu.om.how', function( id ) {
+                //that.ValentineServices.logData({ 'ek': 'hvFaq' });
+                that.router.navigateTo('/smellFtue',{});
+            });
+
             // Notifications
-            platformSdk.events.subscribe('app.menu.om.mute', function(id) {
-                id = "" + platformSdk.retrieveId('app.menu.om.mute');
-                if (platformSdk.appData.mute == "true") {
-                    platformSdk.appData.mute = "false";
-                    platformSdk.muteChatThread();
-                    platformSdk.updateOverflowMenu(id, {
-                        "is_checked": "true"
-                    });
-                } else {
-                    platformSdk.appData.mute = "true";
-                    platformSdk.muteChatThread();
-                    platformSdk.updateOverflowMenu(id, {
-                        "is_checked": "false"
-                    });
-                }
-            });
-            // Block
-            platformSdk.events.subscribe('app.menu.om.block', function(id) {
-                id = "" + platformSdk.retrieveId('app.menu.om.block');
-                if (platformSdk.appData.block === "true") {
-                    unBlockApp();
-                } else {
-                    platformSdk.appData.block = "true";
-                    platformSdk.blockChatThread();
-                    platformSdk.events.publish('app.state.block.show');
-                    platformSdk.updateOverflowMenu(id, {
-                        "title": "Unblock"
-                    });
-                    utils.toggleBackNavigation(false);
-                    events.publish('app/block', { show: true });
-                    events.publish('app/offline', { show: false });
-                }
-            });
+            // platformSdk.events.subscribe('app.menu.om.mute', function(id) {
+            //     id = "" + platformSdk.retrieveId('app.menu.om.mute');
+            //     if (platformSdk.appData.mute == "true") {
+            //         platformSdk.appData.mute = "false";
+            //         platformSdk.muteChatThread();
+            //         platformSdk.updateOverflowMenu(id, {
+            //             "is_checked": "true"
+            //         });
+            //     } else {
+            //         platformSdk.appData.mute = "true";
+            //         platformSdk.muteChatThread();
+            //         platformSdk.updateOverflowMenu(id, {
+            //             "is_checked": "false"
+            //         });
+            //     }
+            // });
+            // // Block
+            // platformSdk.events.subscribe('app.menu.om.block', function(id) {
+            //     id = "" + platformSdk.retrieveId('app.menu.om.block');
+            //     if (platformSdk.appData.block === "true") {
+            //         unBlockApp();
+            //     } else {
+            //         platformSdk.appData.block = "true";
+            //         platformSdk.blockChatThread();
+            //         platformSdk.events.publish('app.state.block.show');
+            //         platformSdk.updateOverflowMenu(id, {
+            //             "title": "Unblock"
+            //         });
+            //         utils.toggleBackNavigation(false);
+            //         events.publish('app/block', { show: true });
+            //         events.publish('app/offline', { show: false });
+            //     }
+            // });
 
             platformSdk.setOverflowMenu(omList);
         },
