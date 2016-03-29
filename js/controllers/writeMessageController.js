@@ -66,7 +66,7 @@
 
 
             card.fwdObject.notifText = 'Hike Aroma';
-            var hm = 'A smell has been received'+' '+ messageToSend + ' ' +"Note: Hike Smell works only on the latest version of Android.";
+            var hm = 'A smell has been received - '+' '+ messageToSend + ' ' +"Note: Hike Smell works only on the latest version of Android.";
 
             if (platformSdk.bridgeEnabled)
                 PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);

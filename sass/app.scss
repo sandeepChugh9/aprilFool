@@ -836,3 +836,33 @@ a:visited {
         font-size: 24px;
     }
 }
+
+.faqContainer{
+    display:block;
+    padding:30px;
+}
+
+h1{
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(0,0,0,0.50);
+}
+
+h2{
+    margin: 16px 0 8px 0 !important;
+    font-size: 18px !important;
+    color: rgba(0,0,0,.80) !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+    padding-top:16px !important;;
+}
+
+p{
+     margin-top: 0px;
+     margin-bottom: 16px;
+     font-size: 14px;
+     letter-spacing: 0;
+     font-weight: 400;
+     line-height: 18px;
+     color: rgba(0,0,0,.48);
+}

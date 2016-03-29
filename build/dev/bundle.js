@@ -4915,7 +4915,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<p> how it works ? </p>"
+	module.exports = "<div class=\"faqContainer\">\n    <h1>Frequently Asked Questions</h1>\n    <h2>1. What is Hike Smell?</h2>\n    <p>Hike Smell is the state of the art tool which lets users attach smell to their messages. Now, you can let your friends smell the objects that you share with them through Hike Smell.</p>\n    <h2>2. How does it work?</h2>\n    <p>Hike Smell uses the Olfactory sensors available in the latest version of android to detect the smell of the objects around you. This patent pending technology simulates the nasal sensors of human nose and has been widely researched upon for the last few years.</p>\n    <h2>3. How to use Hike Smell?</h2>\n    <p>Step 1: Tap on Hike Smell option in Hike app <br>Step 2: Click on \"Try Now” <br>Step 3: You can select a pre-defined smell from the list or you can tap on the “+” icon to take a picture from your camera or phone gallery. <br>Step 4: Click on “Share\" <br>Step 5: Type a message to go along with your Hike Smell card <br>Step 6: Select the friends you want to share the Hike Smell card Step 7: Done\n    </p>\n    <h2>4. What are Hike Smell cards?</h2>\n    <p>A skipped user’s profile will be removed from the recommendation list and not be displayed to you again.So skip wisely :P.</p>\n    <h2>5. How to invite my friends to use the Hike Smell?</h2>\n    <p>Your like preference will be stored for future references. The user will NOT be notified till the time he/she likes you back.</p>\n</div>\n"
 
 /***/ },
 /* 12 */
@@ -5366,7 +5366,7 @@
 
 
 	            card.fwdObject.notifText = 'Hike Aroma';
-	            var hm = 'A smell has been received'+' '+ messageToSend + ' ' +"Note: Hike Smell works only on the latest version of Android.";
+	            var hm = 'A smell has been received - '+' '+ messageToSend + ' ' +"Note: Hike Smell works only on the latest version of Android.";
 
 	            if (platformSdk.bridgeEnabled)
 	                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
@@ -5512,7 +5512,7 @@
 
 	            } catch (err) {
 	                if (platformSdk.bridgeEnabled)
-	                    platformSdk.ui.showToast('Error while capturing smell..');
+	                    platformSdk.ui.showToast('Something went wrong. Please select a default smell.');
 	            }
 
 
@@ -5524,10 +5524,9 @@
 
 	        var that = this;
 
-	        try{
-	             PlatformBridge.changeBotTitle('Attach smell');
-	        }
-	        catch(e){
+	        try {
+	            PlatformBridge.changeBotTitle('Attach smell');
+	        } catch (e) {
 	            console.log('Error in changing bot title');
 	        }
 
