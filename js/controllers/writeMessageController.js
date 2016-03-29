@@ -42,6 +42,11 @@
             else
                 messageToSend = platformSdk.appData.helperData.defaultMessage;
 
+            if(!platformSdk.appData.helperData.selectedSmellName){
+                platformSdk.appData.helperData.selectedSmellName = 'Custom';
+                platformSdk.updateHelperData(platformSdk.appData.helperData);
+            }
+
 
             var card = {
 
@@ -49,7 +54,7 @@
                     "ld": {
                         "hikeAromaMessage": messageToSend,
                         "hikeAromaBackground": platformSdk.appData.helperData.selectedSmellImg,
-                        "aromaName": platformSdk.appData.helperData.selectedSmellName
+                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase()
                     },
                     "hd": {},
                     "layoutId": "card.html",
@@ -61,7 +66,7 @@
 
 
             card.fwdObject.notifText = 'Hike Aroma';
-            var hm = 'test card' + ' \n ' + "http://www.google.com";
+            var hm = 'A smell has been received' + messageToSend + "Note: Hike Smell works only on the latest version of Android.";
 
             if (platformSdk.bridgeEnabled)
                 PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
@@ -74,7 +79,12 @@
 
         var that = this;
 
-
+        try{
+             PlatformBridge.changeBotTitle('Attach message');
+        }
+        catch(e){
+            console.log('Error in changing bot title');
+        }
 
 
         that.el = document.createElement('div');

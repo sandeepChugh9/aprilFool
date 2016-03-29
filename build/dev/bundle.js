@@ -4796,8 +4796,7 @@
 	                utils.toggleBackNavigation(true);
 	            });
 
-
-	            //self.router.navigateTo('/attachSmell', { hm: "safsdfsd" });
+	            //this.ValentineServices.logData({ 'ek': 'hvEditPro', 'source': 'Optin' });
 	            self.router.navigateTo('/');
 
 	        }
@@ -4837,6 +4836,13 @@
 
 	        var that = this;
 
+	        try{
+	             PlatformBridge.changeBotTitle('Hike Smell');
+	        }
+	        catch(e){
+	            console.log('Error in changing bot title');
+	        }
+
 	        that.el = document.createElement('div');
 	        that.el.className = 'smellOptInContainer animation_fadein noselect';
 	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
@@ -4860,7 +4866,7 @@
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"smellWrapper align-center\">\n    <div class=\"smellIcon\"></div>\n    <div class=\"smellHeading\">Hike Aroma</div>\n    <div class=\"smellSubText\">Now send an aroma along with your message</div>\n    <div class=\"smellButtonHome\">Try Now</div>\n</div>\n"
+	module.exports = "<div class=\"smellWrapper align-center\">\n    <div class=\"smellIcon\"></div>\n    <div class=\"smellHeading\">Hike Smell</div>\n    <div class=\"smellSubText\">Now attach and send any smell along with your messages</div>\n</div>\n<div class=\"smellButtonHome\">Try Now</div>\n"
 
 /***/ },
 /* 10 */
@@ -4937,6 +4943,13 @@
 
 	        var that = this;
 
+	        try{
+	             PlatformBridge.changeBotTitle('Hike Smell');
+	        }
+	        catch(e){
+	            console.log('Error in changing bot title');
+	        }
+
 	        that.el = document.createElement('div');
 	        that.el.className = 'howToSmellContainer animation_fadein noselect';
 	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
@@ -4958,7 +4971,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\t<div class=\"howToSmellWrapper align-center\">\n\t\t<div class=\"howToSmellIcon\"></div>\n\t\t<div class=\"howToSmellHeading\">Bring your mobile closer to your nose to sense the aroma</div>\n\t\t<div class=\"howToSmellButton\">Got It</div>\n\t</div>\n"
+	module.exports = "\t<div class=\"howToSmellWrapper align-center\">\n\t\t<div class=\"howToSmellIcon\"></div>\n\t\t<div class=\"howToSmellHeading\">Bring the screen closer to your nose and tap the button to start smelling!</div>\n\t\t<div class=\"howToSmellButton\">Smell Now</div>\n\t</div>\n"
 
 /***/ },
 /* 14 */
@@ -5065,6 +5078,13 @@
 
 	        var that = this;
 
+	        try{
+	             PlatformBridge.changeBotTitle('Hike Smell');
+	        }
+	        catch(e){
+	            console.log('Error in changing bot title');
+	        }
+
 	        that.el = document.createElement('div');
 	        that.el.className = 'smellMessageContainer animation_fadein noselect';
 	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
@@ -5120,6 +5140,14 @@
 
 	        var that = this;
 
+	        try{
+	             PlatformBridge.changeBotTitle('Hike Smell');
+	        }
+	        catch(e){
+	            console.log('Error in changing bot title');
+	        }
+
+
 	        that.el = document.createElement('div');
 	        that.el.className = 'attachAromaContainer animation_fadein noselect';
 	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
@@ -5173,6 +5201,13 @@
 	    detectAromaController.prototype.render = function(ctr, App, data) {
 
 	        var that = this;
+
+	        try{
+	             PlatformBridge.changeBotTitle('Hike Smell');
+	        }
+	        catch(e){
+	            console.log('Error in changing bot title');
+	        }
 
 	        that.el = document.createElement('div');
 	        that.el.className = 'detectAromaContainer animation_fadein noselect';
@@ -5245,6 +5280,11 @@
 	            else
 	                messageToSend = platformSdk.appData.helperData.defaultMessage;
 
+	            if(!platformSdk.appData.helperData.selectedSmellName){
+	                platformSdk.appData.helperData.selectedSmellName = 'Custom';
+	                platformSdk.updateHelperData(platformSdk.appData.helperData);
+	            }
+
 
 	            var card = {
 
@@ -5252,7 +5292,7 @@
 	                    "ld": {
 	                        "hikeAromaMessage": messageToSend,
 	                        "hikeAromaBackground": platformSdk.appData.helperData.selectedSmellImg,
-	                        "aromaName": platformSdk.appData.helperData.selectedSmellName
+	                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase()
 	                    },
 	                    "hd": {},
 	                    "layoutId": "card.html",
@@ -5264,7 +5304,7 @@
 
 
 	            card.fwdObject.notifText = 'Hike Aroma';
-	            var hm = 'test card' + ' \n ' + "http://www.google.com";
+	            var hm = 'A smell has been received' + messageToSend + "Note: Hike Smell works only on the latest version of Android.";
 
 	            if (platformSdk.bridgeEnabled)
 	                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
@@ -5277,7 +5317,12 @@
 
 	        var that = this;
 
-
+	        try{
+	             PlatformBridge.changeBotTitle('Attach message');
+	        }
+	        catch(e){
+	            console.log('Error in changing bot title');
+	        }
 
 
 	        that.el = document.createElement('div');
@@ -5301,7 +5346,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"group\">\n</div>\n<div class=\"writeMessageButton\">Next</div>\n<textarea autofocus class=\"aromaMessage\" rows=\"1\" placeholder=\"{{defaultMessage}}\"></textarea>"
+	module.exports = "<div class=\"group\">\n</div>\n<div class=\"writeMessageButton\">Send</div>\n<textarea autofocus class=\"aromaMessage\" rows=\"1\" placeholder=\"{{defaultMessage}}\"></textarea>"
 
 /***/ },
 /* 22 */
@@ -5416,6 +5461,15 @@
 	    AttachSmellController.prototype.render = function(ctr, App, data) {
 
 	        var that = this;
+
+	        try{
+	             PlatformBridge.changeBotTitle('Attach smell');
+	        }
+	        catch(e){
+	            console.log('Error in changing bot title');
+	        }
+
+
 	        that.el = document.createElement('div');
 	        that.el.className = 'animation_fadein noselect';
 	        that.el.innerHTML = Mustache.render(unescape(that.template));
@@ -5436,7 +5490,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"attachSmellWrap\">\n    <div class=\"attachSmellSection\">\n        <div class=\"selectedStateSmell hide\"> </div>\n        <div class=\"row\">\n            <!-- sandeep !-->\n            <div class=\"smellSection\" aromaName=\"Rose\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Rose</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fart\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Fart</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Rain\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Rain</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Garbage\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Garbage</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Cheese\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Cheese</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fish\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Fish</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Socks\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Socks</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Wine\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Wine</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Petrol\" aromaImg=\"smellTemplate\">\n                <div class=\"smell1 smellDimension\"> </div>\n                <div class=\"smellTxt\">Petrol</div>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"buttonsWrapper\">\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt align-center\">Detect aroma from your surroundings</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"attachSmellWrap\">\n    <div class=\"attachSmellSection\">\n        <div class=\"selectedStateSmell hide\"> </div>\n        <div class=\"row\">\n            <!-- sandeep !-->\n            <div class=\"smellSection\" aromaName=\"Rose\" aromaImg=\"smellTemplate\">\n                <div class=\"rose smellDimension\"> </div>\n                <div class=\"smellTxt\">Rose</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fart\" aromaImg=\"smellTemplate\">\n                <div class=\"fart smellDimension\"> </div>\n                <div class=\"smellTxt\">Fart</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Rain\" aromaImg=\"smellTemplate\">\n                <div class=\"rain smellDimension\"> </div>\n                <div class=\"smellTxt\">Rain</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Garbage\" aromaImg=\"smellTemplate\">\n                <div class=\"garbage smellDimension\"> </div>\n                <div class=\"smellTxt\">Garbage</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Cheese\" aromaImg=\"smellTemplate\">\n                <div class=\"cheese smellDimension\"> </div>\n                <div class=\"smellTxt\">Cheese</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fish\" aromaImg=\"smellTemplate\">\n                <div class=\"fish smellDimension\"> </div>\n                <div class=\"smellTxt\">Fish</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Socks\" aromaImg=\"smellTemplate\">\n                <div class=\"socks smellDimension\"> </div>\n                <div class=\"smellTxt\">Socks</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Tea\" aromaImg=\"smellTemplate\">\n                <div class=\"tea smellDimension\"> </div>\n                <div class=\"smellTxt\">Tea</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Petrol\" aromaImg=\"smellTemplate\">\n                <div class=\"petrol smellDimension\"> </div>\n                <div class=\"smellTxt\">Petrol</div>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"buttonsWrapper\">\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt align-center\">Or capture a smell and attach it!</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 24 */
@@ -5702,16 +5756,16 @@
 
 	    ValentineServices.prototype = {
 
-	        // Subscribe
-	        subscribeToValentine: function(fn, x) {
-	            var params = {
-	                'url': URL.location + '/subscribe?random=' + Math.round(Math.random() * 999999999),
-	                'type': 'POST',
-	                'loader': true
-	            };
-	            if (typeof fn === 'function') return this.ValentineServices.communicate(params, fn, x);
-	            else this.ValentineServices.communicate(params);
-	        },
+	        logData:function(obj){
+	             var analyticEvents = {};
+
+	             if(obj)
+	                 for(var key in obj){
+	                    analyticEvents[key] = obj[key];
+	                 }
+
+	             platformSdk.utils.logAnalytics("true", "click", analyticEvents);
+	        }
 
 
 	    };

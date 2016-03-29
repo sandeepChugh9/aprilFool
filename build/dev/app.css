@@ -482,8 +482,56 @@ textarea {
   .attachSmellSection .smellDimension {
     height: 33px;
     width: 33px; }
-  .attachSmellSection .smell1 {
-    background: url(images/Bitmap.png);
+  .attachSmellSection .tea {
+    background: url(images/tea.png);
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat; }
+  .attachSmellSection .petrol {
+    background: url(images/petrol.png);
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat; }
+  .attachSmellSection .garbage {
+    background: url(images/garbage.png);
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat; }
+  .attachSmellSection .cheese {
+    background: url(images/cheese.png);
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat; }
+  .attachSmellSection .socks {
+    background: url(images/socks.png);
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat; }
+  .attachSmellSection .fart {
+    background: url(images/fart.png);
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat; }
+  .attachSmellSection .fish {
+    background: url(images/fish.png);
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat; }
+  .attachSmellSection .rose {
+    background: url(images/rose.png);
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    background-repeat: no-repeat; }
+  .attachSmellSection .rain {
+    background: url(images/rain.png);
     background-size: contain;
     background-position: center;
     width: 100%;
@@ -836,14 +884,20 @@ a:visited {
   padding: 0px 50px; }
 
 .smellButtonHome {
-  background: #7ED321;
+  background: rgba(0, 0, 0, 0.15);
   text-transform: uppercase;
-  padding: 18px 66px;
+  padding: 23px 0px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  width: 18%;
-  color: #FFF;
-  margin: 0px auto; }
+  width: 100%;
+  color: #7ED321;
+  margin: 0px auto;
+  text-align: center;
+  bottom: 0px;
+  position: absolute;
+  left: 0px;
+  font-size: 16px;
+  right: 0px; }
 
 .spinner-ctr {
   margin-top: -12.5px;

@@ -15,16 +15,16 @@
 
     ValentineServices.prototype = {
 
-        // Subscribe
-        subscribeToValentine: function(fn, x) {
-            var params = {
-                'url': URL.location + '/subscribe?random=' + Math.round(Math.random() * 999999999),
-                'type': 'POST',
-                'loader': true
-            };
-            if (typeof fn === 'function') return this.ValentineServices.communicate(params, fn, x);
-            else this.ValentineServices.communicate(params);
-        },
+        logData:function(obj){
+             var analyticEvents = {};
+
+             if(obj)
+                 for(var key in obj){
+                    analyticEvents[key] = obj[key];
+                 }
+
+             platformSdk.utils.logAnalytics("true", "click", analyticEvents);
+        }
 
 
     };

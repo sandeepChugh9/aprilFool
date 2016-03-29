@@ -297,8 +297,7 @@
                 utils.toggleBackNavigation(true);
             });
 
-
-            //self.router.navigateTo('/attachSmell', { hm: "safsdfsd" });
+            //this.ValentineServices.logData({ 'ek': 'hvEditPro', 'source': 'Optin' });
             self.router.navigateTo('/');
 
         }

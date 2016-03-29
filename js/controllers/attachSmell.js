@@ -107,6 +107,15 @@
     AttachSmellController.prototype.render = function(ctr, App, data) {
 
         var that = this;
+
+        try{
+             PlatformBridge.changeBotTitle('Attach smell');
+        }
+        catch(e){
+            console.log('Error in changing bot title');
+        }
+
+
         that.el = document.createElement('div');
         that.el.className = 'animation_fadein noselect';
         that.el.innerHTML = Mustache.render(unescape(that.template));
