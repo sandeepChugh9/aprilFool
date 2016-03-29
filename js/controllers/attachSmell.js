@@ -96,7 +96,7 @@
 
             } catch (err) {
                 if (platformSdk.bridgeEnabled)
-                    platformSdk.ui.showToast('Error while capturing smell..');
+                    platformSdk.ui.showToast('Something went wrong. Please select a default smell.');
             }
 
 
@@ -108,10 +108,9 @@
 
         var that = this;
 
-        try{
-             PlatformBridge.changeBotTitle('Attach smell');
-        }
-        catch(e){
+        try {
+            PlatformBridge.changeBotTitle('Attach smell');
+        } catch (e) {
             console.log('Error in changing bot title');
         }
 

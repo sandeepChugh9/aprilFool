@@ -50,13 +50,21 @@ $aroma: #E424C3;
 
 .trySmellButton {
     position: absolute;
-    bottom: 24px;
-    right: 0px;
     color: #7ED321;
     font-weight: 500;
-    font-size: 14px;
     text-transform: uppercase;
-    left: 0px;
+    background: rgba(0, 0, 0, .15);
+    padding: 20px 0;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    font-size: 16px;
+    right: 0;
 }
 
 .changePadding {
@@ -77,7 +85,7 @@ $aroma: #E424C3;
     opacity: 0.60;
     line-height: 21px;
     position: absolute;
-    padding: 140px 40px;
+    padding: 120px 40px;
     font-size: 14px;
     font-weight: 400;
     left: 0px;
@@ -93,7 +101,7 @@ $aroma: #E424C3;
     border: 1px solid #fff;
     width: 20%;
     border-radius: 4px;
-    margin-top: 220px;
+    margin-top: 190px;
     padding: 12px 20px;
     color: white;
 }
