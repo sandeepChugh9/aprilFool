@@ -297,8 +297,8 @@
                 utils.toggleBackNavigation(true);
             });
 
-            //this.ValentineServices.logData({ 'ek': 'hvEditPro', 'source': 'Optin' });
             self.router.navigateTo('/');
+
 
         }
     };

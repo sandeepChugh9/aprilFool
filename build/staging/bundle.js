@@ -4796,8 +4796,8 @@
 	                utils.toggleBackNavigation(true);
 	            });
 
-	            //this.ValentineServices.logData({ 'ek': 'hvEditPro', 'source': 'Optin' });
 	            self.router.navigateTo('/');
+
 
 	        }
 	    };
@@ -4994,17 +4994,84 @@
 	        var refreshButton = this.el.getElementsByClassName('refreshButton')[0];
 	        var smellMessageIcon = this.el.getElementsByClassName('smellMessageIcon')[0];
 	        var foolIcon = this.el.getElementsByClassName('foolIcon')[0];
-	        var maxTries = platformSdk.appData.helperData.totalTries;
+	        var revealFlag = platformSdk.appData.helperData.revealFlag;
 	        var tries = 0;
+	        var currArr;
+
+	        var revealArr = ["Please try refreshing if you're unable to smell the aroma",
+	            "Please bring your nose closer to the screen and try again if you can't smell it",
+	            "April Fools .</br> You've been Pranked!"
+	        ];
+
+	        var noRevealArr = ["Please try refreshing if you're unable to smell the aroma",
+	            "Please bring your nose closer to the screen and try again if you can't smell it",
+	            "Recalibrating your phone's smell sensors to retry ...",
+	            "Error transmitting smell… </br> Please try again after some time."
+	        ];
+
+
 
 	        // Animation Stop and Show Refresh Classes
 	        setTimeout(function() {
+
+	            if (revealFlag) {
+	                refreshText.innerHTML = revealArr[0];
+	                revealArr.shift();
+	            } else {
+	                refreshText.innerHTML = noRevealArr[0];
+	                noRevealArr.shift();
+	            }
 	            smellMessageIcon.style.WebkitAnimationPlayState = "paused";
 	            refreshText.classList.remove('hide');
 	            refreshButton.classList.remove('hide');
+	            trySmellButton.classList.remove('hide');
 	        }, 4000);
 
+
+
 	        refreshButton.addEventListener('click', function(ev) {
+
+	            smellMessageIcon.style.WebkitAnimationPlayState = "running";
+	            refreshButton.classList.add('hide');
+	            refreshText.classList.add('hide');
+	            trySmellButton.classList.add('hide');
+
+
+
+	            setTimeout(function() {
+	                smellMessageIcon.style.WebkitAnimationPlayState = "paused";
+
+	                if (revealFlag)
+	                    currArr = revealArr;
+	                else
+	                    currArr = noRevealArr;
+
+	                if (currArr.length > 1)
+	                    refreshButton.classList.remove('hide');
+	                else if (revealFlag) {
+	                    trySmellButton.innerHTML = "FOOL YOUR FRIENDS NOW";
+	                    refreshText.classList.add('trollText');
+	                    smellMessageIcon.remove();
+	                    foolIcon.classList.remove('hide');
+
+	                }
+
+	                refreshText.innerHTML = currArr[0];
+	                if (revealFlag)
+	                    revealArr.shift();
+	                else
+	                    noRevealArr.shift();
+
+	                refreshText.classList.remove('hide');
+	                trySmellButton.classList.remove('hide');
+
+
+	            }, 4000);
+
+
+
+
+
 
 
 
@@ -5043,25 +5110,25 @@
 	                 refreshText.classList.remove('hide');
 	                 trySmellButton.classList.remove('hide');
 	             }*/
-	            if (tries < maxTries) {
-	                tries++;
-	                smellMessageIcon.style.WebkitAnimationPlayState = "running";
-	                refreshText.classList.add('hide');
-	                refreshButton.classList.add('hide');
-	                setTimeout(function() {
-	                    smellMessageIcon.style.WebkitAnimationPlayState = "paused";
-	                    refreshText.classList.remove('hide');
-	                    refreshButton.classList.remove('hide');
-	                }, 4000);
-	            } else {
-	                smellMessageIcon.remove();
-	                foolIcon.classList.remove('hide');
-	                refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
-	                refreshText.classList.add('changePadding');
-	                refreshText.classList.remove('hide');
-	                trySmellButton.classList.remove('hide');
+	            // if (tries < maxTries) {
+	            //     tries++;
+	            //     smellMessageIcon.style.WebkitAnimationPlayState = "running";
+	            //     refreshText.classList.add('hide');
+	            //     refreshButton.classList.add('hide');
+	            //     setTimeout(function() {
+	            //         smellMessageIcon.style.WebkitAnimationPlayState = "paused";
+	            //         refreshText.classList.remove('hide');
+	            //         refreshButton.classList.remove('hide');
+	            //     }, 4000);
+	            // } else {
+	            //     smellMessageIcon.remove();
+	            //     foolIcon.classList.remove('hide');
+	            //     refreshText.innerHTML = 'Share aroma and prank your friends this april fool';
+	            //     refreshText.classList.add('changePadding');
+	            //     refreshText.classList.remove('hide');
+	            //     trySmellButton.classList.remove('hide');
 
-	            }
+	            // }
 
 	        });
 
@@ -5106,7 +5173,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\"></div>\n    <div class=\"foolIcon hide\"></div>\n\t<div class=\"refreshText hide\">Please refresh if unable to sense the aroma for the first time</div>\n\t<div class=\"refreshButton hide\">REFRESH</div>\n</div>\n<!-- <div class=\"messageSender\">Sent By: Hemank</div> -->\n<div class=\"trySmellButton align-center hide\">Try Hike Aroma</div>"
+	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\"></div>\n    <div class=\"foolIcon hide\"></div>\n    <div class=\"refreshText hide\"></div>\n    <div class=\"refreshButton hide\">REFRESH</div>\n</div>\n<!-- <div class=\"messageSender\">Sent By: Hemank</div> -->\n<div class=\"trySmellButton align-center hide\">Try Hike Aroma</div>"
 
 /***/ },
 /* 16 */
