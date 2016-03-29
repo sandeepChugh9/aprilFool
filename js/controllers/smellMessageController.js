@@ -19,16 +19,8 @@
         var tries = 0;
         var currArr;
 
-        var revealArr = ["Please try refreshing if you're unable to smell the aroma",
-            "Please bring your nose closer to the screen and try again if you can't smell it",
-            "April Fools .</br> You've been Pranked!"
-        ];
-
-        var noRevealArr = ["Please try refreshing if you're unable to smell the aroma",
-            "Please bring your nose closer to the screen and try again if you can't smell it",
-            "Recalibrating your phone's smell sensors to retry ...",
-            "Error transmitting smell… </br> Please try again after some time."
-        ];
+        var revealArr = platformSdk.appData.helperData.revealArr;
+        var noRevealArr = platformSdk.appData.helperData.noRevealArr;
 
 
 
@@ -166,10 +158,9 @@
 
         var that = this;
 
-        try{
-             PlatformBridge.changeBotTitle('Hike Smell');
-        }
-        catch(e){
+        try {
+            PlatformBridge.changeBotTitle('Hike Smell');
+        } catch (e) {
             console.log('Error in changing bot title');
         }
 
