@@ -18,6 +18,10 @@
             App.ValentineServices.logData({ 'et': 'afsmellsubscribe' });
             console.log("Moving To AttachSmell router");
             App.router.navigateTo('/attachSmell', {});
+
+            platformSdk.appData.helperData.ftueDone = 1;
+            platformSdk.updateHelperData(platformSdk.appData.helperData);
+
         });
     };
 

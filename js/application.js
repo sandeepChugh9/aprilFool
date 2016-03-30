@@ -303,9 +303,12 @@
                 utils.toggleBackNavigation(true);
             });
 
-            self.router.navigateTo('/');
-
-
+            // If FTUE DONE FOR THE USER :: Go directly to attach smell
+            if(platformSdk.appData.helperData.ftueDone){
+                self.router.navigateTo('/attachAroma');
+            }else{
+                self.router.navigateTo('/');    
+            }
         }
     };
 
