@@ -21,8 +21,6 @@
             var outerHeight = parseInt(window.getComputedStyle(this).height, 10);
             var diff = outerHeight - this.clientHeight;
 
-
-
             if (Math.abs(writeMessageButton.offsetTop - (aromaMessage.offsetHeight + 30)) > 20) {
                 this.style.height = 0;
                 this.style.height = Math.max(initialH, this.scrollHeight + diff) + 'px';
@@ -61,18 +59,18 @@
                     "ld": {
                         "hikeAromaMessage": messageToSend,
                         "hikeAromaBackground": platformSdk.appData.helperData.selectedSmellImg,
-                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase() + ' ' + 'SMELL'
+                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase()
                     },
                     "hd": {},
                     "layoutId": "card.html",
                     "push": "silent",
-                    "notifText": "Hike Aroma recieved",
+                    "notifText": "Hike Smell recieved",
                     "h": 200
                 }
             };
 
 
-            card.fwdObject.notifText = 'Hike Aroma';
+            card.fwdObject.notifText = 'Hike Smell';
             var hm = 'A smell has been received - ' + ' ' + messageToSend + ' ' + "Note: Hike Smell works only on the latest version of Android.";
 
             if (platformSdk.bridgeEnabled)

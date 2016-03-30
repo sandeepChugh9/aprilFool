@@ -13,10 +13,13 @@
         var attachAromaButton = this.el.getElementsByClassName('attachAromaButton')[0];
 
         attachAromaButton.addEventListener('click', function(ev) {
-            platformSdk.appData.helperData.selectedSmellName = false;
-            platformSdk.appData.helperData.selectedSmellImg = platformSdk.appData.helperData.defaultImg;
-            platformSdk.updateHelperData(platformSdk.appData.helperData);
-
+            
+            if(data.source === 'camera' ){
+                platformSdk.appData.helperData.selectedSmellName = false;
+                platformSdk.appData.helperData.selectedSmellImg = platformSdk.appData.helperData.defaultImg;
+                platformSdk.updateHelperData(platformSdk.appData.helperData);
+            }
+            
             App.ValentineServices.logData({ 'et': 'afcamerasmellattachclick' });
             App.router.navigateTo('/writeMessage', {});
         });

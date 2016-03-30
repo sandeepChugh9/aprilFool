@@ -29,12 +29,12 @@
     position: absolute;
 }
 
-.loading {
+.loadingdots {
     display: inline-block;
     width: 15px;
 }
 
-.loading:after {
+.loadingdots:after {
     overflow: hidden;
     display: inline-block;
     vertical-align: bottom;

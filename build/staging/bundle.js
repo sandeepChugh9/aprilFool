@@ -4661,10 +4661,11 @@
 	            var that = this;
 	            console.log(data);
 	            data = decodeURIComponent(data);
+	            data = JSON.parse(data);
 
-	            if (data) {
+	            if (data.cardOpened) {
 	                that.ValentineServices.logData({ 'et': 'afcardsmellclick' });
-	                that.router.navigateTo('/howToSmell', {});
+	                that.router.navigateTo('/howToSmell', {smellName:data.smellSent});
 	            } else {
 	                that.router.navigateTo('/', {});
 	            }
@@ -4685,10 +4686,10 @@
 	                platformSdk.updateHelperData(platformSdk.appData.helperData);
 	                console.log("Taking To detect Aroma");
 	                // Detecting Aroma 
-	                that.router.navigateTo('/detectAroma', {});
+	                that.router.navigateTo('/detectAroma', {text:'Detecting'});
 	                // Attaching Aroma Screen
 	                setTimeout(function() {
-	                    that.router.navigateTo('/attachAroma', {});
+	                    that.router.navigateTo('/attachAroma', {source:'camera'});
 	                }, 5000);
 	            } else {
 	                return;
@@ -4799,17 +4800,15 @@
 	            this.router.route('/attachSmell', function(data) {
 	                self.container.innerHTML = '';
 	                self.attachSmellController.render(self.container, self, data);
-	                utils.toggleBackNavigation(true);
+	                utils.toggleBackNavigation(false);
 	            });
 
 	            // If FTUE DONE FOR THE USER :: Go directly to attach smell
-	            /* if(platformSdk.appData.helperData.ftueDone){
-	                 self.router.navigateTo('/attachAroma');
-	             }else{
-	                 self.router.navigateTo('/');    
-	             }*/
-	            self.router.navigateTo('/writeMessage');
-
+	            if(platformSdk.appData.helperData.ftueDone){
+	                self.router.navigateTo('/attachSmell');
+	            }else{
+	                self.router.navigateTo('/'); 
+	            }
 	        }
 	    };
 
@@ -4926,7 +4925,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"faqContainer\">\n    <h1>Frequently Asked Questions</h1>\n    <h2>1. What is Hike Smell?</h2>\n    <p>Imagine you are sitting in a coffee shop and you want to tell your friends how aromatic your coffee tastes. Hike Smell is the state of the art tool which makes this possible. Now, users can attach smell to their messages. Welcome to the world of intelligent messaging!</p>\n    <h2>2. How does it work?</h2>\n    <p>The Hike Smell cards simulate the human olfactory nervous function. Using the patent pending Digital Smell Compression (DSC) technology, Hike Smell digitally captures the smell particles from the piezoelectric sensors available in the latest version of Android to detect the smell of the objects around you. This is stored in the GB cache of your phone, which multiplexes the smell particles with the text message using the PPPoE protocol. This digitally coupled message is then injected in the unicode TCP capacitor, which is a small chip near the transmitter of your device that backs up the BIOS bus and transmits the digital replica of the smell. </p>\n    <h2>3. How to use Hike Smell?</h2>\n    <p>Step 1: Tap on Hike Smell option in Hike app\n        <br> Step 2: Click on \"Try Now”\n        <br> Step 3: You can select a predefined smell from the list or you can tap on the “+” icon to take a picture from your camera or phone gallery.\n        <br> Step 4: Click on “Share\".\n        <br> Step 5: Type a message to go along with your Hike Smell card.\n        <br> Step 6: Select the friends you want to share the Hike Smell card.\n        <br> Step 7: Done.\n    </p>\n    <h2>4. What are Hike Smell cards?</h2>\n    <p>The smell that you intend to share with your friends with shared via Hike Smell cards, which are digital imprints of the olfactory particles detected in the image sent by you. They're inside the sensor and use the optical PPPoE card technology to program their protocol.</p>\n    <h2>5. “I am not able to smell the card. What should i do?”</h2>\n    <p>1. The Hike Smell cards can be used to transmit smells effectively to your friends. However, the sender of the card will not be able to smell the card himself, since the current version of android does not support this feature.\n        <br> 2.Try rotating your phone screen at an angle where the smell particles can be released without surrounding interference\n        <br> 3.If someone has sent you a card and you are not able to detect the smell, this could be due to 2 reasons\n        <br> a. Your android version does not support the olfactory sensor technology\n        <br> b. Your nose is faulty :P\n    </p>\n    <h2>How to invite my friends to use the Hike Smell?</h2>\n    <p>By tapping on the Hike Smell card shared by you, your friends can use the Hike Smell feature themselves and share with anyone they wish.\n    </p>\n</div>\n"
+	module.exports = "<div class=\"faqContainer\">\n    <h1>Frequently Asked Questions</h1>\n    <h2>1. What is Hike Smell?</h2>\n    <p>Imagine you are sitting in a coffee shop and you want to tell your friends how aromatic your coffee tastes. Hike Smell is the state of the art tool which makes this possible. Now, users can attach smell to their messages. Welcome to the world of intelligent messaging!</p>\n    <h2>2. How does it work?</h2>\n    <p>The Hike Smell cards simulate the human olfactory nervous function. Using the patent pending Digital Smell Compression (DSC) technology, Hike Smell digitally captures the smell particles from the piezoelectric sensors available in the latest version of Android to detect the smell of the objects around you. This is stored in the GB cache of your phone, which multiplexes the smell particles with the text message using the PPPoE protocol. This digitally coupled message is then injected in the unicode TCP capacitor, which is a small chip near the transmitter of your device that backs up the BIOS bus and transmits the digital replica of the smell. </p>\n    <h2>3. How to use Hike Smell?</h2>\n    <p>Step 1: Tap on Hike Smell option in Hike app\n        <br> Step 2: Click on \"Try Now”\n        <br> Step 3: You can select a predefined smell from the list or you can tap on the “+” icon to take a picture from your camera or phone gallery.\n        <br> Step 4: Click on “Share\".\n        <br> Step 5: Type a message to go along with your Hike Smell card.\n        <br> Step 6: Select the friends you want to share the Hike Smell card.\n        <br> Step 7: Done.\n    </p>\n    <h2>4. What are Hike Smell cards?</h2>\n    <p>The smell that you intend to share with your friends with shared via Hike Smell cards, which are digital imprints of the olfactory particles detected in the image sent by you. They're inside the sensor and use the optical PPPoE card technology to program their protocol.</p>\n    <h2>5. “I am not able to smell the card. What should i do?”</h2>\n    <p>1. The Hike Smell cards can be used to transmit smells effectively to your friends. However, the sender of the card will not be able to smell the card himself, since the current version of android does not support this feature.\n        <br> 2.Try rotating your phone screen at an angle where the smell particles can be released without surrounding interference\n        <br> 3.If someone has sent you a card and you are not able to detect the smell, this could be due to 2 reasons\n        <br> a. Your Android version does not support the olfactory sensor technology.\n        <br> b. Your nose may be blocked. Clear your nose and try again!\n    </p>\n    <h2>How to invite my friends to use the Hike Smell?</h2>\n    <p>By tapping on the Hike Smell card shared by you, your friends can use the Hike Smell feature themselves and share with anyone they wish.\n    </p>\n</div>\n"
 
 /***/ },
 /* 12 */
@@ -5141,7 +5140,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\"></div>\n    <div class=\"foolIcon hide\"></div>\n    <div class=\"refreshText hide\"></div>\n    <div class=\"refreshButton hide\">REFRESH</div>\n</div>\n<!-- <div class=\"messageSender\">Sent By: Hemank</div> -->\n<div class=\"trySmellButton align-center hide\">Try Hike Aroma</div>"
+	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\"></div>\n    <div class=\"foolIcon hide\"></div>\n    <div class=\"refreshText hide\"></div>\n    <div class=\"refreshButton hide\">REFRESH</div>\n</div>\n<!-- <div class=\"messageSender\">Sent By: Hemank</div> -->\n<div class=\"trySmellButton align-center hide\">Try Hike Smell</div>"
 
 /***/ },
 /* 16 */
@@ -5162,10 +5161,13 @@
 	        var attachAromaButton = this.el.getElementsByClassName('attachAromaButton')[0];
 
 	        attachAromaButton.addEventListener('click', function(ev) {
-	            platformSdk.appData.helperData.selectedSmellName = false;
-	            platformSdk.appData.helperData.selectedSmellImg = platformSdk.appData.helperData.defaultImg;
-	            platformSdk.updateHelperData(platformSdk.appData.helperData);
-
+	            
+	            if(data.source === 'camera' ){
+	                platformSdk.appData.helperData.selectedSmellName = false;
+	                platformSdk.appData.helperData.selectedSmellImg = platformSdk.appData.helperData.defaultImg;
+	                platformSdk.updateHelperData(platformSdk.appData.helperData);
+	            }
+	            
 	            App.ValentineServices.logData({ 'et': 'afcamerasmellattachclick' });
 	            App.router.navigateTo('/writeMessage', {});
 	        });
@@ -5205,7 +5207,7 @@
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "\t<div class=\"attachAromaWrapper align-center\">\n\t\t<div class=\"attachAromaIcon\"></div>\n\t\t<div class=\"attachAromaHeading\">Aroma Successfully attached</div>\n\t\t<div class=\"attachAromaButton\">Share</div>\n\t</div>"
+	module.exports = "\t<div class=\"attachAromaWrapper align-center\">\n\t\t<div class=\"attachAromaIcon\"></div>\n\t\t<div class=\"attachAromaHeading\">Smell Successfully attached</div>\n\t\t<div class=\"attachAromaButton\">Next</div>\n\t</div>"
 
 /***/ },
 /* 18 */
@@ -5247,7 +5249,7 @@
 
 	        that.el = document.createElement('div');
 	        that.el.className = 'detectAromaContainer animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
+	        that.el.innerHTML = Mustache.render(unescape(that.template), {texttoshow:data.text});
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
 
@@ -5266,7 +5268,7 @@
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"detectAromaWrapper align-center\">\n    <div class=\"detect-wrapper\">\n        <div class=\"bar\"></div>\n        <div class=\"inner-circle\">\n            <div class=\"inner-circle-success\"></div>\n        </div>\n        <div class=\"radial\"></div>\n        <div class=\"back\"></div>\n        <div class=\"a1\"></div>\n        <div class=\"a2\"></div>\n        <div class=\"a3\"></div>\n        <div class=\"a4\"></div>\n        <div class=\"a5\"></div>\n    </div>\n</div>\n\n<div class=\"detectAromaHeading\">Detecting Aroma Particles<br>Please wait<div class=\"loading\"></div></div>\n"
+	module.exports = "<div class=\"detectAromaWrapper align-center\">\n    <div class=\"detect-wrapper\">\n        <div class=\"bar\"></div>\n        <div class=\"inner-circle\">\n            <div class=\"inner-circle-success\"></div>\n        </div>\n        <div class=\"radial\"></div>\n        <div class=\"back\"></div>\n        <div class=\"a1\"></div>\n        <div class=\"a2\"></div>\n        <div class=\"a3\"></div>\n        <div class=\"a4\"></div>\n        <div class=\"a5\"></div>\n    </div>\n</div>\n\n<div class=\"detectAromaHeading\">{{texttoshow}} Smell Particles<br>Please wait<div class=\"loadingdots\"></div></div>\n"
 
 /***/ },
 /* 20 */
@@ -5294,8 +5296,6 @@
 
 	            var outerHeight = parseInt(window.getComputedStyle(this).height, 10);
 	            var diff = outerHeight - this.clientHeight;
-
-
 
 	            if (Math.abs(writeMessageButton.offsetTop - (aromaMessage.offsetHeight + 30)) > 20) {
 	                this.style.height = 0;
@@ -5335,18 +5335,18 @@
 	                    "ld": {
 	                        "hikeAromaMessage": messageToSend,
 	                        "hikeAromaBackground": platformSdk.appData.helperData.selectedSmellImg,
-	                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase() + ' ' + 'SMELL'
+	                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase()
 	                    },
 	                    "hd": {},
 	                    "layoutId": "card.html",
 	                    "push": "silent",
-	                    "notifText": "Hike Aroma recieved",
+	                    "notifText": "Hike Smell recieved",
 	                    "h": 200
 	                }
 	            };
 
 
-	            card.fwdObject.notifText = 'Hike Aroma';
+	            card.fwdObject.notifText = 'Hike Smell';
 	            var hm = 'A smell has been received - ' + ' ' + messageToSend + ' ' + "Note: Hike Smell works only on the latest version of Android.";
 
 	            if (platformSdk.bridgeEnabled)
@@ -5388,7 +5388,7 @@
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"group\">\n</div>\n<div class=\"writeMessageButton\">Send</div>\n<textarea autofocus class=\"aromaMessage\" rows=\"1\" placeholder=\"{{defaultMessage}}\"></textarea>"
+	module.exports = "<div class=\"smellTopContainer\">\n\t<span class=\"circleone\"></span>\n\t<div class=\"smellTopDefault\">Smell Attached Successfully</div>\n</div>\n\n<div class=\"group\">\n</div>\n<div class=\"writeMessageButton\">Send</div>\n<textarea autofocus class=\"aromaMessage\" rows=\"1\" placeholder=\"{{defaultMessage}}\"></textarea>"
 
 /***/ },
 /* 22 */
@@ -5454,7 +5454,11 @@
 	        nextBtn.addEventListener('click', function() {
 
 	            App.ValentineServices.logData({ 'et': 'afdefaultsmellnextclick', 'smellName': platformSdk.appData.helperData.selectedSmellName });
-	            App.router.navigateTo('/writeMessage', {});
+	            App.router.navigateTo('/detectAroma', { text: 'Attaching' });
+	            setTimeout(function() {
+	                App.router.navigateTo('/attachAroma', {source:'notcamera'});
+	            }, 5000);
+	            //App.router.navigateTo('/writeMessage', {});
 
 	        });
 
@@ -5486,14 +5490,14 @@
 	                                platformSdk.updateHelperData(platformSdk.appData.helperData);
 	                                console.log("Taking To detect Aroma");
 	                                // Detecting Aroma 
-	                                that.router.navigateTo('/detectAroma', {});
+	                                that.router.navigateTo('/detectAroma', { text: 'Detecting' });
 	                                // Attaching Aroma Screen
 	                                setTimeout(function() {
-	                                    that.router.navigateTo('/attachAroma', {});
+	                                    that.router.navigateTo('/attachAroma', {source:'camera'});
 	                                }, 5000);
 	                            }
 	                        },
-	                        error: function(res){
+	                        error: function(res) {
 	                            console.log(res);
 	                        }
 	                    });
@@ -5535,6 +5539,7 @@
 	    module.exports = AttachSmellController;
 
 	})(window, platformSdk, platformSdk.events);
+
 
 /***/ },
 /* 23 */

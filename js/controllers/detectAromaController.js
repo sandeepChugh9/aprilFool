@@ -34,7 +34,7 @@
 
         that.el = document.createElement('div');
         that.el.className = 'detectAromaContainer animation_fadein noselect';
-        that.el.innerHTML = Mustache.render(unescape(that.template), {});
+        that.el.innerHTML = Mustache.render(unescape(that.template), {texttoshow:data.text});
         ctr.appendChild(that.el);
         events.publish('update.loader', { show: false });
 

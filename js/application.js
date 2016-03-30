@@ -162,12 +162,11 @@
             var that = this;
             console.log(data);
             data = decodeURIComponent(data);
+            data = JSON.parse(data);
 
-            console.log(data);
-
-            if (data) {
+            if (data.cardOpened) {
                 that.ValentineServices.logData({ 'et': 'afcardsmellclick' });
-                that.router.navigateTo('/howToSmell', {});
+                that.router.navigateTo('/howToSmell', {smellName:data.smellSent});
             } else {
                 that.router.navigateTo('/', {});
             }
@@ -188,10 +187,10 @@
                 platformSdk.updateHelperData(platformSdk.appData.helperData);
                 console.log("Taking To detect Aroma");
                 // Detecting Aroma 
-                that.router.navigateTo('/detectAroma', {});
+                that.router.navigateTo('/detectAroma', {text:'Detecting'});
                 // Attaching Aroma Screen
                 setTimeout(function() {
-                    that.router.navigateTo('/attachAroma', {});
+                    that.router.navigateTo('/attachAroma', {source:'camera'});
                 }, 5000);
             } else {
                 return;
@@ -302,14 +301,14 @@
             this.router.route('/attachSmell', function(data) {
                 self.container.innerHTML = '';
                 self.attachSmellController.render(self.container, self, data);
-                utils.toggleBackNavigation(true);
+                utils.toggleBackNavigation(false);
             });
 
             // If FTUE DONE FOR THE USER :: Go directly to attach smell
-            if (platformSdk.appData.helperData.ftueDone) {
-                self.router.navigateTo('/attachAroma');
-            } else {
-                self.router.navigateTo('/');
+            if(platformSdk.appData.helperData.ftueDone){
+                self.router.navigateTo('/attachSmell');
+            }else{
+                self.router.navigateTo('/'); 
             }
         }
     };

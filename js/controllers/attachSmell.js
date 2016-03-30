@@ -58,7 +58,11 @@
         nextBtn.addEventListener('click', function() {
 
             App.ValentineServices.logData({ 'et': 'afdefaultsmellnextclick', 'smellName': platformSdk.appData.helperData.selectedSmellName });
-            App.router.navigateTo('/writeMessage', {});
+            App.router.navigateTo('/detectAroma', { text: 'Attaching' });
+            setTimeout(function() {
+                App.router.navigateTo('/attachAroma', {source:'notcamera'});
+            }, 5000);
+            //App.router.navigateTo('/writeMessage', {});
 
         });
 
@@ -90,14 +94,14 @@
                                 platformSdk.updateHelperData(platformSdk.appData.helperData);
                                 console.log("Taking To detect Aroma");
                                 // Detecting Aroma 
-                                that.router.navigateTo('/detectAroma', {});
+                                that.router.navigateTo('/detectAroma', { text: 'Detecting' });
                                 // Attaching Aroma Screen
                                 setTimeout(function() {
-                                    that.router.navigateTo('/attachAroma', {});
+                                    that.router.navigateTo('/attachAroma', {source:'camera'});
                                 }, 5000);
                             }
                         },
-                        error: function(res){
+                        error: function(res) {
                             console.log(res);
                         }
                     });
