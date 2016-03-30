@@ -4615,7 +4615,6 @@
 	            // FAQ Event From Three Dot
 	            platformSdk.events.subscribe('app.menu.om.how', function(id) {
 	                that.ValentineServices.logData({ 'et': 'affaqopen' });
-	                utils.toggleBackNavigation(true);
 	                that.router.navigateTo('/smellFtue', {});
 	            });
 
@@ -4753,7 +4752,7 @@
 	            this.router.route('/smellFtue', function(data) {
 	                self.container.innerHTML = '';
 	                self.smellFtueController.render(self.container, self, data);
-	                utils.toggleBackNavigation(false);
+	                utils.toggleBackNavigation(true);
 	            });
 
 	            // Subscribe :: Home Screen Aroma
@@ -5099,11 +5098,13 @@
 	                else
 	                    App.ValentineServices.logData({ 'et': 'aftryhikesmellNorevealflowclick' });
 	            }
-
-
-
 	            console.log("Take To Home Screen Of Hike Aroma To Try The User");
-	            App.router.navigateTo('/', {});
+
+	            if(platformSdk.appData.helperData.ftueDone){
+	                App.router.navigateTo('/attachSmell');
+	            }else{
+	                App.router.navigateTo('/'); 
+	            }
 	        });
 
 
@@ -5297,7 +5298,7 @@
 	            var outerHeight = parseInt(window.getComputedStyle(this).height, 10);
 	            var diff = outerHeight - this.clientHeight;
 
-	            if (Math.abs(writeMessageButton.offsetTop - (aromaMessage.offsetHeight + 30)) > 20) {
+	            if (Math.abs(writeMessageButton.offsetTop - (aromaMessage.offsetHeight + 82)) > 20) {
 	                this.style.height = 0;
 	                this.style.height = Math.max(initialH, this.scrollHeight + diff) + 'px';
 	            }
@@ -5545,7 +5546,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"attachSmellWrap\">\n    <div class=\"attachSmellSection\">\n        <div class=\"selectedStateSmell hide\"> </div>\n        <div class=\"row\">\n            <!-- sandeep !-->\n            <div class=\"smellSection\" aromaName=\"Rose\" aromaImg=\"smellTemplate\">\n                <div class=\"rose smellDimension\"> </div>\n                <div class=\"smellTxt\">Rose</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fart\" aromaImg=\"smellTemplate\">\n                <div class=\"fart smellDimension\"> </div>\n                <div class=\"smellTxt\">Fart</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Rain\" aromaImg=\"smellTemplate\">\n                <div class=\"rain smellDimension\"> </div>\n                <div class=\"smellTxt\">Rain</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Garbage\" aromaImg=\"smellTemplate\">\n                <div class=\"garbage smellDimension\"> </div>\n                <div class=\"smellTxt\">Garbage</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Cheese\" aromaImg=\"smellTemplate\">\n                <div class=\"cheese smellDimension\"> </div>\n                <div class=\"smellTxt\">Cheese</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fish\" aromaImg=\"smellTemplate\">\n                <div class=\"fish smellDimension\"> </div>\n                <div class=\"smellTxt\">Fish</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Socks\" aromaImg=\"smellTemplate\">\n                <div class=\"socks smellDimension\"> </div>\n                <div class=\"smellTxt\">Socks</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Tea\" aromaImg=\"smellTemplate\">\n                <div class=\"tea smellDimension\"> </div>\n                <div class=\"smellTxt\">Tea</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Petrol\" aromaImg=\"smellTemplate\">\n                <div class=\"petrol smellDimension\"> </div>\n                <div class=\"smellTxt\">Petrol</div>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"buttonsWrapper\">\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt align-center\">Or capture a smell and attach it!</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"attachSmellWrap\">\n    <div class=\"attachSmellSection\">\n        <div class=\"selectedStateSmell hide\"> </div>\n        <div class=\"row\">\n            <!-- sandeep !-->\n            <div class=\"smellSection\" aromaName=\"Rose\" aromaImg=\"smellTemplate\">\n                <div class=\"rose smellDimension\"> </div>\n                <div class=\"smellTxt\">Rose</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fart\" aromaImg=\"smellTemplate\">\n                <div class=\"fart smellDimension\"> </div>\n                <div class=\"smellTxt\">Fart</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Rain\" aromaImg=\"smellTemplate\">\n                <div class=\"rain smellDimension\"> </div>\n                <div class=\"smellTxt\">Rain</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Garbage\" aromaImg=\"smellTemplate\">\n                <div class=\"garbage smellDimension\"> </div>\n                <div class=\"smellTxt\">Garbage</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Cheese\" aromaImg=\"smellTemplate\">\n                <div class=\"cheese smellDimension\"> </div>\n                <div class=\"smellTxt\">Cheese</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fish\" aromaImg=\"smellTemplate\">\n                <div class=\"fish smellDimension\"> </div>\n                <div class=\"smellTxt\">Fish</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Socks\" aromaImg=\"smellTemplate\">\n                <div class=\"socks smellDimension\"> </div>\n                <div class=\"smellTxt\">Socks</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Tea\" aromaImg=\"smellTemplate\">\n                <div class=\"tea smellDimension\"> </div>\n                <div class=\"smellTxt\">Tea</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Petrol\" aromaImg=\"smellTemplate\">\n                <div class=\"petrol smellDimension\"> </div>\n                <div class=\"smellTxt\">Petrol</div>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"buttonsWrapper\">\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt align-center\">Or capture a smell!</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 24 */

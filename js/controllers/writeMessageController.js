@@ -21,7 +21,7 @@
             var outerHeight = parseInt(window.getComputedStyle(this).height, 10);
             var diff = outerHeight - this.clientHeight;
 
-            if (Math.abs(writeMessageButton.offsetTop - (aromaMessage.offsetHeight + 30)) > 20) {
+            if (Math.abs(writeMessageButton.offsetTop - (aromaMessage.offsetHeight + 82)) > 20) {
                 this.style.height = 0;
                 this.style.height = Math.max(initialH, this.scrollHeight + diff) + 'px';
             }

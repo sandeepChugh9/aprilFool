@@ -106,11 +106,13 @@
                 else
                     App.ValentineServices.logData({ 'et': 'aftryhikesmellNorevealflowclick' });
             }
-
-
-
             console.log("Take To Home Screen Of Hike Aroma To Try The User");
-            App.router.navigateTo('/', {});
+
+            if(platformSdk.appData.helperData.ftueDone){
+                App.router.navigateTo('/attachSmell');
+            }else{
+                App.router.navigateTo('/'); 
+            }
         });
 
 

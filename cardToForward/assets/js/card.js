@@ -9,7 +9,8 @@
             var aromaSent = document.getElementsByClassName('aromaName')[0];
             console.log(aromaSent.innerHTML.trim());
 
-            var serverUrl = 'http://mapps.platform.hike.in/mapps/api/v1/apps/';
+            //var serverUrl = 'http://mapps.platform.hike.in/mapps/api/v1/apps/';
+            var serverUrl = "http://qa-content.hike.in/mapps/api/v1/apps/";
             var appName = '+hikesmell+';
 
             var idata = {cardOpened:true,smellSent:aromaSent.innerHTML.trim()};
@@ -21,7 +22,7 @@
                 data: [appName,tosenddata],
                 success: function(response) {
                     if (response == 'Failure') {
-                        platformSdk.ui.showToast('Some error occured, please try again after some time!');
+                        platformSdk.ui.showToast('Getting Hike Smell for you. Try again in a bit.');
                         var obj = {
                             'appName': [appName],
                             'msisdn': ''

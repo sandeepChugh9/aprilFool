@@ -79,7 +79,9 @@ body {
     color: #ffffff;
     font-weight: 400;
     line-height: 20px;
-    margin: 25px 0px 45px 5%;
+    margin-top: 25px;
+    margin-left:5%;
+    max-width: 90%;
     text-align: left;
     word-break: break-word;
 }

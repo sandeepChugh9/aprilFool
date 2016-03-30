@@ -116,7 +116,6 @@
             // FAQ Event From Three Dot
             platformSdk.events.subscribe('app.menu.om.how', function(id) {
                 that.ValentineServices.logData({ 'et': 'affaqopen' });
-                utils.toggleBackNavigation(true);
                 that.router.navigateTo('/smellFtue', {});
             });
 
@@ -254,7 +253,7 @@
             this.router.route('/smellFtue', function(data) {
                 self.container.innerHTML = '';
                 self.smellFtueController.render(self.container, self, data);
-                utils.toggleBackNavigation(false);
+                utils.toggleBackNavigation(true);
             });
 
             // Subscribe :: Home Screen Aroma
