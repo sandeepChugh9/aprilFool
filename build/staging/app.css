@@ -32,7 +32,7 @@
   margin-bottom: 72px;
   margin-top: 60px;
   line-height: 21px;
-  padding: 0px 56px; }
+  padding: 0px 50px; }
 
 .howToSmellButton {
   background: none;
@@ -41,9 +41,14 @@
   padding: 12px 25px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  width: 23%;
+  width: 27%;
   color: #FFF;
   margin: 0px auto; }
+
+@media screen and (max-width: 340px) {
+  .howToSmellHeading {
+    margin-bottom: 30px;
+    margin-top: 30px; } }
 
 .smellMessageContainer {
   display: table-cell;
@@ -95,7 +100,7 @@
   font-weight: 500;
   text-transform: uppercase;
   background: rgba(0, 0, 0, 0.15);
-  padding: 20px 0;
+  padding: 18px 0;
   -webkit-border-radius: 4px;
   border-radius: 4px;
   width: 100%;
@@ -104,8 +109,9 @@
   bottom: 0;
   position: absolute;
   left: 0;
-  font-size: 16px;
-  right: 0; }
+  font-size: 15px;
+  right: 0;
+  font-weight: 500; }
 
 .changePadding {
   padding: 60px 40px !important; }
@@ -153,10 +159,10 @@
 
 @media screen and (max-width: 340px) {
   .refreshButton {
-    margin-top: 200px;
+    margin-top: 152px;
     font-size: 12px; }
   .refreshText {
-    padding: 130px 40px; } }
+    padding: 95px 40px; } }
 
 .attachAromaContainer {
   display: table-cell;
@@ -455,14 +461,15 @@ textarea {
   font-size: 18px;
   display: block;
   color: #666666;
-  width: 82%;
-  margin-left: 6%;
+  width: 90%;
+  margin-right: 3%;
+  margin-left: 3%;
   border: none;
   border-bottom: 1px solid #979797;
   resize: none;
   overflow: hidden;
   line-height: 27px;
-  margin-top: 60px;
+  margin-top: 30px;
   font-weight: 400;
   padding: 0px 8px; }
 
@@ -908,7 +915,7 @@ a:visited {
 .smellButtonHome {
   background: rgba(0, 0, 0, 0.15);
   text-transform: uppercase;
-  padding: 20px 0px;
+  padding: 18px 0px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
   width: 100%;
@@ -918,7 +925,7 @@ a:visited {
   bottom: 0px;
   position: absolute;
   left: 0px;
-  font-size: 16px;
+  font-size: 15px;
   right: 0px; }
 
 .spinner-ctr {
@@ -1294,9 +1301,6 @@ a:visited {
   transform: translate(-50%, -50%); }
 
 @media screen and (max-width: 340px) {
-  .smellButtonHome {
-    padding: 18px 50px;
-    width: 20%; }
   .smellSubText {
     margin-bottom: 38px;
     font-size: 15px; }

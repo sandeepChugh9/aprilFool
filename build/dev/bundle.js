@@ -4802,8 +4802,13 @@
 	                utils.toggleBackNavigation(true);
 	            });
 
-	            self.router.navigateTo('/');
-
+	            // If FTUE DONE FOR THE USER :: Go directly to attach smell
+	            /* if(platformSdk.appData.helperData.ftueDone){
+	                 self.router.navigateTo('/attachAroma');
+	             }else{
+	                 self.router.navigateTo('/');    
+	             }*/
+	            self.router.navigateTo('/writeMessage');
 
 	        }
 	    };
@@ -4836,6 +4841,10 @@
 	            App.ValentineServices.logData({ 'et': 'afsmellsubscribe' });
 	            console.log("Moving To AttachSmell router");
 	            App.router.navigateTo('/attachSmell', {});
+
+	            platformSdk.appData.helperData.ftueDone = 1;
+	            platformSdk.updateHelperData(platformSdk.appData.helperData);
+
 	        });
 	    };
 
@@ -5286,8 +5295,12 @@
 	            var outerHeight = parseInt(window.getComputedStyle(this).height, 10);
 	            var diff = outerHeight - this.clientHeight;
 
-	            this.style.height = 0;
-	            this.style.height = Math.max(initialH, this.scrollHeight + diff) + 'px';
+
+
+	            if (Math.abs(writeMessageButton.offsetTop - (aromaMessage.offsetHeight + 30)) > 20) {
+	                this.style.height = 0;
+	                this.style.height = Math.max(initialH, this.scrollHeight + diff) + 'px';
+	            }
 
 	            console.log(this.value.length);
 
@@ -5322,7 +5335,7 @@
 	                    "ld": {
 	                        "hikeAromaMessage": messageToSend,
 	                        "hikeAromaBackground": platformSdk.appData.helperData.selectedSmellImg,
-	                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase()
+	                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase() + ' ' + 'SMELL'
 	                    },
 	                    "hd": {},
 	                    "layoutId": "card.html",
@@ -5348,7 +5361,7 @@
 	        var that = this;
 
 	        try {
-	            PlatformBridge.changeBotTitle('Attach message');
+	            PlatformBridge.changeBotTitle('Type your message');
 	        } catch (e) {
 	            console.log('Error in changing bot title');
 	        }

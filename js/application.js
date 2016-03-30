@@ -163,6 +163,8 @@
             console.log(data);
             data = decodeURIComponent(data);
 
+            console.log(data);
+
             if (data) {
                 that.ValentineServices.logData({ 'et': 'afcardsmellclick' });
                 that.router.navigateTo('/howToSmell', {});
@@ -304,10 +306,10 @@
             });
 
             // If FTUE DONE FOR THE USER :: Go directly to attach smell
-            if(platformSdk.appData.helperData.ftueDone){
+            if (platformSdk.appData.helperData.ftueDone) {
                 self.router.navigateTo('/attachAroma');
-            }else{
-                self.router.navigateTo('/');    
+            } else {
+                self.router.navigateTo('/');
             }
         }
     };

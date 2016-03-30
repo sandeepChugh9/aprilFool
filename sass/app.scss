@@ -326,7 +326,7 @@ a:visited {
 .smellButtonHome {
     background: rgba(0, 0, 0, 0.15);
     text-transform: uppercase;
-    padding: 20px 0px;
+    padding: 18px 0px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
     width: 100%;
@@ -336,7 +336,7 @@ a:visited {
     bottom: 0px;
     position: absolute;
     left: 0px;
-    font-size: 16px;
+    font-size: 15px;
     right: 0px;
 }
 
@@ -820,10 +820,6 @@ a:visited {
 }
 
 @media screen and (max-width: 340px) {
-    .smellButtonHome {
-        padding: 18px 50px;
-        width: 20%;
-    }
     .smellSubText {
         margin-bottom: 38px;
         font-size: 15px;
@@ -837,34 +833,35 @@ a:visited {
     }
 }
 
-.faqContainer{
-    display:block;
-    padding:30px;
+.faqContainer {
+    display: block;
+    padding: 30px;
     overflow: scroll;
     height: 430px;
 }
 
-h1{
+h1 {
     font-size: 18px;
     font-weight: 500;
-    color: rgba(0,0,0,0.50);
+    color: rgba(0, 0, 0, 0.50);
 }
 
-h2{
+h2 {
     margin: 16px 0 8px 0 !important;
     font-size: 18px !important;
-    color: rgba(0,0,0,.80) !important;
+    color: rgba(0, 0, 0, .80) !important;
     font-weight: 500 !important;
     line-height: 24px !important;
-    padding-top:16px !important;;
+    padding-top: 16px !important;
+    ;
 }
 
-p{
-     margin-top: 0px;
-     margin-bottom: 16px;
-     font-size: 14px;
-     letter-spacing: 0;
-     font-weight: 400;
-     line-height: 18px;
-     color: rgba(0,0,0,.48);
+p {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    letter-spacing: 0;
+    font-weight: 400;
+    line-height: 18px;
+    color: rgba(0, 0, 0, .48);
 }

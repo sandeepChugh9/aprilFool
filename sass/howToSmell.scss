@@ -35,7 +35,7 @@
     margin-bottom: 72px;
     margin-top: 60px;
     line-height: 21px;
-    padding: 0px 56px;
+    padding: 0px 50px;
 }
 
 .howToSmellButton {
@@ -45,7 +45,14 @@
     padding: 12px 25px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
-    width: 23%;
+    width: 27%;
     color: #FFF;
     margin: 0px auto;
+}
+
+@media screen and (max-width: 340px) {
+    .howToSmellHeading {
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
 }

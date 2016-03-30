@@ -54,7 +54,7 @@ $aroma: #E424C3;
     font-weight: 500;
     text-transform: uppercase;
     background: rgba(0, 0, 0, .15);
-    padding: 20px 0;
+    padding: 18px 0;
     -webkit-border-radius: 4px;
     border-radius: 4px;
     width: 100%;
@@ -63,8 +63,9 @@ $aroma: #E424C3;
     bottom: 0;
     position: absolute;
     left: 0;
-    font-size: 16px;
+    font-size: 15px;
     right: 0;
+    font-weight: 500;
 }
 
 .changePadding {
@@ -120,10 +121,10 @@ $aroma: #E424C3;
 
 @media screen and (max-width: 340px) {
     .refreshButton {
-        margin-top: 200px;
+        margin-top: 152px;
         font-size: 12px;
     }
     .refreshText {
-        padding: 130px 40px;
+        padding: 95px 40px;
     }
 }
