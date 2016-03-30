@@ -46,7 +46,7 @@
             }
 
             if (!platformSdk.appData.helperData.selectedSmellName) {
-                platformSdk.appData.helperData.selectedSmellName = 'Custom';
+                platformSdk.appData.helperData.selectedSmellName = 'Custom Smell';
                 platformSdk.updateHelperData(platformSdk.appData.helperData);
             }
 
@@ -57,7 +57,7 @@
                     "ld": {
                         "hikeAromaMessage": messageToSend,
                         "hikeAromaBackground": platformSdk.appData.helperData.selectedSmellImg,
-                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase()
+                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase()+' '+'SMELL'
                     },
                     "hd": {},
                     "layoutId": "card.html",

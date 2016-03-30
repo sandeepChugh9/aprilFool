@@ -115,8 +115,8 @@
 
             // FAQ Event From Three Dot
             platformSdk.events.subscribe('app.menu.om.how', function(id) {
-                //that.ValentineServices.logData({ 'ek': 'hvFaq' });
                 that.ValentineServices.logData({ 'et': 'affaqopen' });
+                utils.toggleBackNavigation(true);
                 that.router.navigateTo('/smellFtue', {});
             });
 

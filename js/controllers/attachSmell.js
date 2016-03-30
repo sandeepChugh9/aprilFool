@@ -83,6 +83,7 @@
                         fn: 'chooseFile',
                         data: 'true',
                         success: function(res) {
+                            console.log(res);
                             console.log("Image Selected From The Gallery");
                             if (platformSdk.appData.helperData.attachSmellCalled) {
                                 platformSdk.appData.helperData.attachSmellCalled = 0;
@@ -95,6 +96,9 @@
                                     that.router.navigateTo('/attachAroma', {});
                                 }, 5000);
                             }
+                        },
+                        error: function(res){
+                            console.log(res);
                         }
                     });
 

@@ -1308,7 +1308,9 @@ a:visited {
 
 .faqContainer {
   display: block;
-  padding: 30px; }
+  padding: 30px;
+  overflow: scroll;
+  height: 430px; }
 
 h1 {
   font-size: 18px;

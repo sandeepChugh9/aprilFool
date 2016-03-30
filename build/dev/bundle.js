@@ -4614,8 +4614,8 @@
 
 	            // FAQ Event From Three Dot
 	            platformSdk.events.subscribe('app.menu.om.how', function(id) {
-	                //that.ValentineServices.logData({ 'ek': 'hvFaq' });
 	                that.ValentineServices.logData({ 'et': 'affaqopen' });
+	                utils.toggleBackNavigation(true);
 	                that.router.navigateTo('/smellFtue', {});
 	            });
 
@@ -4917,7 +4917,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"faqContainer\">\n    <h1>Frequently Asked Questions</h1>\n    <h2>1. What is Hike Smell?</h2>\n    <p>Hike Smell is the state of the art tool which lets users attach smell to their messages. Now, you can let your friends smell the objects that you share with them through Hike Smell.</p>\n    <h2>2. How does it work?</h2>\n    <p>Hike Smell uses the Olfactory sensors available in the latest version of android to detect the smell of the objects around you. This patent pending technology simulates the nasal sensors of human nose and has been widely researched upon for the last few years.</p>\n    <h2>3. How to use Hike Smell?</h2>\n    <p>Step 1: Tap on Hike Smell option in Hike app <br>Step 2: Click on \"Try Now” <br>Step 3: You can select a pre-defined smell from the list or you can tap on the “+” icon to take a picture from your camera or phone gallery. <br>Step 4: Click on “Share\" <br>Step 5: Type a message to go along with your Hike Smell card <br>Step 6: Select the friends you want to share the Hike Smell card Step 7: Done\n    </p>\n    <h2>4. What are Hike Smell cards?</h2>\n    <p>A skipped user’s profile will be removed from the recommendation list and not be displayed to you again.So skip wisely :P.</p>\n    <h2>5. How to invite my friends to use the Hike Smell?</h2>\n    <p>Your like preference will be stored for future references. The user will NOT be notified till the time he/she likes you back.</p>\n</div>\n"
+	module.exports = "<div class=\"faqContainer\">\n    <h1>Frequently Asked Questions</h1>\n    <h2>1. What is Hike Smell?</h2>\n    <p>Imagine you are sitting in a coffee shop and you want to tell your friends how aromatic your coffee tastes. Hike Smell is the state of the art tool which makes this possible. Now, users can attach smell to their messages. Welcome to the world of intelligent messaging!</p>\n    <h2>2. How does it work?</h2>\n    <p>The Hike Smell cards simulate the human olfactory nervous function. Using the patent pending Digital Smell Compression (DSC) technology, Hike Smell digitally captures the smell particles from the piezoelectric sensors available in the latest version of Android to detect the smell of the objects around you. This is stored in the GB cache of your phone, which multiplexes the smell particles with the text message using the PPPoE protocol. This digitally coupled message is then injected in the unicode TCP capacitor, which is a small chip near the transmitter of your device that backs up the BIOS bus and transmits the digital replica of the smell. </p>\n    <h2>3. How to use Hike Smell?</h2>\n    <p>Step 1: Tap on Hike Smell option in Hike app\n        <br> Step 2: Click on \"Try Now”\n        <br> Step 3: You can select a predefined smell from the list or you can tap on the “+” icon to take a picture from your camera or phone gallery.\n        <br> Step 4: Click on “Share\".\n        <br> Step 5: Type a message to go along with your Hike Smell card.\n        <br> Step 6: Select the friends you want to share the Hike Smell card.\n        <br> Step 7: Done.\n    </p>\n    <h2>4. What are Hike Smell cards?</h2>\n    <p>The smell that you intend to share with your friends with shared via Hike Smell cards, which are digital imprints of the olfactory particles detected in the image sent by you. They're inside the sensor and use the optical PPPoE card technology to program their protocol.</p>\n    <h2>5. “I am not able to smell the card. What should i do?”</h2>\n    <p>1. The Hike Smell cards can be used to transmit smells effectively to your friends. However, the sender of the card will not be able to smell the card himself, since the current version of android does not support this feature.\n        <br> 2.Try rotating your phone screen at an angle where the smell particles can be released without surrounding interference\n        <br> 3.If someone has sent you a card and you are not able to detect the smell, this could be due to 2 reasons\n        <br> a. Your android version does not support the olfactory sensor technology\n        <br> b. Your nose is faulty :P\n    </p>\n    <h2>How to invite my friends to use the Hike Smell?</h2>\n    <p>By tapping on the Hike Smell card shared by you, your friends can use the Hike Smell feature themselves and share with anyone they wish.\n    </p>\n</div>\n"
 
 /***/ },
 /* 12 */
@@ -5311,7 +5311,7 @@
 	            }
 
 	            if (!platformSdk.appData.helperData.selectedSmellName) {
-	                platformSdk.appData.helperData.selectedSmellName = 'Custom';
+	                platformSdk.appData.helperData.selectedSmellName = 'Custom Smell';
 	                platformSdk.updateHelperData(platformSdk.appData.helperData);
 	            }
 
@@ -5466,6 +5466,7 @@
 	                        fn: 'chooseFile',
 	                        data: 'true',
 	                        success: function(res) {
+	                            console.log(res);
 	                            console.log("Image Selected From The Gallery");
 	                            if (platformSdk.appData.helperData.attachSmellCalled) {
 	                                platformSdk.appData.helperData.attachSmellCalled = 0;
@@ -5478,6 +5479,9 @@
 	                                    that.router.navigateTo('/attachAroma', {});
 	                                }, 5000);
 	                            }
+	                        },
+	                        error: function(res){
+	                            console.log(res);
 	                        }
 	                    });
 
