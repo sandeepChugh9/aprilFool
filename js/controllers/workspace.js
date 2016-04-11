@@ -10,30 +10,30 @@
     WorkspaceController.prototype.bind = function(App) {
         var $el = $(this.el);
 
-        var smellButton = this.el.getElementsByClassName('smellButtonHome')[0];
+        // var smellButton = this.el.getElementsByClassName('smellButtonHome')[0];
 
-        smellButton.addEventListener('click', function(ev) {
-            // Write Message Input Router Here
+        // smellButton.addEventListener('click', function(ev) {
+        //     // Write Message Input Router Here
 
-            App.ValentineServices.logData({ 'et': 'afsmellsubscribe' });
-            console.log("Moving To AttachSmell router");
-            App.router.navigateTo('/attachSmell', {});
+        //     App.ValentineServices.logData({ 'et': 'afsmellsubscribe' });
+        //     console.log("Moving To AttachSmell router");
+        //     App.router.navigateTo('/attachSmell', {});
 
-            platformSdk.appData.helperData.ftueDone = 1;
-            platformSdk.updateHelperData(platformSdk.appData.helperData);
+        //     platformSdk.appData.helperData.ftueDone = 1;
+        //     platformSdk.updateHelperData(platformSdk.appData.helperData);
 
-        });
+        // });
     };
 
     WorkspaceController.prototype.render = function(ctr, App, data) {
 
         var that = this;
 
-        try {
-            PlatformBridge.changeBotTitle('Hike Smell');
-        } catch (e) {
-            console.log('Error in changing bot title');
-        }
+        // try {
+        //     PlatformBridge.changeBotTitle('Hike Smell');
+        // } catch (e) {
+        //     console.log('Error in changing bot title');
+        // }
 
         that.el = document.createElement('div');
         that.el.className = 'smellOptInContainer animation_fadein noselect';

@@ -109,7 +109,7 @@
 
 	        application.start();
 
-	        window.onResume = application.resumeHikeSmell.bind(application);
+	        window.onResume = application.resumeHikeNinja.bind(application);
 	        window.intentData = application.getIntentData.bind(application);
 	    });
 
@@ -4473,18 +4473,18 @@
 	    module.exports = function(env) {
 	        if (env === Constants.DEV_ENV) {
 	            return {
-	                API_URL: 'http://valentine.hike.in/v1',
+	                API_URL: '',
 
 	            };
 	        } else if (env === Constants.STAGING_ENV) {
 	            return {
-	                API_URL: 'http://valentine.hike.in/v1',
+	                API_URL: '',
 
 
 	            };
 	        } else if (env === Constants.PROD_ENV) {
 	            return {
-	                API_URL: 'http://valentine.hike.in/v1',
+	                API_URL: '',
 
 	            };
 	        }
@@ -4501,19 +4501,12 @@
 	    'use strict';
 
 	    var WorkspaceController = __webpack_require__(8),
-	        SmellFtueController = __webpack_require__(10),
-	        HowToSmellController = __webpack_require__(12),
-	        SmellMessageController = __webpack_require__(14),
-	        AttachAromaController = __webpack_require__(16),
-	        DetectAromaController = __webpack_require__(18),
-	        WriteMessageController = __webpack_require__(20),
-	        AttachSmellController = __webpack_require__(22),
-
-	        Router = __webpack_require__(24),
+	        
+	        Router = __webpack_require__(10),
 	        utils = __webpack_require__(4),
 
-	        TxService = __webpack_require__(25),
-	        ValentineServices = __webpack_require__(26);
+	        TxService = __webpack_require__(11),
+	        NinjaServices = __webpack_require__(12);
 
 	    // Full Screen Loader
 	    var loader = document.getElementById('loader');
@@ -4551,8 +4544,6 @@
 	        }
 	    }, false);
 
-
-
 	    // Block Connection Tab
 	    var isBlock = document.getElementById('blockScreen');
 	    var isBlockObject = events.subscribe('app/block', function(params) {
@@ -4586,20 +4577,61 @@
 	        this.router = new Router();
 
 	        this.workspaceController = new WorkspaceController();
-	        this.howToSmellController = new HowToSmellController();
-	        this.smellMessageController = new SmellMessageController();
-	        this.smellFtueController = new SmellFtueController();
-	        this.attachAromaController = new AttachAromaController();
-	        this.detectAromaController = new DetectAromaController();
-	        this.writeMessageController = new WriteMessageController();
-	        this.attachSmellController = new AttachSmellController();
-
-
+	    
 	        this.TxService = new TxService();
-	        this.ValentineServices = new ValentineServices(this.TxService); //communication layer
+	        this.ninjaServices = new NinjaServices(this.TxService); //communication layer
 	    };
 
 	    Application.prototype = {
+
+	                // Three Dot Menu Overflow Events Subscriptions
+	        OverflowEvents: function() {
+
+	            var that = this;
+
+	            // Notifications ON/OFF
+	            platformSdk.events.subscribe( 'app.menu.om.mute', function( id ) {
+	                id = '' + platformSdk.retrieveId( 'app.menu.om.mute' );
+	                
+	                if ( platformSdk.appData.mute == 'true' ) {
+	                    platformSdk.appData.mute = 'false';
+	                    platformSdk.muteChatThread();
+	                    platformSdk.updateOverflowMenu( id, {
+	                        'is_checked': 'true'
+	                    });
+	                } else {
+	                    platformSdk.appData.mute = 'true';
+	                    platformSdk.muteChatThread();
+	                    platformSdk.updateOverflowMenu( id, {
+	                        'is_checked': 'false'
+	                    });
+	                }
+	            });
+
+	            // Block Event From The Three Dot
+	            platformSdk.events.subscribe( 'app.menu.om.block', function( id ) {
+	                id = '' + platformSdk.retrieveId( 'app.menu.om.block' );
+	                if ( platformSdk.appData.block === 'true' ) {
+	                    unBlockApp();
+
+	                } else {
+	                    platformSdk.appData.block = 'true';
+	                    platformSdk.blockChatThread();
+	                    platformSdk.events.publish( 'app.state.block.show' );
+	                    platformSdk.updateOverflowMenu( id, {
+	                        'title': 'Unblock'
+	                    });
+	                    utils.toggleBackNavigation( false );
+	                    events.publish( 'app/block', {
+	                        show: true
+	                    });
+	                    events.publish( 'app/offline', {
+	                        show: false
+	                    });
+
+	                }
+	            });
+	        },
 
 	        // Setting Up The Three Dot Menu
 	        initOverflowMenu: function() {
@@ -4607,67 +4639,30 @@
 	            var that = this;
 
 	            var omList = [{
-	                "title": "How it works",
-	                "en": "true",
-	                "eventName": "app.menu.om.how"
-	            }];
+	                    'title': 'Notifications',
+	                    'en': 'true',
+	                    'eventName': 'app.menu.om.mute',
+	                    'is_checked': platformSdk.appData.mute === 'true' ? 'false' : 'true'
+	                },
 
-	            // FAQ Event From Three Dot
-	            platformSdk.events.subscribe('app.menu.om.how', function(id) {
-	                that.ValentineServices.logData({ 'et': 'affaqopen' });
-	                that.router.navigateTo('/smellFtue', {});
-	            });
+	                {
+	                    'title': platformSdk.appData.block === 'true' ? 'Unblock' : 'Block',
+	                    'en': 'true',
+	                    'eventName': 'app.menu.om.block'
+	                }];
 
-	            // Notifications
-	            // platformSdk.events.subscribe('app.menu.om.mute', function(id) {
-	            //     id = "" + platformSdk.retrieveId('app.menu.om.mute');
-	            //     if (platformSdk.appData.mute == "true") {
-	            //         platformSdk.appData.mute = "false";
-	            //         platformSdk.muteChatThread();
-	            //         platformSdk.updateOverflowMenu(id, {
-	            //             "is_checked": "true"
-	            //         });
-	            //     } else {
-	            //         platformSdk.appData.mute = "true";
-	            //         platformSdk.muteChatThread();
-	            //         platformSdk.updateOverflowMenu(id, {
-	            //             "is_checked": "false"
-	            //         });
-	            //     }
-	            // });
-	            // // Block
-	            // platformSdk.events.subscribe('app.menu.om.block', function(id) {
-	            //     id = "" + platformSdk.retrieveId('app.menu.om.block');
-	            //     if (platformSdk.appData.block === "true") {
-	            //         unBlockApp();
-	            //     } else {
-	            //         platformSdk.appData.block = "true";
-	            //         platformSdk.blockChatThread();
-	            //         platformSdk.events.publish('app.state.block.show');
-	            //         platformSdk.updateOverflowMenu(id, {
-	            //             "title": "Unblock"
-	            //         });
-	            //         utils.toggleBackNavigation(false);
-	            //         events.publish('app/block', { show: true });
-	            //         events.publish('app/offline', { show: false });
-	            //     }
-	            // });
+	            that.OverflowEvents();
 
-	            platformSdk.setOverflowMenu(omList);
+	            platformSdk.setOverflowMenu( omList );
 	        },
 
+
+	        // If card Data Comes From Any Forwarded Card that calls Open Non Messaging Bot Here
 	        getIntentData: function(data) {
 	            var that = this;
 	            console.log(data);
 	            data = decodeURIComponent(data);
 	            data = JSON.parse(data);
-
-	            if (data.cardOpened) {
-	                that.ValentineServices.logData({ 'et': 'afcardsmellclick' });
-	                that.router.navigateTo('/howToSmell', {smellName:data.smellSent});
-	            } else {
-	                that.router.navigateTo('/', {});
-	            }
 
 	        },
 
@@ -4675,31 +4670,14 @@
 	            this.router.back();
 	        },
 
-	        resumeHikeSmell: function() {
-	            console.log("Hike Smell Resumed");
-	            events.publish('update.loader', { show: false });
-	            var that = this;
-
-	            if (platformSdk.appData.helperData.attachSmellCalled) {
-	                platformSdk.appData.helperData.attachSmellCalled = 0;
-	                platformSdk.updateHelperData(platformSdk.appData.helperData);
-	                console.log("Taking To detect Aroma");
-	                // Detecting Aroma 
-	                that.router.navigateTo('/detectAroma', {text:'Detecting'});
-	                // Attaching Aroma Screen
-	                setTimeout(function() {
-	                    that.router.navigateTo('/attachAroma', {source:'camera'});
-	                }, 5000);
-	            } else {
-	                return;
-	            }
-
+	        resumeHikeNinja: function() {
+	            console.log("The Micro App Has Benn Resumed");
 	        },
 
 	        getRoute: function() {
 	            var that = this;
 
-	            // ToDo: Remvove tihs if block from here?
+	            // ToDo: Remvove this if block from here?
 	            if (this.routeIntent !== undefined) {
 
 	            } else {
@@ -4748,13 +4726,7 @@
 	                self.backPressTrigger();
 	            });
 
-	            // Subscribe :: Home Screen Aroma FTUE
-	            this.router.route('/smellFtue', function(data) {
-	                self.container.innerHTML = '';
-	                self.smellFtueController.render(self.container, self, data);
-	                utils.toggleBackNavigation(true);
-	            });
-
+	            
 	            // Subscribe :: Home Screen Aroma
 	            this.router.route('/', function(data) {
 	                self.container.innerHTML = '';
@@ -4762,52 +4734,9 @@
 	                utils.toggleBackNavigation(false);
 	            });
 
-	            // ANY SMELL PART 1
-	            this.router.route('/howToSmell', function(data) {
-	                self.container.innerHTML = '';
-	                self.howToSmellController.render(self.container, self, data);
-	                utils.toggleBackNavigation(false);
-	            });
-	            // ANY SMELL PART 2
-	            this.router.route('/smellMessage', function(data) {
-	                self.container.innerHTML = '';
-	                self.smellMessageController.render(self.container, self, data);
-	                utils.toggleBackNavigation(false);
-	            });
-
-	            // Detect The Aroma
-	            this.router.route('/detectAroma', function(data) {
-	                self.container.innerHTML = '';
-	                self.detectAromaController.render(self.container, self, data);
-	                utils.toggleBackNavigation(true);
-	            });
-
-	            // Attach the Aroma
-	            this.router.route('/attachAroma', function(data) {
-	                self.container.innerHTML = '';
-	                self.attachAromaController.render(self.container, self, data);
-	                utils.toggleBackNavigation(false);
-	            });
-
-	            // Construct Message For Aroma
-	            this.router.route('/writeMessage', function(data) {
-	                self.container.innerHTML = '';
-	                self.writeMessageController.render(self.container, self, data);
-	                utils.toggleBackNavigation(true);
-	            });
-
-	            this.router.route('/attachSmell', function(data) {
-	                self.container.innerHTML = '';
-	                self.attachSmellController.render(self.container, self, data);
-	                utils.toggleBackNavigation(false);
-	            });
-
-	            // If FTUE DONE FOR THE USER :: Go directly to attach smell
-	            if(platformSdk.appData.helperData.ftueDone){
-	                self.router.navigateTo('/attachSmell');
-	            }else{
-	                self.router.navigateTo('/'); 
-	            }
+	            // Router Navigates To Home Page In The Start    
+	            self.router.navigateTo('/'); 
+	        
 	        }
 	    };
 
@@ -4831,30 +4760,30 @@
 	    WorkspaceController.prototype.bind = function(App) {
 	        var $el = $(this.el);
 
-	        var smellButton = this.el.getElementsByClassName('smellButtonHome')[0];
+	        // var smellButton = this.el.getElementsByClassName('smellButtonHome')[0];
 
-	        smellButton.addEventListener('click', function(ev) {
-	            // Write Message Input Router Here
+	        // smellButton.addEventListener('click', function(ev) {
+	        //     // Write Message Input Router Here
 
-	            App.ValentineServices.logData({ 'et': 'afsmellsubscribe' });
-	            console.log("Moving To AttachSmell router");
-	            App.router.navigateTo('/attachSmell', {});
+	        //     App.ValentineServices.logData({ 'et': 'afsmellsubscribe' });
+	        //     console.log("Moving To AttachSmell router");
+	        //     App.router.navigateTo('/attachSmell', {});
 
-	            platformSdk.appData.helperData.ftueDone = 1;
-	            platformSdk.updateHelperData(platformSdk.appData.helperData);
+	        //     platformSdk.appData.helperData.ftueDone = 1;
+	        //     platformSdk.updateHelperData(platformSdk.appData.helperData);
 
-	        });
+	        // });
 	    };
 
 	    WorkspaceController.prototype.render = function(ctr, App, data) {
 
 	        var that = this;
 
-	        try {
-	            PlatformBridge.changeBotTitle('Hike Smell');
-	        } catch (e) {
-	            console.log('Error in changing bot title');
-	        }
+	        // try {
+	        //     PlatformBridge.changeBotTitle('Hike Smell');
+	        // } catch (e) {
+	        //     console.log('Error in changing bot title');
+	        // }
 
 	        that.el = document.createElement('div');
 	        that.el.className = 'smellOptInContainer animation_fadein noselect';
@@ -4879,677 +4808,10 @@
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"smellWrapper align-center\">\n    <div class=\"smellIcon\"></div>\n    <div class=\"smellHeading\">Hike Smell</div>\n    <div class=\"smellSubText\">Now attach and send any smell along with your messages</div>\n</div>\n<div class=\"smellButtonHome\">Try Now</div>\n"
+	module.exports = "<p> Hemank Sabharwal </p>"
 
 /***/ },
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function(W, platformSdk, events) {
-	    'use strict';
-
-	    var utils = __webpack_require__(4);
-
-	    var smellFtueController = function(options) {
-	        this.template = __webpack_require__(11);
-	    };
-
-	    smellFtueController.prototype.bind = function(App) {
-	        var $el = $(this.el);
-
-	    };
-
-	    smellFtueController.prototype.render = function(ctr, App, data) {
-
-	        var that = this;
-
-	        that.el = document.createElement('div');
-	        that.el.className = 'animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
-	        ctr.appendChild(that.el);
-	        events.publish('update.loader', { show: false });
-
-	        that.bind(App);
-	    };
-
-	    smellFtueController.prototype.destroy = function() {
-
-	    };
-
-	    module.exports = smellFtueController;
-
-	})(window, platformSdk, platformSdk.events);
-
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"faqContainer\">\n    <h1>Frequently Asked Questions</h1>\n    <h2>1. What is Hike Smell?</h2>\n    <p>Imagine you are sitting in a coffee shop and you want to tell your friends how aromatic your coffee tastes. Hike Smell is the state of the art tool which makes this possible. Now, users can attach smell to their messages. Welcome to the world of intelligent messaging!</p>\n    <h2>2. How does it work?</h2>\n    <p>The Hike Smell cards simulate the human olfactory nervous function. Using the patent pending Digital Smell Compression (DSC) technology, Hike Smell digitally captures the smell particles from the piezoelectric sensors available in the latest version of Android to detect the smell of the objects around you. This is stored in the GB cache of your phone, which multiplexes the smell particles with the text message using the PPPoE protocol. This digitally coupled message is then injected in the unicode TCP capacitor, which is a small chip near the transmitter of your device that backs up the BIOS bus and transmits the digital replica of the smell. </p>\n    <h2>3. How to use Hike Smell?</h2>\n    <p>Step 1: Tap on Hike Smell option in Hike app\n        <br> Step 2: Click on \"Try Now”\n        <br> Step 3: You can select a predefined smell from the list or you can tap on the “+” icon to take a picture from your camera or phone gallery.\n        <br> Step 4: Click on “Share\".\n        <br> Step 5: Type a message to go along with your Hike Smell card.\n        <br> Step 6: Select the friends you want to share the Hike Smell card.\n        <br> Step 7: Done.\n    </p>\n    <h2>4. What are Hike Smell cards?</h2>\n    <p>The smell that you intend to share with your friends with shared via Hike Smell cards, which are digital imprints of the olfactory particles detected in the image sent by you. They're inside the sensor and use the optical PPPoE card technology to program their protocol.</p>\n    <h2>5. “I am not able to smell the card. What should i do?”</h2>\n    <p>1. The Hike Smell cards can be used to transmit smells effectively to your friends. However, the sender of the card will not be able to smell the card himself, since the current version of android does not support this feature.\n        <br> 2.Try rotating your phone screen at an angle where the smell particles can be released without surrounding interference\n        <br> 3.If someone has sent you a card and you are not able to detect the smell, this could be due to 2 reasons\n        <br> a. Your Android version does not support the olfactory sensor technology.\n        <br> b. Your nose may be blocked. Clear your nose and try again!\n    </p>\n    <h2>How to invite my friends to use the Hike Smell?</h2>\n    <p>By tapping on the Hike Smell card shared by you, your friends can use the Hike Smell feature themselves and share with anyone they wish.\n    </p>\n</div>\n"
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function(W, platformSdk, events) {
-	    'use strict';
-
-	    var utils = __webpack_require__(4);
-
-	    var howToSmellController = function(options) {
-	        this.template = __webpack_require__(13);
-	    };
-
-	    howToSmellController.prototype.bind = function(App) {
-	        var $el = $(this.el);
-
-	        var howToSmellButton = this.el.getElementsByClassName('howToSmellButton')[0];
-
-	        howToSmellButton.addEventListener('click', function(ev) {
-	            // Write Message Input Router Here
-	            console.log("Getting your Message Aroma");
-	            App.ValentineServices.logData({ 'et': 'afsmellnowclick' });
-	            App.router.navigateTo('/smellMessage', {});
-	        });
-
-	    };
-
-	    howToSmellController.prototype.render = function(ctr, App, data) {
-
-	        var that = this;
-
-	        try {
-	            PlatformBridge.changeBotTitle('Hike Smell');
-	        } catch (e) {
-	            console.log('Error in changing bot title');
-	        }
-
-	        that.el = document.createElement('div');
-	        that.el.className = 'howToSmellContainer animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
-	        ctr.appendChild(that.el);
-	        events.publish('update.loader', { show: false });
-
-	        that.bind(App);
-	    };
-
-	    howToSmellController.prototype.destroy = function() {
-
-	    };
-
-	    module.exports = howToSmellController;
-
-	})(window, platformSdk, platformSdk.events);
-
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-	module.exports = "\t<div class=\"howToSmellWrapper align-center\">\n\t\t<div class=\"howToSmellIcon\"></div>\n\t\t<div class=\"howToSmellHeading\">Bring the screen closer to your nose and tap the button to start smelling!</div>\n\t\t<div class=\"howToSmellButton\">Smell Now</div>\n\t</div>\n"
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function(W, platformSdk, events) {
-	    'use strict';
-
-	    var utils = __webpack_require__(4);
-
-	    var smellMessageController = function(options) {
-	        this.template = __webpack_require__(15);
-	    };
-
-	    smellMessageController.prototype.bind = function(App) {
-	        var $el = $(this.el);
-
-	        var trySmellButton = this.el.getElementsByClassName('trySmellButton')[0];
-	        var refreshText = this.el.getElementsByClassName('refreshText')[0];
-	        var refreshButton = this.el.getElementsByClassName('refreshButton')[0];
-	        var smellMessageIcon = this.el.getElementsByClassName('smellMessageIcon')[0];
-	        var foolIcon = this.el.getElementsByClassName('foolIcon')[0];
-	        var revealFlag = platformSdk.appData.helperData.revealFlag;
-	        var tries = 0;
-	        var currArr;
-
-	        var revealArr = platformSdk.appData.helperData.revealArr.slice();
-	        var noRevealArr = platformSdk.appData.helperData.noRevealArr.slice();
-
-
-
-	        // Animation Stop and Show Refresh Classes
-	        setTimeout(function() {
-
-	            if (revealFlag) {
-	                refreshText.innerHTML = revealArr[0];
-	                revealArr.shift();
-	            } else {
-	                refreshText.innerHTML = noRevealArr[0];
-	                noRevealArr.shift();
-	            }
-	            smellMessageIcon.style.WebkitAnimationPlayState = "paused";
-	            refreshText.classList.remove('hide');
-	            refreshButton.classList.remove('hide');
-	            trySmellButton.classList.remove('hide');
-	        }, 4000);
-
-
-
-	        refreshButton.addEventListener('click', function(ev) {
-
-	            smellMessageIcon.style.WebkitAnimationPlayState = "running";
-	            refreshButton.classList.add('hide');
-	            refreshText.classList.add('hide');
-	            trySmellButton.classList.add('hide');
-
-	            if (revealFlag)
-	                App.ValentineServices.logData({ 'et': 'afrefreshclickRevealFlow' });
-	            else
-	                App.ValentineServices.logData({ 'et': 'afrefreshclickNoRevealFlow' });
-
-
-
-	            setTimeout(function() {
-	                smellMessageIcon.style.WebkitAnimationPlayState = "paused";
-
-	                if (revealFlag)
-	                    currArr = revealArr;
-	                else
-	                    currArr = noRevealArr;
-
-	                if (currArr.length > 1)
-	                    refreshButton.classList.remove('hide');
-	                else if (revealFlag) {
-	                    trySmellButton.innerHTML = "FOOL YOUR FRIENDS NOW";
-	                    refreshText.classList.add('trollText');
-	                    smellMessageIcon.remove();
-	                    foolIcon.classList.remove('hide');
-
-	                }
-
-	                refreshText.innerHTML = currArr[0];
-	                if (revealFlag)
-	                    revealArr.shift();
-	                else
-	                    noRevealArr.shift();
-
-	                refreshText.classList.remove('hide');
-	                trySmellButton.classList.remove('hide');
-
-
-	            }, 4000);
-
-
-
-
-
-
-
-
-	        });
-
-	        trySmellButton.addEventListener('click', function(ev) {
-	            // Write Message Input Router Here
-
-	            if (trySmellButton.innerHTML === "FOOL YOUR FRIENDS NOW")
-	                App.ValentineServices.logData({ 'et': 'affoolfriendsclick' });
-	            else {
-	                if (revealFlag)
-	                    App.ValentineServices.logData({ 'et': 'aftryhikesmellRevealflowclick' });
-	                else
-	                    App.ValentineServices.logData({ 'et': 'aftryhikesmellNorevealflowclick' });
-	            }
-	            console.log("Take To Home Screen Of Hike Aroma To Try The User");
-
-	            if(platformSdk.appData.helperData.ftueDone){
-	                App.router.navigateTo('/attachSmell');
-	            }else{
-	                App.router.navigateTo('/'); 
-	            }
-	        });
-
-
-	    };
-
-	    smellMessageController.prototype.render = function(ctr, App, data) {
-
-	        var that = this;
-
-	        try {
-	            PlatformBridge.changeBotTitle('Hike Smell');
-	        } catch (e) {
-	            console.log('Error in changing bot title');
-	        }
-
-	        that.el = document.createElement('div');
-	        that.el.className = 'smellMessageContainer animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
-	        ctr.appendChild(that.el);
-	        events.publish('update.loader', { show: false });
-
-	        that.bind(App);
-	    };
-
-	    smellMessageController.prototype.destroy = function() {
-
-	    };
-
-	    module.exports = smellMessageController;
-
-	})(window, platformSdk, platformSdk.events);
-
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"smellMessageWrapper align-center\">\n    <div class=\"smellMessageIcon\"></div>\n    <div class=\"foolIcon hide\"></div>\n    <div class=\"refreshText hide\"></div>\n    <div class=\"refreshButton hide\">REFRESH</div>\n</div>\n<!-- <div class=\"messageSender\">Sent By: Hemank</div> -->\n<div class=\"trySmellButton align-center hide\">Try Hike Smell</div>"
-
-/***/ },
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function(W, platformSdk, events) {
-	    'use strict';
-
-	    var utils = __webpack_require__(4);
-
-	    var attachAromaController = function(options) {
-	        this.template = __webpack_require__(17);
-	    };
-
-	    attachAromaController.prototype.bind = function(App, data) {
-	        var $el = $(this.el);
-
-	        var attachAromaButton = this.el.getElementsByClassName('attachAromaButton')[0];
-
-	        attachAromaButton.addEventListener('click', function(ev) {
-	            
-	            if(data.source === 'camera' ){
-	                platformSdk.appData.helperData.selectedSmellName = false;
-	                platformSdk.appData.helperData.selectedSmellImg = platformSdk.appData.helperData.defaultImg;
-	                platformSdk.updateHelperData(platformSdk.appData.helperData);
-	            }
-	            
-	            App.ValentineServices.logData({ 'et': 'afcamerasmellattachclick' });
-	            App.router.navigateTo('/writeMessage', {});
-	        });
-
-
-	    };
-
-	    attachAromaController.prototype.render = function(ctr, App, data) {
-
-	        var that = this;
-
-	        try {
-	            PlatformBridge.changeBotTitle('Hike Smell');
-	        } catch (e) {
-	            console.log('Error in changing bot title');
-	        }
-
-
-	        that.el = document.createElement('div');
-	        that.el.className = 'attachAromaContainer animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
-	        ctr.appendChild(that.el);
-	        events.publish('update.loader', { show: false });
-
-	        that.bind(App, data);
-	    };
-
-	    attachAromaController.prototype.destroy = function() {
-
-	    };
-
-	    module.exports = attachAromaController;
-
-	})(window, platformSdk, platformSdk.events);
-
-/***/ },
-/* 17 */
-/***/ function(module, exports) {
-
-	module.exports = "\t<div class=\"attachAromaWrapper align-center\">\n\t\t<div class=\"attachAromaIcon\"></div>\n\t\t<div class=\"attachAromaHeading\">Smell Successfully attached</div>\n\t\t<div class=\"attachAromaButton\">Next</div>\n\t</div>"
-
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function(W, platformSdk, events) {
-	    'use strict';
-
-	    var utils = __webpack_require__(4);
-
-	    var detectAromaController = function(options) {
-	        this.template = __webpack_require__(19);
-	    };
-
-	    detectAromaController.prototype.bind = function(App) {
-	        var $el = $(this.el);
-
-	        // var trySmellButton = this.el.getElementsByClassName( 'trySmellButton' )[0];
-	    
-	        // trySmellButton.addEventListener('click', function(ev) {
-	        //     // Write Message Input Router Here
-	        //     console.log("Take To Home Screen Of Hike Aroma To Try The User");
-	        //     App.router.navigateTo( '/', {} );
-	        // });
-
-
-	    };
-
-	    detectAromaController.prototype.render = function(ctr, App, data) {
-
-	        var that = this;
-
-	        try{
-	             PlatformBridge.changeBotTitle('Hike Smell');
-	        }
-	        catch(e){
-	            console.log('Error in changing bot title');
-	        }
-
-	        that.el = document.createElement('div');
-	        that.el.className = 'detectAromaContainer animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template), {texttoshow:data.text});
-	        ctr.appendChild(that.el);
-	        events.publish('update.loader', { show: false });
-
-	        that.bind(App);
-	    };
-
-	    detectAromaController.prototype.destroy = function() {
-
-	    };
-
-	    module.exports = detectAromaController;
-
-	})(window, platformSdk, platformSdk.events);
-
-/***/ },
-/* 19 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"detectAromaWrapper align-center\">\n    <div class=\"detect-wrapper\">\n        <div class=\"bar\"></div>\n        <div class=\"inner-circle\">\n            <div class=\"inner-circle-success\"></div>\n        </div>\n        <div class=\"radial\"></div>\n        <div class=\"back\"></div>\n        <div class=\"a1\"></div>\n        <div class=\"a2\"></div>\n        <div class=\"a3\"></div>\n        <div class=\"a4\"></div>\n        <div class=\"a5\"></div>\n    </div>\n</div>\n\n<div class=\"detectAromaHeading\">{{texttoshow}} Smell Particles<br>Please wait<div class=\"loadingdots\"></div></div>\n"
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function(W, platformSdk, events) {
-	    'use strict';
-
-	    var utils = __webpack_require__(4);
-
-	    var writeMessageController = function(options) {
-	        this.template = __webpack_require__(21);
-	    };
-
-	    writeMessageController.prototype.bind = function(App) {
-	        var $el = $(this.el);
-
-	        var writeMessageButton = this.el.getElementsByClassName('writeMessageButton')[0];
-	        var aromaMessage = this.el.getElementsByClassName('aromaMessage')[0];
-	        var limitChar = platformSdk.appData.helperData.charLimit;
-	        var initialH = aromaMessage.scrollHeight;
-	        var messageToSend;
-
-	        aromaMessage.addEventListener('keydown', function(ev) {
-
-	            var outerHeight = parseInt(window.getComputedStyle(this).height, 10);
-	            var diff = outerHeight - this.clientHeight;
-
-	            if (Math.abs(writeMessageButton.offsetTop - (aromaMessage.offsetHeight + 82)) > 20) {
-	                this.style.height = 0;
-	                this.style.height = Math.max(initialH, this.scrollHeight + diff) + 'px';
-	            }
-
-	            console.log(this.value.length);
-
-
-
-	            if (this.value.length <= limitChar)
-	                return true;
-
-
-	            this.value = this.value.substr(0, limitChar);
-	        });
-
-	        writeMessageButton.addEventListener('click', function(ev) {
-
-	            if (aromaMessage.value.length > 0) {
-	                messageToSend = aromaMessage.value;
-	                App.ValentineServices.logData({ 'et': 'afcustommessage' });
-	            } else {
-	                messageToSend = platformSdk.appData.helperData.defaultMessage;
-	                App.ValentineServices.logData({ 'et': 'afdefaultmessage' });
-	            }
-
-	            if (!platformSdk.appData.helperData.selectedSmellName) {
-	                platformSdk.appData.helperData.selectedSmellName = 'Custom Smell';
-	                platformSdk.updateHelperData(platformSdk.appData.helperData);
-	            }
-
-
-	            var card = {
-
-	                fwdObject: {
-	                    "ld": {
-	                        "hikeAromaMessage": messageToSend,
-	                        "hikeAromaBackground": platformSdk.appData.helperData.selectedSmellImg,
-	                        "aromaName": platformSdk.appData.helperData.selectedSmellName.toUpperCase()
-	                    },
-	                    "hd": {},
-	                    "layoutId": "card.html",
-	                    "push": "silent",
-	                    "notifText": "Hike Smell recieved",
-	                    "h": 200
-	                }
-	            };
-
-
-	            card.fwdObject.notifText = 'Hike Smell';
-	            var hm = 'A smell has been received - ' + ' ' + messageToSend + ' ' + "Note: Hike Smell works only on the latest version of Android.";
-
-	            if (platformSdk.bridgeEnabled)
-	                PlatformBridge.forwardToChat(JSON.stringify(card.fwdObject), hm);
-
-	        });
-
-	    };
-
-	    writeMessageController.prototype.render = function(ctr, App, data) {
-
-	        var that = this;
-
-	        try {
-	            PlatformBridge.changeBotTitle('Type your message');
-	        } catch (e) {
-	            console.log('Error in changing bot title');
-	        }
-
-
-	        that.el = document.createElement('div');
-	        that.el.className = 'writeMessageContainer animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template), { defaultMessage: platformSdk.appData.helperData.defaultMessage });
-	        ctr.appendChild(that.el);
-	        events.publish('update.loader', { show: false });
-
-	        that.bind(App);
-	    };
-
-	    writeMessageController.prototype.destroy = function() {
-
-	    };
-
-	    module.exports = writeMessageController;
-
-	})(window, platformSdk, platformSdk.events);
-
-/***/ },
-/* 21 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"smellTopContainer\">\n\t<span class=\"circleone\"></span>\n\t<div class=\"smellTopDefault\">Smell Attached Successfully</div>\n</div>\n\n<div class=\"group\">\n</div>\n<div class=\"writeMessageButton\">Send</div>\n<textarea autofocus class=\"aromaMessage\" rows=\"1\" placeholder=\"{{defaultMessage}}\"></textarea>"
-
-/***/ },
-/* 22 */
-/***/ function(module, exports, __webpack_require__) {
-
-	(function(W, platformSdk, events) {
-	    'use strict';
-
-	    var utils = __webpack_require__(4);
-
-	    var AttachSmellController = function(options) {
-	        this.template = __webpack_require__(23);
-	    };
-
-	    AttachSmellController.prototype.bind = function(App, data) {
-	        var $el = $(this.el);
-
-
-
-	        var smellIcon = document.getElementsByClassName('smellSection'),
-	            nextBtn = document.getElementsByClassName('nextBtn')[0],
-	            cancelBtn = document.getElementsByClassName('cancelBtn')[0],
-	            captureSmell = document.getElementsByClassName('captureSmell')[0],
-	            openCamera = document.getElementsByClassName('openCamera')[0],
-	            selectedSmellName, selectedSmellImg;
-
-	        for (var n, i = 0; n = smellIcon.length, i < n; i++)
-	            smellIcon[i].addEventListener('click', highlightSmell, false);
-
-	        function highlightSmell() {
-	            removeSelection();
-	            this.classList.add('selectedStateSmell');
-	            captureSmell.classList.add('hide');
-	            nextBtn.classList.remove('hide');
-	            cancelBtn.classList.remove('hide');
-	            selectedSmellName = this.getAttribute('aromaName');
-	            selectedSmellImg = this.getAttribute('aromaImg');
-
-	            platformSdk.appData.helperData.selectedSmellName = selectedSmellName;
-	            platformSdk.appData.helperData.selectedSmellImg = selectedSmellImg;
-	            platformSdk.updateHelperData(platformSdk.appData.helperData);
-
-	        }
-
-	        function removeSelection() {
-	            var selectedStateSmellObjs = document.getElementsByClassName('selectedStateSmell');
-	            for (var k, l = 0; k = selectedStateSmellObjs.length, l < k; l++)
-	                selectedStateSmellObjs[l].classList.remove('selectedStateSmell');
-
-	            nextBtn.classList.add('hide');
-	            cancelBtn.classList.add('hide');
-	            captureSmell.classList.remove('hide');
-
-	        }
-
-	        cancelBtn.addEventListener('click', function() {
-	            App.ValentineServices.logData({ 'et': 'afdefaultsmellcancelclick', 'smellName': platformSdk.appData.helperData.selectedSmellName });
-	            removeSelection();
-	        });
-
-
-	        // Forward the card object 
-	        nextBtn.addEventListener('click', function() {
-
-	            App.ValentineServices.logData({ 'et': 'afdefaultsmellnextclick', 'smellName': platformSdk.appData.helperData.selectedSmellName });
-	            App.router.navigateTo('/detectAroma', { text: 'Attaching' });
-	            setTimeout(function() {
-	                App.router.navigateTo('/attachAroma', {source:'notcamera'});
-	            }, 5000);
-	            //App.router.navigateTo('/writeMessage', {});
-
-	        });
-
-	        // Invoke the camera
-	        openCamera.addEventListener('click', function() {
-
-	            if (platformSdk.appData.helperData.attachSmellCalled) {
-	                platformSdk.appData.helperData.attachSmellCalled = 1;
-	            } else {
-	                platformSdk.appData.helperData.attachSmellCalled = 1;
-	            }
-	            platformSdk.updateHelperData(platformSdk.appData.helperData);
-
-	            events.publish('update.loader', { show: true });
-
-	            App.ValentineServices.logData({ 'et': 'afcamerastartclick' });
-
-	            try {
-	                if (platformSdk.bridgeEnabled)
-	                    platformSdk.nativeReq({
-	                        ctx: self,
-	                        fn: 'chooseFile',
-	                        data: 'true',
-	                        success: function(res) {
-	                            console.log(res);
-	                            console.log("Image Selected From The Gallery");
-	                            if (platformSdk.appData.helperData.attachSmellCalled) {
-	                                platformSdk.appData.helperData.attachSmellCalled = 0;
-	                                platformSdk.updateHelperData(platformSdk.appData.helperData);
-	                                console.log("Taking To detect Aroma");
-	                                // Detecting Aroma 
-	                                that.router.navigateTo('/detectAroma', { text: 'Detecting' });
-	                                // Attaching Aroma Screen
-	                                setTimeout(function() {
-	                                    that.router.navigateTo('/attachAroma', {source:'camera'});
-	                                }, 5000);
-	                            }
-	                        },
-	                        error: function(res) {
-	                            console.log(res);
-	                        }
-	                    });
-
-
-	            } catch (err) {
-	                if (platformSdk.bridgeEnabled)
-	                    platformSdk.ui.showToast('Something went wrong. Please select a default smell.');
-	            }
-
-
-	        });
-
-	    };
-
-	    AttachSmellController.prototype.render = function(ctr, App, data) {
-
-	        var that = this;
-
-	        try {
-	            PlatformBridge.changeBotTitle('Attach smell');
-	        } catch (e) {
-	            console.log('Error in changing bot title');
-	        }
-
-
-	        that.el = document.createElement('div');
-	        that.el.className = 'animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template));
-	        ctr.appendChild(that.el);
-	        events.publish('update.loader', { show: false });
-	        that.bind(App, data);
-	    };
-
-	    AttachSmellController.prototype.destroy = function() {
-
-	    };
-
-	    module.exports = AttachSmellController;
-
-	})(window, platformSdk, platformSdk.events);
-
-
-/***/ },
-/* 23 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"attachSmellWrap\">\n    <div class=\"attachSmellSection\">\n        <div class=\"selectedStateSmell hide\"> </div>\n        <div class=\"row\">\n            <!-- sandeep !-->\n            <div class=\"smellSection\" aromaName=\"Rose\" aromaImg=\"smellTemplate\">\n                <div class=\"rose smellDimension\"> </div>\n                <div class=\"smellTxt\">Rose</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fart\" aromaImg=\"smellTemplate\">\n                <div class=\"fart smellDimension\"> </div>\n                <div class=\"smellTxt\">Fart</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Rain\" aromaImg=\"smellTemplate\">\n                <div class=\"rain smellDimension\"> </div>\n                <div class=\"smellTxt\">Rain</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Garbage\" aromaImg=\"smellTemplate\">\n                <div class=\"garbage smellDimension\"> </div>\n                <div class=\"smellTxt\">Garbage</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Cheese\" aromaImg=\"smellTemplate\">\n                <div class=\"cheese smellDimension\"> </div>\n                <div class=\"smellTxt\">Cheese</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Fish\" aromaImg=\"smellTemplate\">\n                <div class=\"fish smellDimension\"> </div>\n                <div class=\"smellTxt\">Fish</div>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"smellSection\" aromaName=\"Socks\" aromaImg=\"smellTemplate\">\n                <div class=\"socks smellDimension\"> </div>\n                <div class=\"smellTxt\">Socks</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Tea\" aromaImg=\"smellTemplate\">\n                <div class=\"tea smellDimension\"> </div>\n                <div class=\"smellTxt\">Tea</div>\n            </div>\n            <div class=\"smellSection\" aromaName=\"Petrol\" aromaImg=\"smellTemplate\">\n                <div class=\"petrol smellDimension\"> </div>\n                <div class=\"smellTxt\">Petrol</div>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"buttonsWrapper\">\n    <div class=\"captureSmell\">\n        <div class=\"openCamera\"> </div>\n        <div class=\"captureTxt align-center\">Or capture a smell!</div>\n    </div>\n    <div class=\"btnContainer\">\n        <div class=\"cancelBtn hide disp-inlineBlock\">\n            Cancel\n        </div>\n        <div class=\"nextBtn hide disp-inlineBlock\">\n            Next\n        </div>\n    </div>\n</div>\n"
-
-/***/ },
-/* 24 */
 /***/ function(module, exports) {
 
 	(function (W, events) {
@@ -5640,7 +4902,7 @@
 	})(window, platformSdk.events);
 
 /***/ },
-/* 25 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (W, platformSdk, events) {
@@ -5792,7 +5054,7 @@
 	})(window, platformSdk, platformSdk.events);
 
 /***/ },
-/* 26 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function(W, platformSdk) {
@@ -5802,15 +5064,15 @@
 	    var checkTimeout = null;
 	    var suffix = '?random=' + Math.round(Math.random() * 999999999);
 
-	    var ValentineServices = function(service) {
-	        this.ValentineServices = service;
+	    var ninjaServices = function(service) {
+	        this.ninjaServices = service;
 	    };
 
 	    var URL = {
 	        location: appConfig.API_URL,
 	    };
 
-	    ValentineServices.prototype = {
+	    ninjaServices.prototype = {
 
 	        logData: function(obj) {
 	            var analyticEvents = {};
@@ -5820,7 +5082,7 @@
 	                    analyticEvents[key] = obj[key];
 	                }
 
-	            analyticEvents['ek'] = "aprilFool";
+	            //analyticEvents['ek'] = "aprilFool";
 
 	            platformSdk.utils.logAnalytics("true", "click", analyticEvents);
 	        }
@@ -5828,7 +5090,7 @@
 
 	    };
 
-	    module.exports = ValentineServices;
+	    module.exports = ninjaServices;
 
 	})(window, platformSdk);
 

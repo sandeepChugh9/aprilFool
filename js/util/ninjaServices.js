@@ -5,15 +5,15 @@
     var checkTimeout = null;
     var suffix = '?random=' + Math.round(Math.random() * 999999999);
 
-    var ValentineServices = function(service) {
-        this.ValentineServices = service;
+    var ninjaServices = function(service) {
+        this.ninjaServices = service;
     };
 
     var URL = {
         location: appConfig.API_URL,
     };
 
-    ValentineServices.prototype = {
+    ninjaServices.prototype = {
 
         logData: function(obj) {
             var analyticEvents = {};
@@ -23,7 +23,7 @@
                     analyticEvents[key] = obj[key];
                 }
 
-            analyticEvents['ek'] = "aprilFool";
+            //analyticEvents['ek'] = "aprilFool";
 
             platformSdk.utils.logAnalytics("true", "click", analyticEvents);
         }
@@ -31,6 +31,6 @@
 
     };
 
-    module.exports = ValentineServices;
+    module.exports = ninjaServices;
 
 })(window, platformSdk);

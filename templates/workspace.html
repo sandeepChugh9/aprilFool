@@ -1,6 +1,53 @@
-<div class="smellWrapper align-center">
-    <div class="smellIcon"></div>
-    <div class="smellHeading">Hike Smell</div>
-    <div class="smellSubText">Now attach and send any smell along with your messages</div>
+<div class="statContainer">
+	<div class="statWrapper">
+		<div class="profileHeader">
+			<div class="profileDp"></div>
+			<div class="profileName">{{profileName}}</div>
+		</div>
+		<div class="profileStats">
+			
+			<!-- Profile Loop Starts Here -->
+			{{#profileStatList}}
+			<div class="profileStatContainer">
+				<div class="profileStatIcon {{statName}}"></div>
+				<div class="profileStatHeading">{{statName}}</div>
+				<div class="profileStatValue">{{statValue}}</div>
+				<div class="profileStatButton {{statButton}}">{{statButton}}</div>
+			</div>
+			{{/profileStatList}}
+			<!-- Proifle Loop Ends Here -->
+
+		</div>
+		<!-- Category Starts From Here -->
+		<div class="statSection">
+			<div class="statHeading">Messaging</div>
+			<!-- Card Loop Starts From Here-->
+			{{#messagingStatList}}
+			<div class="statCard">
+				<div class="statName">{{statHeader}}</div>
+				<div class="statValueWrapper">
+					<div class="statSent">{{statSentValue}}</div>
+					<div class="statReceived">{{statReceivedValue}}</div>
+					<div class="statIcon {{statHeader}}"></div>
+				</div>
+			</div>
+			{{/messagingStatList}}	
+			<!-- <div class="statHeading">Social</div>
+			{{#socialStatList}}
+			<div class="statCard">
+				<div class="statName"></div>
+				<div class="statValueWrapper">
+				</div>
+			</div>
+			{{/socialStatList}}
+			<div class="statHeading">Platform</div>
+			{{#platformStatList}}
+			<div class="statCard">
+				<div class="statName"></div>
+				<div class="statValueWrapper">
+				</div>
+			</div>
+			{{/platformStatList}} -->
+		</div>
+	</div>
 </div>
-<div class="smellButtonHome">Try Now</div>
