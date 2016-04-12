@@ -105,3 +105,10 @@ TRANSITION MIXIN
     -o-transition: $args;
     transition: $args;
 }
+
+@mixin fontStyle($fontSize, $fontWeight, $color, $lineHeight) {
+    font-size: $fontSize;
+    color: $color;
+    line-height: $lineHeight;
+    font-weight: $fontWeight;
+}
