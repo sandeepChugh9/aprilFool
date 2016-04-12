@@ -22,84 +22,65 @@
         },
 
         TROPHIES: [{
-                icon: "test.png",
-                label: "Hike Age",
-                subtext: "",
+                id: 0,
+                icon: 'test.png',
+                label: 'Hike Age',
+                subtext: '',
                 levels: [{
                         id: 1,
-                        value: "1 Month",
-                        icon: "",
-                        text: ""
+                        value: '1 Month',
+                        icon: '',
+                        text: ''
                     }, {
 
                         id: 2,
-                        value: "1 Year",
-                        text: ""
+                        value: '1 Year',
+                        text: ''
                     }, {
 
                         id: 1,
-                        value: "2 Year",
-                        text: ""
-                    },
+                        value: '2 Year',
+                        text: ''
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Upgrade",
-                subtext: "",
-                levels: ""
+                id: 1,
+                icon: 'test.png',
+                label: 'Upgrade',
+                subtext: '',
+                levels: ''
 
             }, {
-                icon: "test.png",
-                label: "Sessions",
-                subtext: "",
+                id: 2,
+                icon: 'test.png',
+                label: 'Sessions',
+                subtext: '',
                 levels: [{
 
                         id: 1,
-                        value: "",
-                        text: ""
+                        value: '',
+                        text: ''
                     }, {
 
                         id: 2,
-                        value: "",
-                        text: ""
+                        value: '',
+                        text: ''
                     }, {
 
                         id: 1,
-                        value: "1000",
-                        text: ""
-                    },
+                        value: '1000',
+                        text: ''
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Time Spent",
-                subtext: "",
-                levels: [{
-
-                        id: 1,
-                        value: 1,
-                        text: ""
-                    }, {
-
-                        id: 2,
-                        value: 100,
-                        text: ""
-                    }, {
-
-                        id: 1,
-                        value: 1000,
-                        text: ""
-                    },
-
-                ]
-
-            }, {
-                icon: "test.png",
-                label: "Messaging",
-                subtext: "",
+                id: 3,
+                icon: 'test.png',
+                label: 'Time Spent',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -115,14 +96,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Stickers",
-                subtext: "",
+                id: 4,
+                icon: 'test.png',
+                label: 'Messaging',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -138,14 +120,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Images",
-                subtext: "",
+                id: 5,
+                icon: 'test.png',
+                label: 'Stickers',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -161,14 +144,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Videos",
-                subtext: "",
+                id: 6,
+                icon: 'test.png',
+                label: 'Images',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -184,14 +168,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Files",
-                subtext: "",
+                id: 7,
+                icon: 'test.png',
+                label: 'Videos',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -207,14 +192,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Calls",
-                subtext: "",
+                id: 8,
+                icon: 'test.png',
+                label: 'Files',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -230,14 +216,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Calls",
-                subtext: "",
+                id: 9,
+                icon: 'test.png',
+                label: 'Calls',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -253,14 +240,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Chat Themes",
-                subtext: "",
+                id: 10,
+                icon: 'test.png',
+                label: 'Calls',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -276,14 +264,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Data Transfered",
-                subtext: "",
+                id:11,
+                icon: 'test.png',
+                label: 'Chat Themes',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -299,14 +288,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Favourites",
-                subtext: "",
+                id: 12,
+                icon: 'test.png',
+                label: 'Data Transfered',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -322,14 +312,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Likes",
-                subtext: "",
+                id: 13,
+                icon: 'test.png',
+                label: 'Favourites',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -345,14 +336,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Profile Pics",
-                subtext: "",
+                id: 14,
+                icon: 'test.png',
+                label: 'Likes',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -368,14 +360,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Status Updates",
-                subtext: "",
+                id: 15,
+                icon: 'test.png',
+                label: 'Profile Pics',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -391,14 +384,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Invites",
-                subtext: "",
+                id: 16,
+                icon: 'test.png',
+                label: 'Status Updates',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -414,14 +408,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Game sessions played",
-                subtext: "",
+                id: 17,
+                icon: 'test.png',
+                label: 'Invites',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -437,14 +432,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Games tried",
-                subtext: "",
+                id: 18,
+                icon: 'test.png',
+                label: 'Game sessions played',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -460,14 +456,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Challenges",
-                subtext: "",
+                id: 19,
+                icon: 'test.png',
+                label: 'Games tried',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -483,14 +480,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Challenges won",
-                subtext: "",
+                id: 20,
+                icon: 'test.png',
+                label: 'Challenges',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -506,14 +504,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "News",
-                subtext: "",
+                id: 21,
+                icon: 'test.png',
+                label: 'Challenges won',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -529,14 +528,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Sticker",
-                subtext: "",
+                id: 22,
+                icon: 'test.png',
+                label: 'News',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -552,14 +552,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Data Transfered",
-                subtext: "",
+                id: 23,
+                icon: 'test.png',
+                label: 'Sticker',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -575,14 +576,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Data Transfered",
-                subtext: "",
+                id: 24,
+                icon: 'test.png',
+                label: 'Data Transfered',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -598,14 +600,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Data Transfered",
-                subtext: "",
+                id: 25,
+                icon: 'test.png',
+                label: 'Data Transfered',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -621,14 +624,15 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
             }, {
-                icon: "test.png",
-                label: "Data Transfered",
-                subtext: "",
+                id: 26,
+                icon: 'test.png',
+                label: 'Data Transfered',
+                subtext: '',
                 levels: [{
 
                         id: 1,
@@ -644,11 +648,35 @@
                         id: 1,
                         value: 1000,
                         text: ''
-                    },
+                    }
 
                 ]
 
-            },
+            }, {
+                id: 27,
+                icon: 'test.png',
+                label: 'Data Transfered',
+                subtext: '',
+                levels: [{
+
+                        id: 1,
+                        value: 1,
+                        text: ''
+                    }, {
+
+                        id: 2,
+                        value: 100,
+                        text: ''
+                    }, {
+
+                        id: 1,
+                        value: 1000,
+                        text: ''
+                    }
+
+                ]
+
+            }
 
         ]
 

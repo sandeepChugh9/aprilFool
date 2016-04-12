@@ -4459,84 +4459,65 @@
 	        },
 
 	        TROPHIES: [{
-	                icon: "test.png",
-	                label: "Hike Age",
-	                subtext: "",
+	                id: 0,
+	                icon: 'test.png',
+	                label: 'Hike Age',
+	                subtext: '',
 	                levels: [{
 	                        id: 1,
-	                        value: "1 Month",
-	                        icon: "",
-	                        text: ""
+	                        value: '1 Month',
+	                        icon: '',
+	                        text: ''
 	                    }, {
 
 	                        id: 2,
-	                        value: "1 Year",
-	                        text: ""
+	                        value: '1 Year',
+	                        text: ''
 	                    }, {
 
 	                        id: 1,
-	                        value: "2 Year",
-	                        text: ""
-	                    },
+	                        value: '2 Year',
+	                        text: ''
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Upgrade",
-	                subtext: "",
-	                levels: ""
+	                id: 1,
+	                icon: 'test.png',
+	                label: 'Upgrade',
+	                subtext: '',
+	                levels: ''
 
 	            }, {
-	                icon: "test.png",
-	                label: "Sessions",
-	                subtext: "",
+	                id: 2,
+	                icon: 'test.png',
+	                label: 'Sessions',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
-	                        value: "",
-	                        text: ""
+	                        value: '',
+	                        text: ''
 	                    }, {
 
 	                        id: 2,
-	                        value: "",
-	                        text: ""
+	                        value: '',
+	                        text: ''
 	                    }, {
 
 	                        id: 1,
-	                        value: "1000",
-	                        text: ""
-	                    },
+	                        value: '1000',
+	                        text: ''
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Time Spent",
-	                subtext: "",
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ""
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ""
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ""
-	                    },
-
-	                ]
-
-	            }, {
-	                icon: "test.png",
-	                label: "Messaging",
-	                subtext: "",
+	                id: 3,
+	                icon: 'test.png',
+	                label: 'Time Spent',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4552,14 +4533,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Stickers",
-	                subtext: "",
+	                id: 4,
+	                icon: 'test.png',
+	                label: 'Messaging',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4575,14 +4557,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Images",
-	                subtext: "",
+	                id: 5,
+	                icon: 'test.png',
+	                label: 'Stickers',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4598,14 +4581,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Videos",
-	                subtext: "",
+	                id: 6,
+	                icon: 'test.png',
+	                label: 'Images',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4621,14 +4605,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Files",
-	                subtext: "",
+	                id: 7,
+	                icon: 'test.png',
+	                label: 'Videos',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4644,14 +4629,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Calls",
-	                subtext: "",
+	                id: 8,
+	                icon: 'test.png',
+	                label: 'Files',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4667,14 +4653,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Calls",
-	                subtext: "",
+	                id: 9,
+	                icon: 'test.png',
+	                label: 'Calls',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4690,14 +4677,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Chat Themes",
-	                subtext: "",
+	                id: 10,
+	                icon: 'test.png',
+	                label: 'Calls',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4713,14 +4701,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Data Transfered",
-	                subtext: "",
+	                id:11,
+	                icon: 'test.png',
+	                label: 'Chat Themes',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4736,14 +4725,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Favourites",
-	                subtext: "",
+	                id: 12,
+	                icon: 'test.png',
+	                label: 'Data Transfered',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4759,14 +4749,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Likes",
-	                subtext: "",
+	                id: 13,
+	                icon: 'test.png',
+	                label: 'Favourites',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4782,14 +4773,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Profile Pics",
-	                subtext: "",
+	                id: 14,
+	                icon: 'test.png',
+	                label: 'Likes',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4805,14 +4797,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Status Updates",
-	                subtext: "",
+	                id: 15,
+	                icon: 'test.png',
+	                label: 'Profile Pics',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4828,14 +4821,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Invites",
-	                subtext: "",
+	                id: 16,
+	                icon: 'test.png',
+	                label: 'Status Updates',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4851,14 +4845,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Game sessions played",
-	                subtext: "",
+	                id: 17,
+	                icon: 'test.png',
+	                label: 'Invites',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4874,14 +4869,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Games tried",
-	                subtext: "",
+	                id: 18,
+	                icon: 'test.png',
+	                label: 'Game sessions played',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4897,14 +4893,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Challenges",
-	                subtext: "",
+	                id: 19,
+	                icon: 'test.png',
+	                label: 'Games tried',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4920,14 +4917,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Challenges won",
-	                subtext: "",
+	                id: 20,
+	                icon: 'test.png',
+	                label: 'Challenges',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4943,14 +4941,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "News",
-	                subtext: "",
+	                id: 21,
+	                icon: 'test.png',
+	                label: 'Challenges won',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4966,14 +4965,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Sticker",
-	                subtext: "",
+	                id: 22,
+	                icon: 'test.png',
+	                label: 'News',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -4989,14 +4989,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Data Transfered",
-	                subtext: "",
+	                id: 23,
+	                icon: 'test.png',
+	                label: 'Sticker',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -5012,14 +5013,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Data Transfered",
-	                subtext: "",
+	                id: 24,
+	                icon: 'test.png',
+	                label: 'Data Transfered',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -5035,14 +5037,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Data Transfered",
-	                subtext: "",
+	                id: 25,
+	                icon: 'test.png',
+	                label: 'Data Transfered',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -5058,14 +5061,15 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
 	            }, {
-	                icon: "test.png",
-	                label: "Data Transfered",
-	                subtext: "",
+	                id: 26,
+	                icon: 'test.png',
+	                label: 'Data Transfered',
+	                subtext: '',
 	                levels: [{
 
 	                        id: 1,
@@ -5081,17 +5085,42 @@
 	                        id: 1,
 	                        value: 1000,
 	                        text: ''
-	                    },
+	                    }
 
 	                ]
 
-	            },
+	            }, {
+	                id: 27,
+	                icon: 'test.png',
+	                label: 'Data Transfered',
+	                subtext: '',
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    }
+
+	                ]
+
+	            }
 
 	        ]
 
 	    };
 
 	})();
+
 
 /***/ },
 /* 6 */
@@ -5467,7 +5496,6 @@
 	    WorkspaceController.prototype.bind = function(App) {
 	        var $el = $(this.el);
 
-
 	    };
 
 	    WorkspaceController.prototype.render = function(ctr, App, data) {
@@ -5475,34 +5503,49 @@
 	        var that = this;
 
 	        var awardedTrophies = {
-	            "awarded": {
-	                "0": 2,
-	                "1": 1,
-	                "2": 1,
-	                "3": 2,
-	                "4": 3
+	            'awarded': {
+	                '5': 2,
+	                '1': 1,
+	                '20': 1,
+	                '3': 2,
+	                '10': 3
 	            }
 
 	        };
 
-	        if (data)
-	            for (var key in awardedTrophies.awarded) {
-	                data[key].awarded = "true";
-	                data[key].curLevel = awardedTrophies.awarded[key];
-	            }
+	        var exp2 = false,
+	            exp3 = false;
 
+	        for (var key in awardedTrophies.awarded) {
+	            data[key].awarded = 'true';
+	            data[key].curLevel = awardedTrophies.awarded[key];
+	        }
 
+	        // Logic 1 :: Only show Awarded Trophies and Not Show Any More upcoming Trophies
 
+	        if (platformSdk.bridgeEnabled) {
+	            if (platformSdk.appData.helperData.experiment == 2 && data)
 
+	                exp2 = true;
 
+	            // Logic 2 : Show Rewarded and Not Rewarded (Task Locked state)
+	            else if (platformSdk.appData.helperData.experiment == 3 && data)
+
+	                exp3 = true;
+
+	        }
+	        else{
+	            exp3 = true;
+	        }
+
+	        // Logic 3 : Show Rewarded and not Rewarded (Task Not Locked )
 
 	        that.el = document.createElement('div');
 	        that.el.className = 'smellOptInContainer animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template), { trophiesData: data, awardedCount: Object.keys(awardedTrophies.awarded).length, totalCount: data.length });
+	        that.el.innerHTML = Mustache.render(unescape(that.template), { experiment2: exp2, experiment3: exp3, trophiesData: data, awardedCount: Object.keys(awardedTrophies.awarded).length, totalCount: data.length });
 
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
-
 
 	        that.bind(App);
 	    };
@@ -5515,11 +5558,12 @@
 
 	})(window, platformSdk, platformSdk.events);
 
+
 /***/ },
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<div> {{awardedCount}} / {{totalCount}} </div>\n{{#trophiesData}} {{#awarded}}\n<div>\n    </br>\n    name : {{label}}\n    </br>\n    </br>\n    icon : <img src=\"images/{{icon}}\">\n</div>\n{{/awarded}} {{/trophiesData}}"
+	module.exports = "<div> {{awardedCount}} / {{totalCount}} </div>\n\n{{#experiment2}}\n{{#trophiesData}} \n<div>\n    </br>\n    name : {{label}}\n    </br>\n    </br>\n    icon : <img data-tid=\"{{id}}\" data-experiment=\"exp2\" class=\"{{^awarded}}locked{{/awarded}}\" src=\"images/{{icon}}\">\n</div>\n{{/trophiesData}}\n{{/experiment2}}\n\n\n{{#experiment3}}\n{{#trophiesData}} \n<div>\n    </br>\n    name : {{label}}\n    </br>\n    </br>\n    icon : <img data-tid=\"{{id}}\" data-experiment=\"exp3\" class=\"{{^awarded}}locked{{/awarded}}\" src=\"images/{{icon}}\">\n</div>\n{{/trophiesData}}\n{{/experiment3}}"
 
 /***/ },
 /* 12 */
@@ -5785,6 +5829,30 @@
 
 	    ninjaServices.prototype = {
 
+
+	        // Hike Stats Fron URL
+	        getHikeStats: function( fn, x ) {
+	            var params = {
+	                'url': URL.location + '/stats?random='+Math.round(Math.random() * 999999999),
+	                'type': 'GET',
+	                'loader':true
+	            };
+	            if ( typeof fn === 'function' ) return this.ninjaServices.communicate( params, fn, x );
+	            else this.ninjaServices.communicate( params );
+	        },
+
+	        //Trophy Data From URL
+	        getTrophyData: function( fn, x ) {
+	            var params = {
+	                'url': URL.location + '/trophies?random='+Math.round(Math.random() * 999999999),
+	                'type': 'GET',
+	                'loader':true
+	            };
+	            if ( typeof fn === 'function' ) return this.ninjaServices.communicate( params, fn, x );
+	            else this.ninjaServices.communicate( params );
+	        },
+
+
 	        logData: function(obj) {
 	            var analyticEvents = {};
 
@@ -5797,9 +5865,6 @@
 
 	            platformSdk.utils.logAnalytics("true", "click", analyticEvents);
 	        },
-
-
-
 
 	    };
 

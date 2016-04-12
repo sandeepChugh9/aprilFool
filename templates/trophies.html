@@ -1,10 +1,26 @@
 <div> {{awardedCount}} / {{totalCount}} </div>
-{{#trophiesData}} {{#awarded}}
+
+{{#experiment2}}
+{{#trophiesData}} 
 <div>
     </br>
     name : {{label}}
     </br>
     </br>
-    icon : <img src="images/{{icon}}">
+    icon : <img data-tid="{{id}}" data-experiment="exp2" class="{{^awarded}}locked{{/awarded}}" src="images/{{icon}}">
 </div>
-{{/awarded}} {{/trophiesData}}
+{{/trophiesData}}
+{{/experiment2}}
+
+
+{{#experiment3}}
+{{#trophiesData}} 
+<div>
+    </br>
+    name : {{label}}
+    </br>
+    </br>
+    icon : <img data-tid="{{id}}" data-experiment="exp3" class="{{^awarded}}locked{{/awarded}}" src="images/{{icon}}">
+</div>
+{{/trophiesData}}
+{{/experiment3}}
