@@ -1,26 +1,14 @@
-<div> {{awardedCount}} / {{totalCount}} </div>
-
-{{#experiment2}}
-{{#trophiesData}} 
-<div>
-    </br>
-    name : {{label}}
-    </br>
-    </br>
-    icon : <img data-tid="{{id}}" data-experiment="exp2" class="{{^awarded}}locked{{/awarded}}" src="images/{{icon}}">
+<div class="trophyContainer">
+    <div class="trophyCountIcon"></div>
+    <div class="trophyCount">{{awardedCount}} / {{totalCount}}</div>
+    <!-- List Of All Trophies -->
+    <div class="trophyWrapper">
+        {{#experiment2}} {{#trophiesData}}
+            <div data-tid="{{id}}" data-experiment="exp2" id="trophyIcon" class="{{^awarded}}locked{{/awarded}}"></div>        
+        {{/trophiesData}} {{/experiment2}} 
+    
+        {{#experiment3}} {{#trophiesData}}
+            <div id="trophyIcon" data-tid="{{id}}" data-experiment="exp3" class="{{^awarded}}locked{{/awarded}}"></div>
+        {{/trophiesData}} {{/experiment3}}
+    </div>   
 </div>
-{{/trophiesData}}
-{{/experiment2}}
-
-
-{{#experiment3}}
-{{#trophiesData}} 
-<div>
-    </br>
-    name : {{label}}
-    </br>
-    </br>
-    icon : <img data-tid="{{id}}" data-experiment="exp3" class="{{^awarded}}locked{{/awarded}}" src="images/{{icon}}">
-</div>
-{{/trophiesData}}
-{{/experiment3}}
