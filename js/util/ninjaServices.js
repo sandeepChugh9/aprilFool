@@ -26,7 +26,9 @@
             //analyticEvents['ek'] = "aprilFool";
 
             platformSdk.utils.logAnalytics("true", "click", analyticEvents);
-        }
+        },
+
+
 
 
     };

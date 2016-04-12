@@ -1,31 +1,27 @@
 (function(W, platformSdk, events) {
     'use strict';
 
-    var utils = require('../util/utils');
+    var utils = require('../util/utils'),
+        Constants = require('../../constants.js'),
 
-    var WorkspaceController = function(options) {
-        this.template = require('raw!../../templates/workspace.html');
-    };
+        TrophiesController = function(options) {
+            this.template = require('raw!../../templates/workspace.html');
+        };
 
-    WorkspaceController.prototype.bind = function(App) {
+    TrophiesController.prototype.bind = function(App) {
         var $el = $(this.el);
 
-        // var smellButton = this.el.getElementsByClassName('smellButtonHome')[0];
+        var btn = document.getElementById('btnAction');
 
-        // smellButton.addEventListener('click', function(ev) {
-        //     // Write Message Input Router Here
+        btn.addEventListener('click', function(ev) {
+            App.router.navigateTo('/trophies', Constants.TROPHIES);
+        });
 
-        //     App.ValentineServices.logData({ 'et': 'afsmellsubscribe' });
-        //     console.log("Moving To AttachSmell router");
-        //     App.router.navigateTo('/attachSmell', {});
 
-        //     platformSdk.appData.helperData.ftueDone = 1;
-        //     platformSdk.updateHelperData(platformSdk.appData.helperData);
 
-        // });
     };
 
-    WorkspaceController.prototype.render = function(ctr, App, data) {
+    TrophiesController.prototype.render = function(ctr, App, data) {
 
         var that = this;
 
@@ -46,10 +42,10 @@
         that.bind(App);
     };
 
-    WorkspaceController.prototype.destroy = function() {
+    TrophiesController.prototype.destroy = function() {
 
     };
 
-    module.exports = WorkspaceController;
+    module.exports = TrophiesController;
 
 })(window, platformSdk, platformSdk.events);

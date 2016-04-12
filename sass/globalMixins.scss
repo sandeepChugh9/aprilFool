@@ -1,6 +1,8 @@
-// ALL MIXIN WITH EXAMPLES
+/* ALL MIXIN WITH EXAMPLES */
 
-// Media Query Mixin In With Example
+
+/* Media Query Mixin In With Example */
+
 
 /* Example
 
@@ -19,21 +21,21 @@
 */
 
 @mixin bp-large {
-  @media only screen and (max-width: 60em) {
-    @content;
-  }
+    @media only screen and (max-width: 60em) {
+        @content;
+    }
 }
 
 @mixin bp-medium {
-  @media only screen and (max-width: 40em) {
-    @content;
-  }
+    @media only screen and (max-width: 40em) {
+        @content;
+    }
 }
 
 @mixin bp-small {
-  @media only screen and (max-width: 30em) {
-    @content;
-  }
+    @media only screen and (max-width: 30em) {
+        @content;
+    }
 }
 
 
@@ -61,26 +63,25 @@ ANIMATION MIXIN
     }
     @-moz-keyframes #{$animation-name} {
         @content;
-    }  
+    }
     @-ms-keyframes #{$animation-name} {
         @content;
     }
     @-o-keyframes #{$animation-name} {
         @content;
-    }  
+    }
     @keyframes #{$animation-name} {
         @content;
     }
 }
 
 @mixin animation($str) {
-  -webkit-animation: #{$str};
-  -moz-animation: #{$str};
-  -ms-animation: #{$str};
-  -o-animation: #{$str};
-  animation: #{$str};      
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
 }
-
 
 
 /*
@@ -97,11 +98,10 @@ TRANSITION MIXIN
 
 */
 
-
 @mixin transition($args...) {
-  -webkit-transition: $args;
-  -moz-transition: $args;
-  -ms-transition: $args;
-  -o-transition: $args;
-  transition: $args;
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
 }

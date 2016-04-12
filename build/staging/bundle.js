@@ -4435,13 +4435,13 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	(function () {
+	(function() {
 	    'use strict';
 
 	    module.exports = {
 	        DEV_ENV: 'dev',
 	        STAGING_ENV: 'staging',
-	        PROD_ENV:    'prod',
+	        PROD_ENV: 'prod',
 
 	        ConnectionTypes: {
 	            NO_NETWORK: '-1',
@@ -4457,6 +4457,638 @@
 	            TOGGLE_BLOCK: 'app.menu.om.block',
 	            RESET_APP: 'app.reset'
 	        },
+
+	        TROPHIES: [{
+	                icon: "test.png",
+	                label: "Hike Age",
+	                subtext: "",
+	                levels: [{
+	                        id: 1,
+	                        value: "1 Month",
+	                        icon: "",
+	                        text: ""
+	                    }, {
+
+	                        id: 2,
+	                        value: "1 Year",
+	                        text: ""
+	                    }, {
+
+	                        id: 1,
+	                        value: "2 Year",
+	                        text: ""
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Upgrade",
+	                subtext: "",
+	                levels: ""
+
+	            }, {
+	                icon: "test.png",
+	                label: "Sessions",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: "",
+	                        text: ""
+	                    }, {
+
+	                        id: 2,
+	                        value: "",
+	                        text: ""
+	                    }, {
+
+	                        id: 1,
+	                        value: "1000",
+	                        text: ""
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Time Spent",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ""
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ""
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ""
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Messaging",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Stickers",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Images",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Videos",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Files",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Calls",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Calls",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Chat Themes",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Data Transfered",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Favourites",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Likes",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Profile Pics",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Status Updates",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Invites",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Game sessions played",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Games tried",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Challenges",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Challenges won",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "News",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Sticker",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Data Transfered",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Data Transfered",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Data Transfered",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            }, {
+	                icon: "test.png",
+	                label: "Data Transfered",
+	                subtext: "",
+	                levels: [{
+
+	                        id: 1,
+	                        value: 1,
+	                        text: ''
+	                    }, {
+
+	                        id: 2,
+	                        value: 100,
+	                        text: ''
+	                    }, {
+
+	                        id: 1,
+	                        value: 1000,
+	                        text: ''
+	                    },
+
+	                ]
+
+	            },
+
+	        ]
+
 	    };
 
 	})();
@@ -4501,12 +5133,14 @@
 	    'use strict';
 
 	    var WorkspaceController = __webpack_require__(8),
-	        
-	        Router = __webpack_require__(10),
+	        TrophiesController = __webpack_require__(10),
+
+
+	        Router = __webpack_require__(12),
 	        utils = __webpack_require__(4),
 
-	        TxService = __webpack_require__(11),
-	        NinjaServices = __webpack_require__(12);
+	        TxService = __webpack_require__(13),
+	        NinjaServices = __webpack_require__(14);
 
 	    // Full Screen Loader
 	    var loader = document.getElementById('loader');
@@ -4577,55 +5211,56 @@
 	        this.router = new Router();
 
 	        this.workspaceController = new WorkspaceController();
-	    
+	        this.trophiesController = new TrophiesController();
+
 	        this.TxService = new TxService();
 	        this.ninjaServices = new NinjaServices(this.TxService); //communication layer
 	    };
 
 	    Application.prototype = {
 
-	                // Three Dot Menu Overflow Events Subscriptions
+	        // Three Dot Menu Overflow Events Subscriptions
 	        OverflowEvents: function() {
 
 	            var that = this;
 
 	            // Notifications ON/OFF
-	            platformSdk.events.subscribe( 'app.menu.om.mute', function( id ) {
-	                id = '' + platformSdk.retrieveId( 'app.menu.om.mute' );
-	                
-	                if ( platformSdk.appData.mute == 'true' ) {
+	            platformSdk.events.subscribe('app.menu.om.mute', function(id) {
+	                id = '' + platformSdk.retrieveId('app.menu.om.mute');
+
+	                if (platformSdk.appData.mute == 'true') {
 	                    platformSdk.appData.mute = 'false';
 	                    platformSdk.muteChatThread();
-	                    platformSdk.updateOverflowMenu( id, {
+	                    platformSdk.updateOverflowMenu(id, {
 	                        'is_checked': 'true'
 	                    });
 	                } else {
 	                    platformSdk.appData.mute = 'true';
 	                    platformSdk.muteChatThread();
-	                    platformSdk.updateOverflowMenu( id, {
+	                    platformSdk.updateOverflowMenu(id, {
 	                        'is_checked': 'false'
 	                    });
 	                }
 	            });
 
 	            // Block Event From The Three Dot
-	            platformSdk.events.subscribe( 'app.menu.om.block', function( id ) {
-	                id = '' + platformSdk.retrieveId( 'app.menu.om.block' );
-	                if ( platformSdk.appData.block === 'true' ) {
+	            platformSdk.events.subscribe('app.menu.om.block', function(id) {
+	                id = '' + platformSdk.retrieveId('app.menu.om.block');
+	                if (platformSdk.appData.block === 'true') {
 	                    unBlockApp();
 
 	                } else {
 	                    platformSdk.appData.block = 'true';
 	                    platformSdk.blockChatThread();
-	                    platformSdk.events.publish( 'app.state.block.show' );
-	                    platformSdk.updateOverflowMenu( id, {
+	                    platformSdk.events.publish('app.state.block.show');
+	                    platformSdk.updateOverflowMenu(id, {
 	                        'title': 'Unblock'
 	                    });
-	                    utils.toggleBackNavigation( false );
-	                    events.publish( 'app/block', {
+	                    utils.toggleBackNavigation(false);
+	                    events.publish('app/block', {
 	                        show: true
 	                    });
-	                    events.publish( 'app/offline', {
+	                    events.publish('app/offline', {
 	                        show: false
 	                    });
 
@@ -4649,11 +5284,12 @@
 	                    'title': platformSdk.appData.block === 'true' ? 'Unblock' : 'Block',
 	                    'en': 'true',
 	                    'eventName': 'app.menu.om.block'
-	                }];
+	                }
+	            ];
 
 	            that.OverflowEvents();
 
-	            platformSdk.setOverflowMenu( omList );
+	            platformSdk.setOverflowMenu(omList);
 	        },
 
 
@@ -4726,7 +5362,7 @@
 	                self.backPressTrigger();
 	            });
 
-	            
+
 	            // Subscribe :: Home Screen Aroma
 	            this.router.route('/', function(data) {
 	                self.container.innerHTML = '';
@@ -4734,9 +5370,18 @@
 	                utils.toggleBackNavigation(false);
 	            });
 
+	            // Subscribe :: Home Screen Aroma
+	            this.router.route('/trophies', function(data) {
+	                self.container.innerHTML = '';
+	                self.trophiesController.render(self.container, self, data);
+	                utils.toggleBackNavigation(false);
+	            });
+
+
+
 	            // Router Navigates To Home Page In The Start    
-	            self.router.navigateTo('/'); 
-	        
+	            self.router.navigateTo('/');
+
 	        }
 	    };
 
@@ -4751,31 +5396,27 @@
 	(function(W, platformSdk, events) {
 	    'use strict';
 
-	    var utils = __webpack_require__(4);
+	    var utils = __webpack_require__(4),
+	        Constants = __webpack_require__(5),
 
-	    var WorkspaceController = function(options) {
-	        this.template = __webpack_require__(9);
-	    };
+	        TrophiesController = function(options) {
+	            this.template = __webpack_require__(9);
+	        };
 
-	    WorkspaceController.prototype.bind = function(App) {
+	    TrophiesController.prototype.bind = function(App) {
 	        var $el = $(this.el);
 
-	        // var smellButton = this.el.getElementsByClassName('smellButtonHome')[0];
+	        var btn = document.getElementById('btnAction');
 
-	        // smellButton.addEventListener('click', function(ev) {
-	        //     // Write Message Input Router Here
+	        btn.addEventListener('click', function(ev) {
+	            App.router.navigateTo('/trophies', Constants.TROPHIES);
+	        });
 
-	        //     App.ValentineServices.logData({ 'et': 'afsmellsubscribe' });
-	        //     console.log("Moving To AttachSmell router");
-	        //     App.router.navigateTo('/attachSmell', {});
 
-	        //     platformSdk.appData.helperData.ftueDone = 1;
-	        //     platformSdk.updateHelperData(platformSdk.appData.helperData);
 
-	        // });
 	    };
 
-	    WorkspaceController.prototype.render = function(ctr, App, data) {
+	    TrophiesController.prototype.render = function(ctr, App, data) {
 
 	        var that = this;
 
@@ -4796,6 +5437,76 @@
 	        that.bind(App);
 	    };
 
+	    TrophiesController.prototype.destroy = function() {
+
+	    };
+
+	    module.exports = TrophiesController;
+
+	})(window, platformSdk, platformSdk.events);
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = "<p> Hemank Sabharwal\n    <button id=\"btnAction\"> Take me to trophies </button>\n</p>"
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	(function(W, platformSdk, events) {
+	    'use strict';
+
+	    var utils = __webpack_require__(4);
+
+	    var WorkspaceController = function(options) {
+	        this.template = __webpack_require__(11);
+	    };
+
+	    WorkspaceController.prototype.bind = function(App) {
+	        var $el = $(this.el);
+
+
+	    };
+
+	    WorkspaceController.prototype.render = function(ctr, App, data) {
+
+	        var that = this;
+
+	        var awardedTrophies = {
+	            "awarded": {
+	                "0": 2,
+	                "1": 1,
+	                "2": 1,
+	                "3": 2,
+	                "4": 3
+	            }
+
+	        };
+
+	        if (data)
+	            for (var key in awardedTrophies.awarded) {
+	                data[key].awarded = "true";
+	                data[key].curLevel = awardedTrophies.awarded[key];
+	            }
+
+
+
+
+
+
+	        that.el = document.createElement('div');
+	        that.el.className = 'smellOptInContainer animation_fadein noselect';
+	        that.el.innerHTML = Mustache.render(unescape(that.template), { trophiesData: data, awardedCount: Object.keys(awardedTrophies.awarded).length, totalCount: data.length });
+
+	        ctr.appendChild(that.el);
+	        events.publish('update.loader', { show: false });
+
+
+	        that.bind(App);
+	    };
+
 	    WorkspaceController.prototype.destroy = function() {
 
 	    };
@@ -4805,13 +5516,13 @@
 	})(window, platformSdk, platformSdk.events);
 
 /***/ },
-/* 9 */
+/* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<p> Hemank Sabharwal </p>"
+	module.exports = "<div> {{awardedCount}} / {{totalCount}} </div>\n{{#trophiesData}} {{#awarded}}\n<div>\n    </br>\n    name : {{label}}\n    </br>\n    </br>\n    icon : <img src=\"images/{{icon}}\">\n</div>\n{{/awarded}} {{/trophiesData}}"
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports) {
 
 	(function (W, events) {
@@ -4902,7 +5613,7 @@
 	})(window, platformSdk.events);
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function (W, platformSdk, events) {
@@ -5054,7 +5765,7 @@
 	})(window, platformSdk, platformSdk.events);
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function(W, platformSdk) {
@@ -5085,7 +5796,9 @@
 	            //analyticEvents['ek'] = "aprilFool";
 
 	            platformSdk.utils.logAnalytics("true", "click", analyticEvents);
-	        }
+	        },
+
+
 
 
 	    };

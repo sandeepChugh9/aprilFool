@@ -172,7 +172,8 @@ body {
     src: url('file:///android_asset/fonts/Roboto-Medium.ttf') format('truetype');
 }
 
-// All Generic Microapp Related CSS Here
+
+/* All Generic Microapp Related CSS Here */
 
 #header {
     position: fixed;
@@ -200,7 +201,7 @@ body {
     float: left;
 }
 
-.floatR{
+.floatR {
     float: right;
 }
 
@@ -251,15 +252,17 @@ a:visited {
     text-align: left;
 }
 
+
 /* Center Align a Absolute Element */
-.centerAlignAbsolute{
+
+.centerAlignAbsolute {
     left: 0px;
     right: 0px;
     text-align: center;
-    margin: 0px auto;     
+    margin: 0px auto;
 }
 
-.backgroundImageGeneric{
+.backgroundImageGeneric {
     -webkit-background-size: contain;
     -o-background-size: contain;
     background-size: contain;
@@ -279,17 +282,11 @@ a:visited {
     transform: translate(-50%, -50%);
 }
 
-.tapState {
-    
-}
+.tapState {}
 
-.tapStateRed {
-    
-}
+.tapStateRed {}
 
-.tapStateOffer {
-    
-}
+.tapStateOffer {}
 
 .noselect {
     -webkit-touch-callout: none;
@@ -316,14 +313,7 @@ a:visited {
 }
 
 
-
-
-
-
-
-
-// Misc Loaders and Elements
-
+/* Misc Loaders and Elements */
 
 #loader {
     background-color: #242739;
@@ -455,4 +445,3 @@ a:visited {
         transform: rotate(450deg);
     }
 }
-

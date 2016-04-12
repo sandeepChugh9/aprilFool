@@ -1,3 +1,5 @@
+/* ALL MIXIN WITH EXAMPLES */
+/* Media Query Mixin In With Example */
 /* Example
 
 
@@ -202,6 +204,7 @@ body {
   font-weight: 500;
   src: url("file:///android_asset/fonts/Roboto-Medium.ttf") format("truetype"); }
 
+/* All Generic Microapp Related CSS Here */
 #header {
   position: fixed;
   top: 0px;
@@ -309,6 +312,7 @@ a:visited {
   white-space: nowrap;
   overflow: hidden; }
 
+/* Misc Loaders and Elements */
 #loader {
   background-color: #242739;
   display: none;
@@ -409,6 +413,7 @@ a:visited {
     -webkit-transform: rotate(450deg);
     transform: rotate(450deg); } }
 
+/* No Internet and Block Screen */
 #nointernet {
   background-color: #242739;
   width: 100%;
@@ -487,3 +492,5 @@ a:visited {
   width: 108px;
   height: 108px;
   margin: 0px auto; }
+
+/* All animation Css here */
