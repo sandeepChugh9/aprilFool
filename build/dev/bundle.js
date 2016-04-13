@@ -5449,16 +5449,90 @@
 
 	        var that = this;
 
-	        // try {
-	        //     PlatformBridge.changeBotTitle('Hike Smell');
-	        // } catch (e) {
-	        //     console.log('Error in changing bot title');
-	        // }
+	        if (platformSdk.bridgeEnabled) {
+	            App.ninjaServices.getHikeStats(function(res) {
+	                console.log(res);
+	                if (res.stat == 'success') {
+	                    console.log('getHikeStats success');
+
+
+	                } else if (res.stat == 'fail') {
+
+
+	                } else {
+
+	                    platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
+	                }
+	            });
+
+
+	            App.ninjaServices.getTrophyData(function(res) {
+	                console.log(res);
+	                if (res.stat == 'success') {
+	                    console.log('getTrophyData success');
+
+
+	                } else if (res.stat == 'fail') {
+
+
+	                } else {
+
+	                    platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
+	                }
+	            });
+
+
+
+
+
+	        } else {
+	            var statsData = {};
+	            statsData.name = "Sandeep Chugh";
+	            statsData.age = "12/Jan/2015";
+	            statsData.dp = "";
+
+
+	            statsData.messages = {
+	                sent: "100K",
+	                rec: "10K"
+	            }
+
+	            statsData.stickers = {
+	                sent: "100K",
+	                rec: "10K"
+	            }
+
+
+	            statsData.files = {
+	                sent: "100",
+	                rec: "10"
+	            }
+
+	            statsData.dataTr = {
+	                sent: "100 MB",
+	                rec: "10 MB"
+	            }
+
+
+	            statsData.favorite = "23";
+
+	            var trophyData = {
+	                'awarded': {
+	                    '5': 2,
+	                    '1': 1,
+	                    '20': 1,
+	                    '3': 2,
+	                    '10': 3
+	                }
+
+	            };
+	        }
+
+
 
 	        that.el = document.createElement('div');
 	        that.el.className = 'workSpaceContainer animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render(unescape(that.template), {});
-
+	        that.el.innerHTML = Mustache.render(unescape(that.template), { statsData: statsData, trophyData: trophyData, awardedCount: Object.keys(trophyData.awarded).length });
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
 
@@ -5478,7 +5552,7 @@
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"statsContainer\">\n    <div class=\"statsWrapperOne\">\n        <div class=\"statsProfile\">\n            <div class=\"profilePhoto backgroundImageGeneric\"></div>\n            <div class=\"profileName\">Sandeep Chugh</div>\n        </div>\n        <div class=\"statsAction\">\n            <div class=\"ageRow\">\n                <div class=\"ageIcon backgroundImageGeneric\"></div>\n                <div class=\"ageInfo\">\n                    <p class=\"profileStatHead\">Hike Age</p>\n                    <p class=\"profileStatSubHead\">12 Jan, 2015</p>\n                </div>\n            </div>\n            <div class=\"rowTrophies\">\n                <div class=\"tcIcon backgroundImageGeneric\"></div>\n                <div class=\"tcInfo\">\n                    <p class=\"profileStatHead\">Trophies</p>\n                    <p class=\"profileStatSubHead\">28</p>\n                </div>\n                <div id=\"btnAction\"> VIEW ALL </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"statsWrapperTwo\">\n        <br/>\n        <div class=\"cardContainer\">\n            <div class=\"cardHeader\"> MESSAGING </div>\n            <div class=\"halfCard\">\n                <div class=\"header\"> <span class=\"cardIcon messageIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Messages</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> 200K</span> </div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">10K </span> </div>\n            </div>\n            <div class=\"halfCard\">\n                <div class=\"header\"> <span class=\"cardIcon stickerIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Stickers</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> 200K</span> </div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">10K </span> </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"cardHeader\"> DATA TRANSFERED </div>\n            <div class=\"halfCard\">\n                <div class=\"header\"> <span class=\"cardIcon filesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Files</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> 100</span> </div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">23 </span> </div>\n            </div>\n            <div class=\"halfCard\">\n                <div class=\"header\"> <span class=\"cardIcon dataTransferIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Data Transfer</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> 2 MB</span> </div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">10 MB </span> </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"cardHeader\"> SOCIAL </div>\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon favouriteIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Favorites</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> 92 Friends added you as Favorites</span> </div>\n            </div>\n        </div>\n    </div>\n</div>"
+	module.exports = "<div class=\"statsContainer\">\n    <div class=\"statsWrapperOne\">\n        <div class=\"statsProfile\">\n            <div class=\"profilePhoto backgroundImageGeneric\"></div>\n            <div class=\"profileName\">{{statsData.name}}</div>\n        </div>\n        <div class=\"statsAction\">\n            <div class=\"ageRow\">\n                <div class=\"ageIcon backgroundImageGeneric\"></div>\n                <div class=\"ageInfo\">\n                    <p class=\"profileStatHead\">Hike Age</p>\n                    <p class=\"profileStatSubHead\">{{statsData.age}}</p>\n                </div>\n            </div>\n            <div class=\"rowTrophies\">\n                <div class=\"tcIcon backgroundImageGeneric\"></div>\n                <div class=\"tcInfo\">\n                    <p class=\"profileStatHead\">Trophies</p>\n                    <p class=\"profileStatSubHead\">{{awardedCount}}</p>\n                </div>\n                <div id=\"btnAction\"> VIEW ALL </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"statsWrapperTwo\">\n        <br/>\n        <div class=\"cardContainer\">\n            <div class=\"cardHeader\"> MESSAGING </div>\n            <div class=\"halfCard\">\n                <div class=\"header\"> <span class=\"cardIcon messageIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Messages</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{statsData.messages.sent}}</span> </div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{statsData.messages.rec}} </span> </div>\n            </div>\n            <div class=\"halfCard\">\n                <div class=\"header\"> <span class=\"cardIcon stickerIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Stickers</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{statsData.stickers.sent}}</span> </div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{statsData.stickers.sent}} </span> </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"cardHeader\"> DATA TRANSFERED </div>\n            <div class=\"halfCard\">\n                <div class=\"header\"> <span class=\"cardIcon filesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Files</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{statsData.files.sent}}</span> </div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{statsData.files.sent}} </span> </div>\n            </div>\n            <div class=\"halfCard\">\n                <div class=\"header\"> <span class=\"cardIcon dataTransferIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Data Transfer</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{statsData.dataTr.sent}}</span> </div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{statsData.dataTr.rec}}</span> </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"cardHeader\"> SOCIAL </div>\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon favouriteIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Favorites</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> {{statsData.favorite}} Friends added you as Favorites</span> </div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ },
 /* 10 */
