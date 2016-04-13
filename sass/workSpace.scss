@@ -1,3 +1,79 @@
+.profilePhoto {
+    height: 66px;
+    width: 66px;
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url('images/profilePic.jpg');
+    border-radius: 50%;
+    margin: 20px 16px 20px 20px;
+}
+
+.profileName {
+    @include fontStyle(20px,
+    300,
+    #3D475B,
+    26px);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.profileStatHead {
+    @include fontStyle(14px,
+    400,
+    #3D475B,
+    20px);
+    opacity: 0.4;
+}
+
+.profileStatSubHead {
+    @include fontStyle(16px,
+    400,
+    #3D475B,
+    22px);
+}
+
+.ageIcon {
+    height: 29px;
+    width: 29px;
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url('images/maleIcon.png');
+    margin: 0px 35px 0px 35px;
+}
+
+.tcIcon {
+    height: 29px;
+    width: 29px;
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url('images/trophyIcon.png');
+    margin: 0px 35px 0px 35px;
+}
+
+.tcInfo,
+.ageInfo {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ageRow,
+.rowTrophies {
+    margin-bottom: 18px;
+}
+
+#btnAction {
+    display: inline-block;
+    float: right;
+    padding: 8px 16px 8px 16px;
+    background: #1DA8E8;
+    border-radius: 4px;
+    @include fontStyle(12px,
+    500,
+    #FFFFFF,
+    16px);
+    margin-right: 20px;
+}
+
 .workSpaceContainer {
     background: #F7F8F9;
     height: 100%;
@@ -6,11 +82,24 @@
 
 .cardIcon {
     background-image: url('images/test.png');
-    height: 15px;
-    width: 15px;
+    height: 18px;
+    width: 18px;
     display: inline-block;
     margin-right: 16px;
     vertical-align: bottom;
+}
+
+.favouriteIcon {
+    background-image: url('images/favoriteIcon.png');
+}
+
+.messageIcon {
+    background-image: url('images/messageIcon.png');
+    height: 14px;
+}
+
+.stickerIcon {
+    background-image: url('images/stickerIcon.png');
 }
 
 .statHeading {
@@ -45,7 +134,7 @@
 }
 
 .statData {
-    @include fontStyle(12px,
+    @include fontStyle(14px,
     400,
     #3D475C,
     16px)

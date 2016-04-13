@@ -494,6 +494,73 @@ a:visited {
   margin: 0px auto; }
 
 /* All animation Css here */
+.profilePhoto {
+  height: 66px;
+  width: 66px;
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url("images/profilePic.jpg");
+  border-radius: 50%;
+  margin: 20px 16px 20px 20px; }
+
+.profileName {
+  font-size: 20px;
+  color: #3D475B;
+  line-height: 26px;
+  font-weight: 300;
+  display: inline-block;
+  vertical-align: middle; }
+
+.profileStatHead {
+  font-size: 14px;
+  color: #3D475B;
+  line-height: 20px;
+  font-weight: 400;
+  opacity: 0.4; }
+
+.profileStatSubHead {
+  font-size: 16px;
+  color: #3D475B;
+  line-height: 22px;
+  font-weight: 400; }
+
+.ageIcon {
+  height: 29px;
+  width: 29px;
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url("images/maleIcon.png");
+  margin: 0px 35px 0px 35px; }
+
+.tcIcon {
+  height: 29px;
+  width: 29px;
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url("images/trophyIcon.png");
+  margin: 0px 35px 0px 35px; }
+
+.tcInfo,
+.ageInfo {
+  display: inline-block;
+  vertical-align: middle; }
+
+.ageRow,
+.rowTrophies {
+  margin-bottom: 18px; }
+
+#btnAction {
+  display: inline-block;
+  float: right;
+  padding: 8px 16px 8px 16px;
+  background: #1DA8E8;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #FFFFFF;
+  line-height: 16px;
+  font-weight: 500;
+  margin-right: 20px; }
+
 .workSpaceContainer {
   background: #F7F8F9;
   height: 100%;
@@ -501,11 +568,21 @@ a:visited {
 
 .cardIcon {
   background-image: url("images/test.png");
-  height: 15px;
-  width: 15px;
+  height: 18px;
+  width: 18px;
   display: inline-block;
   margin-right: 16px;
   vertical-align: bottom; }
+
+.favouriteIcon {
+  background-image: url("images/favoriteIcon.png"); }
+
+.messageIcon {
+  background-image: url("images/messageIcon.png");
+  height: 14px; }
+
+.stickerIcon {
+  background-image: url("images/stickerIcon.png"); }
 
 .statHeading {
   font-size: 12px;
@@ -533,7 +610,7 @@ a:visited {
   font-weight: 300; }
 
 .statData {
-  font-size: 12px;
+  font-size: 14px;
   color: #3D475C;
   line-height: 16px;
   font-weight: 400; }
