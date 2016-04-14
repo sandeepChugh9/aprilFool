@@ -4458,25 +4458,23 @@
 	            RESET_APP: 'app.reset'
 	        },
 
+	        // Levels 0- Bronze; 1-Silver; Gold-2
+
 	        TROPHIES: [{
 	                id: 0,
-	                icon: 'test.png',
 	                label: 'Hike Age',
 	                subtext: '',
 	                levels: [{
-	                        id: 1,
-	                        value: '1 Month',
-	                        icon: '',
+	                        value: '1 month',
+	                        icon: 'images/trophy-messages-bronze.png',
 	                        text: ''
 	                    }, {
-
-	                        id: 2,
-	                        value: '1 Year',
+	                        value: '1 year',
+	                        icon:'images/trophy-messages-silver.png',
 	                        text: ''
 	                    }, {
-
-	                        id: 1,
-	                        value: '2 Year',
+	                        icon:'images/trophy-messages-gold.png',
+	                        value: '3 years',
 	                        text: ''
 	                    }
 
@@ -4484,30 +4482,39 @@
 
 	            }, {
 	                id: 1,
-	                icon: 'test.png',
-	                label: 'Upgrade',
+	                label: 'Messaging',
 	                subtext: '',
-	                levels: ''
+	                levels: [{
+	                        icon:'images/trophy-messages-bronze.png',
+	                        value: 100,
+	                        text: ''
+	                    }, {
+	                        icon:'images/trophy-messages-silver.png',
+	                        value: 1000,
+	                        text: ''
+	                    }, {
+	                        icon:'images/trophy-messages-gold.png',
+	                        value: 10000,
+	                        text: ''
+	                    }
+
+	                ]
 
 	            }, {
 	                id: 2,
-	                icon: 'test.png',
-	                label: 'Sessions',
+	                label: 'Stickers',
 	                subtext: '',
 	                levels: [{
-
-	                        id: 1,
-	                        value: '',
+	                        icon:'images/trophy-messages-bronze.png',
+	                        value: 100,
 	                        text: ''
 	                    }, {
-
-	                        id: 2,
-	                        value: '',
+	                        icon:'images/trophy-messages-silver.png',
+	                        value: 1000,
 	                        text: ''
 	                    }, {
-
-	                        id: 1,
-	                        value: '1000',
+	                        icon:'images/trophy-messages-gold.png',
+	                        value: 10000,
 	                        text: ''
 	                    }
 
@@ -4515,70 +4522,58 @@
 
 	            }, {
 	                id: 3,
-	                icon: 'test.png',
-	                label: 'Time Spent',
+	                label: 'Files',
 	                subtext: '',
 	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
+	                        icon:'images/trophy-messages-bronze.png',
+	                        value: 10,
 	                        text: ''
 	                    }, {
-
-	                        id: 2,
+	                        icon:'images/trophy-messages-silver.png',
 	                        value: 100,
 	                        text: ''
 	                    }, {
-
-	                        id: 1,
+	                        icon:'images/trophy-messages-gold.png',
 	                        value: 1000,
 	                        text: ''
 	                    }
 
 	                ]
 
-	            }, {
-	                id: 4,
-	                icon: 'test.png',
-	                label: 'Messaging',
+	            }, 
+	            {
+	                id:4,
+	                label: 'Data Transfered (hike direct)',
 	                subtext: '',
 	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
+	                        icon:'images/trophy-messages-bronze.png',
+	                        value: '1 GB',
 	                        text: ''
 	                    }, {
-
-	                        id: 2,
-	                        value: 100,
+	                        icon:'images/trophy-messages-silver.png',
+	                        value: '10 GB',
 	                        text: ''
 	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
+	                        icon:'images/trophy-messages-gold.png',
+	                        value: '100 GB',
 	                        text: ''
 	                    }
 
-	                ]
-
-	            }, {
-	                id: 5,
-	                icon: 'test.png',
-	                label: 'Stickers',
+	            ]},
+	            {
+	                id:5,
+	                label: 'Chat Themes',
 	                subtext: '',
 	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
+	                        icon:'images/trophy-messages-bronze.png',
+	                        value: 10,
 	                        text: ''
 	                    }, {
-
-	                        id: 2,
+	                        icon:'images/trophy-messages-silver.png',
 	                        value: 100,
 	                        text: ''
 	                    }, {
-
-	                        id: 1,
+	                        icon:'images/trophy-messages-gold.png',
 	                        value: 1000,
 	                        text: ''
 	                    }
@@ -4587,23 +4582,19 @@
 
 	            }, {
 	                id: 6,
-	                icon: 'test.png',
-	                label: 'Images',
+	                label: 'Status Updates',
 	                subtext: '',
 	                levels: [{
-
-	                        id: 1,
+	                        icon:'images/trophy-messages-bronze.png',
 	                        value: 1,
 	                        text: ''
 	                    }, {
-
-	                        id: 2,
-	                        value: 100,
+	                        icon:'images/trophy-messages-silver.png',
+	                        value: 10,
 	                        text: ''
 	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
+	                        icon:'images/trophy-messages-gold.png',
+	                        value: 100,
 	                        text: ''
 	                    }
 
@@ -4611,510 +4602,25 @@
 
 	            }, {
 	                id: 7,
-	                icon: 'test.png',
-	                label: 'Videos',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 8,
-	                icon: 'test.png',
-	                label: 'Files',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 9,
-	                icon: 'test.png',
-	                label: 'Calls',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 10,
-	                icon: 'test.png',
-	                label: 'Calls',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id:11,
-	                icon: 'test.png',
-	                label: 'Chat Themes',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 12,
-	                icon: 'test.png',
-	                label: 'Data Transfered',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 13,
-	                icon: 'test.png',
-	                label: 'Favourites',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 14,
-	                icon: 'test.png',
-	                label: 'Likes',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 15,
-	                icon: 'test.png',
-	                label: 'Profile Pics',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 16,
-	                icon: 'test.png',
-	                label: 'Status Updates',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 17,
-	                icon: 'test.png',
 	                label: 'Invites',
 	                subtext: '',
 	                levels: [{
-
-	                        id: 1,
+	                        icon:'images/trophy-messages-bronze.png',
 	                        value: 1,
 	                        text: ''
 	                    }, {
-
-	                        id: 2,
+	                        icon:'images/trophy-messages-silver.png',
+	                        value: 10,
+	                        text: ''
+	                    }, {
+	                        icon:'images/trophy-messages-gold.png',
 	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 18,
-	                icon: 'test.png',
-	                label: 'Game sessions played',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 19,
-	                icon: 'test.png',
-	                label: 'Games tried',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 20,
-	                icon: 'test.png',
-	                label: 'Challenges',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 21,
-	                icon: 'test.png',
-	                label: 'Challenges won',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 22,
-	                icon: 'test.png',
-	                label: 'News',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 23,
-	                icon: 'test.png',
-	                label: 'Sticker',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 24,
-	                icon: 'test.png',
-	                label: 'Data Transfered',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 25,
-	                icon: 'test.png',
-	                label: 'Data Transfered',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 26,
-	                icon: 'test.png',
-	                label: 'Data Transfered',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
-	                        text: ''
-	                    }
-
-	                ]
-
-	            }, {
-	                id: 27,
-	                icon: 'test.png',
-	                label: 'Data Transfered',
-	                subtext: '',
-	                levels: [{
-
-	                        id: 1,
-	                        value: 1,
-	                        text: ''
-	                    }, {
-
-	                        id: 2,
-	                        value: 100,
-	                        text: ''
-	                    }, {
-
-	                        id: 1,
-	                        value: 1000,
 	                        text: ''
 	                    }
 
 	                ]
 
 	            }
-
 	        ]
 
 	    };
@@ -5567,8 +5073,87 @@
 	        this.template = __webpack_require__(11);
 	    };
 
-	    WorkspaceController.prototype.bind = function(App) {
+	    WorkspaceController.prototype.bind = function(App,data) {
 	        var $el = $(this.el);
+
+	        var trophyOverlay = document.getElementsByClassName('trophyOverlay')[0];
+	        var rewardedTrophyIcons = document.getElementsByClassName('awarded');
+	        
+	        var allTrophies = document.getElementsByClassName('commonTrophy');
+	        
+	        var levelBronze = document.getElementsByClassName('levelBronze')[0];
+	        var levelSilver = document.getElementsByClassName('levelSilver')[0];
+	        var levelGold = document.getElementsByClassName('levelGold')[0];
+
+	        var crossIcon = document.getElementsByClassName('crossIcon')[0];
+
+	        crossIcon.addEventListener('click', function(ev) {
+	            trophyOverlay.classList.add('hide');
+	        });
+
+	        var openTrophy = function() {
+	            
+	            var experiment = this.getAttribute('data-experiment');
+	            var tid = this.getAttribute('data-tid');
+
+	            if(this.classList.contains('awarded')){
+	                console.log("Trophy is awarded");
+	                var awardedLevel = data[tid].curLevel;
+	                
+	                // Current Level Is zero :: Dont show any other Level
+	                if(awardedLevel === 0){
+	                    console.log("Awarded Level 0");
+	                    levelBronze.style.backgroundImage = "url('"+ data[tid].levels[awardedLevel].icon  + "')";
+	                    levelSilver.classList.add('levelLocked');
+	                    levelSilver.classList.add('levelLockNoTap');
+	                    levelGold.classList.add('levelLocked');
+	                    levelGold.classList.add('levelLockNoTap');
+	                }
+	                // Current Level is 1 :: Show Zeroth Level Also
+	                else if(awardedLevel === 1){
+	                    console.log("Awarded Level 1");
+	                    levelBronze.style.backgroundImage = "url('"+ data[tid].levels[awardedLevel-1].icon  + "')";
+	                    levelSilver.style.backgroundImage = "url('"+ data[tid].levels[awardedLevel].icon  + "')";
+	                    levelGold.classList.add('levelLocked');
+	                    levelGold.classList.add('levelLockNoTap');   
+	                }
+	                // Current Level is 2 :: Show zeroth and First Level both 
+	                else if(awardedLevel === 2){
+	                    console.log("Awarded Level 2");
+	                    levelBronze.style.backgroundImage = "url('"+ data[tid].levels[awardedLevel - 1].icon  + "')";
+	                    levelSilver.style.backgroundImage = "url('"+ data[tid].levels[awardedLevel - 2].icon  + "')";
+	                    levelGold.style.backgroundImage = "url('"+ data[tid].levels[awardedLevel].icon  + "')";   
+	                }
+
+	                console.log("Opening Rewarded Trophy :: Show Level current and Locked for other Levels with task not hidden");
+	            }
+	            // Experiment 2 :: Non Hidden Tasks
+	            else if(this.classList.contains('locked') && experiment == 'exp2'){
+	                console.log("Experiment two :: Show Locked Trophy Task as well");
+	            }
+	            // Experiment 3 :: Hidden Tasks
+	            else if(this.classList.contains('locked') && experiment == 'exp3'){
+	                console.log("Experiment Three :: Dont Show Locked Trophy Task");
+	            }
+
+	            // Show the Overlay now
+	            trophyOverlay.classList.remove('hide');
+
+	        };
+
+	        
+	        for (var i=0; i<rewardedTrophyIcons.length; i++){
+	            var trophyId = rewardedTrophyIcons[i].getAttribute('data-tid');
+	            var trophyEarnedLevel = data[trophyId].curLevel; 
+	            
+	            rewardedTrophyIcons[i].style.backgroundImage = "url('"+ data[trophyId].levels[trophyEarnedLevel].icon  + "')";
+	            
+	        }
+
+	        for(var j=0;j<allTrophies.length;j++){
+	            allTrophies[j].addEventListener('click', openTrophy, false);
+	        }
+
 
 	    };
 
@@ -5578,13 +5163,11 @@
 
 	        var awardedTrophies = {
 	            'awarded': {
+	                '1': 0,
+	                '3': 1,
 	                '5': 2,
-	                '1': 1,
-	                '20': 1,
-	                '3': 2,
-	                '10': 3
+	                '7': 2
 	            }
-
 	        };
 
 	        var exp2 = false,
@@ -5602,7 +5185,7 @@
 
 	                exp2 = true;
 
-	            // Logic 2 : Show Rewarded and Not Rewarded (Task Locked state)
+	        // Logic 2 : Show Rewarded and Not Rewarded (Task Locked state)
 	            else if (platformSdk.appData.helperData.experiment == 3 && data)
 
 	                exp3 = true;
@@ -5621,7 +5204,7 @@
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
 
-	        that.bind(App);
+	        that.bind(App,data);
 	    };
 
 	    WorkspaceController.prototype.destroy = function() {
@@ -5637,7 +5220,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"trophyContainer\">\n    <div class=\"trophyCountIcon\"></div>\n    <div class=\"trophyCount\">{{awardedCount}} / {{totalCount}}</div>\n    <!-- List Of All Trophies -->\n    <div class=\"trophyWrapper\">\n        {{#experiment2}} {{#trophiesData}}\n            <div data-tid=\"{{id}}\" data-experiment=\"exp2\" id=\"trophyIcon\" class=\"{{^awarded}}locked{{/awarded}}\"></div>        \n        {{/trophiesData}} {{/experiment2}} \n    \n        {{#experiment3}} {{#trophiesData}}\n            <div id=\"trophyIcon\" data-tid=\"{{id}}\" data-experiment=\"exp3\" class=\"{{^awarded}}locked{{/awarded}}\"></div>\n        {{/trophiesData}} {{/experiment3}}\n    </div>   \n</div>\n"
+	module.exports = "<div class=\"trophyContainer\">\n    <div class=\"overallWrapper\">\n        <div class=\"trophyCountWrapper\">\n            <div class=\"trophyCountIcon backgroundImageGeneric\"></div>\n            <div class=\"trophyCount\"><span>{{awardedCount}}</span> / {{totalCount}}</div>\n        </div>\n        <!-- List Of All Trophies -->\n        <div class=\"centerToScreenContainer\">\n            <div class=\"trophyWrapper centerToScreenWrapper\">\n                {{#experiment2}} {{#trophiesData}}\n                <div class=\"trophyIconContain\">\n                    <div data-tid=\"{{id}}\" data-experiment=\"exp2\" id=\"trophyIcon\" class=\"commonTrophy {{^awarded}}locked{{/awarded}} {{#awarded}}awarded{{/awarded}} backgroundImageGeneric\"></div>\n                </div>\n                {{/trophiesData}} {{/experiment2}} {{#experiment3}} {{#trophiesData}}\n                <div class=\"trophyIconContain\">\n                    <div id=\"trophyIcon\" data-tid=\"{{id}}\" data-experiment=\"exp3\" class=\"commonTrophy {{^awarded}}locked{{/awarded}} {{#awarded}}awarded{{/awarded}} backgroundImageGeneric\"></div>\n                </div>\n                {{/trophiesData}} {{/experiment3}}\n            </div>\n        </div>\n    </div>\n    <div class=\"trophyOverlay centerToScreenContainer hide\">\n        <div class=\"trophyOverlayWrapper centerToScreenWrapper\">\n            <div class=\"crossIcon backgroundImageGeneric\"></div>\n            <div class=\"levelsIconWrapper\">\n                <div class=\"levelBronze backgroundImageGeneric\"></div>\n                <div class=\"levelSilver backgroundImageGeneric\"></div>\n                <div class=\"levelGold backgroundImageGeneric\"></div>\n            </div>\n            <h1 class=\"trophyHeading align-center\">Messaging</h1>\n            <p class=\"levelText align-center\">Send your first 10 message and achieve the bronze trophy</p>\n            <hr noshade>\n            <div class=\"levelAction align-center\">Share with Friends</div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 12 */

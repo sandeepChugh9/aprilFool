@@ -1,14 +1,36 @@
 <div class="trophyContainer">
-    <div class="trophyCountIcon"></div>
-    <div class="trophyCount">{{awardedCount}} / {{totalCount}}</div>
-    <!-- List Of All Trophies -->
-    <div class="trophyWrapper">
-        {{#experiment2}} {{#trophiesData}}
-            <div data-tid="{{id}}" data-experiment="exp2" id="trophyIcon" class="{{^awarded}}locked{{/awarded}}"></div>        
-        {{/trophiesData}} {{/experiment2}} 
-    
-        {{#experiment3}} {{#trophiesData}}
-            <div id="trophyIcon" data-tid="{{id}}" data-experiment="exp3" class="{{^awarded}}locked{{/awarded}}"></div>
-        {{/trophiesData}} {{/experiment3}}
-    </div>   
+    <div class="overallWrapper">
+        <div class="trophyCountWrapper">
+            <div class="trophyCountIcon backgroundImageGeneric"></div>
+            <div class="trophyCount"><span>{{awardedCount}}</span> / {{totalCount}}</div>
+        </div>
+        <!-- List Of All Trophies -->
+        <div class="centerToScreenContainer">
+            <div class="trophyWrapper centerToScreenWrapper">
+                {{#experiment2}} {{#trophiesData}}
+                <div class="trophyIconContain">
+                    <div data-tid="{{id}}" data-experiment="exp2" id="trophyIcon" class="commonTrophy {{^awarded}}locked{{/awarded}} {{#awarded}}awarded{{/awarded}} backgroundImageGeneric"></div>
+                </div>
+                {{/trophiesData}} {{/experiment2}} {{#experiment3}} {{#trophiesData}}
+                <div class="trophyIconContain">
+                    <div id="trophyIcon" data-tid="{{id}}" data-experiment="exp3" class="commonTrophy {{^awarded}}locked{{/awarded}} {{#awarded}}awarded{{/awarded}} backgroundImageGeneric"></div>
+                </div>
+                {{/trophiesData}} {{/experiment3}}
+            </div>
+        </div>
+    </div>
+    <div class="trophyOverlay centerToScreenContainer hide">
+        <div class="trophyOverlayWrapper centerToScreenWrapper">
+            <div class="crossIcon backgroundImageGeneric"></div>
+            <div class="levelsIconWrapper">
+                <div class="levelBronze backgroundImageGeneric"></div>
+                <div class="levelSilver backgroundImageGeneric"></div>
+                <div class="levelGold backgroundImageGeneric"></div>
+            </div>
+            <h1 class="trophyHeading align-center">Messaging</h1>
+            <p class="levelText align-center">Send your first 10 message and achieve the bronze trophy</p>
+            <hr noshade>
+            <div class="levelAction align-center">Share with Friends</div>
+        </div>
+    </div>
 </div>
