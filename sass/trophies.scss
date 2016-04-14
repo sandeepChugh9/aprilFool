@@ -1,114 +1,107 @@
-.trophyContainer{
+.trophyContainer {
     width: 100%;
     height: 100%;
-    position: relative; 
+    position: relative;
 }
 
-.trophyCountWrapper{
-    position: absolute;
-    top: 20px;
-    left: 0px;
-    right: 0px;
-    margin: 0px auto;    
+.trophyCountWrapper {
     text-align: center;
+    margin-top: 20px;
 }
 
-.trophyCountIcon{
-    margin: 5px auto; 
+.trophyCountIcon {
+    margin: 5px auto;
     height: 27px;
     width: 28px;
-    background-image: url('images/trophyIcon.png'); 
+    background-image: url('images/trophyIcon.png');
 }
 
-.trophyWrapper{
-    width: 80%; 
-    top: 45% !important; 
+.trophyWrapper {
+    width: 100%;
+    top: 39% !important;
 }
 
-.trophyCount{
+.trophyCount {
     @include fontStyle(18px,
     400,
     #3D475C,
     21px)
 }
 
-.trophyCount span{
-   @include fontStyle(20px,
+.trophyCount span {
+    @include fontStyle(20px,
     500,
     #3D475C,
-    21px) 
+    21px)
 }
 
-.locked{
-    margin: 20px auto;  
-    height: 44px;
-    width: 44px;
+.locked {
+    margin: 20px auto;
+    height: 38px;
+    width: 38px;
     background-image: url(images/trophy-locked.png);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
 }
 
-.awarded{
-    margin: 10px auto;  
+.awarded {
+    margin: 10px auto;
     height: 58px;
-    width: 76px;
-    position: relative;   
+    width: 70px;
+    position: relative;
 }
 
-.trophyIconContain{
-    width: 73px;
+.trophyIconContain {
+    width: 28%;
     height: 73px;
-    display: inline-block; 
+    display: inline-block;
     margin-bottom: 34px;
-    margin-left: 17px;
-    margin-right: 17px; 
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
-.crossIcon{
+.crossIcon {
     background-image: url(images/cross-icon.png);
-    width:13px;
+    width: 13px;
     height: 13px;
     position: absolute;
-    right:18px;
-    top: 18px;  
+    right: 18px;
+    top: 18px;
 }
 
-.trophyOverlay{
-    background: #3D475C;
-    opacity: 0.96;
+.trophyOverlay {
+    background: rgba(61, 71, 92, 0.93);
+    top: 0;
 }
 
-.trophyOverlayWrapper{
-    background: #FFF; 
+.trophyOverlayWrapper {
+    background: #FFF;
     padding: 72px 32px 0px 32px;
-      
 }
 
-.levelsIconWrapper{
+.levelsIconWrapper {
     width: 250px;
-    text-align: center; 
+    text-align: center;
     margin-bottom: 24px;
 }
 
-.trophyHeading{
+.trophyHeading {
     @include fontStyle(18px,
     400,
     #3D475B,
-    21px)
-    margin-bottom: 8px; 
+    21px) margin-bottom: 8px;
 }
 
-.levelText{
+.levelText {
     @include fontStyle(14px,
     400,
     #3D475B,
-    21px)
-    opacity: 0.80;
-    margin-bottom: 30px;  
+    21px) opacity: 0.80;
+    margin-bottom: 30px;
 }
 
-.trophyOverlay hr{
+.trophyOverlay hr {
     margin: 0px;
     border: none;
     height: 1px;
@@ -116,56 +109,118 @@
     opacity: 0.20;
 }
 
-.levelAction{
+.levelAction {
     @include fontStyle(14px,
     500,
     #1DA8E8,
     21px);
     text-align: center;
     padding: 15px 0px 15px 0px;
-    text-transform: uppercase ;  
+    text-transform: uppercase;
 }
 
-.levelLocked{
+.levelLocked {
     width: 32px;
-    height: 32px;  
-    background-position: center; 
+    height: 32px;
+    background-position: center;
     background-image: url(images/trophy-locked.png);
 }
 
 .levelBronze {
-    display: inline-block ;
-    width: 69px;
-    height: 52px;  
-}
-
-.levelSilver{
-    display: inline-block ;
+    display: inline-block;
     width: 69px;
     height: 52px;
-    margin: 0px 12px;   
 }
 
-.levelGold{
-    display: inline-block ;
+.levelSilver {
+    display: inline-block;
+    width: 69px;
+    height: 52px;
+    margin: 0px 12px;
+}
+
+.levelGold {
+    display: inline-block;
     width: 69px;
     height: 52px;
 }
 
 // On no click of locked level
-.levelLockNoTap{
-    opacity: 0.40; 
+.levelLockNoTap {
+    opacity: 0.40;
 }
 
 // On click on locked level
-.levelLockTap{
+.levelLockTap {
     opacity: 1;
 }
 
-.align-center{
-    text-align: center;  
+.align-center {
+    text-align: center;
 }
 
-.hide{
-    display: none!important; 
+.hide {
+    display: none!important;
+}
+
+@media screen and (max-width: 330px) {
+    .locked {
+        width: 34px;
+        height: 34px;
+    }
+    .awarded {
+        width: 60px;
+        height: 58px;
+    }
+    .trophyIconContain {
+        width: 20%;
+        margin-left: 6%;
+        margin-right: 6%;
+    }
+    .trophyOverlayWrapper {
+        padding: 72px 16px 0px 16px;
+    }
+    .levelBronze {
+        width: 60px;
+        height: 46px;
+    }
+    .levelSilver {
+        width: 60px;
+        height: 46px;
+    }
+    .levelGold {
+        width: 60px;
+        height: 46px;
+    }
+}
+
+@media screen and (min-width: 331px) and (max-width: 360px) {
+    .locked {
+        width: 36px;
+        height: 36px;
+    }
+    .awarded {
+        width: 65px;
+        height: 58px;
+    }
+    .trophyIconContain {
+        width: 22%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .trophyOverlayWrapper {
+        padding: 72px 24px 0px 24px;
+    }
+    .levelBronze {
+        width: 65px;
+        height: 50px;
+    }
+    .levelSilver {
+        width: 65px;
+        height: 50px;
+    }
+    .levelGold {
+        width: 65px;
+        height: 50px;
+    }
 }

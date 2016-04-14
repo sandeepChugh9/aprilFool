@@ -1,22 +1,22 @@
 <div class="statsContainer">
     <div class="statsWrapperOne">
         <div class="statsProfile">
-            <div class="profilePhoto backgroundImageGeneric"></div>
-            <div class="profileName">{{statsData.name}}</div>
+            <div class="profilePhoto backgroundImageGeneric" style="{{#userData.profileData.icon}}background-image:url('data:image/png;base64,{{userData.profileData.icon}}{{/userData.profileData.icon}}')"></div>
+            <div class="profileName">{{userData.profileData.name}}</div>
         </div>
         <div class="statsAction">
             <div class="ageRow">
-                <div class="ageIcon backgroundImageGeneric"></div>
+                <div class="ageIcon backgroundImageGeneric {{userData.profileData.gender}}Icon"></div>
                 <div class="ageInfo">
                     <p class="profileStatHead">Hike Age</p>
-                    <p class="profileStatSubHead">{{statsData.age}}</p>
+                    <p class="profileStatSubHead">{{userData.profileData.age}}</p>
                 </div>
             </div>
             <div class="rowTrophies">
                 <div class="tcIcon backgroundImageGeneric"></div>
                 <div class="tcInfo">
                     <p class="profileStatHead">Trophies</p>
-                    <p class="profileStatSubHead">{{awardedCount}}</p>
+                    <p class="profileStatSubHead">{{userData.statsData.trophyCount}}</p>
                 </div>
                 <div id="btnAction"> VIEW ALL </div>
             </div>
@@ -28,33 +28,33 @@
             <div class="cardHeader"> MESSAGING </div>
             <div class="halfCard">
                 <div class="header"> <span class="cardIcon messageIcon backgroundImageGeneric"></span> <span class="statHeading"> Messages</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{statsData.messages.sent}}</span> </div>
-                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{statsData.messages.rec}} </span> </div>
+                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.messages.sent}}</span> </div>
+                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.messages.rec}} </span> </div>
             </div>
             <div class="halfCard">
                 <div class="header"> <span class="cardIcon stickerIcon backgroundImageGeneric"></span> <span class="statHeading"> Stickers</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{statsData.stickers.sent}}</span> </div>
-                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{statsData.stickers.sent}} </span> </div>
+                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.stickers.sent}}</span> </div>
+                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.stickers.sent}} </span> </div>
             </div>
         </div>
         <div class="cardContainer">
             <div class="cardHeader"> DATA TRANSFERED </div>
             <div class="halfCard">
                 <div class="header"> <span class="cardIcon filesIcon backgroundImageGeneric"></span> <span class="statHeading"> Files</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{statsData.files.sent}}</span> </div>
-                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{statsData.files.sent}} </span> </div>
+                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.files.sent}}</span> </div>
+                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.files.sent}} </span> </div>
             </div>
             <div class="halfCard">
-                <div class="header"> <span class="cardIcon dataTransferIcon backgroundImageGeneric"></span> <span class="statHeading"> Data Transfer</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{statsData.dataTr.sent}}</span> </div>
-                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{statsData.dataTr.rec}}</span> </div>
+                <div class="header"> <span class="cardIcon hdFileTransferIcon backgroundImageGeneric"></span> <span class="statHeading"> Data Transfer</span></div>
+                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.hdFileTr.sent}}</span> </div>
+                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.hdFileTr.rec}}</span> </div>
             </div>
         </div>
         <div class="cardContainer">
             <div class="cardHeader"> SOCIAL </div>
             <div class="fullCard">
                 <div class="header"> <span class="cardIcon favouriteIcon backgroundImageGeneric"></span> <span class="statHeading"> Favorites</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> {{statsData.favorite}} Friends added you as Favorites</span> </div>
+                <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.favoriteCount}} Friends added you as Favorites</span> </div>
             </div>
         </div>
     </div>

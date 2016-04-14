@@ -36,7 +36,7 @@
             levelBronze.removeAttribute('style');
             levelSilver.removeAttribute('style');
             levelGold.removeAttribute('style');
-        
+
             levelBronze.classList.add('levelCommon', 'levelBronze', 'backgroundImageGeneric');
             levelSilver.classList.add('levelCommon', 'levelSilver', 'backgroundImageGeneric');
             levelGold.classList.add('levelCommon', 'levelGold', 'backgroundImageGeneric');

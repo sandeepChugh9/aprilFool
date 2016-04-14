@@ -3,7 +3,7 @@
     width: 66px;
     display: inline-block;
     vertical-align: middle;
-    background-image: url('images/profilePic.jpg');
+    background-image: url('images/profilePic.png');
     border-radius: 50%;
     margin: 20px 16px 20px 20px;
 }
@@ -37,8 +37,19 @@
     width: 29px;
     display: inline-block;
     vertical-align: middle;
-    background-image: url('images/maleIcon.png');
     margin: 0px 35px 0px 35px;
+}
+
+.mIcon {
+    background-image: url('images/maleIcon.png');
+}
+
+.fIcon {
+    background-image: url('images/femaleIcon.png');
+}
+
+.neutralIcon {
+    background-image: url('images/neutralIcon.png');
 }
 
 .tcIcon {
@@ -78,6 +89,7 @@
     background: #F7F8F9;
     height: 100%;
     width: 100%;
+    overflow: scroll
 }
 
 .cardIcon {

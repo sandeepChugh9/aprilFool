@@ -17,25 +17,37 @@
 
 
         // Hike Stats Fron URL
-        getHikeStats: function( fn, x ) {
+        getProfile: function(fn, x) {
             var params = {
-                'url': URL.location + '/stats?random='+Math.round(Math.random() * 999999999),
+                'url': URL.location + '/profile?random=' + Math.round(Math.random() * 999999999),
                 'type': 'GET',
-                'loader':true
+                'loader': true
             };
-            if ( typeof fn === 'function' ) return this.ninjaServices.communicate( params, fn, x );
-            else this.ninjaServices.communicate( params );
+            if (typeof fn === 'function') return this.ninjaServices.communicate(params, fn, x);
+            else this.ninjaServices.communicate(params);
+        },
+
+
+        // Hike Stats Fron URL
+        getHikeStats: function(fn, x) {
+            var params = {
+                'url': URL.location + '/stats?random=' + Math.round(Math.random() * 999999999),
+                'type': 'GET',
+                'loader': true
+            };
+            if (typeof fn === 'function') return this.ninjaServices.communicate(params, fn, x);
+            else this.ninjaServices.communicate(params);
         },
 
         //Trophy Data From URL
-        getTrophyData: function( fn, x ) {
+        getTrophyData: function(fn, x) {
             var params = {
-                'url': URL.location + '/trophies?random='+Math.round(Math.random() * 999999999),
+                'url': URL.location + '/trophies?random=' + Math.round(Math.random() * 999999999),
                 'type': 'GET',
-                'loader':true
+                'loader': true
             };
-            if ( typeof fn === 'function' ) return this.ninjaServices.communicate( params, fn, x );
-            else this.ninjaServices.communicate( params );
+            if (typeof fn === 'function') return this.ninjaServices.communicate(params, fn, x);
+            else this.ninjaServices.communicate(params);
         },
 
 
