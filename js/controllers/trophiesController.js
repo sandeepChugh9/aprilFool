@@ -205,6 +205,16 @@
             };
         }
 
+        if (data.age >= 30)
+            awardedTrophies.awarded[0] = 0;
+        else if (data.age >= 365)
+            awardedTrophies.awarded[0] = 1;
+        else if (data.age >= 1095)
+            awardedTrophies.awarded[0] = 2;
+
+        data = data.trophiesData;
+
+
         var exp2 = false,
             exp3 = false;
 

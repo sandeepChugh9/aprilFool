@@ -12,6 +12,8 @@
         var $el = $(this.el);
 
         var btn = document.getElementById('btnAction');
+        var age = document.getElementById('hikeAge').getAttribute('data-age');
+
 
         btn.addEventListener('click', function(ev) {
 
@@ -22,13 +24,13 @@
                         // Awarded Trophies Into The Response :: Match the Count Here
                         platformSdk.appData.helperData.aTrophies = res;
                         platformSdk.updateHelperData(platformSdk.appData.helperData.aTrophies);
-                        App.router.navigateTo('/trophies', Constants.TROPHIES);
+                        App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: age });
                     } else {
                         platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
                     }
                 });
             } else {
-                App.router.navigateTo('/trophies', Constants.TROPHIES);
+                App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: age });
 
             }
 
