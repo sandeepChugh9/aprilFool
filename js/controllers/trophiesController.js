@@ -10,6 +10,9 @@
     WorkspaceController.prototype.bind = function(App, data) {
         var $el = $(this.el);
 
+        var trophyIdGlobal = null;
+        var globalExperiment = null;
+
         var trophyOverlay = document.getElementsByClassName('trophyOverlay')[0];
         var rewardedTrophyIcons = document.getElementsByClassName('awarded');
 
@@ -23,16 +26,29 @@
 
         var levelCommon = document.getElementsByClassName('levelCommon');
 
+        var trophyHeading = document.getElementsByClassName('trophyHeading')[0];
+        var levelText = document.getElementsByClassName('levelText')[0];
+        var levelAction = document.getElementsByClassName('levelAction')[0];
+        
         crossIcon.addEventListener('click', function(ev) {
             trophyOverlay.classList.add('hide');
             resetPopupClasses();
         });
 
+        levelAction.addEventListener('click', function(ev) {
+            trophyOverlay.classList.add('hide');
+            resetPopupClasses();
+        });
+
         var resetPopupClasses = function() {
+            trophyIdGlobal = null;
             levelSilver.className = '';
             levelBronze.className = '';
             levelGold.className = '';
 
+            trophyHeading.innerHTML = '';
+            levelText.innerHTML = '';
+            
             levelBronze.removeAttribute('style');
             levelSilver.removeAttribute('style');
             levelGold.removeAttribute('style');
@@ -45,12 +61,27 @@
         var tapOnLockedTrophy = function() {
             console.log('Tapping on Locked Trophy');
 
+            var level = this.getAttribute('data-level');
+
+            if(this.classList.contains('levelLocked') && globalExperiment === 'exp3'){
+                // Task is hidden
+                if(data[trophyIdGlobal]){
+                    levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
+                }else{
+                    levelText.innerHTML = '';    
+                }
+                
+            }else {
+                levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
+            }
+            
             var alreadyTapped = document.getElementsByClassName('levelLockTap');
 
             for (var t = 0; t < alreadyTapped.length; t++) {
                 alreadyTapped[t].classList.remove('levelLockTap');
             }
 
+            //var level = this.getAttribute('data-level');
             this.classList.add('levelLockTap');
         };
 
@@ -58,6 +89,10 @@
 
             var experiment = this.getAttribute('data-experiment');
             var tid = this.getAttribute('data-tid');
+            trophyIdGlobal = tid;
+            globalExperiment = experiment;
+
+            trophyHeading.innerHTML = data[tid].label;
 
             if (this.classList.contains('awarded')) {
                 console.log('Trophy is awarded');
@@ -66,28 +101,31 @@
                 // Current Level Is zero :: Dont show any other Level
                 if (awardedLevel === 0) {
                     console.log('Awarded Level 0');
-                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
+                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
                     levelSilver.classList.add('levelLocked');
                     levelSilver.classList.add('levelLockNoTap');
                     levelGold.classList.add('levelLocked');
                     levelGold.classList.add('levelLockNoTap');
+                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
                 }
 
                 // Current Level is 1 :: Show Zeroth Level Also
                 else if (awardedLevel === 1) {
                     console.log('Awarded Level 1');
-                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
-                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
+                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 1].icon + '\')';
+                    levelSilver.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
                     levelGold.classList.add('levelLocked');
                     levelGold.classList.add('levelLockNoTap');
+                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
                 }
 
                 // Current Level is 2 :: Show zeroth and First Level both
                 else if (awardedLevel === 2) {
                     console.log('Awarded Level 2');
-                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
-                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 2].icon + '\')';
-                    levelGold.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
+                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 1].icon + '\')';
+                    levelSilver.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 2].icon + '\')';
+                    levelGold.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
+                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
                 }
 
                 console.log('Opening Rewarded Trophy :: Show Level current and Locked for other Levels with task not hidden');
@@ -99,6 +137,7 @@
 
                 // Bronze Active Currently
                 levelBronze.classList.add('levelLocked');
+                levelText.innerHTML = data[tid].levels[0].text;
 
                 // Silver Inactive
                 levelSilver.classList.add('levelLocked');
@@ -112,7 +151,11 @@
             // Experiment 3 :: Hidden Tasks
             else if (this.classList.contains('locked') && experiment == 'exp3') {
                 console.log('Experiment Three :: Dont Show Locked Trophy Task');
+
+                trophyHeading.innerHTML = '????';
+
                 levelBronze.classList.add('levelLocked');
+                levelText.innerHTML = '';
 
                 // Silver Inactive
                 levelSilver.classList.add('levelLocked');
@@ -131,7 +174,7 @@
         for (var i = 0; i < rewardedTrophyIcons.length; i++) {
             var trophyId = rewardedTrophyIcons[i].getAttribute('data-tid');
             var trophyEarnedLevel = data[trophyId].curLevel;
-            rewardedTrophyIcons[i].style.backgroundImage = 'url(\'' + data[trophyId].levels[trophyEarnedLevel].icon + '\')';
+            rewardedTrophyIcons[i].style.backgroundImage = 'url(\'' + basePathAndroid + data[trophyId].levels[trophyEarnedLevel].icon + '\')';
         }
 
         for (var j = 0; j < allTrophies.length; j++) {
@@ -178,7 +221,7 @@
                 exp3 = true;
 
         } else {
-            exp3 = true;
+            exp2 = true;
         }
 
         // Logic 3 : Show Rewarded and not Rewarded (Task Not Locked )
@@ -189,6 +232,12 @@
 
         ctr.appendChild(that.el);
         events.publish('update.loader', { show: false });
+
+        try {
+            PlatformBridge.changeBotTitle( 'Trophies' );
+        } catch ( e ) {
+            console.log( 'Error in changing bot title' );
+        }
 
         that.bind(App, data);
     };

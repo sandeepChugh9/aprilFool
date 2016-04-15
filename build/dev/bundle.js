@@ -4467,15 +4467,15 @@
 	                levels: [{
 	                        value: '1 month',
 	                        icon: 'images/trophy-messages-bronze.png',
-	                        text: ''
+	                        text: 'You are 30 days old on hike ! :)'
 	                    }, {
 	                        value: '1 year',
 	                        icon:'images/trophy-messages-silver.png',
-	                        text: ''
+	                        text: '365 days !'
 	                    }, {
 	                        icon:'images/trophy-messages-gold.png',
 	                        value: '3 years',
-	                        text: ''
+	                        text: '3*365 days !'
 	                    }
 
 	                ]
@@ -4487,15 +4487,15 @@
 	                levels: [{
 	                        icon:'images/trophy-messages-bronze.png',
 	                        value: 100,
-	                        text: ''
+	                        text: 'Send 100 messages'
 	                    }, {
 	                        icon:'images/trophy-messages-silver.png',
 	                        value: 1000,
-	                        text: ''
+	                        text: 'Send 1000 messages'
 	                    }, {
 	                        icon:'images/trophy-messages-gold.png',
 	                        value: 10000,
-	                        text: ''
+	                        text: 'Send 10000 messages'
 	                    }
 
 	                ]
@@ -4507,15 +4507,15 @@
 	                levels: [{
 	                        icon:'images/trophy-messages-bronze.png',
 	                        value: 100,
-	                        text: ''
+	                        text: '100 stickers :p'
 	                    }, {
 	                        icon:'images/trophy-messages-silver.png',
 	                        value: 1000,
-	                        text: ''
+	                        text: '1000 stickers :p'
 	                    }, {
 	                        icon:'images/trophy-messages-gold.png',
 	                        value: 10000,
-	                        text: ''
+	                        text: '10000 stickers :p'
 	                    }
 
 	                ]
@@ -4527,15 +4527,15 @@
 	                levels: [{
 	                        icon:'images/trophy-messages-bronze.png',
 	                        value: 10,
-	                        text: ''
+	                        text: 'Send and receieve 10 files'
 	                    }, {
 	                        icon:'images/trophy-messages-silver.png',
 	                        value: 100,
-	                        text: ''
+	                        text: 'Send and receieve 100 files'
 	                    }, {
 	                        icon:'images/trophy-messages-gold.png',
 	                        value: 1000,
-	                        text: ''
+	                        text: 'Send and receieve 1000 files'
 	                    }
 
 	                ]
@@ -4548,15 +4548,15 @@
 	                levels: [{
 	                        icon:'images/trophy-messages-bronze.png',
 	                        value: '1 GB',
-	                        text: ''
+	                        text: 'das'
 	                    }, {
 	                        icon:'images/trophy-messages-silver.png',
 	                        value: '10 GB',
-	                        text: ''
+	                        text: 'asda'
 	                    }, {
 	                        icon:'images/trophy-messages-gold.png',
 	                        value: '100 GB',
-	                        text: ''
+	                        text: 'asdasd'
 	                    }
 
 	            ]},
@@ -4567,15 +4567,15 @@
 	                levels: [{
 	                        icon:'images/trophy-messages-bronze.png',
 	                        value: 10,
-	                        text: ''
+	                        text: 'asdas'
 	                    }, {
 	                        icon:'images/trophy-messages-silver.png',
 	                        value: 100,
-	                        text: ''
+	                        text: 'sada'
 	                    }, {
 	                        icon:'images/trophy-messages-gold.png',
 	                        value: 1000,
-	                        text: ''
+	                        text: 'asdas'
 	                    }
 
 	                ]
@@ -4587,15 +4587,15 @@
 	                levels: [{
 	                        icon:'images/trophy-messages-bronze.png',
 	                        value: 1,
-	                        text: ''
+	                        text: 'asdasd'
 	                    }, {
 	                        icon:'images/trophy-messages-silver.png',
 	                        value: 10,
-	                        text: ''
+	                        text: 'sadsa'
 	                    }, {
 	                        icon:'images/trophy-messages-gold.png',
 	                        value: 100,
-	                        text: ''
+	                        text: 'asdasd'
 	                    }
 
 	                ]
@@ -4607,15 +4607,15 @@
 	                levels: [{
 	                        icon:'images/trophy-messages-bronze.png',
 	                        value: 1,
-	                        text: ''
+	                        text: 'asdasd'
 	                    }, {
 	                        icon:'images/trophy-messages-silver.png',
 	                        value: 10,
-	                        text: ''
+	                        text: 'asdas'
 	                    }, {
 	                        icon:'images/trophy-messages-gold.png',
 	                        value: 100,
-	                        text: ''
+	                        text: 'asdasd'
 	                    }
 
 	                ]
@@ -4916,14 +4916,14 @@
 
 	            // Router Navigates To Home Page In The Start  
 
-	            if (platformSdk.bridgeEnabled) {
+	            if (!platformSdk.bridgeEnabled) {
 
 	                var APIData = {};
 
 	                //Check in info is saved in cache, If not fetch from back end
 	                if (!platformSdk.appData.helperData.profileInfo) {
 
-	                    App.ninjaServices.getProfile(function(res) {
+	                    this.ninjaServices.getProfile(function(res) {
 	                        console.log(res);
 	                        if (res.stat == 'success') {
 	                            console.log('getHikeStats success');
@@ -4936,6 +4936,7 @@
 	                                res.gender = "neutral";
 	                            APIData.profileData = res;
 	                            PlatformBridge.putInCache('profileData', statsData);
+
 	                            platformSdk.updateHelperData(platformSdk.appData.helperData);
 
 
@@ -4972,7 +4973,7 @@
 
 	                }
 
-	                App.ninjaServices.getHikeStats(function(res) {
+	                this.ninjaServices.getHikeStats(function(res) {
 	                    console.log(res);
 	                    if (res.stat == 'success') {
 	                        console.log('getHikeStats success');
@@ -5071,6 +5072,12 @@
 	        events.publish('update.loader', { show: false });
 
 
+	        try {
+	            PlatformBridge.changeBotTitle( 'Stats' );
+	        } catch ( e ) {
+	            console.log( 'Error in changing bot title' );
+	        }
+
 	        that.bind(App);
 	    };
 
@@ -5104,6 +5111,9 @@
 	    WorkspaceController.prototype.bind = function(App, data) {
 	        var $el = $(this.el);
 
+	        var trophyIdGlobal = null;
+	        var globalExperiment = null;
+
 	        var trophyOverlay = document.getElementsByClassName('trophyOverlay')[0];
 	        var rewardedTrophyIcons = document.getElementsByClassName('awarded');
 
@@ -5117,16 +5127,29 @@
 
 	        var levelCommon = document.getElementsByClassName('levelCommon');
 
+	        var trophyHeading = document.getElementsByClassName('trophyHeading')[0];
+	        var levelText = document.getElementsByClassName('levelText')[0];
+	        var levelAction = document.getElementsByClassName('levelAction')[0];
+	        
 	        crossIcon.addEventListener('click', function(ev) {
 	            trophyOverlay.classList.add('hide');
 	            resetPopupClasses();
 	        });
 
+	        levelAction.addEventListener('click', function(ev) {
+	            trophyOverlay.classList.add('hide');
+	            resetPopupClasses();
+	        });
+
 	        var resetPopupClasses = function() {
+	            trophyIdGlobal = null;
 	            levelSilver.className = '';
 	            levelBronze.className = '';
 	            levelGold.className = '';
 
+	            trophyHeading.innerHTML = '';
+	            levelText.innerHTML = '';
+	            
 	            levelBronze.removeAttribute('style');
 	            levelSilver.removeAttribute('style');
 	            levelGold.removeAttribute('style');
@@ -5139,12 +5162,27 @@
 	        var tapOnLockedTrophy = function() {
 	            console.log('Tapping on Locked Trophy');
 
+	            var level = this.getAttribute('data-level');
+
+	            if(this.classList.contains('levelLocked') && globalExperiment === 'exp3'){
+	                // Task is hidden
+	                if(data[trophyIdGlobal]){
+	                    levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
+	                }else{
+	                    levelText.innerHTML = '';    
+	                }
+	                
+	            }else {
+	                levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
+	            }
+	            
 	            var alreadyTapped = document.getElementsByClassName('levelLockTap');
 
 	            for (var t = 0; t < alreadyTapped.length; t++) {
 	                alreadyTapped[t].classList.remove('levelLockTap');
 	            }
 
+	            //var level = this.getAttribute('data-level');
 	            this.classList.add('levelLockTap');
 	        };
 
@@ -5152,6 +5190,10 @@
 
 	            var experiment = this.getAttribute('data-experiment');
 	            var tid = this.getAttribute('data-tid');
+	            trophyIdGlobal = tid;
+	            globalExperiment = experiment;
+
+	            trophyHeading.innerHTML = data[tid].label;
 
 	            if (this.classList.contains('awarded')) {
 	                console.log('Trophy is awarded');
@@ -5160,28 +5202,31 @@
 	                // Current Level Is zero :: Dont show any other Level
 	                if (awardedLevel === 0) {
 	                    console.log('Awarded Level 0');
-	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
+	                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
 	                    levelSilver.classList.add('levelLocked');
 	                    levelSilver.classList.add('levelLockNoTap');
 	                    levelGold.classList.add('levelLocked');
 	                    levelGold.classList.add('levelLockNoTap');
+	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
 	                }
 
 	                // Current Level is 1 :: Show Zeroth Level Also
 	                else if (awardedLevel === 1) {
 	                    console.log('Awarded Level 1');
-	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
-	                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
+	                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 1].icon + '\')';
+	                    levelSilver.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
 	                    levelGold.classList.add('levelLocked');
 	                    levelGold.classList.add('levelLockNoTap');
+	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
 	                }
 
 	                // Current Level is 2 :: Show zeroth and First Level both
 	                else if (awardedLevel === 2) {
 	                    console.log('Awarded Level 2');
-	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
-	                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 2].icon + '\')';
-	                    levelGold.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
+	                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 1].icon + '\')';
+	                    levelSilver.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 2].icon + '\')';
+	                    levelGold.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
+	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
 	                }
 
 	                console.log('Opening Rewarded Trophy :: Show Level current and Locked for other Levels with task not hidden');
@@ -5193,6 +5238,7 @@
 
 	                // Bronze Active Currently
 	                levelBronze.classList.add('levelLocked');
+	                levelText.innerHTML = data[tid].levels[0].text;
 
 	                // Silver Inactive
 	                levelSilver.classList.add('levelLocked');
@@ -5206,7 +5252,11 @@
 	            // Experiment 3 :: Hidden Tasks
 	            else if (this.classList.contains('locked') && experiment == 'exp3') {
 	                console.log('Experiment Three :: Dont Show Locked Trophy Task');
+
+	                trophyHeading.innerHTML = '????';
+
 	                levelBronze.classList.add('levelLocked');
+	                levelText.innerHTML = '';
 
 	                // Silver Inactive
 	                levelSilver.classList.add('levelLocked');
@@ -5225,7 +5275,7 @@
 	        for (var i = 0; i < rewardedTrophyIcons.length; i++) {
 	            var trophyId = rewardedTrophyIcons[i].getAttribute('data-tid');
 	            var trophyEarnedLevel = data[trophyId].curLevel;
-	            rewardedTrophyIcons[i].style.backgroundImage = 'url(\'' + data[trophyId].levels[trophyEarnedLevel].icon + '\')';
+	            rewardedTrophyIcons[i].style.backgroundImage = 'url(\'' + basePathAndroid + data[trophyId].levels[trophyEarnedLevel].icon + '\')';
 	        }
 
 	        for (var j = 0; j < allTrophies.length; j++) {
@@ -5272,7 +5322,7 @@
 	                exp3 = true;
 
 	        } else {
-	            exp3 = true;
+	            exp2 = true;
 	        }
 
 	        // Logic 3 : Show Rewarded and not Rewarded (Task Not Locked )
@@ -5283,6 +5333,12 @@
 
 	        ctr.appendChild(that.el);
 	        events.publish('update.loader', { show: false });
+
+	        try {
+	            PlatformBridge.changeBotTitle( 'Trophies' );
+	        } catch ( e ) {
+	            console.log( 'Error in changing bot title' );
+	        }
 
 	        that.bind(App, data);
 	    };
@@ -5299,7 +5355,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"trophyContainer\">\n    <div class=\"overallWrapper\">\n        <div class=\"trophyCountWrapper\">\n            <div class=\"trophyCountIcon backgroundImageGeneric\"></div>\n            <div class=\"trophyCount\"><span>{{awardedCount}}</span> / {{totalCount}}</div>\n        </div>\n        <!-- List Of All Trophies -->\n        <div class=\"centerToScreenContainer\">\n            <div class=\"trophyWrapper centerToScreenWrapper\">\n                {{#experiment2}} {{#trophiesData}}\n                <div class=\"trophyIconContain\">\n                    <div data-tid=\"{{id}}\" data-experiment=\"exp2\" id=\"trophyIcon\" class=\"commonTrophy {{^awarded}}locked{{/awarded}} {{#awarded}}awarded{{/awarded}} backgroundImageGeneric\"></div>\n                </div>\n                {{/trophiesData}} {{/experiment2}} {{#experiment3}} {{#trophiesData}}\n                <div class=\"trophyIconContain\">\n                    <div id=\"trophyIcon\" data-tid=\"{{id}}\" data-experiment=\"exp3\" class=\"commonTrophy {{^awarded}}locked{{/awarded}} {{#awarded}}awarded{{/awarded}} backgroundImageGeneric\"></div>\n                </div>\n                {{/trophiesData}} {{/experiment3}}\n            </div>\n        </div>\n    </div>\n    <div class=\"trophyOverlay centerToScreenContainer hide\">\n        <div class=\"trophyOverlayWrapper centerToScreenWrapper\">\n            <div class=\"crossIcon backgroundImageGeneric\"></div>\n            <div class=\"levelsIconWrapper\">\n                <div data-level= 0  class=\"levelCommon levelBronze backgroundImageGeneric\"></div>\n                <div data-level= 1 class=\"levelCommon levelSilver backgroundImageGeneric\"></div>\n                <div data-level= 2 class=\"levelCommon levelGold backgroundImageGeneric\"></div>\n            </div>\n            <h1 class=\"trophyHeading align-center\">Messaging</h1>\n            <p class=\"levelText align-center\">Send your first 10 message and achieve the bronze trophy</p>\n            <hr noshade>\n            <div class=\"levelAction align-center\">Share with Friends</div>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"trophyContainer\">\n    <div class=\"overallWrapper\">\n        <div class=\"trophyCountWrapper\">\n            <div class=\"trophyCountIcon backgroundImageGeneric\"></div>\n            <div class=\"trophyCount\"><span>{{awardedCount}}</span> / {{totalCount}}</div>\n        </div>\n        <!-- List Of All Trophies -->\n        <div class=\"centerToScreenContainer\">\n            <div class=\"trophyWrapper centerToScreenWrapper\">\n                {{#experiment2}} {{#trophiesData}}\n                <div class=\"trophyIconContain\">\n                    <div data-tid=\"{{id}}\" data-experiment=\"exp2\" id=\"trophyIcon\" class=\"commonTrophy {{^awarded}}locked{{/awarded}} {{#awarded}}awarded{{/awarded}} backgroundImageGeneric\"></div>\n                </div>\n                {{/trophiesData}} {{/experiment2}} {{#experiment3}} {{#trophiesData}}\n                <div class=\"trophyIconContain\">\n                    <div id=\"trophyIcon\" data-tid=\"{{id}}\" data-experiment=\"exp3\" class=\"commonTrophy {{^awarded}}locked{{/awarded}} {{#awarded}}awarded{{/awarded}} backgroundImageGeneric\"></div>\n                </div>\n                {{/trophiesData}} {{/experiment3}}\n            </div>\n        </div>\n    </div>\n    <div class=\"trophyOverlay centerToScreenContainer hide\">\n        <div class=\"trophyOverlayWrapper centerToScreenWrapper\">\n            <div class=\"crossIcon backgroundImageGeneric\"></div>\n            <div class=\"levelsIconWrapper\">\n                <div data-level= 0  class=\"levelCommon levelBronze backgroundImageGeneric\"></div>\n                <div data-level= 1 class=\"levelCommon levelSilver backgroundImageGeneric\"></div>\n                <div data-level= 2 class=\"levelCommon levelGold backgroundImageGeneric\"></div>\n            </div>\n            <h1 class=\"trophyHeading align-center\"></h1>\n            <p class=\"levelText align-center\"></p>\n            <hr noshade>\n            <div class=\"levelAction align-center\">Ok</div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 12 */

@@ -30,15 +30,15 @@
                 levels: [{
                         value: '1 month',
                         icon: 'images/trophy-messages-bronze.png',
-                        text: ''
+                        text: 'You are 30 days old on hike ! :)'
                     }, {
                         value: '1 year',
                         icon:'images/trophy-messages-silver.png',
-                        text: ''
+                        text: '365 days !'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: '3 years',
-                        text: ''
+                        text: '3*365 days !'
                     }
 
                 ]
@@ -50,15 +50,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 100,
-                        text: ''
+                        text: 'Send 100 messages'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 1000,
-                        text: ''
+                        text: 'Send 1000 messages'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 10000,
-                        text: ''
+                        text: 'Send 10000 messages'
                     }
 
                 ]
@@ -70,15 +70,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 100,
-                        text: ''
+                        text: '100 stickers :p'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 1000,
-                        text: ''
+                        text: '1000 stickers :p'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 10000,
-                        text: ''
+                        text: '10000 stickers :p'
                     }
 
                 ]
@@ -90,15 +90,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 10,
-                        text: ''
+                        text: 'Send and receieve 10 files'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 100,
-                        text: ''
+                        text: 'Send and receieve 100 files'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 1000,
-                        text: ''
+                        text: 'Send and receieve 1000 files'
                     }
 
                 ]
@@ -111,15 +111,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: '1 GB',
-                        text: ''
+                        text: 'das'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: '10 GB',
-                        text: ''
+                        text: 'asda'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: '100 GB',
-                        text: ''
+                        text: 'asdasd'
                     }
 
             ]},
@@ -130,15 +130,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 10,
-                        text: ''
+                        text: 'asdas'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 100,
-                        text: ''
+                        text: 'sada'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 1000,
-                        text: ''
+                        text: 'asdas'
                     }
 
                 ]
@@ -150,15 +150,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 1,
-                        text: ''
+                        text: 'asdasd'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 10,
-                        text: ''
+                        text: 'sadsa'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 100,
-                        text: ''
+                        text: 'asdasd'
                     }
 
                 ]
@@ -170,15 +170,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 1,
-                        text: ''
+                        text: 'asdasd'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 10,
-                        text: ''
+                        text: 'asdas'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 100,
-                        text: ''
+                        text: 'asdasd'
                     }
 
                 ]

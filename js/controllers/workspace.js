@@ -32,6 +32,12 @@
         events.publish('update.loader', { show: false });
 
 
+        try {
+            PlatformBridge.changeBotTitle( 'Stats' );
+        } catch ( e ) {
+            console.log( 'Error in changing bot title' );
+        }
+
         that.bind(App);
     };
 
