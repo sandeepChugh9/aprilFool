@@ -38,24 +38,49 @@
             </div>
         </div>
         <div class="cardContainer">
-            <div class="cardHeader"> DATA TRANSFERED </div>
             <div class="halfCard">
                 <div class="header"> <span class="cardIcon filesIcon backgroundImageGeneric"></span> <span class="statHeading"> Files</span></div>
                 <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.files.sent}}</span> </div>
                 <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.files.sent}} </span> </div>
             </div>
             <div class="halfCard">
-                <div class="header"> <span class="cardIcon hdFileTransferIcon backgroundImageGeneric"></span> <span class="statHeading"> Data Transfer</span></div>
+                <div class="header"> <span class="cardIcon hikeDirectIcon backgroundImageGeneric"></span> <span class="statHeading"> Hike Direct </span></div>
                 <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.hdFileTr.sent}}</span> </div>
                 <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.hdFileTr.rec}}</span> </div>
             </div>
         </div>
         <div class="cardContainer">
-            <div class="cardHeader"> SOCIAL </div>
-            <div class="fullCard">
-                <div class="header"> <span class="cardIcon favouriteIcon backgroundImageGeneric"></span> <span class="statHeading"> Favorites</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.favoriteCount}} Friends added you as Favorites</span> </div>
+            <div class="halfCard">
+                <div class="header"> <span class="cardIcon chatThemesIcon backgroundImageGeneric"></span> <span class="statHeading"> Chat Themes</span></div>
+                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.chatThemes.sent}}</span> </div>
+                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.chatThemes.sent}} </span> </div>
+            </div>
+            <div class="halfCard hide">
+                <div class="header"> <span class="cardIcon chatThemesIcon backgroundImageGeneric"></span> <span class="statHeading"> Chat Themes</span></div>
+                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.chatThemes.sent}}</span> </div>
+                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.chatThemes.sent}} </span> </div>
             </div>
         </div>
     </div>
+    <div class="cardContainer marT16">
+        <div class="cardHeader"> SOCIAL </div>
+        <div class="fullCard">
+            <div class="header"> <span class="cardIcon favouriteIcon backgroundImageGeneric"></span> <span class="statHeading"> Favorites</span></div>
+            <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.favorite}} Friends added you as Favorites</span> </div>
+        </div>
+    </div>
+    <div class="cardContainer">
+        <div class="fullCard">
+            <div class="header"> <span class="cardIcon statusUpdatesIcon backgroundImageGeneric"></span> <span class="statHeading"> Status Updates</span></div>
+            <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.statusUpdates}} status updates by you</span> </div>
+        </div>
+    </div>
+    <div class="cardContainer">
+        <div class="fullCard">
+            <div class="header"> <span class="cardIcon invitesIcon backgroundImageGeneric"></span> <span class="statHeading"> Invites</span></div>
+            <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.invites}} invites sent</span> </div>
+        </div>
+    </div>
+</div>
+</div>
 </div>

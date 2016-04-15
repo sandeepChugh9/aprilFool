@@ -29,7 +29,7 @@
         var trophyHeading = document.getElementsByClassName('trophyHeading')[0];
         var levelText = document.getElementsByClassName('levelText')[0];
         var levelAction = document.getElementsByClassName('levelAction')[0];
-        
+
         crossIcon.addEventListener('click', function(ev) {
             trophyOverlay.classList.add('hide');
             resetPopupClasses();
@@ -48,7 +48,7 @@
 
             trophyHeading.innerHTML = '';
             levelText.innerHTML = '';
-            
+
             levelBronze.removeAttribute('style');
             levelSilver.removeAttribute('style');
             levelGold.removeAttribute('style');
@@ -63,18 +63,18 @@
 
             var level = this.getAttribute('data-level');
 
-            if(this.classList.contains('levelLocked') && globalExperiment === 'exp3'){
+            if (this.classList.contains('levelLocked') && globalExperiment === 'exp3') {
                 // Task is hidden
-                if(data[trophyIdGlobal]){
+                if (data[trophyIdGlobal]) {
                     levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
-                }else{
-                    levelText.innerHTML = '';    
+                } else {
+                    levelText.innerHTML = '';
                 }
-                
-            }else {
+
+            } else {
                 levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
             }
-            
+
             var alreadyTapped = document.getElementsByClassName('levelLockTap');
 
             for (var t = 0; t < alreadyTapped.length; t++) {
@@ -190,17 +190,20 @@
     WorkspaceController.prototype.render = function(ctr, App, data) {
 
         var that = this;
+        var awardedTrophies;
 
-        //var awardedTrophies = platformSdk.appData.helperData.aTrophies;
-
-        var awardedTrophies = {
-            'awarded': {
-                '1': 0,
-                '3': 1,
-                '5': 2,
-                '7': 2
-            }
-        };
+        if (platformSdk.bridgeEnabled)
+            awardedTrophies = platformSdk.appData.helperData.aTrophies;
+        else {
+            awardedTrophies = {
+                'awarded': {
+                    '1': 0,
+                    '3': 1,
+                    '5': 2,
+                    '7': 2
+                }
+            };
+        }
 
         var exp2 = false,
             exp3 = false;
@@ -236,9 +239,9 @@
         events.publish('update.loader', { show: false });
 
         try {
-            PlatformBridge.changeBotTitle( 'Trophies' );
-        } catch ( e ) {
-            console.log( 'Error in changing bot title' );
+            PlatformBridge.changeBotTitle('Trophies');
+        } catch (e) {
+            console.log('Error in changing bot title');
         }
 
         that.bind(App, data);

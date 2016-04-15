@@ -570,7 +570,8 @@ a:visited {
   color: #FFFFFF;
   line-height: 16px;
   font-weight: 500;
-  margin-right: 20px; }
+  margin-right: 20px;
+  transform: translate(0%, 17%); }
 
 .workSpaceContainer {
   background: #F7F8F9;
@@ -591,13 +592,31 @@ a:visited {
 
 .messageIcon {
   background-image: url("images/messageIcon.png");
-  height: 14px; }
+  background-position: center; }
 
 .stickerIcon {
   background-image: url("images/stickerIcon.png"); }
 
+.hikeDirectIcon {
+  background-image: url("images/hikeDirectIcon.png");
+  background-position: center; }
+
+.chatThemesIcon {
+  background-image: url("images/chatThemesIcon.png"); }
+
+.filesIcon {
+  background-image: url("images/filesIcon.png"); }
+
+.statusUpdatesIcon {
+  background-image: url("images/statusUpdatesIcon.png");
+  background-position: center; }
+
+.invitesIcon {
+  background-image: url("images/invitesIcon.png");
+  background-position: center; }
+
 .statHeading {
-  font-size: 12px;
+  font-size: 13px;
   color: #9EA3AD;
   line-height: 16px;
   font-weight: 400; }
@@ -607,7 +626,7 @@ a:visited {
   margin-bottom: 12px; }
 
 .cardContainer {
-  margin-bottom: 16px; }
+  margin-bottom: 6px; }
 
 .dataHeader {
   margin-left: 16px; }
@@ -657,6 +676,9 @@ a:visited {
   background: #fff;
   margin-left: 1%;
   margin-right: 1%; }
+
+.marT16 {
+  margin-top: 16px; }
 
 .trophyContainer {
   width: 100%;
