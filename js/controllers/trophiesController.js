@@ -101,7 +101,7 @@
                 // Current Level Is zero :: Dont show any other Level
                 if (awardedLevel === 0) {
                     console.log('Awarded Level 0');
-                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
+                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
                     levelSilver.classList.add('levelLocked');
                     levelSilver.classList.add('levelLockNoTap');
                     levelGold.classList.add('levelLocked');
@@ -112,8 +112,8 @@
                 // Current Level is 1 :: Show Zeroth Level Also
                 else if (awardedLevel === 1) {
                     console.log('Awarded Level 1');
-                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 1].icon + '\')';
-                    levelSilver.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
+                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
+                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
                     levelGold.classList.add('levelLocked');
                     levelGold.classList.add('levelLockNoTap');
                     levelText.innerHTML = data[tid].levels[awardedLevel].text;
@@ -122,9 +122,9 @@
                 // Current Level is 2 :: Show zeroth and First Level both
                 else if (awardedLevel === 2) {
                     console.log('Awarded Level 2');
-                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 1].icon + '\')';
-                    levelSilver.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 2].icon + '\')';
-                    levelGold.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
+                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
+                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 2].icon + '\')';
+                    levelGold.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
                     levelText.innerHTML = data[tid].levels[awardedLevel].text;
                 }
 
@@ -174,7 +174,7 @@
         for (var i = 0; i < rewardedTrophyIcons.length; i++) {
             var trophyId = rewardedTrophyIcons[i].getAttribute('data-tid');
             var trophyEarnedLevel = data[trophyId].curLevel;
-            rewardedTrophyIcons[i].style.backgroundImage = 'url(\'' + basePathAndroid + data[trophyId].levels[trophyEarnedLevel].icon + '\')';
+            rewardedTrophyIcons[i].style.backgroundImage = 'url(\'' + data[trophyId].levels[trophyEarnedLevel].icon + '\')';
         }
 
         for (var j = 0; j < allTrophies.length; j++) {

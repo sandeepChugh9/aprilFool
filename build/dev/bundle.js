@@ -4466,14 +4466,14 @@
 	                subtext: '',
 	                levels: [{
 	                        value: '1 month',
-	                        icon: 'images/trophy-messages-bronze.png',
+	                        icon: 'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikeage-bronze.png',
 	                        text: 'Celebrate 30 days inside hike !'
 	                    }, {
 	                        value: '1 year',
-	                        icon:'images/trophy-messages-silver.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikeage-bronze',
 	                        text: 'Happy one year at hike !'
 	                    }, {
-	                        icon:'images/trophy-messages-gold.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikeage-bronze',
 	                        value: 'Hike power 3 year user !',
 	                        text: ''
 	                    }
@@ -4485,15 +4485,15 @@
 	                label: 'Messaging',
 	                subtext: '',
 	                levels: [{
-	                        icon:'images/trophy-messages-bronze.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-messaging-bronze',
 	                        value: 100,
 	                        text: 'Start chatting to complete your first messaging trophy !'
 	                    }, {
-	                        icon:'images/trophy-messages-silver.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-messaging-bronze',
 	                        value: 1000,
 	                        text: '1000 Chat Messages !'
 	                    }, {
-	                        icon:'images/trophy-messages-gold.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-messaging-bronze',
 	                        value: 10000,
 	                        text: '10000 Chat Messages !'
 	                    }
@@ -4505,15 +4505,15 @@
 	                label: 'Stickers',
 	                subtext: '',
 	                levels: [{
-	                        icon:'images/trophy-messages-bronze.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-stickers-bronze',
 	                        value: 100,
 	                        text: 'Send and Recieve 100 Stickers on hike !'
 	                    }, {
-	                        icon:'images/trophy-messages-silver.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-stickers-bronze',
 	                        value: 1000,
 	                        text: 'Send and Receive 1000 stickers on hike !'
 	                    }, {
-	                        icon:'images/trophy-messages-gold.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-stickers-bronze',
 	                        value: 10000,
 	                        text: 'Send and Receive 10000 stickers on hike !'
 	                    }
@@ -4525,15 +4525,15 @@
 	                label: 'Files',
 	                subtext: '',
 	                levels: [{
-	                        icon:'images/trophy-messages-bronze.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-files-bronze',
 	                        value: 10,
 	                        text: 'Complete 10 file tranfers with your friends and family on hike.'
 	                    }, {
-	                        icon:'images/trophy-messages-silver.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-files-bronze',
 	                        value: 100,
 	                        text: 'Complete 100 file transfers with your friends and family on hike.'
 	                    }, {
-	                        icon:'images/trophy-messages-gold.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-files-bronze',
 	                        value: 1000,
 	                        text: 'Complete 1000 file transfers with your friends and family on hike.'
 	                    }
@@ -4546,15 +4546,15 @@
 	                label: 'Data Transfered (hike direct)',
 	                subtext: '',
 	                levels: [{
-	                        icon:'images/trophy-messages-bronze.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikedirect-bronze',
 	                        value: '1 GB',
 	                        text: 'Complete a total file transfer for 1GB using hike direct.'
 	                    }, {
-	                        icon:'images/trophy-messages-silver.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikedirect-bronze',
 	                        value: '10 GB',
 	                        text: 'Complete a totla file tranfer for 10GB using hike direct.'
 	                    }, {
-	                        icon:'images/trophy-messages-gold.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikedirect-bronze',
 	                        value: '100 GB',
 	                        text: 'Complete a total file transfer for 100GB using hike direct.'
 	                    }
@@ -4565,15 +4565,15 @@
 	                label: 'Chat Themes',
 	                subtext: '',
 	                levels: [{
-	                        icon:'images/trophy-messages-bronze.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-chattheme-bronze',
 	                        value: 10,
 	                        text: 'Make chats more interesting by changing your chat backgrounds.'
 	                    }, {
-	                        icon:'images/trophy-messages-silver.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-chattheme-bronze',
 	                        value: 100,
 	                        text: 'Make chats more interesting by changing your chat backgrounds.'
 	                    }, {
-	                        icon:'images/trophy-messages-gold.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-chattheme-bronze',
 	                        value: 1000,
 	                        text: 'Make chats more interesting by changing your chat backgrounds.'
 	                    }
@@ -4585,15 +4585,15 @@
 	                label: 'Status Updates',
 	                subtext: '',
 	                levels: [{
-	                        icon:'images/trophy-messages-bronze.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-bronze',
 	                        value: 1,
 	                        text: 'Go post your first status on the timeline.'
 	                    }, {
-	                        icon:'images/trophy-messages-silver.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-bronze',
 	                        value: 10,
 	                        text: 'Complete your 10 status updates and get rewarded.'
 	                    }, {
-	                        icon:'images/trophy-messages-gold.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-bronze',
 	                        value: 100,
 	                        text: 'Complete your 100 status updates and get rewarded.'
 	                    }
@@ -4602,20 +4602,20 @@
 
 	            }, {
 	                id: 7,
-	                label: 'Invites',
+	                label: 'Favourites',
 	                subtext: '',
 	                levels: [{
-	                        icon:'images/trophy-messages-bronze.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-favourites-bronze',
 	                        value: 1,
-	                        text: 'Invite a friend on hike.'
+	                        text: 'Add one of your friend as favourite.'
 	                    }, {
-	                        icon:'images/trophy-messages-silver.png',
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-favourites-bronze',
 	                        value: 10,
-	                        text: 'Invite 10 friends on hike.'
+	                        text: 'Add 10 favourites on hike. '
 	                    }, {
-	                        icon:'images/trophy-messages-gold.png',
-	                        value: 100,
-	                        text: 'Invite 100 friends on hike.'
+	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-favourites-bronze',
+	                        value: 25,
+	                        text: 'Add 25 favourites on hike.'
 	                    }
 
 	                ]
@@ -5234,7 +5234,7 @@
 	                // Current Level Is zero :: Dont show any other Level
 	                if (awardedLevel === 0) {
 	                    console.log('Awarded Level 0');
-	                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
+	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
 	                    levelSilver.classList.add('levelLocked');
 	                    levelSilver.classList.add('levelLockNoTap');
 	                    levelGold.classList.add('levelLocked');
@@ -5245,8 +5245,8 @@
 	                // Current Level is 1 :: Show Zeroth Level Also
 	                else if (awardedLevel === 1) {
 	                    console.log('Awarded Level 1');
-	                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 1].icon + '\')';
-	                    levelSilver.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
+	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
+	                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
 	                    levelGold.classList.add('levelLocked');
 	                    levelGold.classList.add('levelLockNoTap');
 	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
@@ -5255,9 +5255,9 @@
 	                // Current Level is 2 :: Show zeroth and First Level both
 	                else if (awardedLevel === 2) {
 	                    console.log('Awarded Level 2');
-	                    levelBronze.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 1].icon + '\')';
-	                    levelSilver.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel - 2].icon + '\')';
-	                    levelGold.style.backgroundImage = 'url(\'' + basePathAndroid + data[tid].levels[awardedLevel].icon + '\')';
+	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
+	                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 2].icon + '\')';
+	                    levelGold.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
 	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
 	                }
 
@@ -5307,7 +5307,7 @@
 	        for (var i = 0; i < rewardedTrophyIcons.length; i++) {
 	            var trophyId = rewardedTrophyIcons[i].getAttribute('data-tid');
 	            var trophyEarnedLevel = data[trophyId].curLevel;
-	            rewardedTrophyIcons[i].style.backgroundImage = 'url(\'' + basePathAndroid + data[trophyId].levels[trophyEarnedLevel].icon + '\')';
+	            rewardedTrophyIcons[i].style.backgroundImage = 'url(\'' + data[trophyId].levels[trophyEarnedLevel].icon + '\')';
 	        }
 
 	        for (var j = 0; j < allTrophies.length; j++) {
