@@ -14,10 +14,18 @@
         var btn = document.getElementById('btnAction');
 
         btn.addEventListener('click', function(ev) {
-            App.router.navigateTo('/trophies', Constants.TROPHIES);
+            App.ninjaServices.getTrophyData(function(res) {
+                console.log(res);
+                if (res.stat == 'success') {
+                    // Awarded Trophies Into The Response :: Match the Count Here
+                    platformSdk.appData.helperData.aTrophies = res;
+                    platformSdk.updateHelperData(platformSdk.appData.helperData.aTrophies);
+                    App.router.navigateTo('/trophies', Constants.TROPHIES);
+                } else {
+                    platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
+                }
+            });
         });
-
-
 
     };
 

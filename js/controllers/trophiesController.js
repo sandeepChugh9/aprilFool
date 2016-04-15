@@ -191,6 +191,8 @@
 
         var that = this;
 
+        //var awardedTrophies = platformSdk.appData.helperData.aTrophies;
+
         var awardedTrophies = {
             'awarded': {
                 '1': 0,

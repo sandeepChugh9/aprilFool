@@ -30,15 +30,15 @@
                 levels: [{
                         value: '1 month',
                         icon: 'images/trophy-messages-bronze.png',
-                        text: 'You are 30 days old on hike ! :)'
+                        text: 'Celebrate 30 days inside hike !'
                     }, {
                         value: '1 year',
                         icon:'images/trophy-messages-silver.png',
-                        text: '365 days !'
+                        text: 'Happy one year at hike !'
                     }, {
                         icon:'images/trophy-messages-gold.png',
-                        value: '3 years',
-                        text: '3*365 days !'
+                        value: 'Hike power 3 year user !',
+                        text: ''
                     }
 
                 ]
@@ -50,15 +50,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 100,
-                        text: 'Send 100 messages'
+                        text: 'Start chatting to complete your first messaging trophy !'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 1000,
-                        text: 'Send 1000 messages'
+                        text: '1000 Chat Messages !'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 10000,
-                        text: 'Send 10000 messages'
+                        text: '10000 Chat Messages !'
                     }
 
                 ]
@@ -70,15 +70,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 100,
-                        text: '100 stickers :p'
+                        text: 'Send and Recieve 100 Stickers on hike !'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 1000,
-                        text: '1000 stickers :p'
+                        text: 'Send and Receive 1000 stickers on hike !'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 10000,
-                        text: '10000 stickers :p'
+                        text: 'Send and Receive 10000 stickers on hike !'
                     }
 
                 ]
@@ -90,15 +90,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 10,
-                        text: 'Send and receieve 10 files'
+                        text: 'Complete 10 file tranfers with your friends and family on hike.'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 100,
-                        text: 'Send and receieve 100 files'
+                        text: 'Complete 100 file transfers with your friends and family on hike.'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 1000,
-                        text: 'Send and receieve 1000 files'
+                        text: 'Complete 1000 file transfers with your friends and family on hike.'
                     }
 
                 ]
@@ -111,15 +111,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: '1 GB',
-                        text: 'das'
+                        text: 'Complete a total file transfer for 1GB using hike direct.'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: '10 GB',
-                        text: 'asda'
+                        text: 'Complete a totla file tranfer for 10GB using hike direct.'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: '100 GB',
-                        text: 'asdasd'
+                        text: 'Complete a total file transfer for 100GB using hike direct.'
                     }
 
             ]},
@@ -130,15 +130,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 10,
-                        text: 'asdas'
+                        text: 'Make chats more interesting by changing your chat backgrounds.'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 100,
-                        text: 'sada'
+                        text: 'Make chats more interesting by changing your chat backgrounds.'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 1000,
-                        text: 'asdas'
+                        text: 'Make chats more interesting by changing your chat backgrounds.'
                     }
 
                 ]
@@ -150,15 +150,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 1,
-                        text: 'asdasd'
+                        text: 'Go post your first status on the timeline.'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 10,
-                        text: 'sadsa'
+                        text: 'Complete your 10 status updates and get rewarded.'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 100,
-                        text: 'asdasd'
+                        text: 'Complete your 100 status updates and get rewarded.'
                     }
 
                 ]
@@ -170,15 +170,15 @@
                 levels: [{
                         icon:'images/trophy-messages-bronze.png',
                         value: 1,
-                        text: 'asdasd'
+                        text: 'Invite a friend on hike.'
                     }, {
                         icon:'images/trophy-messages-silver.png',
                         value: 10,
-                        text: 'asdas'
+                        text: 'Invite 10 friends on hike.'
                     }, {
                         icon:'images/trophy-messages-gold.png',
                         value: 100,
-                        text: 'asdasd'
+                        text: 'Invite 100 friends on hike.'
                     }
 
                 ]

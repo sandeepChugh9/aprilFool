@@ -246,14 +246,13 @@
                 utils.toggleBackNavigation(true);
             });
 
-
+            var APIData = {};
 
             // Router Navigates To Home Page In The Start  
 
             if (!platformSdk.bridgeEnabled) {
 
-                var APIData = {};
-
+                
                 //Check in info is saved in cache, If not fetch from back end
                 if (!platformSdk.appData.helperData.profileInfo) {
 
@@ -318,8 +317,6 @@
 
 
             } else {
-
-                var APIData = {};
 
                 APIData.profileData = {
                     name: "Sandeep Chugh",
