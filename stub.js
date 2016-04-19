@@ -95,3 +95,59 @@
     };
 
 })(window);
+
+                // //Check in info is saved in cache, If not fetch from back end
+                // if ( ! platformSdk.appData.helperData.profileInfo ) {
+
+                //     this.ninjaServices.getProfile(function( res ) {
+                //         console.log( res );
+                //         if ( res.stat == 'ok' ) {
+                //             console.log( 'getHikeStats success' );
+
+                //             //Save the data in Helper data/Cache
+                //             platformSdk.appData.helperData.profileInfo = true;
+
+                //             firstDate = new Date( res.reg_time );
+                //             diffDays = Math.round( Math.abs( ( firstDate.getTime() - secondDate.getTime() ) / ( oneDay ) ) );
+                //             res.age = diffDays;
+
+                //             if ( res.gender === '' || typeof res.gender === 'undefined' )
+                //                 res.gender = 'neutral';
+                //             APIData.profileData = res;
+                //             PlatformBridge.putInCache( 'profileData', JSON.stringify( res ) );
+                //             platformSdk.updateHelperData( platformSdk.appData.helperData );
+                //         } else {
+                //             platformSdk.ui.showToast( 'Hmm. Something went wrong. Not to worry, try again in a little bit :)' );
+                //         }
+
+                //     });
+
+                // } else {
+
+                //     //Profile information is present in cache
+                //     platformSdk.nativeReq({
+                //         fn: 'getFromCache',
+                //         ctx: this,
+                //         data: 'profileData',
+                //         success: function( response ) {
+                //             if ( response === '' )
+                //                 PlatformBridge.showToast( 'Unable to fetch profile information.' );
+
+                //             // SANDEEP RUN THE API HERE IF CACHE GET DATA FAIL
+                //             else {
+                //                 response = decodeURIComponent( response );
+                //                 try {
+                //                     var response = JSON.parse( response );
+                //                     firstDate = new Date( response.reg_time );
+                //                     diffDays = Math.round( Math.abs( ( firstDate.getTime() - secondDate.getTime() ) / ( oneDay ) ) );
+                //                     response.age = diffDays;
+
+                //                     APIData.profileData = response;
+                //                 } catch ( e ) {
+                //                     var response = {};
+                //                 }
+                //             }
+
+                //         }
+                //     });
+                // }

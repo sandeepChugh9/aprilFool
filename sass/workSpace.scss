@@ -18,10 +18,19 @@
 }
 
 .upgradeHeading{
-    @include fontStyle(18px,
+    @include fontStyle(16px,
     500,
-    #3D475B,
+    #fff,
     21px); 
+    background: #1da8e8;
+    width: 40%;
+    margin: 16px auto;
+    text-align: center;
+    padding: 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    padding: 14px 8px;
+    
 }
 
 .upgradeText{

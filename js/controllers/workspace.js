@@ -4,11 +4,11 @@
     var utils = require('../util/utils'),
         Constants = require('../../constants.js'),
 
-        TrophiesController = function(options) {
+        WorkspaceController = function(options) {
             this.template = require('raw!../../templates/workspace.html');
         };
 
-    TrophiesController.prototype.bind = function(App) {
+    WorkspaceController.prototype.bind = function(App, data) {
         var $el = $(this.el);
 
         var btn = document.getElementById('btnAction');
@@ -19,33 +19,77 @@
         var upgradeOverlay = document.getElementsByClassName('upgradeOverlay')[0];
 
         upgradeHeading.addEventListener('click', function(ev) {
-            window.open("https://play.google.com/store/apps/details?id=com.bsb.hike");
+            window.open('https://play.google.com/store/apps/details?id=com.bsb.hike');
         });
 
-        console.log(data.hikeLatestVersion);
+        var currentVersion = '';
+        var userVersion = '';
+
+        if (!platformSdk.appData.appVersion || !data.hikeLatestVersion) {
+            console.log('No app version exists');
+        } else {
+            if (platformSdk.bridgeEnabled) {
+                currentVersion = data.hikeLatestVersion.split('.');
+                userVersion = platformSdk.appData.appVersion.split('.');
+            } else {
+                currentVersion = '4.2.5.82';
+                userVersion = '4.2.5.82';
+            }
+
+            currentVersion = currentVersion.split('.');
+            userVersion = userVersion.split('.');
+
+            var length = Math.min(currentVersion.length, userVersion.length);
+
+            for (var index = 0; index < length; index++) {
+                if (currentVersion[index] == userVersion[index])
+                    console.log('Version number matching');
+                else if (userVersion[index] < currentVersion[index]) {
+                    console.log('User version is older :: Taking to Upgrade screen');
+
+                    // Adding upgrade Overlay over it
+                    upgradeOverlay.classList.remove('hide');
+                }
+            }
+        }
 
         btn.addEventListener('click', function(ev) {
 
-            if (!platformSdk.bridgeEnabled) {
+            if (platformSdk.bridgeEnabled) {
 
                 // Run the API call only if the
-                if ((platformSdk.appData.helperData.aTrophies) && (platformSdk.appData.helperData.aTrophies.count === trophiesCount)) {
-                    console.log('Either this is the First Time Call :: Or the trophies count has not changed');
-                    App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: age });
-                } else {
-                    console.log('Getting the new trophies for the first time or the trophies have changed');
-                    App.ninjaServices.getTrophyData(function(res) {
-                        console.log(res);
-                        if (res.stat == 'success') {
-                            // Awarded Trophies Into The Response :: Match the Count Here
-                            platformSdk.appData.helperData.aTrophies = res;
-                            platformSdk.updateHelperData(platformSdk.appData.helperData.aTrophies);
-                            App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: age });
-                        } else {
-                            platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
-                        }
-                    });
-                }
+                // if ((platformSdk.appData.helperData.aTrophies) && (platformSdk.appData.helperData.aTrophies.count === trophiesCount)) {
+                //     console.log('Either this is the First Time Call :: Or the trophies count has not changed');
+                //     App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: age });
+                // } else {
+                //     console.log('Getting the new trophies for the first time or the trophies have changed');
+                //     App.ninjaServices.getTrophyData(function(res) {
+                //         console.log(res);
+                //         if (res.stat == 'ok') {
+
+                //             // Awarded Trophies Into The Response :: Match the Count Here
+                //             platformSdk.appData.helperData.aTrophies = res;
+                //             platformSdk.updateHelperData(platformSdk.appData.helperData.aTrophies);
+                //             App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: age });
+                //         } else {
+                //             platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
+                //         }
+                //     });
+                // }
+
+                console.log('Getting the new trophies for the first time or the trophies have changed');
+
+                App.ninjaServices.getTrophyData(function(res) {
+                    console.log(res);
+                    if (res.stat == 'ok') {
+                        // Awarded Trophies Into The Response :: Match the Count Here
+                        platformSdk.appData.helperData.aTrophies = res;
+                        platformSdk.updateHelperData(platformSdk.appData.helperData.aTrophies);
+                        App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: age });
+                    } else {
+                        platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
+                    }
+                });
 
             } else {
                 age = 26;
@@ -57,7 +101,7 @@
 
     };
 
-    TrophiesController.prototype.render = function(ctr, App, data) {
+    WorkspaceController.prototype.render = function(ctr, App, data) {
 
         var that = this;
 
@@ -73,13 +117,24 @@
             console.log('Error in changing bot title');
         }
 
-        that.bind(App,data);
+        App.ninjaServices.getHikeStats(function( res ) {
+            //console.log( res );
+            if ( res.stat == 'ok' ) {
+                console.log( 'Updating Hike stats for user' );
+                platformSdk.appData.helperData.statsData = res;
+                platformSdk.updateHelperData( platformSdk.appData.helperData );
+            } else {
+                console.log("error updating stats");
+            }
+        });
+
+        that.bind(App, data);
     };
 
-    TrophiesController.prototype.destroy = function() {
+    WorkspaceController.prototype.destroy = function() {
 
     };
 
-    module.exports = TrophiesController;
+    module.exports = WorkspaceController;
 
-})(window, platformSdk, platformSdk.events );
+})(window, platformSdk, platformSdk.events);

@@ -77,7 +77,7 @@
             // For Every API Call start the Loader Once The Api Hits Communicate
             
             if( params.loader ){
-                events.publish('update.loader', {show: true});
+                events.publish('update.loader', {show: false});
             }
                             
             checkConnection(function (connType) {
