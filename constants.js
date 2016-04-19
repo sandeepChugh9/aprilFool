@@ -30,14 +30,14 @@
                 levels: [{
                         value: '1 month',
                         icon: 'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikeage-bronze.png',
-                        text: 'Celebrate 30 days inside hike !'
+                        text: 'Celebrate 30 days on Hike !'
                     }, {
                         value: '1 year',
                         icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikeage-silver.png',
-                        text: 'Happy one year at hike !'
+                        text: 'Completing 1 year on Hike !'
                     }, {
                         icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikeage-gold.png',
-                        value: 'Hike power 3 year user !',
+                        value: 'Completing 3 years on Hike !',
                         text: ''
                     }
 
@@ -50,15 +50,15 @@
                 levels: [{
                         icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-messaging-bronze.png',
                         value: 100,
-                        text: 'Start chatting to complete your first messaging trophy !'
+                        text: 'Completing 100 messages !'
                     }, {
                         icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-messaging-silver.png',
                         value: 1000,
-                        text: '1000 Chat Messages !'
+                        text: 'Completing 1000 messages !'
                     }, {
                         icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-messaging-gold.png',
                         value: 10000,
-                        text: '10000 Chat Messages !'
+                        text: 'Completing 10000 messages !'
                     }
 
                 ]
