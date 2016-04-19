@@ -1,1 +1,49 @@
 /* All animation Css here */
+
+.play {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 26px;
+    height: 26px;
+}
+
+.play img {
+    width: 15px;
+    animation: spin 1s linear 0s infinite reverse;
+    -moz-animation: 1s linear 0s reverse none infinite spin;
+    -webkit-animation: spin 1s linear 0s infinite reverse;
+    -o-animation: spin 1s linear 0s infinite reverse;
+    -webkit-animation-play-state: running;
+    -o-animation-play-state: running;
+    -moz-animation-play-state: running;
+    animation-play-state: running;
+}
+
+.play img {
+    width: 26px;
+    animation: spin 1s linear 0s infinite reverse;
+    -moz-animation: 1s linear 0s reverse none infinite spin;
+    -webkit-animation: spin 1s linear 0s infinite reverse;
+    -o-animation: spin 1s linear 0s infinite reverse;
+    -webkit-animation-play-state: running;
+    -o-animation-play-state: running;
+    -moz-animation-play-state: running;
+    animation-play-state: running;
+}
+
+@-webkit-keyframes rotating {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.play img {
+    -webkit-animation: rotating 1s linear infinite;
+}
