@@ -1,3 +1,47 @@
+.statsContainer{
+    padding: 0px 0px 12px 0px; 
+}
+
+.statsOverallContainer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.upgradeOverlay{
+    background: rgba(255, 255, 255, 0.93);
+    top: 0; 
+}
+
+.upgradeOverlayWrapper{
+    width: 80%; 
+}
+
+.upgradeHeading{
+    @include fontStyle(18px,
+    500,
+    #3D475B,
+    21px); 
+}
+
+.upgradeText{
+    @include fontStyle(14px,
+    400,
+    #8B919C,
+    21px);
+    margin-top: 8px; 
+}
+
+.upgradeSticker{
+    height: 132px;
+    width: 126px;
+    text-align: center; 
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url('images/upgrade_icon.png');
+    margin: 0px auto 24px auto; 
+}
+
 .profilePhoto {
     height: 66px;
     width: 66px;

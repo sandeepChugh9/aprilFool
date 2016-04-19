@@ -1,86 +1,93 @@
-<div class="statsContainer">
-    <div class="statsWrapperOne">
-        <div class="statsProfile">
-            <div class="profilePhoto backgroundImageGeneric" style="{{#userData.profileData.icon}}background-image:url('data:image/png;base64,{{userData.profileData.icon}}{{/userData.profileData.icon}}')"></div>
-            <div class="profileName">{{userData.profileData.name}}</div>
-        </div>
-        <div class="statsAction">
-            <div class="ageRow">
-                <div class="ageIcon backgroundImageGeneric {{userData.profileData.gender}}Icon"></div>
-                <div class="ageInfo">
-                    <p class="profileStatHead">Hike Age</p>
-                    <p id="hikeAge" data-age="{{userData.profileData.age}}" class="profileStatSubHead">{{userData.profileData.age}} days</p>
+<div class="statsOverallContainer">
+    <div class="statsContainer">
+        <div class="statsWrapperOne">
+            <div class="statsProfile">
+                <div class="profilePhoto backgroundImageGeneric" style="{{#userData.profileData.icon}}background-image:url('data:image/png;base64,{{userData.profileData.icon}}{{/userData.profileData.icon}}')"></div>
+                <div class="profileName">{{userData.profileData.name}}</div>
+            </div>
+            <div class="statsAction">
+                <div class="ageRow">
+                    <div class="ageIcon backgroundImageGeneric {{userData.profileData.gender}}Icon"></div>
+                    <div class="ageInfo">
+                        <p class="profileStatHead">Hike Age</p>
+                        <p id="hikeAge" data-age="{{userData.profileData.age}}" class="profileStatSubHead">{{userData.profileData.age}} days</p>
+                    </div>
+                </div>
+                <div class="rowTrophies">
+                    <div class="tcIcon backgroundImageGeneric"></div>
+                    <div class="tcInfo">
+                        <p class="profileStatHead">Trophies</p>
+                        <p id="trophyCount" data-count="{{userData.statsData.trophyCount}}" class="profileStatSubHead">{{userData.statsData.trophyCount}}</p>
+                    </div>
+                    <div id="btnAction"> VIEW ALL </div>
                 </div>
             </div>
-            <div class="rowTrophies">
-                <div class="tcIcon backgroundImageGeneric"></div>
-                <div class="tcInfo">
-                    <p class="profileStatHead">Trophies</p>
-                    <p class="profileStatSubHead">{{userData.statsData.trophyCount}}</p>
+        </div>
+        <div class="statsWrapperTwo">
+            <br/>
+            <div class="cardContainer">
+                <div class="cardHeader"> MESSAGING </div>
+                <div class="halfCard">
+                    <div class="header"> <span class="cardIcon messageIcon backgroundImageGeneric"></span> <span class="statHeading"> Messages</span></div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.messages.sent}}</span> </div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.messages.rec}} </span> </div>
                 </div>
-                <div id="btnAction"> VIEW ALL </div>
+                <div class="halfCard">
+                    <div class="header"> <span class="cardIcon stickerIcon backgroundImageGeneric"></span> <span class="statHeading"> Stickers</span></div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.stickers.sent}}</span> </div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.stickers.sent}} </span> </div>
+                </div>
+            </div>
+            <div class="cardContainer">
+                <div class="halfCard">
+                    <div class="header"> <span class="cardIcon filesIcon backgroundImageGeneric"></span> <span class="statHeading"> Files</span></div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.files.sent}}</span> </div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.files.sent}} </span> </div>
+                </div>
+                <div class="halfCard">
+                    <div class="header"> <span class="cardIcon hikeDirectIcon backgroundImageGeneric"></span> <span class="statHeading"> Hike Direct </span></div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.hdFileTr.sent}}</span> </div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.hdFileTr.rec}}</span> </div>
+                </div>
+            </div>
+            <div class="cardContainer">
+                <div class="halfCard">
+                    <div class="header"> <span class="cardIcon chatThemesIcon backgroundImageGeneric"></span> <span class="statHeading"> Chat Themes</span></div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.chatThemes.sent}}</span> </div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.chatThemes.sent}} </span> </div>
+                </div>
+                <div class="halfCard hide">
+                    <div class="header"> <span class="cardIcon chatThemesIcon backgroundImageGeneric"></span> <span class="statHeading"> Chat Themes</span></div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.chatThemes.sent}}</span> </div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.chatThemes.sent}} </span> </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="statsWrapperTwo">
-        <br/>
+        <div class="cardContainer marT16">
+            <div class="cardHeader"> SOCIAL </div>
+            <div class="fullCard">
+                <div class="header"> <span class="cardIcon favouriteIcon backgroundImageGeneric"></span> <span class="statHeading"> Favorites</span></div>
+                <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.favorite}} Friends added you as Favorites</span> </div>
+            </div>
+        </div>
         <div class="cardContainer">
-            <div class="cardHeader"> MESSAGING </div>
-            <div class="halfCard">
-                <div class="header"> <span class="cardIcon messageIcon backgroundImageGeneric"></span> <span class="statHeading"> Messages</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.messages.sent}}</span> </div>
-                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.messages.rec}} </span> </div>
-            </div>
-            <div class="halfCard">
-                <div class="header"> <span class="cardIcon stickerIcon backgroundImageGeneric"></span> <span class="statHeading"> Stickers</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.stickers.sent}}</span> </div>
-                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.stickers.sent}} </span> </div>
+            <div class="fullCard">
+                <div class="header"> <span class="cardIcon statusUpdatesIcon backgroundImageGeneric"></span> <span class="statHeading"> Status Updates</span></div>
+                <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.statusUpdates}} status updates by you</span> </div>
             </div>
         </div>
         <div class="cardContainer">
-            <div class="halfCard">
-                <div class="header"> <span class="cardIcon filesIcon backgroundImageGeneric"></span> <span class="statHeading"> Files</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.files.sent}}</span> </div>
-                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.files.sent}} </span> </div>
-            </div>
-            <div class="halfCard">
-                <div class="header"> <span class="cardIcon hikeDirectIcon backgroundImageGeneric"></span> <span class="statHeading"> Hike Direct </span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.hdFileTr.sent}}</span> </div>
-                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.hdFileTr.rec}}</span> </div>
-            </div>
-        </div>
-        <div class="cardContainer">
-            <div class="halfCard">
-                <div class="header"> <span class="cardIcon chatThemesIcon backgroundImageGeneric"></span> <span class="statHeading"> Chat Themes</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.chatThemes.sent}}</span> </div>
-                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.chatThemes.sent}} </span> </div>
-            </div>
-            <div class="halfCard hide">
-                <div class="header"> <span class="cardIcon chatThemesIcon backgroundImageGeneric"></span> <span class="statHeading"> Chat Themes</span></div>
-                <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.chatThemes.sent}}</span> </div>
-                <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.chatThemes.sent}} </span> </div>
+            <div class="fullCard">
+                <div class="header"> <span class="cardIcon invitesIcon backgroundImageGeneric"></span> <span class="statHeading"> Invites</span></div>
+                <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.invites}} invites sent</span> </div>
             </div>
         </div>
     </div>
-    <div class="cardContainer marT16">
-        <div class="cardHeader"> SOCIAL </div>
-        <div class="fullCard">
-            <div class="header"> <span class="cardIcon favouriteIcon backgroundImageGeneric"></span> <span class="statHeading"> Favorites</span></div>
-            <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.favorite}} Friends added you as Favorites</span> </div>
+    <div class="upgradeOverlay centerToScreenContainer hide">
+        <div class="upgradeOverlayWrapper align-center centerToScreenWrapper">
+            <div class="upgradeSticker backgroundImageGeneric"></div>
+            <h1 class="upgradeHeading">Update Hike to ({{userData.hikeLatestVersion}})</h1>
+            <p class="upgradeText">Upgrade to the latest version to view your hike stats and earn rewards.</p>
         </div>
     </div>
-    <div class="cardContainer">
-        <div class="fullCard">
-            <div class="header"> <span class="cardIcon statusUpdatesIcon backgroundImageGeneric"></span> <span class="statHeading"> Status Updates</span></div>
-            <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.statusUpdates}} status updates by you</span> </div>
-        </div>
-    </div>
-    <div class="cardContainer">
-        <div class="fullCard">
-            <div class="header"> <span class="cardIcon invitesIcon backgroundImageGeneric"></span> <span class="statHeading"> Invites</span></div>
-            <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.invites}} invites sent</span> </div>
-        </div>
-    </div>
-</div>
-</div>
 </div>

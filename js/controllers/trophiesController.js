@@ -192,7 +192,7 @@
         var that = this;
         var awardedTrophies;
 
-        if (platformSdk.bridgeEnabled)
+        if (!platformSdk.bridgeEnabled)
             awardedTrophies = platformSdk.appData.helperData.aTrophies;
         else {
             awardedTrophies = {
@@ -225,7 +225,7 @@
 
         // Logic 1 :: Only show Awarded Trophies and Not Show Any More upcoming Trophies
 
-        if (platformSdk.bridgeEnabled) {
+        if (!platformSdk.bridgeEnabled) {
             if (platformSdk.appData.helperData.experiment == 2 && data)
 
                 exp2 = true;
