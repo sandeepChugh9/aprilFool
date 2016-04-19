@@ -4843,6 +4843,54 @@
 
 	        },
 
+	        getNumberAbrr: function(value) {
+	            var newValue = value;
+	            if (value >= 1000) {
+	                var suffixes = ["", "K", "M", "B", "T"];
+	                var suffixNum = Math.floor(("" + value).length / 3);
+	                var shortValue = '';
+	                var shortNum;
+	                for (var precision = 2; precision >= 1; precision--) {
+	                    shortValue = parseFloat((suffixNum != 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(precision));
+	                    var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g, '');
+	                    if (dotLessShortValue.length <= 2) {
+	                        break;
+	                    }
+	                }
+	                if (shortValue % 1 != 0) shortNum = shortValue.toFixed(1);
+	                newValue = shortValue + suffixes[suffixNum];
+	            }
+	            return newValue;
+	        },
+
+	        bytesToSize: function(bytes) {
+	            var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+	            if (bytes === 0) return '0';
+	            var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+	            return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+	        },
+
+	        formatData: function() {
+	            for (var key in APIData.statsData) {
+
+	                if (key == "hdFileTr") {
+	                    APIData.statsData[key].sent = this.bytesToSize(APIData.statsData[key].sent);
+	                    APIData.statsData[key].rec = this.bytesToSize(APIData.statsData[key].rec);
+
+	                } else {
+	                    if (typeof APIData.statsData[key].sent != "undefined")
+	                        APIData.statsData[key].sent = this.getNumberAbrr(APIData.statsData[key].sent);
+
+	                    if (typeof APIData.statsData[key].rec != "undefined")
+	                        APIData.statsData[key].rec = this.getNumberAbrr(APIData.statsData[key].rec);
+
+	                    if (typeof APIData.statsData[key].count != "undefined")
+	                        APIData.statsData[key].count = this.getNumberAbrr(APIData.statsData[key].count);
+
+	                }
+	            }
+	        },
+
 	        backPressTrigger: function() {
 	            this.router.back();
 	        },
@@ -4973,6 +5021,7 @@
 	            if (platformSdk.bridgeEnabled) {
 
 	                if (!platformSdk.appData.helperData.profileData) {
+
 	                    this.ninjaServices.getProfile(function(res) {
 	                        console.log(res);
 	                        if (res.stat == 'ok') {
@@ -4982,13 +5031,13 @@
 	                            firstDate = new Date(res.reg_time * 1000);
 	                            diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
 	                            //res.age = diffDays;
-	                            
-	                            if(diffDays === 0){
+
+	                            if (diffDays === 0) {
 	                                res.age = '1 day';
-	                            }else{
+	                            } else {
 	                                res.age = self.daysConvertor(diffDays);
 	                            }
-	                            
+
 	                            if (res.gender === '' || typeof res.gender === 'undefined')
 	                                res.gender = 'neutral';
 	                            APIData.profileData = res;
@@ -5022,40 +5071,68 @@
 
 	                APIData.statsData = {
 
-	                    'messages': {
-	                        'sent': '100k',
-	                        'rec': '10k'
+
+	                    "messages": {
+	                        "sent": "1000",
+	                        "rec": "1000000",
+	                        "top": "2",
+	                        "level": "1"
 	                    },
 
-	                    'stickers': {
-	                        'sent': '100k',
-	                        'rec': '10k'
+	                    "stickers": {
+	                        "sent": "1000000",
+	                        "rec": "1000000",
+	                        "top": "2",
+	                        "level": "1"
 	                    },
 
-	                    'files': {
-	                        'sent': '100k',
-	                        'rec': '10k'
+	                    "files": {
+	                        "sent": "1000000",
+	                        "rec": "1000000",
+	                        "top": "2",
+	                        "level": "1"
 	                    },
 
-	                    'chatThemes': {
-	                        'sent': '100k',
-	                        'rec': '10k'
+	                    "chatThemes": {
+	                        "sent": "100000000",
+	                        "rec": "100",
+
 	                    },
 
-	                    'hdFileTr': {
-	                        'sent': '100k',
-	                        'rec': '10k'
+	                    "hdFileTr": {
+	                        "sent": "230000",
+	                        "rec": "45002",
+	                        "top": "2",
+	                        "level": "3"
 	                    },
 
-	                    'statusUpdates': '12',
-	                    'favorite': '2',
-	                    'invites': '15',
-	                    'trophyCount': '5',
-	                    'hikeLatestVersion': '4.2.5.82'
+
+	                    "favorite": {
+	                        "count": "200",
+	                        "top": "2",
+	                        "level": "2"
+	                    },
+
+	                    "statusUpdates": {
+	                        "count": "2",
+	                        "top": "2",
+	                        "level": "3"
+	                    },
+
+	                    "invites": {
+	                        "count": "2",
+	                        "top": "2",
+	                        "level": "3"
+	                    },
+
+	                    "trophyCount": "5",
+	                    "hikeLatestVersion": "4.2.5.82"
 	                };
 	            }
 
-	            //self.router.navigateTo( '/', APIData );
+
+	            this.formatData();
+	            self.router.navigateTo('/', APIData);
 
 	        }
 	    };
@@ -5063,7 +5140,6 @@
 	    module.exports = Application;
 
 	})(window, platformSdk.events);
-
 
 /***/ },
 /* 8 */
@@ -5089,9 +5165,14 @@
 	        var trophiesCount = document.getElementById('trophyCount').getAttribute('data-count');
 	        var upgradeOverlay = document.getElementsByClassName('upgradeOverlay')[0];
 
+	        var topTag = document.getElementsByClassName('topHeading');
+	        var crossIcon = document.getElementsByClassName('crossIcon')[0];
+	        var topTagOverlay = document.getElementsByClassName('topTagOverlay')[0];
+
 	        upgradeHeading.addEventListener('click', function(ev) {
 	            window.open('https://play.google.com/store/apps/details?id=com.bsb.hike');
 	        });
+
 
 	        var currentVersion = '';
 	        var userVersion = '';
@@ -5123,6 +5204,24 @@
 	                }
 	            }
 	        }
+	        for (var i = 0, n = topTag.length; i < n; i++)
+	            topTag[i].addEventListener('click', topTagPopUp, false);
+
+
+	        function topTagPopUp() {
+	            topTagOverlay.classList.remove('hide');
+	            topTagOverlay.querySelectorAll('.topStat')[0].innerHTML = this.getAttribute('data-topTag') + '%';
+	            topTagOverlay.querySelectorAll('.topStat')[1].innerHTML = this.getAttribute('data-topTag') + '%';
+	            topTagOverlay.querySelectorAll('.infoSection')[0].innerHTML = this.getAttribute('data-info');
+	            topTagOverlay.querySelectorAll('.levelCommon')[0].classList.remove(['topTagLevel1', 'topTagLevel2', 'topTagLevel3'])
+	            topTagOverlay.querySelectorAll('.levelCommon')[0].classList.add('topTagLevel' + this.getAttribute('data-topTagLevel'));
+
+
+	        }
+
+	        crossIcon.addEventListener('click', function(ev) {
+	            topTagOverlay.classList.add('hide');
+	        });
 
 	        btn.addEventListener('click', function(ev) {
 
@@ -5188,16 +5287,18 @@
 	            console.log('Error in changing bot title');
 	        }
 
-	        App.ninjaServices.getHikeStats(function( res ) {
+
+	        App.ninjaServices.getHikeStats(function(res) {
 	            //console.log( res );
-	            if ( res.stat == 'ok' ) {
-	                console.log( 'Updating Hike stats for user' );
+	            if (res.stat == 'ok') {
+	                console.log('Updating Hike stats for user');
 	                platformSdk.appData.helperData.statsData = res;
-	                platformSdk.updateHelperData( platformSdk.appData.helperData );
+	                platformSdk.updateHelperData(platformSdk.appData.helperData);
 	            } else {
 	                console.log("error updating stats");
 	            }
 	        });
+
 
 	        that.bind(App, data);
 	    };
@@ -5210,56 +5311,55 @@
 
 	})(window, platformSdk, platformSdk.events);
 
-
 /***/ },
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"statsOverallContainer\">\n    <div class=\"statsContainer\">\n        <div class=\"statsWrapperOne\">\n            <div class=\"statsProfile\">\n                <div class=\"profilePhoto backgroundImageGeneric\" style=\"{{#userData.profileData.icon}}background-image:url('data:image/png;base64,{{userData.profileData.icon}}{{/userData.profileData.icon}}')\"></div>\n                <div class=\"profileName\">{{userData.profileData.name}}</div>\n            </div>\n            <div class=\"statsAction\">\n                <div class=\"ageRow\">\n                    <div class=\"ageIcon backgroundImageGeneric {{userData.profileData.gender}}Icon\"></div>\n                    <div class=\"ageInfo\">\n                        <p class=\"profileStatHead\">Hike Age</p>\n                        <p id=\"hikeAge\" data-age=\"{{userData.profileData.age}}\" class=\"profileStatSubHead\">{{userData.profileData.age}}</p>\n                    </div>\n                </div>\n                <div class=\"rowTrophies\">\n                    <div class=\"tcIcon backgroundImageGeneric\"></div>\n                    <div class=\"tcInfo\">\n                        <p class=\"profileStatHead\">Trophies</p>\n                        <p id=\"trophyCount\" data-count=\"{{userData.statsData.trophyCount}}\" class=\"profileStatSubHead\">{{userData.statsData.trophyCount}}</p>\n                    </div>\n                    <div id=\"btnAction\"> VIEW ALL </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"statsWrapperTwo\">\n            <br/>\n            <div class=\"cardContainer\">\n                <div class=\"cardHeader\"> MESSAGING </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon messageIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Messages</span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.messages.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.messages.rec}} </span> </div>\n                </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon stickerIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Stickers</span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.stickers.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.stickers.sent}} </span> </div>\n                </div>\n            </div>\n            <div class=\"cardContainer\">\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon filesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Files</span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.files.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.files.sent}} </span> </div>\n                </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon hikeDirectIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Hike Direct </span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.hdFileTr.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.hdFileTr.rec}}</span> </div>\n                </div>\n            </div>\n            <div class=\"cardContainer\">\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon chatThemesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Chat Themes</span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.chatThemes.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.chatThemes.sent}} </span> </div>\n                </div>\n                <div class=\"halfCard hide\">\n                    <div class=\"header\"> <span class=\"cardIcon chatThemesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Chat Themes</span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.chatThemes.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.chatThemes.sent}} </span> </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"cardContainer marT16\">\n            <div class=\"cardHeader\"> SOCIAL </div>\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon favouriteIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Favorites</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> {{userData.statsData.favorite}} Friends added you as Favorites</span> </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon statusUpdatesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Status Updates</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> {{userData.statsData.statusUpdates}} status updates by you</span> </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon invitesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Invites</span></div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> {{userData.statsData.invites}} invites sent</span> </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"upgradeOverlay centerToScreenContainer hide\">\n        <div class=\"upgradeOverlayWrapper align-center centerToScreenWrapper\">\n            <div class=\"upgradeSticker backgroundImageGeneric\"></div>\n            <h1 class=\"upgradeHeading\">Update Hike</h1>\n            <p class=\"upgradeText\">Upgrade to the latest version to view your hike stats and earn rewards.</p>\n        </div>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"statsOverallContainer\">\n    <div class=\"statsContainer\">\n        <div class=\"statsWrapperOne\">\n            <div class=\"statsProfile\">\n                <div class=\"profilePhoto backgroundImageGeneric\" style=\"{{#userData.profileData.icon}}background-image:url('data:image/png;base64,{{userData.profileData.icon}}{{/userData.profileData.icon}}')\"></div>\n                <div class=\"profileName\">{{userData.profileData.name}}</div>\n            </div>\n            <div class=\"statsAction\">\n                <div class=\"ageRow\">\n                    <div class=\"ageIcon backgroundImageGeneric {{userData.profileData.gender}}Icon\"></div>\n                    <div class=\"ageInfo\">\n                        <p class=\"profileStatHead\">Hike Age</p>\n                        <p id=\"hikeAge\" data-age=\"{{userData.profileData.age}}\" class=\"profileStatSubHead\">{{userData.profileData.age}}</p>\n                    </div>\n                </div>\n                <div class=\"rowTrophies\">\n                    <div class=\"tcIcon backgroundImageGeneric\"></div>\n                    <div class=\"tcInfo\">\n                        <p class=\"profileStatHead\">Trophies</p>\n                        <p id=\"trophyCount\" data-count=\"{{userData.statsData.trophyCount}}\" class=\"profileStatSubHead\">{{userData.statsData.trophyCount}}</p>\n                    </div>\n                    <div id=\"btnAction\"> VIEW ALL </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"statsWrapperTwo\">\n            <br/>\n            <div class=\"cardContainer\">\n                <div class=\"cardHeader\"> MESSAGING </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon messageIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Messages</span> {{#userData.statsData.messages.top}} <span class=\"topHeading\" data-info=\"messaging\" data-topTag=\"{{userData.statsData.messages.top}}\" data-topTagLevel=\"{{userData.statsData.messages.level}}\"> TOP {{userData.statsData.messages.top}}%</span> {{/userData.statsData.messages.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.messages.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.messages.rec}} </span> </div>\n                </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon stickerIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Stickers</span>{{#userData.statsData.files.top}}<span class=\"topHeading\" data-info=\"stickers\" data-topTag=\"{{userData.statsData.stickers.top}}\" data-topTagLevel=\"{{userData.statsData.stickers.level}}\"> TOP {{userData.statsData.files.top}}%</span> {{/userData.statsData.files.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.files.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.stickers.sent}} </span> </div>\n                </div>\n            </div>\n            <div class=\"cardContainer\">\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon filesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Files</span>{{#userData.statsData.files.top}} <span class=\"topHeading\" data-info=\"files\" data-topTag=\"{{userData.statsData.files.top}}\" data-topTagLevel=\"{{userData.statsData.files.level}}\"> TOP {{userData.statsData.files.top}}%</span> {{/userData.statsData.files.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.files.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.files.sent}} </span> </div>\n                </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon hikeDirectIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Hike Direct </span>{{#userData.statsData.hdFileTr.top}} <span class=\"topHeading\" data-info=\"Hike direct file transfer\" data-topTag=\"{{userData.statsData.hdFileTr.top}}\" data-topTagLevel=\"{{userData.statsData.hdFileTr.level}}\"> TOP {{userData.statsData.hdFileTr.top}}%</span> {{/userData.statsData.hdFileTr.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.hdFileTr.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.hdFileTr.rec}}</span> </div>\n                </div>\n            </div>\n            <div class=\"cardContainer\">\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon chatThemesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Chat Themes</span>{{#userData.statsData.chatThemes.top}}<span class=\"topHeading\" data-info=\"chat themes\" data-topTag=\"{{userData.statsData.chatThemes.top}}\" data-topTagLevel=\"{{userData.statsData.chatThemes.level}}\"> TOP {{userData.statsData.chatThemes.top}}%</span> {{/userData.statsData.chatThemes.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.chatThemes.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.chatThemes.sent}} </span> </div>\n                </div>\n                <div class=\"halfCard hide\">\n                    <div class=\"header\"> <span class=\"cardIcon chatThemesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Chat Themes</span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent :</span> <span class=\"statData\"> {{userData.statsData.chatThemes.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved:</span> <span class=\"statData\">{{userData.statsData.chatThemes.sent}} </span> </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"cardContainer marT16\">\n            <div class=\"cardHeader\"> SOCIAL </div>\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon favouriteIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Favorites</span>{{#userData.statsData.favorite.top}} <span class=\"topHeading\" data-info=\"favorite\" data-topTag=\"{{userData.statsData.favorite.top}}\" data-topTagLevel=\"{{userData.statsData.favorite.level}}\"> TOP {{userData.statsData.favorite.top}}%</span> {{/userData.statsData.favorite.top}}</div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> {{userData.statsData.favorite.count}} Friends added you as Favorites</span> </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon statusUpdatesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Status Updates</span>{{#userData.statsData.statusUpdates.top}}<span class=\"topHeading\" data-info=\"status updates\" data-topTag=\"{{userData.statsData.statusUpdates.top}}\" data-topTagLevel=\"{{userData.statsData.statusUpdates.level}}\"> TOP {{userData.statsData.statusUpdates.top}}%</span> {{/userData.statsData.statusUpdates.top}}</div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> {{userData.statsData.statusUpdates.count}} status updates by you</span> </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon invitesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Invites</span>{{#userData.statsData.invites.top}} <span class=\"topHeading\" data-info=\"invites\" data-topTag=\"{{userData.statsData.invites.top}}\" data-topTagLevel=\"{{userData.statsData.invites.level}}\"> TOP {{userData.statsData.invites.top}}%</span> {{/userData.statsData.invites.top}}</div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> {{userData.statsData.invites.count}} invites sent</span> </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"upgradeOverlay centerToScreenContainer hide\">\n        <div class=\"upgradeOverlayWrapper align-center centerToScreenWrapper\">\n            <div class=\"upgradeSticker backgroundImageGeneric\"></div>\n            <h1 class=\"upgradeHeading\">Update Hike</h1>\n            <p class=\"upgradeText\">Upgrade to the latest version to view your hike stats and earn rewards.</p>\n        </div>\n    </div>\n    <div class=\"topTagOverlay trophyOverlay centerToScreenContainer hide\">\n        <div class=\"trophyOverlayWrapper centerToScreenWrapper\">\n            <div class=\"crossIcon backgroundImageGeneric\"></div>\n            <div class=\"levelsIconWrapper\">\n                <div class=\"levelCommon backgroundImageGeneric\"></div>\n            </div>\n            <h1 class=\"trophyHeading align-center\">\n            Ranked in Top <span class=\"topStat\"></span>  Hikers</h1>\n            <p class=\"levelText align-center\">You have reserved a <span class=\"infoSection\"></span> rank in Top <span class=\"topStat\"></span> of Hike users.</p>\n            <hr noshade>\n            <div class=\"levelAction align-center\">SHARE WITH FRIENDS</div>\n        </div>\n    </div>\n</div>"
 
 /***/ },
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	(function( W, platformSdk, events ) {
+	(function(W, platformSdk, events) {
 	    'use strict';
 
-	    var utils = __webpack_require__( 4 );
+	    var utils = __webpack_require__(4);
 
-	    var TrophiesController = function( options ) {
-	        this.template = __webpack_require__( 11 );
+	    var TrophiesController = function(options) {
+	        this.template = __webpack_require__(11);
 	    };
 
-	    TrophiesController.prototype.bind = function( App, data ) {
-	        var $el = $( this.el );
+	    TrophiesController.prototype.bind = function(App, data) {
+	        var $el = $(this.el);
 
 	        var trophyIdGlobal = null;
 	        var globalExperiment = null;
 
-	        var trophyOverlay = document.getElementsByClassName( 'trophyOverlay' )[0];
-	        var rewardedTrophyIcons = document.getElementsByClassName( 'awarded' );
+	        var trophyOverlay = document.getElementsByClassName('trophyOverlay')[0];
+	        var rewardedTrophyIcons = document.getElementsByClassName('awarded');
 
-	        var allTrophies = document.getElementsByClassName( 'commonTrophy' );
+	        var allTrophies = document.getElementsByClassName('commonTrophy');
 
-	        var levelBronze = document.getElementsByClassName( 'levelBronze' )[0];
-	        var levelSilver = document.getElementsByClassName( 'levelSilver' )[0];
-	        var levelGold = document.getElementsByClassName( 'levelGold' )[0];
+	        var levelBronze = document.getElementsByClassName('levelBronze')[0];
+	        var levelSilver = document.getElementsByClassName('levelSilver')[0];
+	        var levelGold = document.getElementsByClassName('levelGold')[0];
 
-	        var crossIcon = document.getElementsByClassName( 'crossIcon' )[0];
+	        var crossIcon = document.getElementsByClassName('crossIcon')[0];
 
-	        var levelCommon = document.getElementsByClassName( 'levelCommon' );
+	        var levelCommon = document.getElementsByClassName('levelCommon');
 
-	        var trophyHeading = document.getElementsByClassName( 'trophyHeading' )[0];
-	        var levelText = document.getElementsByClassName( 'levelText' )[0];
-	        var levelAction = document.getElementsByClassName( 'levelAction' )[0];
+	        var trophyHeading = document.getElementsByClassName('trophyHeading')[0];
+	        var levelText = document.getElementsByClassName('levelText')[0];
+	        var levelAction = document.getElementsByClassName('levelAction')[0];
 
-	        crossIcon.addEventListener( 'click', function( ev ) {
-	            trophyOverlay.classList.add( 'hide' );
+	        crossIcon.addEventListener('click', function(ev) {
+	            trophyOverlay.classList.add('hide');
 	            resetPopupClasses();
 	        });
 
-	        levelAction.addEventListener( 'click', function( ev ) {
-	            trophyOverlay.classList.add( 'hide' );
+	        levelAction.addEventListener('click', function(ev) {
+	            trophyOverlay.classList.add('hide');
 	            resetPopupClasses();
 	        });
 
@@ -5272,24 +5372,24 @@
 	            trophyHeading.innerHTML = '';
 	            levelText.innerHTML = '';
 
-	            levelBronze.removeAttribute( 'style' );
-	            levelSilver.removeAttribute( 'style' );
-	            levelGold.removeAttribute( 'style' );
+	            levelBronze.removeAttribute('style');
+	            levelSilver.removeAttribute('style');
+	            levelGold.removeAttribute('style');
 
-	            levelBronze.classList.add( 'levelCommon', 'levelBronze', 'backgroundImageGeneric' );
-	            levelSilver.classList.add( 'levelCommon', 'levelSilver', 'backgroundImageGeneric' );
-	            levelGold.classList.add( 'levelCommon', 'levelGold', 'backgroundImageGeneric' );
+	            levelBronze.classList.add('levelCommon', 'levelBronze', 'backgroundImageGeneric');
+	            levelSilver.classList.add('levelCommon', 'levelSilver', 'backgroundImageGeneric');
+	            levelGold.classList.add('levelCommon', 'levelGold', 'backgroundImageGeneric');
 	        };
 
 	        var tapOnLockedTrophy = function() {
-	            console.log( 'Tapping on Locked Trophy' );
+	            console.log('Tapping on Locked Trophy');
 
-	            var level = this.getAttribute( 'data-level' );
+	            var level = this.getAttribute('data-level');
 
-	            if ( this.classList.contains( 'levelLocked' ) && globalExperiment === 'exp3' ) {
+	            if (this.classList.contains('levelLocked') && globalExperiment === 'exp3') {
 
 	                // Task is hidden
-	                if ( data[trophyIdGlobal] ) {
+	                if (data[trophyIdGlobal]) {
 	                    levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
 	                } else {
 	                    levelText.innerHTML = '';
@@ -5299,124 +5399,125 @@
 	                levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
 	            }
 
-	            var alreadyTapped = document.getElementsByClassName( 'levelLockTap' );
+	            var alreadyTapped = document.getElementsByClassName('levelLockTap');
 
-	            for ( var t = 0; t < alreadyTapped.length; t++ ) {
-	                alreadyTapped[t].classList.remove( 'levelLockTap' );
+	            for (var t = 0; t < alreadyTapped.length; t++) {
+	                alreadyTapped[t].classList.remove('levelLockTap');
 	            }
 
 	            //var level = this.getAttribute('data-level');
-	            this.classList.add( 'levelLockTap' );
+	            this.classList.add('levelLockTap');
 	        };
 
 	        var openTrophy = function() {
 
-	            var experiment = this.getAttribute( 'data-experiment' );
-	            var tid = this.getAttribute( 'data-tid' );
+	            var experiment = this.getAttribute('data-experiment');
+	            var tid = this.getAttribute('data-tid');
 	            trophyIdGlobal = tid;
 	            globalExperiment = experiment;
 
 	            trophyHeading.innerHTML = data[tid].label;
 
-	            if ( this.classList.contains( 'awarded' ) ) {
-	                console.log( 'Trophy is awarded' );
+	            if (this.classList.contains('awarded')) {
+	                console.log('Trophy is awarded');
 	                var awardedLevel = data[tid].curLevel;
 
 	                // Current Level Is zero :: Dont show any other Level
-	                if ( awardedLevel === 0 ) {
-	                    console.log( 'Awarded Level 0' );
+	                if (awardedLevel === 0) {
+	                    console.log('Awarded Level 0');
 	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
-	                    levelSilver.classList.add( 'levelLocked' );
-	                    levelSilver.classList.add( 'levelLockNoTap' );
-	                    levelGold.classList.add( 'levelLocked' );
-	                    levelGold.classList.add( 'levelLockNoTap' );
+	                    levelSilver.classList.add('levelLocked');
+	                    levelSilver.classList.add('levelLockNoTap');
+	                    levelGold.classList.add('levelLocked');
+	                    levelGold.classList.add('levelLockNoTap');
 	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
 	                }
 
 	                // Current Level is 1 :: Show Zeroth Level Also
-	                else if ( awardedLevel === 1 ) {
-	                    console.log( 'Awarded Level 1' );
+	                else if (awardedLevel === 1) {
+	                    console.log('Awarded Level 1');
 	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
 	                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
-	                    levelGold.classList.add( 'levelLocked' );
-	                    levelGold.classList.add( 'levelLockNoTap' );
+	                    levelGold.classList.add('levelLocked');
+	                    levelGold.classList.add('levelLockNoTap');
 	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
 	                }
 
 	                // Current Level is 2 :: Show zeroth and First Level both
-	                else if ( awardedLevel === 2 ) {
-	                    console.log( 'Awarded Level 2' );
+	                else if (awardedLevel === 2) {
+	                    console.log('Awarded Level 2');
 	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
 	                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 2].icon + '\')';
 	                    levelGold.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
 	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
 	                }
 
-	                console.log( 'Opening Rewarded Trophy :: Show Level current and Locked for other Levels with task not hidden' );
+	                console.log('Opening Rewarded Trophy :: Show Level current and Locked for other Levels with task not hidden');
 	            }
 
 	            // Experiment 2 :: Non Hidden Tasks
-	            else if ( this.classList.contains( 'locked' ) && experiment == 'exp2' ) {
-	                console.log( 'Experiment two :: Show Locked Trophy Task as well' );
+	            else if (this.classList.contains('locked') && experiment == 'exp2') {
+	                console.log('Experiment two :: Show Locked Trophy Task as well');
 
 	                // Bronze Active Currently
-	                levelBronze.classList.add( 'levelLocked' );
+	                levelBronze.classList.add('levelLocked');
 	                levelText.innerHTML = data[tid].levels[0].text;
 
 	                // Silver Inactive
-	                levelSilver.classList.add( 'levelLocked' );
-	                levelSilver.classList.add( 'levelLockNoTap' );
+	                levelSilver.classList.add('levelLocked');
+	                levelSilver.classList.add('levelLockNoTap');
 
 	                // Gold Inactive
-	                levelGold.classList.add( 'levelLocked' );
-	                levelGold.classList.add( 'levelLockNoTap' );
+	                levelGold.classList.add('levelLocked');
+	                levelGold.classList.add('levelLockNoTap');
 	            }
 
 	            // Experiment 3 :: Hidden Tasks
-	            else if ( this.classList.contains( 'locked' ) && experiment == 'exp3' ) {
-	                console.log( 'Experiment Three :: Dont Show Locked Trophy Task' );
+	            else if (this.classList.contains('locked') && experiment == 'exp3') {
+	                console.log('Experiment Three :: Dont Show Locked Trophy Task');
 
 	                trophyHeading.innerHTML = '????';
 
-	                levelBronze.classList.add( 'levelLocked' );
+	                levelBronze.classList.add('levelLocked');
 	                levelText.innerHTML = '';
 
 	                // Silver Inactive
-	                levelSilver.classList.add( 'levelLocked' );
-	                levelSilver.classList.add( 'levelLockNoTap' );
+	                levelSilver.classList.add('levelLocked');
+	                levelSilver.classList.add('levelLockNoTap');
 
 	                // Gold Inactive
-	                levelGold.classList.add( 'levelLocked' );
-	                levelGold.classList.add( 'levelLockNoTap' );
+	                levelGold.classList.add('levelLocked');
+	                levelGold.classList.add('levelLockNoTap');
 	            }
 
 	            // Show the Overlay now
-	            trophyOverlay.classList.remove( 'hide' );
+	            trophyOverlay.classList.remove('hide');
 
 	        };
 
-	        for ( var i = 0; i < rewardedTrophyIcons.length; i++ ) {
-	            var trophyId = rewardedTrophyIcons[i].getAttribute( 'data-tid' );
+	        for (var i = 0; i < rewardedTrophyIcons.length; i++) {
+	            var trophyId = rewardedTrophyIcons[i].getAttribute('data-tid');
 	            var trophyEarnedLevel = data[trophyId].curLevel;
 	            rewardedTrophyIcons[i].style.backgroundImage = 'url(\'' + data[trophyId].levels[trophyEarnedLevel].icon + '\')';
 	        }
 
-	        for ( var j = 0; j < allTrophies.length; j++ ) {
-	            allTrophies[j].addEventListener( 'click', openTrophy, false );
+	        for (var j = 0; j < allTrophies.length; j++) {
+	            allTrophies[j].addEventListener('click', openTrophy, false);
 	        }
 
-	        for ( var z = 0; z < levelCommon.length; z++ ) {
-	            levelCommon[z].addEventListener( 'click', tapOnLockedTrophy, false );
+	        for (var z = 0; z < levelCommon.length; z++) {
+	            levelCommon[z].addEventListener('click', tapOnLockedTrophy, false);
 	        }
 
 	    };
 
-	    TrophiesController.prototype.render = function( ctr, App, data ) {
+	    TrophiesController.prototype.render = function(ctr, App, data) {
 
 	        var that = this;
 	        var awardedTrophies;
 
-	        if ( platformSdk.bridgeEnabled )
+	        if (platformSdk.bridgeEnabled)
+
 	            awardedTrophies = platformSdk.appData.helperData.aTrophies;
 	        else {
 	            awardedTrophies = {
@@ -5429,11 +5530,11 @@
 	            };
 	        }
 
-	        if ( data.age >= 30 )
+	        if (data.age >= 30)
 	            awardedTrophies.awarded[0] = 0;
-	        else if ( data.age >= 365 )
+	        else if (data.age >= 365)
 	            awardedTrophies.awarded[0] = 1;
-	        else if ( data.age >= 1095 )
+	        else if (data.age >= 1095)
 	            awardedTrophies.awarded[0] = 2;
 
 	        data = data.trophiesData;
@@ -5441,20 +5542,21 @@
 	        var exp2 = false,
 	            exp3 = false;
 
-	        for ( var key in awardedTrophies.awarded ) {
+	        for (var key in awardedTrophies.awarded) {
 	            data[key].awarded = 'true';
 	            data[key].curLevel = awardedTrophies.awarded[key];
 	        }
 
 	        // Logic 1 :: Only show Awarded Trophies and Not Show Any More upcoming Trophies
 
-	        if ( platformSdk.bridgeEnabled ) {
-	            if ( platformSdk.appData.helperData.experiment == 2 && data )
+	        if (platformSdk.bridgeEnabled) {
+	            if (platformSdk.appData.helperData.experiment == 2 && data)
+
 
 	                exp2 = true;
 
 	            // Logic 2 : Show Rewarded and Not Rewarded (Task Locked state)
-	            else if ( platformSdk.appData.helperData.experiment == 3 && data )
+	            else if (platformSdk.appData.helperData.experiment == 3 && data)
 
 	                exp3 = true;
 
@@ -5464,20 +5566,20 @@
 
 	        // Logic 3 : Show Rewarded and not Rewarded (Task Not Locked )
 
-	        that.el = document.createElement( 'div' );
+	        that.el = document.createElement('div');
 	        that.el.className = 'smellOptInContainer animation_fadein noselect';
-	        that.el.innerHTML = Mustache.render( unescape( that.template ), { experiment2: exp2, experiment3: exp3, trophiesData: data, awardedCount: Object.keys( awardedTrophies.awarded ).length, totalCount: data.length });
+	        that.el.innerHTML = Mustache.render(unescape(that.template), { experiment2: exp2, experiment3: exp3, trophiesData: data, awardedCount: Object.keys(awardedTrophies.awarded).length, totalCount: data.length });
 
-	        ctr.appendChild( that.el );
-	        events.publish( 'update.loader', { show: false });
+	        ctr.appendChild(that.el);
+	        events.publish('update.loader', { show: false });
 
 	        try {
-	            PlatformBridge.changeBotTitle( 'Trophies' );
-	        } catch ( e ) {
-	            console.log( 'Error in changing bot title' );
+	            PlatformBridge.changeBotTitle('Trophies');
+	        } catch (e) {
+	            console.log('Error in changing bot title');
 	        }
 
-	        that.bind( App, data );
+	        that.bind(App, data);
 	    };
 
 	    TrophiesController.prototype.destroy = function() {
@@ -5486,8 +5588,7 @@
 
 	    module.exports = TrophiesController;
 
-	})( window, platformSdk, platformSdk.events );
-
+	})(window, platformSdk, platformSdk.events);
 
 /***/ },
 /* 11 */

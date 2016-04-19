@@ -18,9 +18,14 @@
         var trophiesCount = document.getElementById('trophyCount').getAttribute('data-count');
         var upgradeOverlay = document.getElementsByClassName('upgradeOverlay')[0];
 
+        var topTag = document.getElementsByClassName('topHeading');
+        var crossIcon = document.getElementsByClassName('crossIcon')[0];
+        var topTagOverlay = document.getElementsByClassName('topTagOverlay')[0];
+
         upgradeHeading.addEventListener('click', function(ev) {
             window.open('https://play.google.com/store/apps/details?id=com.bsb.hike');
         });
+
 
         var currentVersion = '';
         var userVersion = '';
@@ -52,6 +57,24 @@
                 }
             }
         }
+        for (var i = 0, n = topTag.length; i < n; i++)
+            topTag[i].addEventListener('click', topTagPopUp, false);
+
+
+        function topTagPopUp() {
+            topTagOverlay.classList.remove('hide');
+            topTagOverlay.querySelectorAll('.topStat')[0].innerHTML = this.getAttribute('data-topTag') + '%';
+            topTagOverlay.querySelectorAll('.topStat')[1].innerHTML = this.getAttribute('data-topTag') + '%';
+            topTagOverlay.querySelectorAll('.infoSection')[0].innerHTML = this.getAttribute('data-info');
+            topTagOverlay.querySelectorAll('.levelCommon')[0].classList.remove(['topTagLevel1', 'topTagLevel2', 'topTagLevel3'])
+            topTagOverlay.querySelectorAll('.levelCommon')[0].classList.add('topTagLevel' + this.getAttribute('data-topTagLevel'));
+
+
+        }
+
+        crossIcon.addEventListener('click', function(ev) {
+            topTagOverlay.classList.add('hide');
+        });
 
         btn.addEventListener('click', function(ev) {
 
@@ -117,16 +140,18 @@
             console.log('Error in changing bot title');
         }
 
-        App.ninjaServices.getHikeStats(function( res ) {
+
+        App.ninjaServices.getHikeStats(function(res) {
             //console.log( res );
-            if ( res.stat == 'ok' ) {
-                console.log( 'Updating Hike stats for user' );
+            if (res.stat == 'ok') {
+                console.log('Updating Hike stats for user');
                 platformSdk.appData.helperData.statsData = res;
-                platformSdk.updateHelperData( platformSdk.appData.helperData );
+                platformSdk.updateHelperData(platformSdk.appData.helperData);
             } else {
                 console.log("error updating stats");
             }
         });
+
 
         that.bind(App, data);
     };

@@ -177,6 +177,54 @@
 
         },
 
+        getNumberAbrr: function(value) {
+            var newValue = value;
+            if (value >= 1000) {
+                var suffixes = ["", "K", "M", "B", "T"];
+                var suffixNum = Math.floor(("" + value).length / 3);
+                var shortValue = '';
+                var shortNum;
+                for (var precision = 2; precision >= 1; precision--) {
+                    shortValue = parseFloat((suffixNum != 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(precision));
+                    var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g, '');
+                    if (dotLessShortValue.length <= 2) {
+                        break;
+                    }
+                }
+                if (shortValue % 1 != 0) shortNum = shortValue.toFixed(1);
+                newValue = shortValue + suffixes[suffixNum];
+            }
+            return newValue;
+        },
+
+        bytesToSize: function(bytes) {
+            var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            if (bytes === 0) return '0';
+            var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+            return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+        },
+
+        formatData: function() {
+            for (var key in APIData.statsData) {
+
+                if (key == "hdFileTr") {
+                    APIData.statsData[key].sent = this.bytesToSize(APIData.statsData[key].sent);
+                    APIData.statsData[key].rec = this.bytesToSize(APIData.statsData[key].rec);
+
+                } else {
+                    if (typeof APIData.statsData[key].sent != "undefined")
+                        APIData.statsData[key].sent = this.getNumberAbrr(APIData.statsData[key].sent);
+
+                    if (typeof APIData.statsData[key].rec != "undefined")
+                        APIData.statsData[key].rec = this.getNumberAbrr(APIData.statsData[key].rec);
+
+                    if (typeof APIData.statsData[key].count != "undefined")
+                        APIData.statsData[key].count = this.getNumberAbrr(APIData.statsData[key].count);
+
+                }
+            }
+        },
+
         backPressTrigger: function() {
             this.router.back();
         },
@@ -307,6 +355,7 @@
             if (platformSdk.bridgeEnabled) {
 
                 if (!platformSdk.appData.helperData.profileData) {
+
                     this.ninjaServices.getProfile(function(res) {
                         console.log(res);
                         if (res.stat == 'ok') {
@@ -316,13 +365,13 @@
                             firstDate = new Date(res.reg_time * 1000);
                             diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
                             //res.age = diffDays;
-                            
-                            if(diffDays === 0){
+
+                            if (diffDays === 0) {
                                 res.age = '1 day';
-                            }else{
+                            } else {
                                 res.age = self.daysConvertor(diffDays);
                             }
-                            
+
                             if (res.gender === '' || typeof res.gender === 'undefined')
                                 res.gender = 'neutral';
                             APIData.profileData = res;
@@ -356,40 +405,68 @@
 
                 APIData.statsData = {
 
-                    'messages': {
-                        'sent': '100k',
-                        'rec': '10k'
+
+                    "messages": {
+                        "sent": "1000",
+                        "rec": "1000000",
+                        "top": "2",
+                        "level": "1"
                     },
 
-                    'stickers': {
-                        'sent': '100k',
-                        'rec': '10k'
+                    "stickers": {
+                        "sent": "1000000",
+                        "rec": "1000000",
+                        "top": "2",
+                        "level": "1"
                     },
 
-                    'files': {
-                        'sent': '100k',
-                        'rec': '10k'
+                    "files": {
+                        "sent": "1000000",
+                        "rec": "1000000",
+                        "top": "2",
+                        "level": "1"
                     },
 
-                    'chatThemes': {
-                        'sent': '100k',
-                        'rec': '10k'
+                    "chatThemes": {
+                        "sent": "100000000",
+                        "rec": "100",
+
                     },
 
-                    'hdFileTr': {
-                        'sent': '100k',
-                        'rec': '10k'
+                    "hdFileTr": {
+                        "sent": "230000",
+                        "rec": "45002",
+                        "top": "2",
+                        "level": "3"
                     },
 
-                    'statusUpdates': '12',
-                    'favorite': '2',
-                    'invites': '15',
-                    'trophyCount': '5',
-                    'hikeLatestVersion': '4.2.5.82'
+
+                    "favorite": {
+                        "count": "200",
+                        "top": "2",
+                        "level": "2"
+                    },
+
+                    "statusUpdates": {
+                        "count": "2",
+                        "top": "2",
+                        "level": "3"
+                    },
+
+                    "invites": {
+                        "count": "2",
+                        "top": "2",
+                        "level": "3"
+                    },
+
+                    "trophyCount": "5",
+                    "hikeLatestVersion": "4.2.5.82"
                 };
             }
 
-            //self.router.navigateTo( '/', APIData );
+
+            this.formatData();
+            self.router.navigateTo('/', APIData);
 
         }
     };

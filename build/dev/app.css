@@ -629,7 +629,7 @@ a:visited {
   height: 18px;
   width: 18px;
   display: inline-block;
-  margin-right: 16px;
+  margin-right: 4px;
   vertical-align: bottom; }
 
 .favouriteIcon {
@@ -668,7 +668,8 @@ a:visited {
 
 .header {
   margin: 16px;
-  margin-bottom: 12px; }
+  margin-bottom: 12px;
+  position: relative; }
 
 .cardContainer {
   margin-bottom: 6px; }
@@ -724,6 +725,35 @@ a:visited {
 
 .marT16 {
   margin-top: 16px; }
+
+.topHeading {
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 16px;
+  font-weight: 400;
+  background: #AAAAAA;
+  padding: 4px;
+  border-radius: 2px;
+  position: absolute;
+  right: -10px;
+  top: -3px; }
+
+.topTagLevel1,
+.topTagLevel1,
+.topTagLevel1 {
+  display: inline-block;
+  width: 69px;
+  height: 52px;
+  margin: 0px 12px; }
+
+.topTagLevel1 {
+  background-image: url("images/topLevelGold.png"); }
+
+.topTagLevel2 {
+  background-image: url("images/topLevelSilver.png"); }
+
+.topTagLevel3 {
+  background-image: url("images/topLevelBronze.png"); }
 
 .trophyContainer {
   width: 100%;
@@ -813,7 +843,8 @@ a:visited {
   line-height: 21px;
   font-weight: 400;
   opacity: 0.80;
-  margin-bottom: 30px; }
+  margin-bottom: 15px;
+  min-height: 45px; }
 
 .trophyOverlay hr {
   margin: 0px 0px 0px -9px;
