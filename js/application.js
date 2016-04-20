@@ -226,6 +226,18 @@
         },
 
         backPressTrigger: function() {
+
+            var dialogElement = document.getElementsByClassName( 'trophyOverlay' )[0];
+            var dialogElement2 = document.getElementsByClassName( 'topTagOverlay' )[0];
+            
+            if (dialogElement && ! dialogElement.classList.contains( 'hide' )){
+                dialogElement.classList.add( 'hide' );
+                return;
+            } else if (dialogElement2 && ! dialogElement2.classList.contains( 'hide' )){
+                dialogElement2.classList.add( 'hide' );
+                return;
+            }
+
             this.router.back();
         },
 
@@ -386,6 +398,24 @@
                         }
                     });
                 } else {
+                    var user_reg_time = parseInt(platformSdk.appData.helperData.profileData.reg_time);
+                    firstDate = new Date(user_reg_time * 1000);
+                    diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
+
+                    var temp = null;
+
+                    if (diffDays === 0) {
+                        temp = '1 day';
+                    } else {
+                        temp = self.daysConvertor(diffDays);
+                    }
+                    
+                    console.log("Updating Hike Age For the user");
+                    console.log(temp);
+
+                    platformSdk.appData.helperData.profileData.age = temp;
+                    platformSdk.updateHelperData(platformSdk.appData.helperData);
+
                     APIData.profileData = platformSdk.appData.helperData.profileData;
                     self.getHikeStats();
                 }
