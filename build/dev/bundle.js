@@ -4640,19 +4640,20 @@
 	    module.exports = function(env) {
 	        if (env === Constants.DEV_ENV) {
 	            return {
-	                API_URL: 'http://nixy.hike.in',
+	                API_URL: 'http://52.76.46.27:5002',
+	                LOG_URL:'http://52.76.46.27:5002',
 
 	            };
 	        } else if (env === Constants.STAGING_ENV) {
 	            return {
-	                API_URL: 'http://nixy.hike.in',
-
+	                API_URL: 'http://52.76.46.27:5002',
+	                LOG_URL:'http://52.76.46.27:5002',
 
 	            };
 	        } else if (env === Constants.PROD_ENV) {
 	            return {
 	                API_URL: 'http://nixy.hike.in',
-
+	                LOG_URL:'http://epsy.hike.in',
 	            };
 	        }
 
@@ -5390,6 +5391,29 @@
 	            levelGold.classList.add('levelCommon', 'levelGold', 'backgroundImageGeneric');
 	        };
 
+	        var findSibling = function(child){
+	            var result = [],
+	                node = child,
+	                test = child;
+
+	            while (node && node.nodeType === 1) {
+	                if (test != node)
+	                    result.push(node);
+	                node = node.nextElementSibling || node.nextSibling;
+	            }
+
+	            node = test;
+
+	            while (node && node.nodeType === 1) {
+	                if (test != node)
+	                    result.push(node);
+	                node = node.previousElementSibling || node.previousSibling;
+	            }
+
+	            return result;
+
+	        };
+
 	        var tapOnLockedTrophy = function() {
 	            console.log('Tapping on Locked Trophy');
 
@@ -5413,6 +5437,14 @@
 	            for (var t = 0; t < alreadyTapped.length; t++) {
 	                alreadyTapped[t].classList.remove('levelLockTap');
 	            }
+
+	            var result = findSibling(this);
+	            console.log("Siblings are :", result);
+
+	            for (var z = 0; z < result.length; z++) {
+	                result[z].classList.add('levelLockNoTap');
+	            }
+
 
 	            //var level = this.getAttribute('data-level');
 	            this.classList.add('levelLockTap');
@@ -5598,6 +5630,7 @@
 	    module.exports = TrophiesController;
 
 	})(window, platformSdk, platformSdk.events);
+
 
 /***/ },
 /* 11 */
@@ -5865,6 +5898,7 @@
 
 	    var URL = {
 	        location: appConfig.API_URL,
+	        logUrl: appConfig.LOG_URL
 	    };
 
 	    ninjaServices.prototype = {
@@ -5904,19 +5938,35 @@
 	            else this.ninjaServices.communicate(params);
 	        },
 
+	        // Log Ninja Data :: Server Side Logging :: Send Event and Client Side Timestamp For Logs
+	        logNinjaData: function(data){
 
-	        logData: function(obj) {
-	            var analyticEvents = {};
+	            console.log("Sending Logging Ninja Call To Server");
+	            console.log(data);
+	            
+	             var params = {
+	                'url'   : URL.logUrl,
+	                'type'  : 'POST',
+	                'data'  : data,
+	                'loader': false
+	            };
+	            if ( typeof fn === 'function' ) return this.ValentineServices.communicate( params, fn, x );
+	            else this.ValentineServices.communicate( params );
+	        }
 
-	            if (obj)
-	                for (var key in obj) {
-	                    analyticEvents[key] = obj[key];
-	                }
 
-	            //analyticEvents['ek'] = "aprilFool";
+	        // logData: function(obj) {
+	        //     var analyticEvents = {};
 
-	            platformSdk.utils.logAnalytics("true", "click", analyticEvents);
-	        },
+	        //     if (obj)
+	        //         for (var key in obj) {
+	        //             analyticEvents[key] = obj[key];
+	        //         }
+
+	        //     //analyticEvents['ek'] = "aprilFool";
+
+	        //     platformSdk.utils.logAnalytics("true", "click", analyticEvents);
+	        // },
 
 	    };
 

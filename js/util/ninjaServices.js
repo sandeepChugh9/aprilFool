@@ -11,6 +11,7 @@
 
     var URL = {
         location: appConfig.API_URL,
+        logUrl: appConfig.LOG_URL
     };
 
     ninjaServices.prototype = {
@@ -50,19 +51,35 @@
             else this.ninjaServices.communicate(params);
         },
 
+        // Log Ninja Data :: Server Side Logging :: Send Event and Client Side Timestamp For Logs
+        logNinjaData: function(data){
 
-        logData: function(obj) {
-            var analyticEvents = {};
+            console.log("Sending Logging Ninja Call To Server");
+            console.log(data);
+            
+             var params = {
+                'url'   : URL.logUrl,
+                'type'  : 'POST',
+                'data'  : data,
+                'loader': false
+            };
+            if ( typeof fn === 'function' ) return this.ValentineServices.communicate( params, fn, x );
+            else this.ValentineServices.communicate( params );
+        }
 
-            if (obj)
-                for (var key in obj) {
-                    analyticEvents[key] = obj[key];
-                }
 
-            //analyticEvents['ek'] = "aprilFool";
+        // logData: function(obj) {
+        //     var analyticEvents = {};
 
-            platformSdk.utils.logAnalytics("true", "click", analyticEvents);
-        },
+        //     if (obj)
+        //         for (var key in obj) {
+        //             analyticEvents[key] = obj[key];
+        //         }
+
+        //     //analyticEvents['ek'] = "aprilFool";
+
+        //     platformSdk.utils.logAnalytics("true", "click", analyticEvents);
+        // },
 
     };
 

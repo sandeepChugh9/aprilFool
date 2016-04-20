@@ -58,6 +58,29 @@
             levelGold.classList.add('levelCommon', 'levelGold', 'backgroundImageGeneric');
         };
 
+        var findSibling = function(child){
+            var result = [],
+                node = child,
+                test = child;
+
+            while (node && node.nodeType === 1) {
+                if (test != node)
+                    result.push(node);
+                node = node.nextElementSibling || node.nextSibling;
+            }
+
+            node = test;
+
+            while (node && node.nodeType === 1) {
+                if (test != node)
+                    result.push(node);
+                node = node.previousElementSibling || node.previousSibling;
+            }
+
+            return result;
+
+        };
+
         var tapOnLockedTrophy = function() {
             console.log('Tapping on Locked Trophy');
 
@@ -81,6 +104,14 @@
             for (var t = 0; t < alreadyTapped.length; t++) {
                 alreadyTapped[t].classList.remove('levelLockTap');
             }
+
+            var result = findSibling(this);
+            console.log("Siblings are :", result);
+
+            for (var z = 0; z < result.length; z++) {
+                result[z].classList.add('levelLockNoTap');
+            }
+
 
             //var level = this.getAttribute('data-level');
             this.classList.add('levelLockTap');
