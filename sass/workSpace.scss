@@ -8,6 +8,17 @@
     position: relative;
 }
 
+.statsWrapperOne {
+    border-radius: 4px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.16);
+    display: inline-block;
+    width: 94.5%;
+    background: #fff;
+    margin: 9px 9px 3px 9px;
+}
+
 .upgradeOverlay {
     background: rgba(255, 255, 255, 0.93);
     top: 0;
@@ -51,7 +62,7 @@
     vertical-align: middle;
     background-image: url('images/profilePic.png');
     border-radius: 50%;
-    margin: 20px 16px 20px 20px;
+    margin: 20px 16px 15px 20px;
 }
 
 .profileName {
@@ -115,7 +126,8 @@
 
 .ageRow,
 .rowTrophies {
-    margin-bottom: 18px;
+    padding-bottom: 14px;
+    padding-top: 14px;
 }
 
 #btnAction {
@@ -144,7 +156,7 @@
     height: 18px;
     width: 18px;
     display: inline-block;
-    margin-right: 4px;
+    margin-right: 6px;
     vertical-align: bottom;
 }
 
@@ -184,43 +196,92 @@
     background-position: center;
 }
 
-.statHeading {
+.halfCard .statHeading {
     @include fontStyle(12px,
     400,
     #9EA3AD,
     16px)
 }
 
-.header {
-    margin: 16px;
-    margin-bottom: 12px;
+.fullCard .statHeading {
+    @include fontStyle(12px,
+    400,
+    #000000,
+    16px);
+}
+
+.halfCard .header {
+    padding: 15px;
+    border-bottom: 1px solid rgba(151, 151, 151, 0.1);
     position: relative;
+}
+
+.fullCard .header {
+    padding: 15px 0px 15px 0px;
+    border-bottom: 1px solid rgba(151, 151, 151, 0.1);
+    position: relative;
+    padding-left: 0;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .cardContainer {
     margin-bottom: 6px;
+    overflow: hidden;
 }
 
-.dataHeader {
-    margin-left: 16px;
+.halfCard .dataHeader {
+    padding-top: 16px;
+    display: inline-block;
+    width: 48%;
+    padding-bottom: 11px;
+    text-align: center;
 }
 
-.dataHeader:last-child {
-    margin-bottom: 16px;
+.fullCard .dataHeader {
+    padding-top: 16px;
+    padding-bottom: 11px;
+    text-align: left;
+    margin: 0 15px 0 15px;
 }
 
-.statSubHeading {
-    @include fontStyle(14px,
+.halfCard .dataHeader:nth-child(2) {
+    border-right: 1px solid rgba(151, 151, 151, 0.1);
+}
+
+.halfCard .statSubHeading {
+    @include fontStyle(11px,
     300,
+    rgba(61,
+    71,
+    92,
+    0.70),
+    15px);
+    padding-bottom: 5px;
+    display: block;
+}
+
+.fullCard .statSubHeading {
+    @include fontStyle(14px,
+    400,
+    #A0A0A0,
+    19px);
+    padding-bottom: 5px;
+    display: block;
+}
+
+.statSubHeading span {
+    @include fontStyle(14px,
+    500,
     #3D475C,
-    19px)
+    19px);
 }
 
 .statData {
-    @include fontStyle(14px,
-    400,
+    @include fontStyle(21px,
+    300,
     #3D475C,
-    16px)
+    30px);
 }
 
 .cardHeader {
@@ -228,7 +289,7 @@
     400,
     #3D475C,
     19px);
-    margin: 0px 0px 16px 16px;
+    margin: 0px 0px 16px 9px;
 }
 
 .halfCard {
@@ -237,13 +298,11 @@
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, .16);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, .16);
     display: inline-block;
-    width: 48%;
-    margin-left: 4px;
+    width: 46%;
+    margin-left: 9px;
     background: #fff;
-}
-
-.halfCard:last-child {
-    margin-left: 1px;
+    float: left;
+    margin-bottom: 9px;
 }
 
 .fullCard {
@@ -252,10 +311,9 @@
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, .16);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, .16);
     display: inline-block;
-    width: 98%;
+    width: 94.5%;
     background: #fff;
-    margin-left: 1%;
-    margin-right: 1%
+    margin: 0 9px 3px 9px;
 }
 
 .marT16 {
@@ -267,11 +325,16 @@
     400,
     #ffffff,
     16px);
-    padding: 3px;
+    padding: 6px 4px 3px 4px;
     border-radius: 2px;
     position: absolute;
-    right: -10px;
-    top: -3px;
+    right: 6px;
+    top: 13px;
+}
+
+.fullCard .topHeading {
+    right: -9px;
+    top: 12px;
 }
 
 .bgColorLevel1 {
@@ -305,4 +368,69 @@
 
 .topTagLevel3 {
     background-image: url('images/topLevelBronze.png');
+}
+
+.transferMetric {
+    @include fontStyle(11px,
+    300,
+    #3D475C,
+    12px);
+}
+
+.statsProfile {
+    border-bottom: 1px solid rgba(151, 151, 151, 0.1);
+}
+
+.rowHr {
+    border: none;
+    margin: 0 0 0 100px;
+    background: rgba(151, 151, 151, 0.1);
+    height: 1px;
+}
+
+@media screen and (max-width: 330px) {
+    .cardIcon {
+        height: 16px;
+        width: 16px;
+        margin-right: 3px;
+    }
+    .topHeading {
+        font-size: 9px;
+        padding: 3px 4px 3px 4px;
+        right: 4px;
+        top: 13px;
+    }
+    .halfCard .statHeading {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 331px) and (max-width: 350px) {
+    .cardIcon {
+        margin-right: 3px;
+    }
+    .topHeading {
+        font-size: 10px;
+        padding: 3px 4px 3px 4px;
+        right: 4px;
+        top: 13px;
+    }
+    .halfCard .statHeading {
+        font-size: 10px;
+    }
+}
+
+@media screen and (min-width: 351px) and (max-width: 380px) {
+    .cardIcon {
+        margin-right: 5px;
+    }
+    .topHeading {
+        font-size: 10px;
+        padding: 3px 4px 3px 4px;
+        right: 4px;
+        top: 13px;
+    }
+    .halfCard .statHeading {
+        font-size: 10px;
+    }
 }

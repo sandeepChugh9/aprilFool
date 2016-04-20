@@ -206,9 +206,14 @@
         formatData: function() {
             for (var key in APIData.statsData) {
 
-                if (key == 'hdFileTr') {
-                    APIData.statsData[key].sent = this.bytesToSize(APIData.statsData[key].sent);
-                    APIData.statsData[key].rec = this.bytesToSize(APIData.statsData[key].rec);
+                if (key == "hdFileTr") {
+                    var sent = this.bytesToSize(APIData.statsData[key].sent).split(' ');
+                    var rec = this.bytesToSize(APIData.statsData[key].rec).split(' ');
+
+                    APIData.statsData[key].sent = Math.floor(sent[0]);
+                    APIData.statsData[key].sentMetric = sent[1];
+                    APIData.statsData[key].rec = Math.floor(rec[0]);
+                    APIData.statsData[key].recMetric = rec[1];
 
                 } else {
                     if (typeof APIData.statsData[key].sent != 'undefined')
@@ -458,17 +463,19 @@
                         'level': '1'
                     },
 
-                    'chatThemes': {
-                        'sent': '100000000',
-                        'rec': '100'
+                    "chatThemes": {
+                        "sent": "100000000",
+                        "rec": "100",
+                        "top": "2",
+                        "level": "1"
 
                     },
 
-                    'hdFileTr': {
-                        'sent': '230000',
-                        'rec': '45002',
-                        'top': '2',
-                        'level': '3'
+                    "hdFileTr": {
+                        "sent": "230000000",
+                        "rec": "45002",
+                        "top": "2",
+                        "level": "3"
                     },
 
                     'favorite': {
