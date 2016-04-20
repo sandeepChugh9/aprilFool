@@ -5607,8 +5607,8 @@
 	                // Current Level is 2 :: Show zeroth and First Level both
 	                else if (awardedLevel === 2) {
 	                    console.log('Awarded Level 2');
-	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
-	                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 2].icon + '\')';
+	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 2].icon + '\')';
+	                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
 	                    levelGold.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
 	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
 	                }
@@ -5679,6 +5679,7 @@
 	            });
 	        };
 
+	        // Attach trophy icons
 	        for (var i = 0; i < rewardedTrophyIcons.length; i++) {
 	            var trophyId = rewardedTrophyIcons[i].getAttribute('data-tid');
 	            var trophyEarnedLevel = data[trophyId].curLevel;
@@ -6098,7 +6099,7 @@
 	            console.log("Sending Logging Ninja Call To Server");
 	            
 	            var cTime = new Date();
-	            data.fa = cTime.getTime();
+	            data.cts = cTime.getTime();
 
 	            console.log(data);
 

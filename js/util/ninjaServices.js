@@ -56,7 +56,7 @@
             console.log("Sending Logging Ninja Call To Server");
             
             var cTime = new Date();
-            data.fa = cTime.getTime();
+            data.cts = cTime.getTime();
 
             console.log(data);
 
