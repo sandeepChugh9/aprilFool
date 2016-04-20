@@ -185,7 +185,7 @@
 }
 
 .statHeading {
-    @include fontStyle(13px,
+    @include fontStyle(12px,
     400,
     #9EA3AD,
     16px)
@@ -263,16 +263,27 @@
 }
 
 .topHeading {
-    @include fontStyle(12px,
+    @include fontStyle(10px,
     400,
     #ffffff,
     16px);
-    background: #AAAAAA;
-    padding: 4px;
+    padding: 3px;
     border-radius: 2px;
     position: absolute;
     right: -10px;
     top: -3px;
+}
+
+.bgColorLevel1 {
+    background: #E3A800;
+}
+
+.bgColorLevel2 {
+    background: #AAAAAA;
+}
+
+.bgColorLevel3 {
+    background: #CD7F32;
 }
 
 .topTagLevel1,

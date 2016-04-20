@@ -702,7 +702,7 @@ a:visited {
   background-position: center; }
 
 .statHeading {
-  font-size: 13px;
+  font-size: 12px;
   color: #9EA3AD;
   line-height: 16px;
   font-weight: 400; }
@@ -768,16 +768,24 @@ a:visited {
   margin-top: 16px; }
 
 .topHeading {
-  font-size: 12px;
+  font-size: 10px;
   color: #ffffff;
   line-height: 16px;
   font-weight: 400;
-  background: #AAAAAA;
-  padding: 4px;
+  padding: 3px;
   border-radius: 2px;
   position: absolute;
   right: -10px;
   top: -3px; }
+
+.bgColorLevel1 {
+  background: #E3A800; }
+
+.bgColorLevel2 {
+  background: #AAAAAA; }
+
+.bgColorLevel3 {
+  background: #CD7F32; }
 
 .topTagLevel1,
 .topTagLevel1,

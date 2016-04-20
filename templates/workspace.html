@@ -28,31 +28,31 @@
             <div class="cardContainer">
                 <div class="cardHeader"> MESSAGING </div>
                 <div class="halfCard">
-                    <div class="header"> <span class="cardIcon messageIcon backgroundImageGeneric"></span> <span class="statHeading"> Messages</span> {{#userData.statsData.messages.top}} <span class="topHeading" data-info="messaging" data-topTag="{{userData.statsData.messages.top}}" data-topTagLevel="{{userData.statsData.messages.level}}"> TOP {{userData.statsData.messages.top}}%</span> {{/userData.statsData.messages.top}}</div>
+                    <div class="header"> <span class="cardIcon messageIcon backgroundImageGeneric"></span> <span class="statHeading"> Messages</span> {{#userData.statsData.messages.top}} <span class="topHeading bgColorLevel{{userData.statsData.messages.level}}" data-info="messaging" data-topTag="{{userData.statsData.messages.top}}" data-topTagLevel="{{userData.statsData.messages.level}}"> TOP {{userData.statsData.messages.top}}%</span> {{/userData.statsData.messages.top}}</div>
                     <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.messages.sent}}</span> </div>
                     <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.messages.rec}} </span> </div>
                 </div>
                 <div class="halfCard">
-                    <div class="header"> <span class="cardIcon stickerIcon backgroundImageGeneric"></span> <span class="statHeading"> Stickers</span>{{#userData.statsData.files.top}}<span class="topHeading" data-info="stickers" data-topTag="{{userData.statsData.stickers.top}}" data-topTagLevel="{{userData.statsData.stickers.level}}"> TOP {{userData.statsData.files.top}}%</span> {{/userData.statsData.files.top}}</div>
-                    <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.files.sent}}</span> </div>
+                    <div class="header"> <span class="cardIcon stickerIcon backgroundImageGeneric"></span> <span class="statHeading"> Stickers</span>{{#userData.statsData.stickers.top}}<span class="topHeading bgColorLevel{{userData.statsData.stickers.level}}" data-info="stickers" data-topTag="{{userData.statsData.stickers.top}}" data-topTagLevel="{{userData.statsData.stickers.level}}"> TOP {{userData.statsData.stickers.top}}%</span> {{/userData.statsData.stickers.top}}</div>
+                    <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.stickers.sent}}</span> </div>
                     <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.stickers.sent}} </span> </div>
                 </div>
             </div>
             <div class="cardContainer">
                 <div class="halfCard">
-                    <div class="header"> <span class="cardIcon filesIcon backgroundImageGeneric"></span> <span class="statHeading"> Files</span>{{#userData.statsData.files.top}} <span class="topHeading" data-info="files" data-topTag="{{userData.statsData.files.top}}" data-topTagLevel="{{userData.statsData.files.level}}"> TOP {{userData.statsData.files.top}}%</span> {{/userData.statsData.files.top}}</div>
+                    <div class="header"> <span class="cardIcon filesIcon backgroundImageGeneric"></span> <span class="statHeading"> Files</span>{{#userData.statsData.files.top}} <span class="topHeading bgColorLevel{{userData.statsData.files.level}}" data-info="files" data-topTag="{{userData.statsData.files.top}}" data-topTagLevel="{{userData.statsData.files.level}}"> TOP {{userData.statsData.files.top}}%</span> {{/userData.statsData.files.top}}</div>
                     <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.files.sent}}</span> </div>
                     <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.files.sent}} </span> </div>
                 </div>
                 <div class="halfCard">
-                    <div class="header"> <span class="cardIcon hikeDirectIcon backgroundImageGeneric"></span> <span class="statHeading"> Hike Direct </span>{{#userData.statsData.hdFileTr.top}} <span class="topHeading" data-info="Hike direct file transfer" data-topTag="{{userData.statsData.hdFileTr.top}}" data-topTagLevel="{{userData.statsData.hdFileTr.level}}"> TOP {{userData.statsData.hdFileTr.top}}%</span> {{/userData.statsData.hdFileTr.top}}</div>
+                    <div class="header"> <span class="cardIcon hikeDirectIcon backgroundImageGeneric"></span> <span class="statHeading"> Hike Direct </span>{{#userData.statsData.hdFileTr.top}} <span class="topHeading bgColorLevel{{userData.statsData.hdFileTr.level}}" data-info="Hike direct file transfer" data-topTag="{{userData.statsData.hdFileTr.top}}" data-topTagLevel="{{userData.statsData.hdFileTr.level}}"> TOP {{userData.statsData.hdFileTr.top}}%</span> {{/userData.statsData.hdFileTr.top}}</div>
                     <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.hdFileTr.sent}}</span> </div>
                     <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.hdFileTr.rec}}</span> </div>
                 </div>
             </div>
             <div class="cardContainer">
                 <div class="halfCard">
-                    <div class="header"> <span class="cardIcon chatThemesIcon backgroundImageGeneric"></span> <span class="statHeading"> Chat Themes</span>{{#userData.statsData.chatThemes.top}}<span class="topHeading" data-info="chat themes" data-topTag="{{userData.statsData.chatThemes.top}}" data-topTagLevel="{{userData.statsData.chatThemes.level}}"> TOP {{userData.statsData.chatThemes.top}}%</span> {{/userData.statsData.chatThemes.top}}</div>
+                    <div class="header"> <span class="cardIcon chatThemesIcon backgroundImageGeneric"></span> <span class="statHeading"> Chat Themes</span>{{#userData.statsData.chatThemes.top}}<span class="topHeading bgColorLevel{{userData.statsData.chatThemes.level}}" data-info="chat themes" data-topTag="{{userData.statsData.chatThemes.top}}" data-topTagLevel="{{userData.statsData.chatThemes.level}}"> TOP {{userData.statsData.chatThemes.top}}%</span> {{/userData.statsData.chatThemes.top}}</div>
                     <div class="dataHeader"> <span class="statSubHeading"> Sent :</span> <span class="statData"> {{userData.statsData.chatThemes.sent}}</span> </div>
                     <div class="dataHeader"> <span class="statSubHeading"> Recieved:</span> <span class="statData">{{userData.statsData.chatThemes.sent}} </span> </div>
                 </div>
@@ -66,19 +66,19 @@
         <div class="cardContainer marT16">
             <div class="cardHeader"> SOCIAL </div>
             <div class="fullCard">
-                <div class="header"> <span class="cardIcon favouriteIcon backgroundImageGeneric"></span> <span class="statHeading"> Favorites</span>{{#userData.statsData.favorite.top}} <span class="topHeading" data-info="favorite" data-topTag="{{userData.statsData.favorite.top}}" data-topTagLevel="{{userData.statsData.favorite.level}}"> TOP {{userData.statsData.favorite.top}}%</span> {{/userData.statsData.favorite.top}}</div>
+                <div class="header"> <span class="cardIcon favouriteIcon backgroundImageGeneric"></span> <span class="statHeading"> Favorites</span>{{#userData.statsData.favorite.top}} <span class="topHeading bgColorLevel{{userData.statsData.favorite.level}}" data-info="favorite" data-topTag="{{userData.statsData.favorite.top}}" data-topTagLevel="{{userData.statsData.favorite.level}}"> TOP {{userData.statsData.favorite.top}}%</span> {{/userData.statsData.favorite.top}}</div>
                 <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.favorite.count}} Friends added you as Favorites</span> </div>
             </div>
         </div>
         <div class="cardContainer">
             <div class="fullCard">
-                <div class="header"> <span class="cardIcon statusUpdatesIcon backgroundImageGeneric"></span> <span class="statHeading"> Status Updates</span>{{#userData.statsData.statusUpdates.top}}<span class="topHeading" data-info="status updates" data-topTag="{{userData.statsData.statusUpdates.top}}" data-topTagLevel="{{userData.statsData.statusUpdates.level}}"> TOP {{userData.statsData.statusUpdates.top}}%</span> {{/userData.statsData.statusUpdates.top}}</div>
+                <div class="header"> <span class="cardIcon statusUpdatesIcon backgroundImageGeneric"></span> <span class="statHeading"> Status Updates</span>{{#userData.statsData.statusUpdates.top}}<span class="topHeading bgColorLevel{{userData.statsData.statusUpdates.level}}" data-info="status updates" data-topTag="{{userData.statsData.statusUpdates.top}}" data-topTagLevel="{{userData.statsData.statusUpdates.level}}"> TOP {{userData.statsData.statusUpdates.top}}%</span> {{/userData.statsData.statusUpdates.top}}</div>
                 <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.statusUpdates.count}} status updates by you</span> </div>
             </div>
         </div>
         <div class="cardContainer">
             <div class="fullCard">
-                <div class="header"> <span class="cardIcon invitesIcon backgroundImageGeneric"></span> <span class="statHeading"> Invites</span>{{#userData.statsData.invites.top}} <span class="topHeading" data-info="invites" data-topTag="{{userData.statsData.invites.top}}" data-topTagLevel="{{userData.statsData.invites.level}}"> TOP {{userData.statsData.invites.top}}%</span> {{/userData.statsData.invites.top}}</div>
+                <div class="header"> <span class="cardIcon invitesIcon backgroundImageGeneric"></span> <span class="statHeading"> Invites</span>{{#userData.statsData.invites.top}} <span class="topHeading bgColorLevel{{userData.statsData.invites.level}} bgColorLevel{{userData.statsData.invites.level}}" data-info="invites" data-topTag="{{userData.statsData.invites.top}}" data-topTagLevel="{{userData.statsData.invites.level}}"> TOP {{userData.statsData.invites.top}}%</span> {{/userData.statsData.invites.top}}</div>
                 <div class="dataHeader"> <span class="statSubHeading"> {{userData.statsData.invites.count}} invites sent</span> </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
             Ranked in Top <span class="topStat"></span>  Hikers</h1>
             <p class="levelText align-center">You have reserved a <span class="infoSection"></span> rank in Top <span class="topStat"></span> of Hike users.</p>
             <hr noshade>
-            <div class="levelAction align-center">SHARE WITH FRIENDS</div>
+            <div class="levelAction align-center">OKAY</div>
         </div>
     </div>
 </div>

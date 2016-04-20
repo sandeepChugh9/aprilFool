@@ -21,6 +21,9 @@
         var topTag = document.getElementsByClassName('topHeading');
         var crossIcon = document.getElementsByClassName('crossIcon')[0];
         var topTagOverlay = document.getElementsByClassName('topTagOverlay')[0];
+        var levelAction = document.getElementsByClassName('levelAction')[0];
+
+
 
         upgradeHeading.addEventListener('click', function(ev) {
             window.open('https://play.google.com/store/apps/details?id=com.bsb.hike');
@@ -75,6 +78,12 @@
         crossIcon.addEventListener('click', function(ev) {
             topTagOverlay.classList.add('hide');
         });
+
+        levelAction.addEventListener('click', function(ev) {
+            topTagOverlay.classList.add('hide');
+        });
+
+
 
         btn.addEventListener('click', function(ev) {
 
