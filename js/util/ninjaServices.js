@@ -44,20 +44,23 @@
         getTrophyData: function(fn, x) {
             var params = {
                 'url': URL.location + '/trophies?random=' + Math.round(Math.random() * 999999999),
-                'type': 'GET',
-                'loader': true
+                'type': 'GET'
             };
             if (typeof fn === 'function') return this.ninjaServices.communicate(params, fn, x);
             else this.ninjaServices.communicate(params);
         },
 
         // Log Ninja Data :: Server Side Logging :: Send Event and Client Side Timestamp For Logs
-        logNinjaData: function(data){
-
+        logNinjaData: function(fn, data){
+            return;
             console.log("Sending Logging Ninja Call To Server");
-            console.log(data);
             
-             var params = {
+            var cTime = new Date();
+            data.fa = cTime.getTime();
+
+            console.log(data);
+
+            var params = {
                 'url'   : URL.logUrl,
                 'type'  : 'POST',
                 'data'  : data,

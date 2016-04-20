@@ -4690,7 +4690,6 @@
 	    var secondDate = new Date();
 	    var diffDays;
 
-
 	    // Tap State Events :: Touch Start And Touch End
 
 	    document.addEventListener('touchstart', function(e) {
@@ -4847,18 +4846,18 @@
 	        getNumberAbrr: function(value) {
 	            var newValue = value;
 	            if (value >= 1000) {
-	                var suffixes = ["", "K", "M", "B", "T"];
-	                var suffixNum = Math.floor(("" + value).length / 3);
+	                var suffixes = ['', 'K', 'M', 'B', 'T'];
+	                var suffixNum = Math.floor(('' + value).length / 3);
 	                var shortValue = '';
 	                var shortNum;
 	                for (var precision = 2; precision >= 1; precision--) {
-	                    shortValue = parseFloat((suffixNum != 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(precision));
+	                    shortValue = parseFloat((suffixNum !== 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(precision));
 	                    var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g, '');
 	                    if (dotLessShortValue.length <= 2) {
 	                        break;
 	                    }
 	                }
-	                if (shortValue % 1 != 0) shortNum = shortValue.toFixed(1);
+	                if (shortValue % 1 !== 0) shortNum = shortValue.toFixed(1);
 	                newValue = shortValue + suffixes[suffixNum];
 	            }
 	            return newValue;
@@ -4874,18 +4873,18 @@
 	        formatData: function() {
 	            for (var key in APIData.statsData) {
 
-	                if (key == "hdFileTr") {
+	                if (key == 'hdFileTr') {
 	                    APIData.statsData[key].sent = this.bytesToSize(APIData.statsData[key].sent);
 	                    APIData.statsData[key].rec = this.bytesToSize(APIData.statsData[key].rec);
 
 	                } else {
-	                    if (typeof APIData.statsData[key].sent != "undefined")
+	                    if (typeof APIData.statsData[key].sent != 'undefined')
 	                        APIData.statsData[key].sent = this.getNumberAbrr(APIData.statsData[key].sent);
 
-	                    if (typeof APIData.statsData[key].rec != "undefined")
+	                    if (typeof APIData.statsData[key].rec != 'undefined')
 	                        APIData.statsData[key].rec = this.getNumberAbrr(APIData.statsData[key].rec);
 
-	                    if (typeof APIData.statsData[key].count != "undefined")
+	                    if (typeof APIData.statsData[key].count != 'undefined')
 	                        APIData.statsData[key].count = this.getNumberAbrr(APIData.statsData[key].count);
 
 	                }
@@ -4894,14 +4893,14 @@
 
 	        backPressTrigger: function() {
 
-	            var dialogElement = document.getElementsByClassName( 'trophyOverlay' )[0];
-	            var dialogElement2 = document.getElementsByClassName( 'topTagOverlay' )[0];
-	            
-	            if (dialogElement && ! dialogElement.classList.contains( 'hide' )){
-	                dialogElement.classList.add( 'hide' );
+	            var dialogElement = document.getElementsByClassName('trophyOverlay')[0];
+	            var dialogElement2 = document.getElementsByClassName('topTagOverlay')[0];
+
+	            if (dialogElement && !dialogElement.classList.contains('hide')) {
+	                dialogElement.classList.add('hide');
 	                return;
-	            } else if (dialogElement2 && ! dialogElement2.classList.contains( 'hide' )){
-	                dialogElement2.classList.add( 'hide' );
+	            } else if (dialogElement2 && !dialogElement2.classList.contains('hide')) {
+	                dialogElement2.classList.add('hide');
 	                return;
 	            }
 
@@ -4946,7 +4945,7 @@
 	                    if (res.stat == 'ok') {
 	                        console.log('Hike Stats have been recieved for the user');
 	                        APIData.statsData = res;
-	                        console.log("New user with:", APIData);
+	                        console.log('New user with:', APIData);
 	                        platformSdk.appData.helperData.statsData = res;
 	                        platformSdk.updateHelperData(platformSdk.appData.helperData);
 	                        this.router.navigateTo('/', APIData);
@@ -4955,7 +4954,7 @@
 	                    }
 	                });
 	            } else {
-	                console.log("Returning user with:", APIData);
+	                console.log('Returning user with:', APIData);
 	                APIData.statsData = platformSdk.appData.helperData.statsData;
 	                this.router.navigateTo('/', APIData);
 	            }
@@ -4965,6 +4964,7 @@
 
 	            // The string we're working with to create the representation
 	            var str = '';
+
 	            // Map lengths of `diff` to different time periods
 	            var values = [
 	                [' year', 365],
@@ -4978,6 +4978,7 @@
 
 	                // ... and find the largest time value that fits into the diff
 	                if (amount >= 1) {
+
 	                    // If we match, add to the string ('s' is for pluralization)
 	                    str += amount + values[i][0] + (amount > 1 ? 's' : '') + ' ';
 
@@ -5043,6 +5044,7 @@
 	                            res.reg_time = parseInt(res.reg_time);
 	                            firstDate = new Date(res.reg_time * 1000);
 	                            diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
+
 	                            //res.age = diffDays;
 
 	                            if (diffDays === 0) {
@@ -5076,8 +5078,8 @@
 	                    } else {
 	                        temp = self.daysConvertor(diffDays);
 	                    }
-	                    
-	                    console.log("Updating Hike Age For the user");
+
+	                    console.log('Updating Hike Age For the user');
 	                    console.log(temp);
 
 	                    platformSdk.appData.helperData.profileData.age = temp;
@@ -5102,65 +5104,62 @@
 
 	                APIData.statsData = {
 
-
-	                    "messages": {
-	                        "sent": "1000",
-	                        "rec": "1000000",
-	                        "top": "2",
-	                        "level": "1"
+	                    'messages': {
+	                        'sent': '1000',
+	                        'rec': '1000000',
+	                        'top': '2',
+	                        'level': '1'
 	                    },
 
-	                    "stickers": {
-	                        "sent": "1000000",
-	                        "rec": "1000000",
-	                        "top": "2",
-	                        "level": "1"
+	                    'stickers': {
+	                        'sent': '1000000',
+	                        'rec': '1000000',
+	                        'top': '2',
+	                        'level': '1'
 	                    },
 
-	                    "files": {
-	                        "sent": "1000000",
-	                        "rec": "1000000",
-	                        "top": "2",
-	                        "level": "1"
+	                    'files': {
+	                        'sent': '1000000',
+	                        'rec': '1000000',
+	                        'top': '2',
+	                        'level': '1'
 	                    },
 
-	                    "chatThemes": {
-	                        "sent": "100000000",
-	                        "rec": "100",
+	                    'chatThemes': {
+	                        'sent': '100000000',
+	                        'rec': '100'
 
 	                    },
 
-	                    "hdFileTr": {
-	                        "sent": "230000",
-	                        "rec": "45002",
-	                        "top": "2",
-	                        "level": "3"
+	                    'hdFileTr': {
+	                        'sent': '230000',
+	                        'rec': '45002',
+	                        'top': '2',
+	                        'level': '3'
 	                    },
 
-
-	                    "favorite": {
-	                        "count": "200",
-	                        "top": "2",
-	                        "level": "2"
+	                    'favorite': {
+	                        'count': '200',
+	                        'top': '2',
+	                        'level': '2'
 	                    },
 
-	                    "statusUpdates": {
-	                        "count": "2",
-	                        "top": "2",
-	                        "level": "3"
+	                    'statusUpdates': {
+	                        'count': '2',
+	                        'top': '2',
+	                        'level': '3'
 	                    },
 
-	                    "invites": {
-	                        "count": "2",
-	                        "top": "2",
-	                        "level": "3"
+	                    'invites': {
+	                        'count': '2',
+	                        'top': '2',
+	                        'level': '3'
 	                    },
 
-	                    "trophyCount": "5",
-	                    "hikeLatestVersion": "4.2.5.82"
+	                    'trophyCount': '5',
+	                    'hikeLatestVersion': '4.2.5.82'
 	                };
 	            }
-
 
 	            this.formatData();
 	            self.router.navigateTo('/', APIData);
@@ -5202,22 +5201,35 @@
 	        var topTagOverlay = document.getElementsByClassName('topTagOverlay')[0];
 	        var levelAction = document.getElementsByClassName('levelAction')[0];
 
-
-
-	        upgradeHeading.addEventListener('click', function(ev) {
-	            window.open('https://play.google.com/store/apps/details?id=com.bsb.hike');
-	        });
-
-
 	        var currentVersion = '';
 	        var userVersion = '';
+	        var showUpgrade = false;
 
-	        if (!platformSdk.appData.appVersion || !data.hikeLatestVersion) {
+	        upgradeHeading.addEventListener('click', function(ev) {
+	            var logDataToSend = {};
+	            logDataToSend.uk = 'upgradeButtonClick';
+	            logDataToSend.c = userVersion;
+	            logDataToSend.o = currentVersion;
+
+	            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+	                console.log(res);
+	                if (res.stat == 'ok') {
+	                    console.log('Successfully Logged');
+	                } else {
+	                    console.log('error updating stats');
+	                }
+	            });
+
+	            window.open('https://play.google.com/store/apps/details?id=com.bsb.hike');
+
+	        });
+
+	        if (!platformSdk.appData.appVersion || !data.statsData.hikeLatestVersion) {
 	            console.log('No app version exists');
 	        } else {
 	            if (platformSdk.bridgeEnabled) {
-	                currentVersion = data.hikeLatestVersion.split('.');
-	                userVersion = platformSdk.appData.appVersion.split('.');
+	                currentVersion = data.statsData.hikeLatestVersion;
+	                userVersion = platformSdk.appData.appVersion;
 	            } else {
 	                currentVersion = '4.2.5.82';
 	                userVersion = '4.2.5.82';
@@ -5233,17 +5245,36 @@
 	                    console.log('Version number matching');
 	                else if (userVersion[index] < currentVersion[index]) {
 	                    console.log('User version is older :: Taking to Upgrade screen');
-
-	                    // Adding upgrade Overlay over it
-	                    upgradeOverlay.classList.remove('hide');
+	                    showUpgrade = true;
 	                }
 	            }
+
+	            if (showUpgrade) {
+	                upgradeOverlay.classList.remove('hide');
+	                var logDataToSend = {};
+	                logDataToSend.uk = 'upgradeScreenLoad';
+	                logDataToSend.c = userVersion;
+	                logDataToSend.o = currentVersion;
+
+	                App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+	                    console.log(res);
+	                    if (res.stat == 'ok') {
+	                        console.log('Successfully Logged');
+	                    } else {
+	                        console.log('error updating stats');
+	                    }
+	                });
+	            } else {
+	                console.log('No upgrade needed');
+	            }
+
 	        }
+
 	        for (var i = 0, n = topTag.length; i < n; i++)
 	            topTag[i].addEventListener('click', topTagPopUp, false);
 
-
 	        function topTagPopUp() {
+
 	            topTagOverlay.classList.remove('hide');
 	            topTagOverlay.querySelectorAll('.topStat')[0].innerHTML = this.getAttribute('data-topTag') + '%';
 	            topTagOverlay.querySelectorAll('.topStat')[1].innerHTML = this.getAttribute('data-topTag') + '%';
@@ -5251,7 +5282,19 @@
 	            topTagOverlay.querySelectorAll('.levelCommon')[0].classList.remove(['topTagLevel1', 'topTagLevel2', 'topTagLevel3'])
 	            topTagOverlay.querySelectorAll('.levelCommon')[0].classList.add('topTagLevel' + this.getAttribute('data-topTagLevel'));
 
+	            var logDataToSend = {};
+	            logDataToSend.uk = 'topXClick';
+	            logDataToSend.c = this.getAttribute('data-info');
+	            logDataToSend.o = this.getAttribute('data-topTag') + '%';
 
+	            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+	                console.log(res);
+	                if (res.stat == 'ok') {
+	                    console.log('Successfully Logged');
+	                } else {
+	                    console.log('error updating stats');
+	                }
+	            });
 	        }
 
 	        crossIcon.addEventListener('click', function(ev) {
@@ -5261,8 +5304,6 @@
 	        levelAction.addEventListener('click', function(ev) {
 	            topTagOverlay.classList.add('hide');
 	        });
-
-
 
 	        btn.addEventListener('click', function(ev) {
 
@@ -5290,9 +5331,12 @@
 
 	                console.log('Getting the new trophies for the first time or the trophies have changed');
 
+	                events.publish('update.loader', { show: true });
+
 	                App.ninjaServices.getTrophyData(function(res) {
 	                    console.log(res);
 	                    if (res.stat == 'ok') {
+	                        events.publish('update.loader', { show: false });
 	                        // Awarded Trophies Into The Response :: Match the Count Here
 	                        platformSdk.appData.helperData.aTrophies = res;
 	                        platformSdk.updateHelperData(platformSdk.appData.helperData.aTrophies);
@@ -5305,8 +5349,19 @@
 	            } else {
 	                age = 26;
 	                App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: age });
-
 	            }
+
+	            var logDataToSend = {};
+	            logDataToSend.uk = 'viewAllTrophies';
+
+	            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+	                console.log(res);
+	                if (res.stat == 'ok') {
+	                    console.log('Successfully Logged');
+	                } else {
+	                    console.log('error updating stats');
+	                }
+	            });
 
 	        });
 
@@ -5328,18 +5383,28 @@
 	            console.log('Error in changing bot title');
 	        }
 
-
 	        App.ninjaServices.getHikeStats(function(res) {
-	            //console.log( res );
+	            console.log( res );
 	            if (res.stat == 'ok') {
 	                console.log('Updating Hike stats for user');
 	                platformSdk.appData.helperData.statsData = res;
 	                platformSdk.updateHelperData(platformSdk.appData.helperData);
 	            } else {
-	                console.log("error updating stats");
+	                console.log('error updating stats');
 	            }
 	        });
 
+	        var logDataToSend = {};
+	        logDataToSend.uk = 'statCompleteLoad';
+
+	        App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+	            console.log(res);
+	            if (res.stat == 'ok') {
+	                console.log('Successfully Logged');
+	            } else {
+	                console.log('error updating stats');
+	            }
+	        });
 
 	        that.bind(App, data);
 	    };
@@ -5351,6 +5416,7 @@
 	    module.exports = WorkspaceController;
 
 	})(window, platformSdk, platformSdk.events);
+
 
 /***/ },
 /* 9 */
@@ -5422,7 +5488,7 @@
 	            levelGold.classList.add('levelCommon', 'levelGold', 'backgroundImageGeneric');
 	        };
 
-	        var findSibling = function(child){
+	        var findSibling = function(child) {
 	            var result = [],
 	                node = child,
 	                test = child;
@@ -5470,7 +5536,7 @@
 	            }
 
 	            var result = findSibling(this);
-	            console.log("Siblings are :", result);
+	            //console.log("Siblings are :", result);
 
 	            for (var z = 0; z < result.length; z++) {
 	                result[z].classList.add('levelLockNoTap');
@@ -5479,12 +5545,29 @@
 
 	            //var level = this.getAttribute('data-level');
 	            this.classList.add('levelLockTap');
+
+	            var logDataToSend = {};
+	            logDataToSend.uk = 'levelClick';
+	            logDataToSend.c = data[trophyIdGlobal].label;
+	            logDataToSend.o = 'level' + '_' + level;
+	            logDataToSend.fa = globalExperiment;
+	            
+	            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+	                console.log(res);
+	                if (res.stat == 'ok') {
+	                    console.log('Successfully Logged');
+	                } else {
+	                    console.log("error updating stats");
+	                }
+	            });
+
 	        };
 
 	        var openTrophy = function() {
 
 	            var experiment = this.getAttribute('data-experiment');
 	            var tid = this.getAttribute('data-tid');
+	            var logDataToSend = {};
 	            trophyIdGlobal = tid;
 	            globalExperiment = experiment;
 
@@ -5524,6 +5607,10 @@
 	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
 	                }
 
+	                logDataToSend.uk = 'trophyClick';
+	                logDataToSend.c = data[tid].label;
+	                logDataToSend.o = 'unlocked' + '_' + awardedLevel;
+	                logDataToSend.fa = globalExperiment;
 	                console.log('Opening Rewarded Trophy :: Show Level current and Locked for other Levels with task not hidden');
 	            }
 
@@ -5542,6 +5629,12 @@
 	                // Gold Inactive
 	                levelGold.classList.add('levelLocked');
 	                levelGold.classList.add('levelLockNoTap');
+
+	                logDataToSend.uk = 'trophyClick';
+	                logDataToSend.c = data[tid].label;
+	                logDataToSend.o = 'locked';
+	                logDataToSend.fa = 'experiment_2';
+
 	            }
 
 	            // Experiment 3 :: Hidden Tasks
@@ -5560,11 +5653,24 @@
 	                // Gold Inactive
 	                levelGold.classList.add('levelLocked');
 	                levelGold.classList.add('levelLockNoTap');
+
+	                logDataToSend.uk = 'trophyClick';
+	                logDataToSend.c = data[tid].label;
+	                logDataToSend.o = 'locked';
+	                logDataToSend.fa = 'experiment_3';
 	            }
 
 	            // Show the Overlay now
 	            trophyOverlay.classList.remove('hide');
 
+	            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+	                console.log(res);
+	                if (res.stat == 'ok') {
+	                    console.log('Successfully Logged');
+	                } else {
+	                    console.log("error updating stats");
+	                }
+	            });
 	        };
 
 	        for (var i = 0; i < rewardedTrophyIcons.length; i++) {
@@ -5650,6 +5756,18 @@
 	        } catch (e) {
 	            console.log('Error in changing bot title');
 	        }
+
+	        var logDataToSend = {};
+	        logDataToSend.uk = 'allTrophiesCompleteLoad';
+
+	        App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+	            console.log(res);
+	            if (res.stat == 'ok') {
+	                console.log('Successfully Logged');
+	            } else {
+	                console.log("error updating stats");
+	            }
+	        });
 
 	        that.bind(App, data);
 	    };
@@ -5962,20 +6080,23 @@
 	        getTrophyData: function(fn, x) {
 	            var params = {
 	                'url': URL.location + '/trophies?random=' + Math.round(Math.random() * 999999999),
-	                'type': 'GET',
-	                'loader': true
+	                'type': 'GET'
 	            };
 	            if (typeof fn === 'function') return this.ninjaServices.communicate(params, fn, x);
 	            else this.ninjaServices.communicate(params);
 	        },
 
 	        // Log Ninja Data :: Server Side Logging :: Send Event and Client Side Timestamp For Logs
-	        logNinjaData: function(data){
-
+	        logNinjaData: function(fn, data){
+	            return;
 	            console.log("Sending Logging Ninja Call To Server");
-	            console.log(data);
 	            
-	             var params = {
+	            var cTime = new Date();
+	            data.fa = cTime.getTime();
+
+	            console.log(data);
+
+	            var params = {
 	                'url'   : URL.logUrl,
 	                'type'  : 'POST',
 	                'data'  : data,

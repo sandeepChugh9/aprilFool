@@ -58,7 +58,7 @@
             levelGold.classList.add('levelCommon', 'levelGold', 'backgroundImageGeneric');
         };
 
-        var findSibling = function(child){
+        var findSibling = function(child) {
             var result = [],
                 node = child,
                 test = child;
@@ -106,7 +106,7 @@
             }
 
             var result = findSibling(this);
-            console.log("Siblings are :", result);
+            //console.log("Siblings are :", result);
 
             for (var z = 0; z < result.length; z++) {
                 result[z].classList.add('levelLockNoTap');
@@ -115,12 +115,29 @@
 
             //var level = this.getAttribute('data-level');
             this.classList.add('levelLockTap');
+
+            var logDataToSend = {};
+            logDataToSend.uk = 'levelClick';
+            logDataToSend.c = data[trophyIdGlobal].label;
+            logDataToSend.o = 'level' + '_' + level;
+            logDataToSend.fa = globalExperiment;
+            
+            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+                console.log(res);
+                if (res.stat == 'ok') {
+                    console.log('Successfully Logged');
+                } else {
+                    console.log("error updating stats");
+                }
+            });
+
         };
 
         var openTrophy = function() {
 
             var experiment = this.getAttribute('data-experiment');
             var tid = this.getAttribute('data-tid');
+            var logDataToSend = {};
             trophyIdGlobal = tid;
             globalExperiment = experiment;
 
@@ -160,6 +177,10 @@
                     levelText.innerHTML = data[tid].levels[awardedLevel].text;
                 }
 
+                logDataToSend.uk = 'trophyClick';
+                logDataToSend.c = data[tid].label;
+                logDataToSend.o = 'unlocked' + '_' + awardedLevel;
+                logDataToSend.fa = globalExperiment;
                 console.log('Opening Rewarded Trophy :: Show Level current and Locked for other Levels with task not hidden');
             }
 
@@ -178,6 +199,12 @@
                 // Gold Inactive
                 levelGold.classList.add('levelLocked');
                 levelGold.classList.add('levelLockNoTap');
+
+                logDataToSend.uk = 'trophyClick';
+                logDataToSend.c = data[tid].label;
+                logDataToSend.o = 'locked';
+                logDataToSend.fa = 'experiment_2';
+
             }
 
             // Experiment 3 :: Hidden Tasks
@@ -196,11 +223,24 @@
                 // Gold Inactive
                 levelGold.classList.add('levelLocked');
                 levelGold.classList.add('levelLockNoTap');
+
+                logDataToSend.uk = 'trophyClick';
+                logDataToSend.c = data[tid].label;
+                logDataToSend.o = 'locked';
+                logDataToSend.fa = 'experiment_3';
             }
 
             // Show the Overlay now
             trophyOverlay.classList.remove('hide');
 
+            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+                console.log(res);
+                if (res.stat == 'ok') {
+                    console.log('Successfully Logged');
+                } else {
+                    console.log("error updating stats");
+                }
+            });
         };
 
         for (var i = 0; i < rewardedTrophyIcons.length; i++) {
@@ -286,6 +326,18 @@
         } catch (e) {
             console.log('Error in changing bot title');
         }
+
+        var logDataToSend = {};
+        logDataToSend.uk = 'allTrophiesCompleteLoad';
+
+        App.ninjaServices.logNinjaData(logDataToSend, function(res) {
+            console.log(res);
+            if (res.stat == 'ok') {
+                console.log('Successfully Logged');
+            } else {
+                console.log("error updating stats");
+            }
+        });
 
         that.bind(App, data);
     };

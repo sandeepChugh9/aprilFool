@@ -23,7 +23,6 @@
     var secondDate = new Date();
     var diffDays;
 
-
     // Tap State Events :: Touch Start And Touch End
 
     document.addEventListener('touchstart', function(e) {
@@ -180,18 +179,18 @@
         getNumberAbrr: function(value) {
             var newValue = value;
             if (value >= 1000) {
-                var suffixes = ["", "K", "M", "B", "T"];
-                var suffixNum = Math.floor(("" + value).length / 3);
+                var suffixes = ['', 'K', 'M', 'B', 'T'];
+                var suffixNum = Math.floor(('' + value).length / 3);
                 var shortValue = '';
                 var shortNum;
                 for (var precision = 2; precision >= 1; precision--) {
-                    shortValue = parseFloat((suffixNum != 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(precision));
+                    shortValue = parseFloat((suffixNum !== 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(precision));
                     var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g, '');
                     if (dotLessShortValue.length <= 2) {
                         break;
                     }
                 }
-                if (shortValue % 1 != 0) shortNum = shortValue.toFixed(1);
+                if (shortValue % 1 !== 0) shortNum = shortValue.toFixed(1);
                 newValue = shortValue + suffixes[suffixNum];
             }
             return newValue;
@@ -207,18 +206,18 @@
         formatData: function() {
             for (var key in APIData.statsData) {
 
-                if (key == "hdFileTr") {
+                if (key == 'hdFileTr') {
                     APIData.statsData[key].sent = this.bytesToSize(APIData.statsData[key].sent);
                     APIData.statsData[key].rec = this.bytesToSize(APIData.statsData[key].rec);
 
                 } else {
-                    if (typeof APIData.statsData[key].sent != "undefined")
+                    if (typeof APIData.statsData[key].sent != 'undefined')
                         APIData.statsData[key].sent = this.getNumberAbrr(APIData.statsData[key].sent);
 
-                    if (typeof APIData.statsData[key].rec != "undefined")
+                    if (typeof APIData.statsData[key].rec != 'undefined')
                         APIData.statsData[key].rec = this.getNumberAbrr(APIData.statsData[key].rec);
 
-                    if (typeof APIData.statsData[key].count != "undefined")
+                    if (typeof APIData.statsData[key].count != 'undefined')
                         APIData.statsData[key].count = this.getNumberAbrr(APIData.statsData[key].count);
 
                 }
@@ -227,14 +226,14 @@
 
         backPressTrigger: function() {
 
-            var dialogElement = document.getElementsByClassName( 'trophyOverlay' )[0];
-            var dialogElement2 = document.getElementsByClassName( 'topTagOverlay' )[0];
-            
-            if (dialogElement && ! dialogElement.classList.contains( 'hide' )){
-                dialogElement.classList.add( 'hide' );
+            var dialogElement = document.getElementsByClassName('trophyOverlay')[0];
+            var dialogElement2 = document.getElementsByClassName('topTagOverlay')[0];
+
+            if (dialogElement && !dialogElement.classList.contains('hide')) {
+                dialogElement.classList.add('hide');
                 return;
-            } else if (dialogElement2 && ! dialogElement2.classList.contains( 'hide' )){
-                dialogElement2.classList.add( 'hide' );
+            } else if (dialogElement2 && !dialogElement2.classList.contains('hide')) {
+                dialogElement2.classList.add('hide');
                 return;
             }
 
@@ -279,7 +278,7 @@
                     if (res.stat == 'ok') {
                         console.log('Hike Stats have been recieved for the user');
                         APIData.statsData = res;
-                        console.log("New user with:", APIData);
+                        console.log('New user with:', APIData);
                         platformSdk.appData.helperData.statsData = res;
                         platformSdk.updateHelperData(platformSdk.appData.helperData);
                         this.router.navigateTo('/', APIData);
@@ -288,7 +287,7 @@
                     }
                 });
             } else {
-                console.log("Returning user with:", APIData);
+                console.log('Returning user with:', APIData);
                 APIData.statsData = platformSdk.appData.helperData.statsData;
                 this.router.navigateTo('/', APIData);
             }
@@ -298,6 +297,7 @@
 
             // The string we're working with to create the representation
             var str = '';
+
             // Map lengths of `diff` to different time periods
             var values = [
                 [' year', 365],
@@ -311,6 +311,7 @@
 
                 // ... and find the largest time value that fits into the diff
                 if (amount >= 1) {
+
                     // If we match, add to the string ('s' is for pluralization)
                     str += amount + values[i][0] + (amount > 1 ? 's' : '') + ' ';
 
@@ -376,6 +377,7 @@
                             res.reg_time = parseInt(res.reg_time);
                             firstDate = new Date(res.reg_time * 1000);
                             diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
+
                             //res.age = diffDays;
 
                             if (diffDays === 0) {
@@ -409,8 +411,8 @@
                     } else {
                         temp = self.daysConvertor(diffDays);
                     }
-                    
-                    console.log("Updating Hike Age For the user");
+
+                    console.log('Updating Hike Age For the user');
                     console.log(temp);
 
                     platformSdk.appData.helperData.profileData.age = temp;
@@ -435,65 +437,62 @@
 
                 APIData.statsData = {
 
-
-                    "messages": {
-                        "sent": "1000",
-                        "rec": "1000000",
-                        "top": "2",
-                        "level": "1"
+                    'messages': {
+                        'sent': '1000',
+                        'rec': '1000000',
+                        'top': '2',
+                        'level': '1'
                     },
 
-                    "stickers": {
-                        "sent": "1000000",
-                        "rec": "1000000",
-                        "top": "2",
-                        "level": "1"
+                    'stickers': {
+                        'sent': '1000000',
+                        'rec': '1000000',
+                        'top': '2',
+                        'level': '1'
                     },
 
-                    "files": {
-                        "sent": "1000000",
-                        "rec": "1000000",
-                        "top": "2",
-                        "level": "1"
+                    'files': {
+                        'sent': '1000000',
+                        'rec': '1000000',
+                        'top': '2',
+                        'level': '1'
                     },
 
-                    "chatThemes": {
-                        "sent": "100000000",
-                        "rec": "100",
+                    'chatThemes': {
+                        'sent': '100000000',
+                        'rec': '100'
 
                     },
 
-                    "hdFileTr": {
-                        "sent": "230000",
-                        "rec": "45002",
-                        "top": "2",
-                        "level": "3"
+                    'hdFileTr': {
+                        'sent': '230000',
+                        'rec': '45002',
+                        'top': '2',
+                        'level': '3'
                     },
 
-
-                    "favorite": {
-                        "count": "200",
-                        "top": "2",
-                        "level": "2"
+                    'favorite': {
+                        'count': '200',
+                        'top': '2',
+                        'level': '2'
                     },
 
-                    "statusUpdates": {
-                        "count": "2",
-                        "top": "2",
-                        "level": "3"
+                    'statusUpdates': {
+                        'count': '2',
+                        'top': '2',
+                        'level': '3'
                     },
 
-                    "invites": {
-                        "count": "2",
-                        "top": "2",
-                        "level": "3"
+                    'invites': {
+                        'count': '2',
+                        'top': '2',
+                        'level': '3'
                     },
 
-                    "trophyCount": "5",
-                    "hikeLatestVersion": "4.2.5.82"
+                    'trophyCount': '5',
+                    'hikeLatestVersion': '4.2.5.82'
                 };
             }
-
 
             this.formatData();
             self.router.navigateTo('/', APIData);
