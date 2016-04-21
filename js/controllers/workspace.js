@@ -101,7 +101,7 @@
             topTagOverlay.querySelectorAll('.topStat')[0].innerHTML = this.getAttribute('data-topTag') + '%';
             topTagOverlay.querySelectorAll('.topStat')[1].innerHTML = this.getAttribute('data-topTag') + '%';
             topTagOverlay.querySelectorAll('.infoSection')[0].innerHTML = this.getAttribute('data-info');
-            topTagOverlay.querySelectorAll('.levelCommon')[0].classList.remove(['topTagLevel1', 'topTagLevel2', 'topTagLevel3'])
+            topTagOverlay.querySelectorAll('.levelCommon')[0].classList.remove('topTagLevel1', 'topTagLevel2', 'topTagLevel3')
             topTagOverlay.querySelectorAll('.levelCommon')[0].classList.add('topTagLevel' + this.getAttribute('data-topTagLevel'));
 
             var logDataToSend = {};
@@ -206,7 +206,7 @@
         }
 
         App.ninjaServices.getHikeStats(function(res) {
-            console.log( res );
+            console.log(res);
             if (res.stat == 'ok') {
                 console.log('Updating Hike stats for user');
                 platformSdk.appData.helperData.statsData = res;

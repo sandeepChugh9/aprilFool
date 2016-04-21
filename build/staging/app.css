@@ -842,8 +842,8 @@ a:visited {
   background: #CD7F32; }
 
 .topTagLevel1,
-.topTagLevel1,
-.topTagLevel1 {
+.topTagLevel2,
+.topTagLevel3 {
   display: inline-block;
   width: 69px;
   height: 52px;
