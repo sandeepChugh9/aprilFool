@@ -10,13 +10,13 @@
 
 .statsWrapperOne {
     border-radius: 4px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.16);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.16);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.08);
     display: inline-block;
     width: 94.5%;
     background: #fff;
-    margin: 9px 9px 3px 9px;
+    margin: 8px 8px 4px 8px;
 }
 
 .upgradeOverlay {
@@ -199,14 +199,14 @@
 .halfCard .statHeading {
     @include fontStyle(12px,
     400,
-    #9EA3AD,
+    #3D475B,
     16px)
 }
 
 .fullCard .statHeading {
-    @include fontStyle(12px,
+    @include fontStyle(13px,
     400,
-    #000000,
+    #3D475B,
     16px);
 }
 
@@ -273,30 +273,30 @@
 .statSubHeading span {
     @include fontStyle(14px,
     500,
-    #3D475C,
+    #3D475B,
     19px);
 }
 
 .statData {
     @include fontStyle(21px,
     300,
-    #3D475C,
+    #3D475B,
     30px);
 }
 
 .cardHeader {
     @include fontStyle(14px,
     400,
-    #3D475C,
+    #3D475B,
     19px);
-    margin: 0px 0px 16px 9px;
+    margin: 0px 0px 16px 14px;
 }
 
 .halfCard {
     border-radius: 4px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, .16);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, .16);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, .16);
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.08);
     display: inline-block;
     width: 46%;
     margin-left: 9px;
@@ -307,9 +307,9 @@
 
 .fullCard {
     border-radius: 4px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, .16);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, .16);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, .16);
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.08);
     display: inline-block;
     width: 94.5%;
     background: #fff;
@@ -324,7 +324,7 @@
     @include fontStyle(10px,
     400,
     #ffffff,
-    16px);
+    17px);
     padding: 6px 4px 3px 4px;
     border-radius: 2px;
     position: absolute;
@@ -373,7 +373,7 @@
 .transferMetric {
     @include fontStyle(11px,
     300,
-    #3D475C,
+    #3D475B,
     12px);
 }
 
