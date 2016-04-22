@@ -28,8 +28,8 @@
     document.addEventListener('touchstart', function(e) {
         e = e || window.event;
         var target = e.target;
-        if (target.classList.contains('buttonTap')) {
-            target.classList.add('tapState');
+        if (target.classList.contains('buttonTapWhite')) {
+            target.classList.add('tapStateWhite');
         } else if (target.classList.contains('buttonTapRed')) {
             target.classList.add('tapStateRed');
         } else if (target.classList.contains('buttonTapOffer')) {
@@ -42,8 +42,8 @@
     document.addEventListener('touchend', function(e) {
         e = e || window.event;
         var target = e.target;
-        if (target.classList.contains('buttonTap')) {
-            target.classList.remove('tapState');
+        if (target.classList.contains('buttonTapWhite')) {
+            target.classList.remove('tapStateWhite');
         } else if (target.classList.contains('buttonTapRed')) {
             target.classList.remove('tapStateRed');
         } else if (target.classList.contains('buttonTapOffer')) {

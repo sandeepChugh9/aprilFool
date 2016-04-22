@@ -67,7 +67,7 @@
 
 .profileName {
     @include fontStyle(20px,
-    300,
+    500,
     #3D475B,
     26px);
     display: inline-block;
@@ -80,6 +80,7 @@
     #3D475B,
     20px);
     opacity: 0.4;
+    text-transform:  uppercase;
 }
 
 .profileStatSubHead {
@@ -180,6 +181,8 @@
 
 .chatThemesIcon {
     background-image: url('images/chatThemesIcon.png');
+    width: 20px !important;
+    height: 18px !important;  
 }
 
 .filesIcon {

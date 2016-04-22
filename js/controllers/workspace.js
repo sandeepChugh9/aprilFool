@@ -22,6 +22,7 @@
         var crossIcon = document.getElementsByClassName('crossIcon')[0];
         var topTagOverlay = document.getElementsByClassName('topTagOverlay')[0];
         var levelAction = document.getElementsByClassName('levelAction')[0];
+        var levelText = document.getElementsByClassName('levelText')[0];
 
         var currentVersion = '';
         var userVersion = '';
@@ -98,9 +99,9 @@
         function topTagPopUp() {
 
             topTagOverlay.classList.remove('hide');
-            topTagOverlay.querySelectorAll('.topStat')[0].innerHTML = this.getAttribute('data-topTag') + '%';
-            topTagOverlay.querySelectorAll('.topStat')[1].innerHTML = this.getAttribute('data-topTag') + '%';
-            topTagOverlay.querySelectorAll('.infoSection')[0].innerHTML = this.getAttribute('data-info');
+            //topTagOverlay.querySelectorAll('.topStat')[0].innerHTML = this.getAttribute('data-topTag') + '%';
+            //topTagOverlay.querySelectorAll('.topStat')[1].innerHTML = this.getAttribute('data-topTag') + '%';
+            //topTagOverlay.querySelectorAll('.infoSection')[0].innerHTML = this.getAttribute('data-info');
             topTagOverlay.querySelectorAll('.levelCommon')[0].classList.remove('topTagLevel1', 'topTagLevel2', 'topTagLevel3')
             topTagOverlay.querySelectorAll('.levelCommon')[0].classList.add('topTagLevel' + this.getAttribute('data-topTagLevel'));
 
@@ -108,6 +109,14 @@
             logDataToSend.uk = 'topXClick';
             logDataToSend.c = this.getAttribute('data-info');
             logDataToSend.o = this.getAttribute('data-topTag') + '%';
+
+            if(this.getAttribute('data-topTagLevel') == 1){
+                levelText.innerHTML = 'You’re in the top 1% of all X users. That’s awesome!';
+            }else if(this.getAttribute('data-topTagLevel') == 5){
+                levelText.innerHTML = 'You’re in the top 5% of all X users. That’s great!';
+            }else{
+                levelText.innerHTML = 'You’re in the top 10% of all X users. That’s cool!';
+            }
 
             App.ninjaServices.logNinjaData(logDataToSend, function(res) {
                 console.log(res);

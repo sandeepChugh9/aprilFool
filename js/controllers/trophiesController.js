@@ -90,13 +90,13 @@
 
                 // Task is hidden
                 if (data[trophyIdGlobal]) {
-                    levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
+                    levelText.innerHTML = data[trophyIdGlobal].levels[level].textlocked;
                 } else {
                     levelText.innerHTML = '';
                 }
 
             } else {
-                levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
+                levelText.innerHTML = data[trophyIdGlobal].levels[level].textlocked;
             }
 
             var alreadyTapped = document.getElementsByClassName('levelLockTap');
@@ -155,7 +155,7 @@
                     levelSilver.classList.add('levelLockNoTap');
                     levelGold.classList.add('levelLocked');
                     levelGold.classList.add('levelLockNoTap');
-                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
+                    levelText.innerHTML = data[tid].levels[awardedLevel].textunlocked;
                 }
 
                 // Current Level is 1 :: Show Zeroth Level Also
@@ -165,7 +165,7 @@
                     levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
                     levelGold.classList.add('levelLocked');
                     levelGold.classList.add('levelLockNoTap');
-                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
+                    levelText.innerHTML = data[tid].levels[awardedLevel].textunlocked;
                 }
 
                 // Current Level is 2 :: Show zeroth and First Level both
@@ -174,7 +174,7 @@
                     levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 2].icon + '\')';
                     levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
                     levelGold.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
-                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
+                    levelText.innerHTML = data[tid].levels[awardedLevel].textunlocked;
                 }
 
                 logDataToSend.uk = 'trophyClick';
@@ -190,7 +190,7 @@
 
                 // Bronze Active Currently
                 levelBronze.classList.add('levelLocked');
-                levelText.innerHTML = data[tid].levels[0].text;
+                levelText.innerHTML = data[tid].levels[0].textlocked;
 
                 // Silver Inactive
                 levelSilver.classList.add('levelLocked');

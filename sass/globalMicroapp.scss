@@ -285,7 +285,12 @@ a:visited {
     transform: translate(-50%, -50%);
 }
 
-.tapState {}
+.tapStateWhite {
+    background: #FFF !important;
+    color: #1da8e8 !important; 
+    -webkit-border-radius: 4px; 
+     border-radius: 4px;  
+}
 
 .tapStateRed {}
 

@@ -20,7 +20,7 @@
                         <p class="profileStatHead">Trophies</p>
                         <p id="trophyCount" data-count="{{userData.statsData.trophyCount}}" class="profileStatSubHead">{{userData.statsData.trophyCount}}</p>
                     </div>
-                    <div id="btnAction"> VIEW ALL </div>
+                    <div id="btnAction" class="buttonTapWhite"> VIEW ALL </div>
                 </div>
             </div>
         </div>
@@ -68,21 +68,21 @@
             <div class="cardHeader"> SOCIAL </div>
             <div class="fullCard">
                 <div class="header"> <span class="cardIcon favouriteIcon backgroundImageGeneric"></span> <span class="statHeading"> Favorites</span>{{#userData.statsData.favorite.top}} <span class="topHeading bgColorLevel{{userData.statsData.favorite.level}}" data-info="favorite" data-topTag="{{userData.statsData.favorite.top}}" data-topTagLevel="{{userData.statsData.favorite.level}}"> TOP {{userData.statsData.favorite.top}}%</span> {{/userData.statsData.favorite.top}}</div>
-                <div class="dataHeader"> <span class="statSubHeading"> <span>{{userData.statsData.favorite.count}} Friends </span> added you as Favorites</span>
+                <div class="dataHeader"> <span class="statSubHeading"> You have <span>{{userData.statsData.favorite.count}} Favorites</span></span>
                 </div>
             </div>
         </div>
         <div class="cardContainer">
             <div class="fullCard">
                 <div class="header"> <span class="cardIcon statusUpdatesIcon backgroundImageGeneric"></span> <span class="statHeading"> Status Updates</span>{{#userData.statsData.statusUpdates.top}}<span class="topHeading bgColorLevel{{userData.statsData.statusUpdates.level}}" data-info="status updates" data-topTag="{{userData.statsData.statusUpdates.top}}" data-topTagLevel="{{userData.statsData.statusUpdates.level}}"> TOP {{userData.statsData.statusUpdates.top}}%</span> {{/userData.statsData.statusUpdates.top}}</div>
-                <div class="dataHeader"> <span class="statSubHeading"> <span>{{userData.statsData.statusUpdates.count}} status updates</span> by you</span>
+                <div class="dataHeader"> <span class="statSubHeading"> You have posted <span>{{userData.statsData.statusUpdates.count}} status updates</span></span>
                 </div>
             </div>
         </div>
         <div class="cardContainer">
             <div class="fullCard">
                 <div class="header"> <span class="cardIcon invitesIcon backgroundImageGeneric"></span> <span class="statHeading"> Invites</span>{{#userData.statsData.invites.top}} <span class="topHeading bgColorLevel{{userData.statsData.invites.level}} bgColorLevel{{userData.statsData.invites.level}}" data-info="invites" data-topTag="{{userData.statsData.invites.top}}" data-topTagLevel="{{userData.statsData.invites.level}}"> TOP {{userData.statsData.invites.top}}%</span> {{/userData.statsData.invites.top}}</div>
-                <div class="dataHeader"> <span class="statSubHeading"> <span>{{userData.statsData.invites.count}} invites </span> sent</span>
+                <div class="dataHeader"> <span class="statSubHeading"> You have invited <span>{{userData.statsData.invites.count}} friends.</span></span>
                 </div>
             </div>
         </div>
@@ -100,9 +100,7 @@
             <div class="levelsIconWrapper">
                 <div class="levelCommon backgroundImageGeneric"></div>
             </div>
-            <h1 class="trophyHeading align-center">
-            Ranked in Top <span class="topStat"></span>  Hikers</h1>
-            <p class="levelText align-center">You have reserved a <span class="infoSection"></span> rank in Top <span class="topStat"></span> of Hike users.</p>
+            <p class="levelText align-center"></span></p>
             <hr noshade>
             <div class="levelAction align-center">OKAY</div>
         </div>

@@ -4467,15 +4467,18 @@
 	                levels: [{
 	                        value: '1 month',
 	                        icon: 'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikeage-bronze.png',
-	                        text: 'Celebrate 30 days on Hike !'
+	                        textlocked: 'Complete a month in hike to unlock this trophy!',
+	                        textunlocked:'Congrats! We have just completed our first month together.'
 	                    }, {
 	                        value: '1 year',
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikeage-silver.png',
-	                        text: 'Completing 1 year on Hike !'
+	                        textlocked: 'Complete a year to unlock this trophy!',
+	                        textunlocked:'We have just completed a year together. Cheers!'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikeage-gold.png',
 	                        value: 'Completing 3 years on Hike !',
-	                        text: ''
+	                        textlocked: 'Complete 3 years together to unlock this trophy!',
+	                        textunlocked:'We have been together for 3 years now. In love!'
 	                    }
 
 	                ]
@@ -4487,15 +4490,18 @@
 	                levels: [{
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-messaging-bronze.png',
 	                        value: 100,
-	                        text: 'Completing 100 messages !'
+	                        textlocked: 'Get 100 messages from friends to unlock this trophy!',
+	                        textunlocked:'You have gotten your first 100 messages!'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-messaging-silver.png',
 	                        value: 1000,
-	                        text: 'Completing 1000 messages !'
+	                        textlocked: 'Get 1000 messages from friends to unlock this trophy!',
+	                        textunlocked:'First ton! You have gotten 1000 messages already! Great going.'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-messaging-gold.png',
 	                        value: 10000,
-	                        text: 'Completing 10000 messages !'
+	                        textlocked: 'Get 10k messages from friends to unlock this trophy!',
+	                        textunlocked:'You have gotten 10k messages already! You are on fire!'
 	                    }
 
 	                ]
@@ -4507,15 +4513,18 @@
 	                levels: [{
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-stickers-bronze.png',
 	                        value: 100,
-	                        text: 'Send and Recieve 100 Stickers on hike !'
+	                        textlocked: 'Get 100 stickers from friends to unlock this trophy!',
+	                        textunlocked:'You have gotten your first 100 stickers!'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-stickers-silver.png',
 	                        value: 1000,
-	                        text: 'Send and Receive 1000 stickers on hike !'
+	                        textlocked: 'Get 1000 stickers from friends to unlock this trophy!',
+	                        textunlocked:'First ton! You have gotten 1000 stickers already! Great going.'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-stickers-gold.png',
 	                        value: 10000,
-	                        text: 'Send and Receive 10000 stickers on hike !'
+	                        textlocked: 'Get 10k stickers from friends to unlock this trophy!',
+	                        textunlocked:'You have gotten 10k stickers already! You are on fire!'
 	                    }
 
 	                ]
@@ -4527,15 +4536,18 @@
 	                levels: [{
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-files-bronze.png',
 	                        value: 10,
-	                        text: 'Complete 10 file tranfers with your friends and family on hike.'
+	                        textlocked: 'Get 100 files from friends to unlock this trophy!',
+	                        textunlocked:'You have gotten your first 10 files!'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-files-silver.png',
 	                        value: 100,
-	                        text: 'Complete 100 file transfers with your friends and family on hike.'
+	                        textlocked: 'Get 100 files from friends to unlock this trophy!',
+	                        textunlocked:'First ton! You have gotten 100 files already! Great going.'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-files-gold.png',
 	                        value: 1000,
-	                        text: 'Complete 1000 file transfers with your friends and family on hike.'
+	                        textlocked: 'Get 10k files from friends to unlock this trophy!',
+	                        textunlocked:'You have gotten 10000 files already! You are on fire!'
 	                    }
 
 	                ]
@@ -4548,15 +4560,18 @@
 	                levels: [{
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikedirect-bronze.png',
 	                        value: '1 GB',
-	                        text: 'Complete a total file transfer for 1GB using hike direct.'
+	                        textlocked: 'Share 1 GB of data on Hike Direct to unlock this trophy!',
+	                        textunlocked:'You have shared 1 GB of files via Hike Direct! Keep going!'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikedirect-silver.png',
 	                        value: '10 GB',
-	                        text: 'Complete a totla file tranfer for 10GB using hike direct.'
+	                        textlocked: 'Share 10 GB of data on Hike Direct with friends to unlock this trophy!',
+	                        textunlocked:'First ton! You have shared 10 GB of files via Hike Direct. Kudos!'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-hikedirect-gold.png',
 	                        value: '100 GB',
-	                        text: 'Complete a total file transfer for 100GB using hike direct.'
+	                        textlocked: 'Share 100 GB of data on Hike Direct with friends to unlock this trophy!',
+	                        textunlocked:'Awesome! You have shared 100 GB of files via Hike Direct. Well done!'
 	                    }
 
 	            ]},
@@ -4567,15 +4582,18 @@
 	                levels: [{
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-chattheme-bronze.png',
 	                        value: 10,
-	                        text: 'Make chats more interesting by changing your chat backgrounds.'
+	                        textlocked: 'Get 10 friends to change your chat theme to unlock!',
+	                        textunlocked:'Your friends have changed 10 chat themes with you! Nice.'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-chattheme-silver.png',
 	                        value: 100,
-	                        text: 'Make chats more interesting by changing your chat backgrounds.'
+	                        textlocked: 'Get 100 friends to change your chat theme to unlock!',
+	                        textunlocked:'Your friends have changed 100 chat themes with you! Cool.'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-chattheme-gold.png',
 	                        value: 1000,
-	                        text: 'Make chats more interesting by changing your chat backgrounds.'
+	                        textlocked: 'Get 1000 friends to change your chat theme to unlock!',
+	                        textunlocked:'Your friends have changed 1000 chat themes with you! Brilliant!'
 	                    }
 
 	                ]
@@ -4587,35 +4605,41 @@
 	                levels: [{
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-bronze.png',
 	                        value: 1,
-	                        text: 'Go post your first status on the timeline.'
+	                        textlocked: 'Post your first status update to unlock this trophy.',
+	                        textunlocked:'You have posted your first status update!'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-silver.png',
 	                        value: 10,
-	                        text: 'Complete your 10 status updates and get rewarded.'
+	                        textlocked: 'Post 10 status updates to unlock this trophy.',
+	                        textunlocked:'You have posted 10 status updates already! Whoa!'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-gold.png',
 	                        value: 100,
-	                        text: 'Complete your 100 status updates and get rewarded.'
+	                        textlocked: 'Century! You have posted 100 status updates already.',
+	                        textunlocked:'Post 100 status updates to unlock this trophy.'
 	                    }
 
 	                ]
 
 	            }, {
 	                id: 7,
-	                label: 'Favourites',
+	                label: 'Favorites',
 	                subtext: '',
 	                levels: [{
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-favourites-bronze.png',
 	                        value: 1,
-	                        text: 'Add one of your friend as favourite.'
+	                        textlocked: 'Add your first favorite on hike to unlock this trophy.',
+	                        textunlocked:'You have added your first favorite on hike. Nice.'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-favourites-silver.png',
 	                        value: 10,
-	                        text: 'Add 10 favourites on hike. '
+	                        textlocked: 'Add 10 favorites on hike to unlock this trophy.',
+	                        textunlocked:'You have added 10 favorites on hike. Great going.'
 	                    }, {
 	                        icon:'https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-favourites-gold.png',
 	                        value: 25,
-	                        text: 'Add 25 favourites on hike.'
+	                        textlocked: 'Add 25 favorites on hike to unlock this trophy.',
+	                        textunlocked:'You have added 25 favorites on hike. You arre on fire.'
 	                    }
 
 	                ]
@@ -4695,8 +4719,8 @@
 	    document.addEventListener('touchstart', function(e) {
 	        e = e || window.event;
 	        var target = e.target;
-	        if (target.classList.contains('buttonTap')) {
-	            target.classList.add('tapState');
+	        if (target.classList.contains('buttonTapWhite')) {
+	            target.classList.add('tapStateWhite');
 	        } else if (target.classList.contains('buttonTapRed')) {
 	            target.classList.add('tapStateRed');
 	        } else if (target.classList.contains('buttonTapOffer')) {
@@ -4709,8 +4733,8 @@
 	    document.addEventListener('touchend', function(e) {
 	        e = e || window.event;
 	        var target = e.target;
-	        if (target.classList.contains('buttonTap')) {
-	            target.classList.remove('tapState');
+	        if (target.classList.contains('buttonTapWhite')) {
+	            target.classList.remove('tapStateWhite');
 	        } else if (target.classList.contains('buttonTapRed')) {
 	            target.classList.remove('tapStateRed');
 	        } else if (target.classList.contains('buttonTapOffer')) {
@@ -5213,6 +5237,7 @@
 	        var crossIcon = document.getElementsByClassName('crossIcon')[0];
 	        var topTagOverlay = document.getElementsByClassName('topTagOverlay')[0];
 	        var levelAction = document.getElementsByClassName('levelAction')[0];
+	        var levelText = document.getElementsByClassName('levelText')[0];
 
 	        var currentVersion = '';
 	        var userVersion = '';
@@ -5289,9 +5314,9 @@
 	        function topTagPopUp() {
 
 	            topTagOverlay.classList.remove('hide');
-	            topTagOverlay.querySelectorAll('.topStat')[0].innerHTML = this.getAttribute('data-topTag') + '%';
-	            topTagOverlay.querySelectorAll('.topStat')[1].innerHTML = this.getAttribute('data-topTag') + '%';
-	            topTagOverlay.querySelectorAll('.infoSection')[0].innerHTML = this.getAttribute('data-info');
+	            //topTagOverlay.querySelectorAll('.topStat')[0].innerHTML = this.getAttribute('data-topTag') + '%';
+	            //topTagOverlay.querySelectorAll('.topStat')[1].innerHTML = this.getAttribute('data-topTag') + '%';
+	            //topTagOverlay.querySelectorAll('.infoSection')[0].innerHTML = this.getAttribute('data-info');
 	            topTagOverlay.querySelectorAll('.levelCommon')[0].classList.remove('topTagLevel1', 'topTagLevel2', 'topTagLevel3')
 	            topTagOverlay.querySelectorAll('.levelCommon')[0].classList.add('topTagLevel' + this.getAttribute('data-topTagLevel'));
 
@@ -5299,6 +5324,14 @@
 	            logDataToSend.uk = 'topXClick';
 	            logDataToSend.c = this.getAttribute('data-info');
 	            logDataToSend.o = this.getAttribute('data-topTag') + '%';
+
+	            if(this.getAttribute('data-topTagLevel') == 1){
+	                levelText.innerHTML = 'You’re in the top 1% of all X users. That’s awesome!';
+	            }else if(this.getAttribute('data-topTagLevel') == 5){
+	                levelText.innerHTML = 'You’re in the top 5% of all X users. That’s great!';
+	            }else{
+	                levelText.innerHTML = 'You’re in the top 10% of all X users. That’s cool!';
+	            }
 
 	            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
 	                console.log(res);
@@ -5434,7 +5467,7 @@
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"statsOverallContainer\">\n    <div class=\"statsContainer\">\n        <div class=\"statsWrapperOne\">\n            <div class=\"statsProfile\">\n                <div class=\"profilePhoto backgroundImageGeneric\" style=\"{{#userData.profileData.icon}}background-image:url('data:image/png;base64,{{userData.profileData.icon}}{{/userData.profileData.icon}}')\"></div>\n                <div class=\"profileName\">{{userData.profileData.name}}</div>\n            </div>\n            <div class=\"statsAction\">\n                <div class=\"ageRow\">\n                    <div class=\"ageIcon backgroundImageGeneric {{userData.profileData.gender}}Icon\"></div>\n                    <div class=\"ageInfo\">\n                        <p class=\"profileStatHead\">Hike Age</p>\n                        <p id=\"hikeAge\" data-age=\"{{userData.profileData.age}}\" class=\"profileStatSubHead\">{{userData.profileData.age}}</p>\n                    </div>\n                </div>\n                <hr class=\"rowHr\" noshade>\n                <div class=\"rowTrophies\">\n                    <div class=\"tcIcon backgroundImageGeneric\"></div>\n                    <div class=\"tcInfo\">\n                        <p class=\"profileStatHead\">Trophies</p>\n                        <p id=\"trophyCount\" data-count=\"{{userData.statsData.trophyCount}}\" class=\"profileStatSubHead\">{{userData.statsData.trophyCount}}</p>\n                    </div>\n                    <div id=\"btnAction\"> VIEW ALL </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"statsWrapperTwo\">\n            <br/>\n            <div class=\"cardContainer\">\n                <div class=\"cardHeader\"> MESSAGING </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon messageIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Messages</span> {{#userData.statsData.messages.top}} <span class=\"topHeading bgColorLevel{{userData.statsData.messages.level}}\" data-info=\"messaging\" data-topTag=\"{{userData.statsData.messages.top}}\" data-topTagLevel=\"{{userData.statsData.messages.level}}\"> TOP {{userData.statsData.messages.top}}%</span> {{/userData.statsData.messages.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.messages.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.messages.rec}} </span> </div>\n                </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon stickerIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Stickers</span>{{#userData.statsData.stickers.top}}<span class=\"topHeading bgColorLevel{{userData.statsData.stickers.level}}\" data-info=\"stickers\" data-topTag=\"{{userData.statsData.stickers.top}}\" data-topTagLevel=\"{{userData.statsData.stickers.level}}\"> TOP {{userData.statsData.stickers.top}}%</span> {{/userData.statsData.stickers.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.stickers.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.stickers.rec}} </span> </div>\n                </div>\n            </div>\n            <div class=\"cardContainer\">\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon filesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Files</span>{{#userData.statsData.files.top}} <span class=\"topHeading bgColorLevel{{userData.statsData.files.level}}\" data-info=\"files\" data-topTag=\"{{userData.statsData.files.top}}\" data-topTagLevel=\"{{userData.statsData.files.level}}\"> TOP {{userData.statsData.files.top}}%</span> {{/userData.statsData.files.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.files.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.files.rec}} </span> </div>\n                </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon hikeDirectIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Hike Direct </span>{{#userData.statsData.hdFileTr.top}} <span class=\"topHeading bgColorLevel{{userData.statsData.hdFileTr.level}}\" data-info=\"Hike direct file transfer\" data-topTag=\"{{userData.statsData.hdFileTr.top}}\" data-topTagLevel=\"{{userData.statsData.hdFileTr.level}}\"> TOP {{userData.statsData.hdFileTr.top}}%</span> {{/userData.statsData.hdFileTr.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.hdFileTr.sent}}</span> <span class=\"transferMetric\"> {{userData.statsData.hdFileTr.sentMetric}}</span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.hdFileTr.rec}}</span> <span class=\"transferMetric\"> {{userData.statsData.hdFileTr.recMetric}}</span> </div>\n                </div>\n            </div>\n            <div class=\"cardContainer\">\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon chatThemesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Chat Themes</span>{{#userData.statsData.chatThemes.top}}<span class=\"topHeading bgColorLevel{{userData.statsData.chatThemes.level}}\" data-info=\"chat themes\" data-topTag=\"{{userData.statsData.chatThemes.top}}\" data-topTagLevel=\"{{userData.statsData.chatThemes.level}}\"> TOP {{userData.statsData.chatThemes.top}}%</span> {{/userData.statsData.chatThemes.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.chatThemes.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.chatThemes.rec}} </span> </div>\n                </div>\n                <div class=\"halfCard hide\">\n                    <div class=\"header\"> <span class=\"cardIcon chatThemesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Chat Themes</span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.chatThemes.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.chatThemes.rec}} </span> </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"cardContainer marT16\">\n            <div class=\"cardHeader\"> SOCIAL </div>\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon favouriteIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Favorites</span>{{#userData.statsData.favorite.top}} <span class=\"topHeading bgColorLevel{{userData.statsData.favorite.level}}\" data-info=\"favorite\" data-topTag=\"{{userData.statsData.favorite.top}}\" data-topTagLevel=\"{{userData.statsData.favorite.level}}\"> TOP {{userData.statsData.favorite.top}}%</span> {{/userData.statsData.favorite.top}}</div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> <span>{{userData.statsData.favorite.count}} Friends </span> added you as Favorites</span>\n                </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon statusUpdatesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Status Updates</span>{{#userData.statsData.statusUpdates.top}}<span class=\"topHeading bgColorLevel{{userData.statsData.statusUpdates.level}}\" data-info=\"status updates\" data-topTag=\"{{userData.statsData.statusUpdates.top}}\" data-topTagLevel=\"{{userData.statsData.statusUpdates.level}}\"> TOP {{userData.statsData.statusUpdates.top}}%</span> {{/userData.statsData.statusUpdates.top}}</div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> <span>{{userData.statsData.statusUpdates.count}} status updates</span> by you</span>\n                </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon invitesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Invites</span>{{#userData.statsData.invites.top}} <span class=\"topHeading bgColorLevel{{userData.statsData.invites.level}} bgColorLevel{{userData.statsData.invites.level}}\" data-info=\"invites\" data-topTag=\"{{userData.statsData.invites.top}}\" data-topTagLevel=\"{{userData.statsData.invites.level}}\"> TOP {{userData.statsData.invites.top}}%</span> {{/userData.statsData.invites.top}}</div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> <span>{{userData.statsData.invites.count}} invites </span> sent</span>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"upgradeOverlay centerToScreenContainer hide\">\n        <div class=\"upgradeOverlayWrapper align-center centerToScreenWrapper\">\n            <div class=\"upgradeSticker backgroundImageGeneric\"></div>\n            <h1 class=\"upgradeHeading\">Update Hike</h1>\n            <p class=\"upgradeText\">Upgrade to the latest version to view your hike stats and earn rewards.</p>\n        </div>\n    </div>\n    <div class=\"topTagOverlay trophyOverlay centerToScreenContainer hide\">\n        <div class=\"topTagOverlayWrapper trophyOverlayWrapper centerToScreenWrapper\">\n            <div class=\"crossIcon backgroundImageGeneric\"></div>\n            <div class=\"levelsIconWrapper\">\n                <div class=\"levelCommon backgroundImageGeneric\"></div>\n            </div>\n            <h1 class=\"trophyHeading align-center\">\n            Ranked in Top <span class=\"topStat\"></span>  Hikers</h1>\n            <p class=\"levelText align-center\">You have reserved a <span class=\"infoSection\"></span> rank in Top <span class=\"topStat\"></span> of Hike users.</p>\n            <hr noshade>\n            <div class=\"levelAction align-center\">OKAY</div>\n        </div>\n    </div>\n</div>"
+	module.exports = "<div class=\"statsOverallContainer\">\n    <div class=\"statsContainer\">\n        <div class=\"statsWrapperOne\">\n            <div class=\"statsProfile\">\n                <div class=\"profilePhoto backgroundImageGeneric\" style=\"{{#userData.profileData.icon}}background-image:url('data:image/png;base64,{{userData.profileData.icon}}{{/userData.profileData.icon}}')\"></div>\n                <div class=\"profileName\">{{userData.profileData.name}}</div>\n            </div>\n            <div class=\"statsAction\">\n                <div class=\"ageRow\">\n                    <div class=\"ageIcon backgroundImageGeneric {{userData.profileData.gender}}Icon\"></div>\n                    <div class=\"ageInfo\">\n                        <p class=\"profileStatHead\">Hike Age</p>\n                        <p id=\"hikeAge\" data-age=\"{{userData.profileData.age}}\" class=\"profileStatSubHead\">{{userData.profileData.age}}</p>\n                    </div>\n                </div>\n                <hr class=\"rowHr\" noshade>\n                <div class=\"rowTrophies\">\n                    <div class=\"tcIcon backgroundImageGeneric\"></div>\n                    <div class=\"tcInfo\">\n                        <p class=\"profileStatHead\">Trophies</p>\n                        <p id=\"trophyCount\" data-count=\"{{userData.statsData.trophyCount}}\" class=\"profileStatSubHead\">{{userData.statsData.trophyCount}}</p>\n                    </div>\n                    <div id=\"btnAction\" class=\"buttonTapWhite\"> VIEW ALL </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"statsWrapperTwo\">\n            <br/>\n            <div class=\"cardContainer\">\n                <div class=\"cardHeader\"> MESSAGING </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon messageIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Messages</span> {{#userData.statsData.messages.top}} <span class=\"topHeading bgColorLevel{{userData.statsData.messages.level}}\" data-info=\"messaging\" data-topTag=\"{{userData.statsData.messages.top}}\" data-topTagLevel=\"{{userData.statsData.messages.level}}\"> TOP {{userData.statsData.messages.top}}%</span> {{/userData.statsData.messages.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.messages.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.messages.rec}} </span> </div>\n                </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon stickerIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Stickers</span>{{#userData.statsData.stickers.top}}<span class=\"topHeading bgColorLevel{{userData.statsData.stickers.level}}\" data-info=\"stickers\" data-topTag=\"{{userData.statsData.stickers.top}}\" data-topTagLevel=\"{{userData.statsData.stickers.level}}\"> TOP {{userData.statsData.stickers.top}}%</span> {{/userData.statsData.stickers.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.stickers.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.stickers.rec}} </span> </div>\n                </div>\n            </div>\n            <div class=\"cardContainer\">\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon filesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Files</span>{{#userData.statsData.files.top}} <span class=\"topHeading bgColorLevel{{userData.statsData.files.level}}\" data-info=\"files\" data-topTag=\"{{userData.statsData.files.top}}\" data-topTagLevel=\"{{userData.statsData.files.level}}\"> TOP {{userData.statsData.files.top}}%</span> {{/userData.statsData.files.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.files.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.files.rec}} </span> </div>\n                </div>\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon hikeDirectIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Hike Direct </span>{{#userData.statsData.hdFileTr.top}} <span class=\"topHeading bgColorLevel{{userData.statsData.hdFileTr.level}}\" data-info=\"Hike direct file transfer\" data-topTag=\"{{userData.statsData.hdFileTr.top}}\" data-topTagLevel=\"{{userData.statsData.hdFileTr.level}}\"> TOP {{userData.statsData.hdFileTr.top}}%</span> {{/userData.statsData.hdFileTr.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.hdFileTr.sent}}</span> <span class=\"transferMetric\"> {{userData.statsData.hdFileTr.sentMetric}}</span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.hdFileTr.rec}}</span> <span class=\"transferMetric\"> {{userData.statsData.hdFileTr.recMetric}}</span> </div>\n                </div>\n            </div>\n            <div class=\"cardContainer\">\n                <div class=\"halfCard\">\n                    <div class=\"header\"> <span class=\"cardIcon chatThemesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Chat Themes</span>{{#userData.statsData.chatThemes.top}}<span class=\"topHeading bgColorLevel{{userData.statsData.chatThemes.level}}\" data-info=\"chat themes\" data-topTag=\"{{userData.statsData.chatThemes.top}}\" data-topTagLevel=\"{{userData.statsData.chatThemes.level}}\"> TOP {{userData.statsData.chatThemes.top}}%</span> {{/userData.statsData.chatThemes.top}}</div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.chatThemes.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.chatThemes.rec}} </span> </div>\n                </div>\n                <div class=\"halfCard hide\">\n                    <div class=\"header\"> <span class=\"cardIcon chatThemesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Chat Themes</span></div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Sent </span> <span class=\"statData\"> {{userData.statsData.chatThemes.sent}}</span> </div>\n                    <div class=\"dataHeader\"> <span class=\"statSubHeading\"> Recieved</span> <span class=\"statData\">{{userData.statsData.chatThemes.rec}} </span> </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"cardContainer marT16\">\n            <div class=\"cardHeader\"> SOCIAL </div>\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon favouriteIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Favorites</span>{{#userData.statsData.favorite.top}} <span class=\"topHeading bgColorLevel{{userData.statsData.favorite.level}}\" data-info=\"favorite\" data-topTag=\"{{userData.statsData.favorite.top}}\" data-topTagLevel=\"{{userData.statsData.favorite.level}}\"> TOP {{userData.statsData.favorite.top}}%</span> {{/userData.statsData.favorite.top}}</div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> You have <span>{{userData.statsData.favorite.count}} Favorites</span></span>\n                </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon statusUpdatesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Status Updates</span>{{#userData.statsData.statusUpdates.top}}<span class=\"topHeading bgColorLevel{{userData.statsData.statusUpdates.level}}\" data-info=\"status updates\" data-topTag=\"{{userData.statsData.statusUpdates.top}}\" data-topTagLevel=\"{{userData.statsData.statusUpdates.level}}\"> TOP {{userData.statsData.statusUpdates.top}}%</span> {{/userData.statsData.statusUpdates.top}}</div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> You have posted <span>{{userData.statsData.statusUpdates.count}} status updates</span></span>\n                </div>\n            </div>\n        </div>\n        <div class=\"cardContainer\">\n            <div class=\"fullCard\">\n                <div class=\"header\"> <span class=\"cardIcon invitesIcon backgroundImageGeneric\"></span> <span class=\"statHeading\"> Invites</span>{{#userData.statsData.invites.top}} <span class=\"topHeading bgColorLevel{{userData.statsData.invites.level}} bgColorLevel{{userData.statsData.invites.level}}\" data-info=\"invites\" data-topTag=\"{{userData.statsData.invites.top}}\" data-topTagLevel=\"{{userData.statsData.invites.level}}\"> TOP {{userData.statsData.invites.top}}%</span> {{/userData.statsData.invites.top}}</div>\n                <div class=\"dataHeader\"> <span class=\"statSubHeading\"> You have invited <span>{{userData.statsData.invites.count}} friends.</span></span>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"upgradeOverlay centerToScreenContainer hide\">\n        <div class=\"upgradeOverlayWrapper align-center centerToScreenWrapper\">\n            <div class=\"upgradeSticker backgroundImageGeneric\"></div>\n            <h1 class=\"upgradeHeading\">Update Hike</h1>\n            <p class=\"upgradeText\">Upgrade to the latest version to view your hike stats and earn rewards.</p>\n        </div>\n    </div>\n    <div class=\"topTagOverlay trophyOverlay centerToScreenContainer hide\">\n        <div class=\"topTagOverlayWrapper trophyOverlayWrapper centerToScreenWrapper\">\n            <div class=\"crossIcon backgroundImageGeneric\"></div>\n            <div class=\"levelsIconWrapper\">\n                <div class=\"levelCommon backgroundImageGeneric\"></div>\n            </div>\n            <p class=\"levelText align-center\"></span></p>\n            <hr noshade>\n            <div class=\"levelAction align-center\">OKAY</div>\n        </div>\n    </div>\n</div>"
 
 /***/ },
 /* 10 */
@@ -5532,13 +5565,13 @@
 
 	                // Task is hidden
 	                if (data[trophyIdGlobal]) {
-	                    levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
+	                    levelText.innerHTML = data[trophyIdGlobal].levels[level].textlocked;
 	                } else {
 	                    levelText.innerHTML = '';
 	                }
 
 	            } else {
-	                levelText.innerHTML = data[trophyIdGlobal].levels[level].text;
+	                levelText.innerHTML = data[trophyIdGlobal].levels[level].textlocked;
 	            }
 
 	            var alreadyTapped = document.getElementsByClassName('levelLockTap');
@@ -5597,7 +5630,7 @@
 	                    levelSilver.classList.add('levelLockNoTap');
 	                    levelGold.classList.add('levelLocked');
 	                    levelGold.classList.add('levelLockNoTap');
-	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
+	                    levelText.innerHTML = data[tid].levels[awardedLevel].textunlocked;
 	                }
 
 	                // Current Level is 1 :: Show Zeroth Level Also
@@ -5607,7 +5640,7 @@
 	                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
 	                    levelGold.classList.add('levelLocked');
 	                    levelGold.classList.add('levelLockNoTap');
-	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
+	                    levelText.innerHTML = data[tid].levels[awardedLevel].textunlocked;
 	                }
 
 	                // Current Level is 2 :: Show zeroth and First Level both
@@ -5616,7 +5649,7 @@
 	                    levelBronze.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 2].icon + '\')';
 	                    levelSilver.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel - 1].icon + '\')';
 	                    levelGold.style.backgroundImage = 'url(\'' + data[tid].levels[awardedLevel].icon + '\')';
-	                    levelText.innerHTML = data[tid].levels[awardedLevel].text;
+	                    levelText.innerHTML = data[tid].levels[awardedLevel].textunlocked;
 	                }
 
 	                logDataToSend.uk = 'trophyClick';
@@ -5632,7 +5665,7 @@
 
 	                // Bronze Active Currently
 	                levelBronze.classList.add('levelLocked');
-	                levelText.innerHTML = data[tid].levels[0].text;
+	                levelText.innerHTML = data[tid].levels[0].textlocked;
 
 	                // Silver Inactive
 	                levelSilver.classList.add('levelLocked');
