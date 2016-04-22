@@ -713,19 +713,19 @@ a:visited {
   background-position: center; }
 
 .halfCard .statHeading {
-  font-size: 12px;
+  font-size: 14px;
   color: #3D475B;
   line-height: 16px;
   font-weight: 400; }
 
 .fullCard .statHeading {
-  font-size: 13px;
+  font-size: 14px;
   color: #3D475B;
   line-height: 16px;
   font-weight: 400; }
 
 .halfCard .header {
-  padding: 15px;
+  padding: 15px 15px 15px 10px;
   border-bottom: 1px solid rgba(151, 151, 151, 0.1);
   position: relative; }
 
@@ -822,11 +822,11 @@ a:visited {
   color: #ffffff;
   line-height: 17px;
   font-weight: 400;
-  padding: 6px 4px 3px 4px;
+  padding: 4px 4px 4px 4px;
   border-radius: 2px;
-  position: absolute;
-  right: 6px;
-  top: 13px; }
+  float: right;
+  margin-right: -9px;
+  margin-top: -4px; }
 
 .fullCard .topHeading {
   right: -9px;
@@ -884,33 +884,30 @@ a:visited {
     margin-right: 3px; }
   .topHeading {
     font-size: 9px;
-    padding: 3px 4px 3px 4px;
-    right: 4px;
-    top: 13px; }
+    padding: 3px 3px 3px 3px;
+    margin-top: -3px; }
   .halfCard .statHeading {
-    font-size: 10px; } }
+    font-size: 11px; } }
 
 @media screen and (min-width: 331px) and (max-width: 350px) {
   .cardIcon {
     margin-right: 3px; }
   .topHeading {
     font-size: 10px;
-    padding: 3px 4px 3px 4px;
-    right: 4px;
-    top: 13px; }
+    padding: 4px 4px 3px 4px;
+    margin-top: -3px; }
   .halfCard .statHeading {
-    font-size: 10px; } }
+    font-size: 11px; } }
 
 @media screen and (min-width: 351px) and (max-width: 380px) {
   .cardIcon {
     margin-right: 5px; }
   .topHeading {
     font-size: 10px;
-    padding: 3px 4px 3px 4px;
-    right: 4px;
-    top: 13px; }
+    padding: 4px 4px 3px 4px;
+    margin-top: -3px; }
   .halfCard .statHeading {
-    font-size: 10px; } }
+    font-size: 12px; } }
 
 .trophyContainer {
   width: 100%;

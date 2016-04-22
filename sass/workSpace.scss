@@ -12,7 +12,7 @@
     border-radius: 4px;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.08);
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.08);
     display: inline-block;
     width: 94.5%;
     background: #fff;
@@ -197,21 +197,21 @@
 }
 
 .halfCard .statHeading {
-    @include fontStyle(12px,
+    @include fontStyle(14px,
     400,
     #3D475B,
     16px)
 }
 
 .fullCard .statHeading {
-    @include fontStyle(13px,
+    @include fontStyle(14px,
     400,
     #3D475B,
     16px);
 }
 
 .halfCard .header {
-    padding: 15px;
+    padding: 15px 15px 15px 10px;
     border-bottom: 1px solid rgba(151, 151, 151, 0.1);
     position: relative;
 }
@@ -296,7 +296,7 @@
     border-radius: 4px;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.08);
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.08);
     display: inline-block;
     width: 46%;
     margin-left: 9px;
@@ -309,7 +309,7 @@
     border-radius: 4px;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.08);
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.08);
     display: inline-block;
     width: 94.5%;
     background: #fff;
@@ -325,11 +325,11 @@
     400,
     #ffffff,
     17px);
-    padding: 6px 4px 3px 4px;
+    padding: 4px 4px 4px 4px;
     border-radius: 2px;
-    position: absolute;
-    right: 6px;
-    top: 13px;
+    float: right;
+    margin-right: -9px;
+    margin-top: -4px;
 }
 
 .fullCard .topHeading {
@@ -401,12 +401,11 @@
     }
     .topHeading {
         font-size: 9px;
-        padding: 3px 4px 3px 4px;
-        right: 4px;
-        top: 13px;
+        padding: 3px 3px 3px 3px;
+        margin-top: -3px;
     }
     .halfCard .statHeading {
-        font-size: 10px;
+        font-size: 11px;
     }
 }
 
@@ -416,12 +415,11 @@
     }
     .topHeading {
         font-size: 10px;
-        padding: 3px 4px 3px 4px;
-        right: 4px;
-        top: 13px;
+        padding: 4px 4px 3px 4px;
+        margin-top: -3px;
     }
     .halfCard .statHeading {
-        font-size: 10px;
+        font-size: 11px;
     }
 }
 
@@ -431,11 +429,10 @@
     }
     .topHeading {
         font-size: 10px;
-        padding: 3px 4px 3px 4px;
-        right: 4px;
-        top: 13px;
+        padding: 4px 4px 3px 4px;
+        margin-top: -3px;
     }
     .halfCard .statHeading {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
