@@ -4943,6 +4943,8 @@
 
 	        getHikeStats: function() {
 
+	            var that = this;
+
 	            // Calling Hike Statistics After Getting the Hike Profile
 	            if (!platformSdk.appData.helperData.statsData) {
 	                this.ninjaServices.getHikeStats(function(res) {
@@ -4953,6 +4955,7 @@
 	                        console.log('New user with:', APIData);
 	                        platformSdk.appData.helperData.statsData = res;
 	                        platformSdk.updateHelperData(platformSdk.appData.helperData);
+	                        that.formatData();
 	                        this.router.navigateTo('/', APIData);
 	                    } else {
 	                        platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
@@ -4961,6 +4964,7 @@
 	            } else {
 	                console.log('Returning user with:', APIData);
 	                APIData.statsData = platformSdk.appData.helperData.statsData;
+	                that.formatData();
 	                this.router.navigateTo('/', APIData);
 	            }
 	        },
@@ -5046,8 +5050,8 @@
 	                        if (res.stat == 'ok') {
 	                            console.log('Profile Data arrived');
 
-	                            res.reg_time = parseInt(res.reg_time);
-	                            firstDate = new Date(res.reg_time * 1000);
+	                            res.first_reg_time = parseInt(res.first_reg_time);
+	                            firstDate = new Date(res.first_reg_time * 1000);
 	                            diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
 
 	                            //res.age = diffDays;
@@ -5072,8 +5076,8 @@
 	                        }
 	                    });
 	                } else {
-	                    var user_reg_time = parseInt(platformSdk.appData.helperData.profileData.reg_time);
-	                    firstDate = new Date(user_reg_time * 1000);
+	                    var user_first_reg_time = parseInt(platformSdk.appData.helperData.profileData.first_reg_time);
+	                    firstDate = new Date(user_first_reg_time * 1000);
 	                    diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
 
 	                    var temp = null;
@@ -5166,10 +5170,13 @@
 	                    'trophyCount': '5',
 	                    'hikeLatestVersion': '4.2.5.82'
 	                };
+
+	                this.formatData();
+	                self.router.navigateTo('/', APIData);
 	            }
 
-	            this.formatData();
-	            self.router.navigateTo('/', APIData);
+
+
 
 	        }
 	    };
