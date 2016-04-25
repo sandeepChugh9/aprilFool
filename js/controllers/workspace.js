@@ -30,22 +30,31 @@
 
         upgradeHeading.addEventListener('click', function(ev) {
             var logDataToSend = {};
-            logDataToSend.uk = 'upgradeButtonClick';
-            logDataToSend.c = userVersion;
-            logDataToSend.o = currentVersion;
+            logDataToSend.c = 'upgradeView';
+            logDataToSend.o = 'upgradeButtonClick';
+            logDataToSend.g = userVersion;
+            logDataToSend.fa = currentVersion;
 
-            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
-                console.log(res);
-                if (res.stat == 'ok') {
-                    console.log('Successfully Logged');
-                } else {
-                    console.log('error updating stats');
-                }
-            });
+            App.ninjaServices.logNinjaData(logDataToSend);
 
             window.open('https://play.google.com/store/apps/details?id=com.bsb.hike');
 
         });
+
+
+
+        document.addEventListener('scroll', function() {
+                var elem = document.getElementsByClassName('workSpaceContainer')[0]
+                if ((elem.clientHeight + elem.scrollTop) >= elem.scrollHeight) {
+                    var logDataToSend = {};
+                    logDataToSend.c = 'statsView';
+                    logDataToSend.o = 'scrollToEnd';
+                    App.ninjaServices.logNinjaData(logDataToSend);
+
+                }
+            },
+            true
+        );
 
         if (!platformSdk.appData.appVersion || !data.statsData.hikeLatestVersion) {
             console.log('No app version exists');
@@ -75,18 +84,13 @@
             if (showUpgrade) {
                 upgradeOverlay.classList.remove('hide');
                 var logDataToSend = {};
-                logDataToSend.uk = 'upgradeScreenLoad';
-                logDataToSend.c = userVersion;
-                logDataToSend.o = currentVersion;
 
-                App.ninjaServices.logNinjaData(logDataToSend, function(res) {
-                    console.log(res);
-                    if (res.stat == 'ok') {
-                        console.log('Successfully Logged');
-                    } else {
-                        console.log('error updating stats');
-                    }
-                });
+                logDataToSend.c = 'upgradeView';
+                logDataToSend.o = 'screenLoad';
+                logDataToSend.g = userVersion;
+                logDataToSend.fa = currentVersion;
+
+                App.ninjaServices.logNinjaData(logDataToSend);
             } else {
                 console.log('No upgrade needed');
             }
@@ -106,26 +110,20 @@
             topTagOverlay.querySelectorAll('.levelCommon')[0].classList.add('topTagLevel' + this.getAttribute('data-topTagLevel'));
 
             var logDataToSend = {};
-            logDataToSend.uk = 'topXClick';
-            logDataToSend.c = this.getAttribute('data-info');
-            logDataToSend.o = this.getAttribute('data-topTag') + '%';
+            logDataToSend.c = 'statsView';
+            logDataToSend.o = 'topXClick';
+            logDataToSend.g = this.getAttribute('data-info');
+            logDataToSend.fa = this.getAttribute('data-topTag') + '%';
 
-            if(this.getAttribute('data-topTagLevel') == 1){
+            if (this.getAttribute('data-topTagLevel') == 1) {
                 levelText.innerHTML = 'You’re in the top 1% of all X users. That’s awesome!';
-            }else if(this.getAttribute('data-topTagLevel') == 5){
+            } else if (this.getAttribute('data-topTagLevel') == 5) {
                 levelText.innerHTML = 'You’re in the top 5% of all X users. That’s great!';
-            }else{
+            } else {
                 levelText.innerHTML = 'You’re in the top 10% of all X users. That’s cool!';
             }
 
-            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
-                console.log(res);
-                if (res.stat == 'ok') {
-                    console.log('Successfully Logged');
-                } else {
-                    console.log('error updating stats');
-                }
-            });
+            App.ninjaServices.logNinjaData(logDataToSend);
         }
 
         crossIcon.addEventListener('click', function(ev) {
@@ -171,28 +169,22 @@
                         // Awarded Trophies Into The Response :: Match the Count Here
                         platformSdk.appData.helperData.aTrophies = res;
                         platformSdk.updateHelperData(platformSdk.appData.helperData.aTrophies);
-                        App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: age });
+                        App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: data.profileData.age, diffDays: data.profileData.diffDays });
                     } else {
                         platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
                     }
                 });
 
             } else {
-                age = 26;
-                App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: age });
+
+                App.router.navigateTo('/trophies', { trophiesData: Constants.TROPHIES, age: data.profileData.age, diffDays: data.profileData.diffDays });
             }
 
             var logDataToSend = {};
-            logDataToSend.uk = 'viewAllTrophies';
+            logDataToSend.o = 'viewAllTrophiesClick';
+            logDataToSend.c = 'statsView';
 
-            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
-                console.log(res);
-                if (res.stat == 'ok') {
-                    console.log('Successfully Logged');
-                } else {
-                    console.log('error updating stats');
-                }
-            });
+            App.ninjaServices.logNinjaData(logDataToSend);
 
         });
 
@@ -214,28 +206,23 @@
             console.log('Error in changing bot title');
         }
 
-        App.ninjaServices.getHikeStats(function(res) {
-            console.log(res);
-            if (res.stat == 'ok') {
-                console.log('Updating Hike stats for user');
-                platformSdk.appData.helperData.statsData = res;
-                platformSdk.updateHelperData(platformSdk.appData.helperData);
-            } else {
-                console.log('error updating stats');
-            }
-        });
+        if (platformSdk.bridgeEnabled)
+            App.ninjaServices.getHikeStats(function(res) {
+                console.log(res);
+                if (res.stat == 'ok') {
+                    console.log('Updating Hike stats for user');
+                    platformSdk.appData.helperData.statsData = res;
+                    platformSdk.updateHelperData(platformSdk.appData.helperData);
+                } else {
+                    console.log('error updating stats');
+                }
+            });
 
         var logDataToSend = {};
-        logDataToSend.uk = 'statCompleteLoad';
+        logDataToSend.o = 'completeLoad';
+        logDataToSend.c = 'statsView';
 
-        App.ninjaServices.logNinjaData(logDataToSend, function(res) {
-            console.log(res);
-            if (res.stat == 'ok') {
-                console.log('Successfully Logged');
-            } else {
-                console.log('error updating stats');
-            }
-        });
+        App.ninjaServices.logNinjaData(logDataToSend);
 
         that.bind(App, data);
     };

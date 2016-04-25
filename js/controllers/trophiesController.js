@@ -117,19 +117,13 @@
             this.classList.add('levelLockTap');
 
             var logDataToSend = {};
-            logDataToSend.uk = 'levelClick';
-            logDataToSend.c = data[trophyIdGlobal].label;
-            logDataToSend.o = 'level' + '_' + level;
-            logDataToSend.fa = globalExperiment;
-            
-            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
-                console.log(res);
-                if (res.stat == 'ok') {
-                    console.log('Successfully Logged');
-                } else {
-                    console.log("error updating stats");
-                }
-            });
+            logDataToSend.c = 'trophyView';
+            logDataToSend.o = 'levelClick';
+            logDataToSend.fa = 'level' + '_' + level;
+            logDataToSend.g = data[trophyIdGlobal].label;
+            logDataToSend.s = globalExperiment;
+
+            App.ninjaServices.logNinjaData(logDataToSend);
 
         };
 
@@ -177,10 +171,12 @@
                     levelText.innerHTML = data[tid].levels[awardedLevel].textunlocked;
                 }
 
-                logDataToSend.uk = 'trophyClick';
-                logDataToSend.c = data[tid].label;
-                logDataToSend.o = 'unlocked' + '_' + awardedLevel;
-                logDataToSend.fa = globalExperiment;
+
+                logDataToSend.c = 'trophyView';
+                logDataToSend.o = 'trophyClick';
+                logDataToSend.fa = 'unlocked' + '_' + awardedLevel;
+                logDataToSend.g = data[tid].label;
+                logDataToSend.s = globalExperiment;
                 console.log('Opening Rewarded Trophy :: Show Level current and Locked for other Levels with task not hidden');
             }
 
@@ -233,14 +229,7 @@
             // Show the Overlay now
             trophyOverlay.classList.remove('hide');
 
-            App.ninjaServices.logNinjaData(logDataToSend, function(res) {
-                console.log(res);
-                if (res.stat == 'ok') {
-                    console.log('Successfully Logged');
-                } else {
-                    console.log("error updating stats");
-                }
-            });
+            App.ninjaServices.logNinjaData(logDataToSend);
         };
 
         // Attach trophy icons
@@ -279,11 +268,11 @@
             };
         }
 
-        if (data.age >= 30)
+        if (data.diffDays >= 30 && data.diffDays < 365)
             awardedTrophies.awarded[0] = 0;
-        else if (data.age >= 365)
+        else if (data.diffDays >= 365 && data.diffDays < 1095)
             awardedTrophies.awarded[0] = 1;
-        else if (data.age >= 1095)
+        else if (data.diffDays >= 1095)
             awardedTrophies.awarded[0] = 2;
 
         data = data.trophiesData;
@@ -329,16 +318,10 @@
         }
 
         var logDataToSend = {};
-        logDataToSend.uk = 'allTrophiesCompleteLoad';
+        logDataToSend.o = 'completeLoad';
+        logDataToSend.c = 'trophyView';
 
-        App.ninjaServices.logNinjaData(logDataToSend, function(res) {
-            console.log(res);
-            if (res.stat == 'ok') {
-                console.log('Successfully Logged');
-            } else {
-                console.log("error updating stats");
-            }
-        });
+        App.ninjaServices.logNinjaData(logDataToSend);
 
         that.bind(App, data);
     };

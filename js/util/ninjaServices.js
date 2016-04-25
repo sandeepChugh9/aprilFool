@@ -51,23 +51,13 @@
         },
 
         // Log Ninja Data :: Server Side Logging :: Send Event and Client Side Timestamp For Logs
-        logNinjaData: function(fn, data){
-            return;
-            console.log("Sending Logging Ninja Call To Server");
-            
-            var cTime = new Date();
-            data.cts = cTime.getTime();
+        logNinjaData: function(data) {
 
-            console.log(data);
+            if (platformSdk.bridgeEnabled)
+                platformSdk.utils.logAnalytics("true", "click", data);
+            else
+                console.log(data);
 
-            var params = {
-                'url'   : URL.logUrl,
-                'type'  : 'POST',
-                'data'  : data,
-                'loader': false
-            };
-            if ( typeof fn === 'function' ) return this.ValentineServices.communicate( params, fn, x );
-            else this.ValentineServices.communicate( params );
         }
 
 
