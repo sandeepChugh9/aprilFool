@@ -77,8 +77,8 @@
 
 .trophyOverlayWrapper {
     background: #FFF;
-    -webkit-border-radius: 4px; 
-    border-radius: 4px; 
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
     padding: 72px 32px 0px 32px;
 }
 
@@ -165,6 +165,18 @@
 
 .hide {
     display: none!important;
+}
+
+.trophyTitle {
+    @include fontStyle(12px,
+    400,
+    rgba(61, 71, 91, 0.72),
+    16px);
+    width: 90px;
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
+    text-align: center;
 }
 
 @media screen and (max-width: 330px) {

@@ -10,6 +10,7 @@
                 {{#experiment2}} {{#trophiesData}}
                 <div class="trophyIconContain">
                     <div data-tid="{{id}}" data-experiment="exp2" id="trophyIcon" class="commonTrophy {{^awarded}}locked{{/awarded}} {{#awarded}}awarded{{/awarded}} backgroundImageGeneric"></div>
+                    <div class="trophyTitle"> {{label}} </div>
                 </div>
                 {{/trophiesData}} {{/experiment2}} {{#experiment3}} {{#trophiesData}}
                 <div class="trophyIconContain">
@@ -23,15 +24,14 @@
         <div class="trophyOverlayWrapper centerToScreenWrapper">
             <div class="crossIcon backgroundImageGeneric"></div>
             <div class="levelsIconWrapper">
-                <div data-level= 0  class="levelCommon levelBronze backgroundImageGeneric"></div>
-                <div data-level= 1 class="levelCommon levelSilver backgroundImageGeneric"></div>
-                <div data-level= 2 class="levelCommon levelGold backgroundImageGeneric"></div>
+                <div data-level=0 class="levelCommon levelBronze backgroundImageGeneric"></div>
+                <div data-level=1 class="levelCommon levelSilver backgroundImageGeneric"></div>
+                <div data-level=2 class="levelCommon levelGold backgroundImageGeneric"></div>
             </div>
             <h1 class="trophyHeading align-center"></h1>
             <p class="levelText align-center"></p>
             <hr noshade>
             <div class="levelAction align-center">Ok</div>
         </div>
-
     </div>
 </div>
