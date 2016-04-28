@@ -280,7 +280,7 @@
 
             // Calling Hike Statistics After Getting the Hike Profile
             if (!platformSdk.appData.helperData.statsData) {
-                this.ninjaServices.getHikeStats(function(res) {
+                that.ninjaServices.getHikeStats(function(res) {
                     console.log(res);
                     if (res.stat == 'ok') {
                         console.log('Hike Stats have been recieved for the user');
@@ -289,7 +289,7 @@
                         platformSdk.appData.helperData.statsData = res;
                         platformSdk.updateHelperData(platformSdk.appData.helperData);
                         that.formatData();
-                        this.router.navigateTo('/', APIData);
+                        that.router.navigateTo('/', APIData);
                     } else {
                         platformSdk.ui.showToast('Hmm. Something went wrong. Not to worry, try again in a little bit :)');
                     }
@@ -298,7 +298,7 @@
                 console.log('Returning user with:', APIData);
                 APIData.statsData = platformSdk.appData.helperData.statsData;
                 that.formatData();
-                this.router.navigateTo('/', APIData);
+                that.router.navigateTo('/', APIData);
             }
         },
 
