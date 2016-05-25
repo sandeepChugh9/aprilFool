@@ -63,7 +63,7 @@
 
         application.start();
 
-        window.onResume = application.resumeHikeNinja.bind(application);
+        //window.onResume = application.resumeHikeNinja.bind(application);
         window.intentData = application.getIntentData.bind(application);
     });
 

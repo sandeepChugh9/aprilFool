@@ -1,0 +1,15 @@
+<div class="imageOption1Container card">
+    <div class="question padBZero">
+        {{questionText}}
+    </div>
+    <div class="parentAnswer">
+        <div class="answer centreToScreenAnswer">
+            {{#options}}
+            <div class="imgOption overhid" data-child="{{#child}}{{child}}{{/child}}">
+                <div class="imgRow backgroundImageGeneric" data-emotionType="{{type}}"> </div>
+                <div class="emoText"> {{text}} </div>
+            </div>
+            {{/options}}
+        </div>
+    </div>
+</div>

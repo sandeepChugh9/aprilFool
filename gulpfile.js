@@ -14,15 +14,17 @@
         uglify = require('gulp-uglify'),
         minifyCss = require('gulp-minify-css'),
         Constants = require('./constants'),
-        webpack = require('gulp-webpack');
+        webpack = require('gulp-webpack'),
+        curDate = new Date(),
+        curTimeStamp = curDate.getTime();
 
     gulp.task('sass', ['clean'], function() {
         gulp.src('sass/app.scss')
             .pipe(sass().on('error', sass.logError))
-            .pipe(gulp.dest(DEV_PATH))
-            .pipe(gulp.dest(STAGING_PATH))
+            .pipe(gulp.dest(DEV_PATH + '/' + curTimeStamp))
+            .pipe(gulp.dest(STAGING_PATH + '/' + curTimeStamp))
             .pipe(minifyCss())
-            .pipe(gulp.dest(PROD_PATH));
+            .pipe(gulp.dest(PROD_PATH + '/' + curTimeStamp));
     });
 
     gulp.task('clean', function(cb) {
@@ -31,9 +33,9 @@
 
     gulp.task('copyImages', ['clean'], function() {
         return gulp.src('images/*')
-            .pipe(gulp.dest(DEV_PATH + '/images'))
-            .pipe(gulp.dest(STAGING_PATH + '/images'))
-            .pipe(gulp.dest(PROD_PATH + '/images'));
+            .pipe(gulp.dest(DEV_PATH + '/' + curTimeStamp + '/images'))
+            .pipe(gulp.dest(STAGING_PATH + '/' + curTimeStamp + '/images'))
+            .pipe(gulp.dest(PROD_PATH + '/' + curTimeStamp + '/images'));
     });
 
     gulp.task('stub', ['clean'], function() {
@@ -43,12 +45,13 @@
 
     gulp.task('devCopy', ['clean', 'stub'], function() {
         return gulp.src('app.html')
-            .pipe(replace('{{basePath}}', ''))
+            .pipe(replace('{{basePath}}', curTimeStamp + '/'))
             .pipe(gulp.dest(DEV_PATH));
     });
 
     gulp.task('stagingCopy', ['clean'], function() {
         return gulp.src('app.html')
+            .pipe(replace('{{basePath}}', '{{basePath}}' + curTimeStamp + '/'))
             .pipe(stripLine('stub.js'))
             .pipe(replace('ENVIRONMENT', Constants.STAGING_ENV))
             .pipe(gulp.dest(STAGING_PATH));
@@ -56,6 +59,8 @@
 
     gulp.task('prodCopy', ['clean'], function() {
         return gulp.src('app.html')
+            .pipe(replace('{{basePath}}', '{{basePath}}' + curTimeStamp + '/'))
+            .pipe(replace('staging', 'prod'))
             .pipe(stripLine('stub.js'))
             .pipe(replace('ENVIRONMENT', Constants.PROD_ENV))
             .pipe(gulp.dest(PROD_PATH));
@@ -64,10 +69,10 @@
     gulp.task('js', ['clean'], function() {
         return gulp.src('app.js')
             .pipe(webpack(webpackConfig))
-            .pipe(gulp.dest(DEV_PATH))
-            .pipe(gulp.dest(STAGING_PATH))
+            .pipe(gulp.dest(DEV_PATH + '/' + curTimeStamp))
+            .pipe(gulp.dest(STAGING_PATH + '/' + curTimeStamp))
             .pipe(uglify())
-            .pipe(gulp.dest(PROD_PATH));
+            .pipe(gulp.dest(PROD_PATH + '/' + curTimeStamp));
     });
 
     gulp.task('watch', function() {

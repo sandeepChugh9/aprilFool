@@ -1,0 +1,65 @@
+.imageOption1Container {
+    .imgOption {
+        display: inline-block;
+        width: 18%;
+        margin: 0 7% 0 7%;
+    }
+    .imgOption:first-child {
+        display: inline-block;
+        width: 18%;
+        margin: 0 14% 0 0;
+    }
+    .imgOption:last-child {
+        display: inline-block;
+        width: 18%;
+        margin: 0 0 0 14%;
+    }
+    .imgRow {
+        width: 100%;
+        height: 27px;
+        background-position: center;
+    }
+    .positiveHollow {
+        background-image: url('images/hollowHeart.png');
+    }
+    .negativeHollow {
+        background-image: url('images/hollowBrokenHeart.png');
+    }
+    .neutralHollow {
+        background-image: url('images/hollowSmiley.png');
+    }
+    .positiveFilled {
+        background-image: url('images/filledHeart.png');
+    }
+    .negativeFilled {
+        background-image: url('images/filledBrokenHeart.png');
+    }
+    .neutralFilled {
+        background-image: url('images/filledSmiley.png');
+    }
+    .emoText {
+        @include fontStyle(15px,
+        300,
+        #FF0040,
+        21px);
+        padding-top: 20px;
+        display: inline-block;
+    }
+}
+
+.parentAnswer {
+    height: 94%;
+    width: 101%;
+}
+
+.centreToScreenAnswer {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.padBZero {
+    padding-bottom: 0 !important;
+}

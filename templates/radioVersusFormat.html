@@ -1,0 +1,17 @@
+<div class="radioFormatContainer card">
+    <div class="radioVersusContainer">
+        <div class="leftPic floatL backgroundImageGeneric topImg" data-url="{{leftImgURL}}"> </div>
+        <div class="rightPic floatR backgroundImageGeneric topImg" data-url="{{rightImgURL}}"> </div>
+        <div class="versusTag"> vs </div>
+    </div>
+    <div class="question padB28">
+        {{questionText}}
+    </div>
+    <div class="answer">
+        {{#options}}
+        <div class="radioRow" data-child="{{#child}}{{child}}{{/child}}">
+            <span class="emptyCirc radioCirc backgroundImageGeneric"> </span> <span class="optionTxt"> {{text}} </span>
+        </div>
+        {{/options}}
+    </div>
+</div>

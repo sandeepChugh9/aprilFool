@@ -1,0 +1,13 @@
+<div class="questionsCard">
+    <div class="nextLink backgroundImageGeneric"> </div>
+</div>
+{{#isSequential}}
+<div class="progressFigure">
+    <div class="questionProgress">
+        <div class="questionBar" style="width:{{per}}%;"></div>
+    </div>
+</div>
+<div class="progressText">
+    <span id="currentQuesNum"> {{current}} </span> of <span> {{total}} </span>
+</div>
+{{/isSequential}}

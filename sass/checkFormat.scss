@@ -1,0 +1,65 @@
+.checkFormatContainer {
+    text-align: left;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    .checkRow {
+        padding-bottom: 10px;
+    }
+    .emptyRec {
+        background-color: white;
+        border: 1px solid rgba(62, 63, 75, 0.45);
+    }
+    .filledRec {
+        background-color: $buttonFillColor;
+        border: 1px solid transparent;
+        background-image: url('images/tick.png');
+        background-position: center;
+        background-size: 13px 10px;
+    }
+    .checkRec {
+        height: 18px;
+        width: 18px;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 4px;
+        -webkit-transition: background-color 0.3s;
+        transition: background-color 0.3s;
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.question {
+    @include fontStyle(20px,
+    400,
+    #3E3F4B,
+    24px);
+    padding-bottom: 48px;
+    text-align: left;
+}
+
+.selectedTextColor {
+    color: $buttonFillColor !important;
+}
+
+.optionTxt {
+    @include fontStyle(16px,
+    400,
+    #3E3F4B,
+    20px);
+    vertical-align: super;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    vertical-align: top;
+    width: 83%;
+    display: inline-block;
+    padding: 10px 0 10px 12px;
+}
+
+@media screen and (max-width: 340px) {
+    .question {
+        padding-bottom: 48px;
+        font-size: 19px;
+    }
+}

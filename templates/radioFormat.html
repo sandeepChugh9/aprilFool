@@ -1,0 +1,12 @@
+<div class="radioFormatContainer card">
+    <div class="question">
+        {{questionText}}
+    </div>
+    <div class="answer">
+        {{#options}}
+        <div class="radioRow" data-child="{{#child}}{{child}}{{/child}}">
+            <span class="emptyCirc radioCirc backgroundImageGeneric"> </span> <span class="optionTxt"> {{text}} </span>
+        </div>
+        {{/options}}
+    </div>
+</div>

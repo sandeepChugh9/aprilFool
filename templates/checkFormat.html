@@ -1,0 +1,12 @@
+<div class="checkFormatContainer card">
+    <div class="question">
+        {{questionText}}
+    </div>
+    <div class="answer">
+        {{#options}}
+        <div class="checkRow" data-child="{{#child}}{{child}}{{/child}}">
+            <span class="emptyRec checkRec backgroundImageGeneric"> </span> <span class="optionTxt"> {{text}} </span>
+        </div>
+        {{/options}}
+    </div>
+</div>

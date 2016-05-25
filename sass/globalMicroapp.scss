@@ -252,6 +252,10 @@ a:visited {
     text-align: left;
 }
 
+.hide {
+    display: none !important;
+}
+
 
 /* Center Align a Absolute Element */
 
@@ -287,9 +291,9 @@ a:visited {
 
 .tapStateWhite {
     background: #FFF !important;
-    color: #1da8e8 !important; 
-    -webkit-border-radius: 4px; 
-     border-radius: 4px;  
+    color: #1da8e8 !important;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
 }
 
 .tapStateRed {}

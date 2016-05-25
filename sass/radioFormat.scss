@@ -1,0 +1,77 @@
+.radioFormatContainer {
+    text-align: left;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    .radioRow {
+        padding-bottom: 10px;
+    }
+    .emptyCirc {
+        background-color: white;
+        border: 1px solid rgba(62, 63, 75, 0.45);
+    }
+    .filledCirc {
+        background-color: $buttonFillColor;
+        border: 1px solid transparent;
+    }
+    .radioCirc {
+        height: 18px;
+        width: 18px;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 50%;
+        -webkit-transition: background-color 0.3s;
+        transition: background-color 0.3s;
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .radioVersusContainer {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        margin: -40px -40px 30px -40px;
+        .topImg {
+            height: 88px;
+            width: 50%;
+        }
+        .versusTag {
+            position: absolute;
+            background: $buttonFillColor;
+            height: 48px;
+            width: 48px;
+            border-radius: 50%;
+            @include fontStyle(16px, 400, #fff, 44px);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+        }
+    }
+    .radioSinglePicContainer {
+        margin: -40px -40px 30px -40px;
+        .topImg {
+            height: 100px;
+            width: 100%;
+            background-size: cover;
+        }
+    }
+}
+
+.padB28 {
+    padding-bottom: 28px !important;
+}
+
+@media screen and (max-width: 340px) {
+    .radioVersusContainer,
+    .radioSinglePicContainer {
+        margin: -35px -35px 25px -35px !important;
+    }
+}
+
+@media screen and (min-height: 450px) and (max-height: 500px) {
+    .radioVersusContainer,
+    .radioSinglePicContainer {
+        margin: -30px -30px 20px -30px !important;
+    }
+}

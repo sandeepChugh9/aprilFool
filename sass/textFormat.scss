@@ -1,0 +1,14 @@
+.textInput {
+    @include fontStyle(16px, 400, rgba(62, 63, 75, 0.74), 21px);
+    display: block;
+    border: none;
+    border-bottom: 1px solid rgba(62, 63, 75, 0.24);
+    resize: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0 8px;
+}
+
+.textRow {
+    margin: 60px 0;
+}

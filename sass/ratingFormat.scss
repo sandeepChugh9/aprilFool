@@ -1,0 +1,30 @@
+.ratingFormatContainer {
+    .emptyStar {
+        background-image: url("images/emptyStar.png");
+    }
+    .filledStar {
+        background-image: url("images/filledStar.png");
+    }
+    .ratingRow {
+        width: 40px;
+        height: 39px;
+        display: inline-block;
+        margin: 5px;
+        cursor: pointer;
+        margin: 0px 6px;
+    }
+    @media screen and (max-width: 340px) {
+        .ratingRow {
+            width: 37px;
+            height: 32px;
+            margin: 0px 2px;
+        }
+    }
+    @media screen and (min-width: 341px) and (max-width: 370px) {
+        .ratingRow {
+            width: 40px;
+            height: 36px;
+            margin: 0px 3px;
+        }
+    }
+}
