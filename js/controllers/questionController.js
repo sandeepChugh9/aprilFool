@@ -26,6 +26,7 @@
                 cache = {
                     "questionsCard": document.getElementsByClassName('questionsCard')[0],
                     "nextLink": document.getElementsByClassName('nextLink')[0],
+                    "prevLink": document.getElementsByClassName('prevLink')[0],
                     "currentQuesNum": document.getElementById('currentQuesNum'),
                     "questionBar": document.getElementsByClassName('questionBar')[0],
                     "initialH": 28,
@@ -167,10 +168,16 @@
                         cache.nextLinkClicked = true;
 
                         var childElem = this.getAttribute('data-child');
+                        var isSkip = this.getAttribute('data-skip');
+
 
                         that.collectLogForCurrent(data.questions[data.currentQuesId]);
 
-                        if (data.surveyType == "branch" && (childElem == "undefined" || typeof childElem == 'undefined' || childElem == null)) {
+                        // If survey type is branch and user skips the question
+                        if (data.surveyType == "branch" && isSkip == "true") {
+                            dataLocal.nextQuesId = data.questions[data.currentQuesId].skipTo;
+
+                        } else if (data.surveyType == "branch" && (childElem == "undefined" || typeof childElem == 'undefined' || childElem == null)) {
                             App.router.navigateTo('/surveyDone');
                         } else {
                             if (data.surveyType == "branch")
@@ -181,30 +188,28 @@
                                 else
                                     dataLocal.nextQuesId = parseInt(data.currentQuesId) + 1;
                             }
-
-                            dataLocal.nextQuesNum = parseInt(data.currentQuesNum) + 1;
-
-                            if (platformSdk.bridgeEnabled) {
-                                platformSdk.appData.helperData.currentQuesId = dataLocal.nextQuesId;
-                                platformSdk.appData.helperData.currentQuesNum = dataLocal.nextQuesNum;
-                                platformSdk.updateHelperData(platformSdk.appData.helperData);
-
-                            } else {
-                                data.currentQuesId = dataLocal.nextQuesId;
-                                data.currentQuesNum = dataLocal.nextQuesNum;
-                            }
-
-                            if (dataLocal.nextQuesId) {
-                                that.renderQuestion(dataLocal.nextQuesId);
-
-                                if (data.surveyType == "sequential")
-                                    that.updateBar(dataLocal.nextQuesNum);
-
-                            } else
-                                App.router.navigateTo('/surveyDone');
-
-
                         }
+
+                        dataLocal.nextQuesNum = parseInt(data.currentQuesNum) + 1;
+
+                        if (platformSdk.bridgeEnabled) {
+                            platformSdk.appData.helperData.currentQuesId = dataLocal.nextQuesId;
+                            platformSdk.appData.helperData.currentQuesNum = dataLocal.nextQuesNum;
+                            platformSdk.updateHelperData(platformSdk.appData.helperData);
+
+                        } else {
+                            data.currentQuesId = dataLocal.nextQuesId;
+                            data.currentQuesNum = dataLocal.nextQuesNum;
+                        }
+
+                        if (dataLocal.nextQuesId) {
+                            that.renderQuestion(dataLocal.nextQuesId);
+
+                            if (data.surveyType == "sequential")
+                                that.updateBar(dataLocal.nextQuesNum);
+
+                        } else
+                            App.router.navigateTo('/surveyDone');
 
 
 
@@ -342,42 +347,82 @@
 
                 toggleNavigateLink: function(container, type, child) {
 
+                    /* if (type == 'checkbox') {
+                         if (container.querySelector('.filledRec'))
+                             cache.nextLink.classList.add('animation_scale_1')
+                         else
+                             cache.nextLink.classList.remove('animation_scale_1')
+                     } else if (type == 'radio') {
+                         if (container.querySelector('.filledCirc'))
+                             cache.nextLink.classList.add('animation_scale_1')
+                         else
+                             cache.nextLink.classList.remove('animation_scale_1')
+                     } else if (type == 'radioVersus') {
+                         if (container.querySelector('.filledCirc'))
+                             cache.nextLink.classList.add('animation_scale_1')
+                         else
+                             cache.nextLink.classList.remove('animation_scale_1')
+                     } else if (type == 'radioSinglePic') {
+                         if (container.querySelector('.filledCirc'))
+                             cache.nextLink.classList.add('animation_scale_1')
+                         else
+                             cache.nextLink.classList.remove('animation_scale_1')
+                     } else if (type == 'text') {
+                         if (container.querySelector('.textInput').value.trim().length > 0)
+                             cache.nextLink.classList.add('animation_scale_1')
+                         else
+                             cache.nextLink.classList.remove('animation_scale_1')
+                     } else if (type == 'rating') {
+                         if (container.querySelector('.filledStar'))
+                             cache.nextLink.classList.add('animation_scale_1')
+                         else
+                             cache.nextLink.classList.remove('animation_scale_1')
+                     } else if (type == 'imageOption1') {
+                         if (container.querySelector('.filledEmo'))
+                             cache.nextLink.classList.add('animation_scale_1')
+                         else
+                             cache.nextLink.classList.remove('animation_scale_1')
+                     }
+
+                     */
+
                     if (type == 'checkbox') {
                         if (container.querySelector('.filledRec'))
-                            cache.nextLink.classList.add('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'false');
                         else
-                            cache.nextLink.classList.remove('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'true');
                     } else if (type == 'radio') {
                         if (container.querySelector('.filledCirc'))
-                            cache.nextLink.classList.add('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'false');
                         else
-                            cache.nextLink.classList.remove('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'true');
                     } else if (type == 'radioVersus') {
                         if (container.querySelector('.filledCirc'))
-                            cache.nextLink.classList.add('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'false');
                         else
-                            cache.nextLink.classList.remove('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'true');
                     } else if (type == 'radioSinglePic') {
                         if (container.querySelector('.filledCirc'))
-                            cache.nextLink.classList.add('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'false');
                         else
-                            cache.nextLink.classList.remove('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'true');
                     } else if (type == 'text') {
                         if (container.querySelector('.textInput').value.trim().length > 0)
-                            cache.nextLink.classList.add('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'false');
                         else
-                            cache.nextLink.classList.remove('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'true');
                     } else if (type == 'rating') {
                         if (container.querySelector('.filledStar'))
-                            cache.nextLink.classList.add('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'false');
                         else
-                            cache.nextLink.classList.remove('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'true');
                     } else if (type == 'imageOption1') {
                         if (container.querySelector('.filledEmo'))
-                            cache.nextLink.classList.add('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'false');
                         else
-                            cache.nextLink.classList.remove('animation_scale_1')
+                            cache.nextLink.setAttribute('data-skip', 'true');
                     }
+
 
 
                     cache.nextLink.setAttribute('data-child', child)
@@ -406,6 +451,9 @@
                     var logDataToSend = {};
                     var elems = cache.questionsCard.querySelectorAll('.card')
                     var curr = elems[elems.length - 1];
+
+                    if (dataLocal.nextQuesNum > 1)
+                        cache.prevLink.classList.add('animation_scale_1');
                     if (curr) {
                         curr.parentNode.classList.add("animation_fadeout");
                         curr.parentNode.classList.add("hide");
@@ -416,7 +464,7 @@
                         dataLocal.div = document.createElement('div');
                         dataLocal.div.innerHTML = Mustache.render(unescape(this.getTemplate(dataLocal.ques.type)), dataLocal.ques);
                         cache.questionsCard.appendChild(dataLocal.div);
-                        cache.nextLink.classList.remove('animation_scale_1')
+                        cache.nextLink.setAttribute('data-skip', 'true');
 
                         setTimeout(function() {
                             cache.nextLinkClicked = false;

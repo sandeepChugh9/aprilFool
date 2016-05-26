@@ -52,6 +52,24 @@
         position: absolute;
         bottom: 12px;
         right: 12px;
+        /*  -ms-transform: scale(0);
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;*/
+    }
+    .prevLink {
+        height: 48px;
+        width: 48px;
+        border-radius: 50%;
+        background: url("images/prev_arrow.png") no-repeat center, -webkit-linear-gradient(left top, #EFEFEF, #CACACA);
+        background: url("images/prev_arrow.png") no-repeat center, linear-gradient(to bottom right, #EFEFEF, #CACACA);
+        background: url("images/prev_arrow.png") no-repeat center, -o-linear-gradient(bottom right, #EFEFEF, #CACACA);
+        background: url("images/prev_arrow.png") no-repeat center, -moz-linear-gradient(bottom right, #EFEFEF, #CACACA);
+        background-size: 10px 17px, cover;
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
         -ms-transform: scale(0);
         -webkit-transform: scale(0);
         transform: scale(0);

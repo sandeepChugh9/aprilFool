@@ -650,9 +650,9 @@ a:visited {
   text-align: center; }
   .workSpaceContainer .hikeSurveyIcon {
     background-image: url("images/hikesurvey.png");
-    height: 100px;
+    height: 144px;
     width: 100%;
-    margin: 100px 0px 40px 0px;
+    margin: 50px 0px 40px 0px;
     background-position: center; }
   .workSpaceContainer .title {
     font-size: 24px;
@@ -689,8 +689,7 @@ a:visited {
     font-weight: 400; }
   @media screen and (min-height: 430px) and (max-height: 500px) {
     .workSpaceContainer .hikeSurveyIcon {
-      margin-top: 70px;
-      height: 80px; }
+      height: 120px; }
     .workSpaceContainer .title {
       font-size: 20px; }
     .workSpaceContainer .subTitle {
@@ -703,8 +702,6 @@ a:visited {
     .workSpaceContainer .timeText {
       font-size: 10px; } }
   @media screen and (max-width: 340px) {
-    .workSpaceContainer .hikeSurveyIcon {
-      margin-top: 80px; }
     .workSpaceContainer .title {
       font-size: 22px; }
     .workSpaceContainer .subTitle {
@@ -716,7 +713,7 @@ a:visited {
       font-size: 10px; } }
   @media screen and (min-width: 341px) and (max-width: 360px) {
     .workSpaceContainer .hikeSurveyIcon {
-      margin-top: 85px; }
+      height: 134px; }
     .workSpaceContainer .title {
       font-size: 22px; }
     .workSpaceContainer .subTitle {
@@ -727,8 +724,6 @@ a:visited {
     .workSpaceContainer .timeText {
       font-size: 10px; } }
   @media screen and (min-width: 361px) and (max-width: 380px) {
-    .workSpaceContainer .hikeSurveyIcon {
-      margin-top: 90px; }
     .workSpaceContainer .title {
       font-size: 23px; }
     .workSpaceContainer .subTitle {
@@ -790,6 +785,23 @@ a:visited {
     position: absolute;
     bottom: 12px;
     right: 12px;
+    /*  -ms-transform: scale(0);
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;*/ }
+  .questionContainer .prevLink {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    background: url("images/prev_arrow.png") no-repeat center, -webkit-linear-gradient(left top, #EFEFEF, #CACACA);
+    background: url("images/prev_arrow.png") no-repeat center, linear-gradient(to bottom right, #EFEFEF, #CACACA);
+    background: url("images/prev_arrow.png") no-repeat center, -o-linear-gradient(bottom right, #EFEFEF, #CACACA);
+    background: url("images/prev_arrow.png") no-repeat center, -moz-linear-gradient(bottom right, #EFEFEF, #CACACA);
+    background-size: 10px 17px, cover;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
     -ms-transform: scale(0);
     -webkit-transform: scale(0);
     transform: scale(0);
@@ -1036,7 +1048,6 @@ a:visited {
   height: 39px;
   display: inline-block;
   margin: 5px;
-  cursor: pointer;
   margin: 0px 6px; }
 
 @media screen and (max-width: 340px) {

@@ -15,7 +15,7 @@
 
             "0": {
                 "questionText": "Which one is your favourate App?",
-                "type": "checkbox",
+                "type": "radio",
                 "options": [{
                     "text": "Whatsapp",
                     "child": "7",
@@ -26,30 +26,12 @@
                     "text": "tinder",
                     "child": "3",
                 }, {
-                    "text": "snapchat",
+                    "text": "facebok",
                     "child": "2",
-                }, {
-                    "text": "tinder",
-                    "child": "3",
-                }, {
-                    "text": "snapchat",
-                    "child": "2",
-                }, {
-                    "text": "tinder",
-                    "child": "3",
-                }, {
-                    "text": "snapchat",
-                    "child": "2",
-                }, {
-                    "text": "tinder",
-                    "child": "3",
-                }, {
-                    "text": "facebook",
-                    "child": "4"
                 }]
             },
 
-            "8": {
+            "1": {
                 "questionText": "Describe yourself in one line!",
                 "type": "text",
                 "charLimit": 300,
@@ -156,7 +138,7 @@
             },
 
 
-            "1": {
+            "8": {
                 "questionText": "qid 8",
                 "type": "radioVersus",
                 "leftImgURL": "https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-bronze.png",
@@ -165,12 +147,11 @@
                     "text": "reason 1",
                     "child": "3"
                 }, {
-                    "text": "reason 2"
+                    "text": "reason 2",
+                    "child": "3"
                 }, {
-                    "text": "reason 3"
-                }, {
-                    "text": "Wanna trap in loop again?",
-                    "child": "1"
+                    "text": "reason 3",
+                    "child": "3"
                 }]
             }
 
