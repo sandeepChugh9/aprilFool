@@ -1,11 +1,11 @@
-( function (W, undefined) {
+(function(W, undefined) {
     'use strict';
 
-    HTMLElement.prototype.toggleClass = function (classToken, flag) {
+    HTMLElement.prototype.toggleClass = function(classToken, flag) {
         var element = this;
 
-        if ( flag !== undefined ) {
-            if ( flag ) {
+        if (flag !== undefined) {
+            if (flag) {
                 element.classList.add(classToken);
             } else {
                 element.classList.remove(classToken);
@@ -16,15 +16,15 @@
     };
 
     var ConnTypes = require('../../constants').ConnectionTypes,
-        _extend = function ( toObj, fromObj ) {
-            for( var key in fromObj ) {
-                if ( fromObj.hasOwnProperty( key ) && toObj[key] === undefined ) {
+        _extend = function(toObj, fromObj) {
+            for (var key in fromObj) {
+                if (fromObj.hasOwnProperty(key) && toObj[key] === undefined) {
                     toObj[key] = fromObj[key];
                 }
             }
         },
         imageOptimizationConnTypes = [ConnTypes.NO_NETWORK, ConnTypes.UNKNOWN, ConnTypes.TWO_G],
-        noop = function () {
+        noop = function() {
 
         },
         memoizationCache = {},
@@ -32,60 +32,60 @@
         idCounter = 1;
 
     module.exports = {
-        isFunction: function (fn) {
+        isFunction: function(fn) {
             return typeof fn === 'function';
         },
 
-        extend: function ( toObj, fromObj ) {
-            _extend( toObj.prototype, fromObj.prototype );
-            _extend( toObj, fromObj );
+        extend: function(toObj, fromObj) {
+            _extend(toObj.prototype, fromObj.prototype);
+            _extend(toObj, fromObj);
 
             return toObj;
         },
 
-        serializeParams: function ( params ) {
+        serializeParams: function(params) {
             var serializedParams = [];
 
-            for ( var key in params ) {
-                if ( params.hasOwnProperty( key ) ) {
-                    serializedParams.push( key + '=' + params[key] );
+            for (var key in params) {
+                if (params.hasOwnProperty(key)) {
+                    serializedParams.push(key + '=' + params[key]);
                 }
             }
 
-            return serializedParams.join( '&' );
+            return serializedParams.join('&');
         },
 
-        empty: function ( element ) {
-            while ( element.firstChild ) {
-                element.removeChild( element.firstChild );
+        empty: function(element) {
+            while (element.firstChild) {
+                element.removeChild(element.firstChild);
             }
 
             return element;
         },
 
-        getUniqueId: function (prefix) {
+        getUniqueId: function(prefix) {
             return (prefix || basePrefix) + idCounter++;
         },
 
-        simpleClone: function (obj) {
+        simpleClone: function(obj) {
             return JSON.parse(JSON.stringify(obj));
         },
 
-        loadImage: function (params) {
+        loadImage: function(params) {
             var imageEl = document.createElement('img');
 
             imageEl.src = params.src;
-            
-            imageEl.onload = function () {
-                params.success(imageEl,params.src);
+
+            imageEl.onload = function() {
+                params.success(imageEl, params.src);
             };
 
-            imageEl.onError = function(){
+            imageEl.onError = function() {
                 params.error(imageEl);
             };
         },
 
-        toOptimizeForImages: function (connectionType) {
+        toOptimizeForImages: function(connectionType) {
             if (memoizationCache[connectionType] === undefined) {
                 memoizationCache[connectionType] = imageOptimizationConnTypes.indexOf(connectionType) !== -1;
             }
@@ -93,17 +93,17 @@
             return memoizationCache[connectionType];
         },
 
-        getNodeIndex: function (elem) {
+        getNodeIndex: function(elem) {
             var index = 0;
 
-            while(elem == elem.previousElementSibling) {
+            while (elem == elem.previousElementSibling) {
                 index++;
             }
 
             return index;
         },
 
-        createCustomEvent: function (eventName) {
+        createCustomEvent: function(eventName) {
             var customEvent;
 
             if (W.CustomEvent) {
@@ -121,21 +121,21 @@
 
         // Toggle Back Navigation Set For Allowing Back and Up Press Inside The Application
 
-        toggleBackNavigation: function (enable) {
-            
+        toggleBackNavigation: function(enable) {
+
             enable = enable ? 'true' : 'false';
 
             if (platformSdk.bridgeEnabled) {
                 platformSdk.bridge.allowBackPress(enable);
-                // Allow up press in only available since Platform Version 5
-                platformSdk.bridge.allowUpPress && platformSdk.bridge.allowUpPress(enable);
             }
         },
+
 
         debounce: function(func, wait, immediate) {
             var timeout;
             return function() {
-                var context = this, args = arguments;
+                var context = this,
+                    args = arguments;
                 var later = function() {
                     timeout = null;
                     if (!immediate) func.apply(context, args);
@@ -148,4 +148,4 @@
         }
     };
 
-} )(window);
+})(window);

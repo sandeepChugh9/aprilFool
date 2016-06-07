@@ -289,6 +289,12 @@ a:visited {
     transform: translate(-50%, -50%);
 }
 
+.centerVertical {
+    position: relative;
+    top: 35%;
+    transform: translateY(-35%);
+}
+
 .tapStateWhite {
     background: #FFF !important;
     color: #1da8e8 !important;

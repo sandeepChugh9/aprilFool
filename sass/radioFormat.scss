@@ -4,6 +4,7 @@
     animation-fill-mode: forwards;
     .radioRow {
         padding-bottom: 10px;
+        position: relative;
     }
     .emptyCirc {
         background-color: white;
@@ -24,15 +25,17 @@
         display: inline-block;
         margin-top: 10px;
         margin-bottom: 10px;
+        position: absolute;
     }
     .radioVersusContainer {
         position: relative;
         overflow: hidden;
         text-align: center;
-        margin: -40px -40px 30px -40px;
+        margin: -40px -40px 20px -40px;
         .topImg {
-            height: 88px;
+            height: 120px;
             width: 50%;
+            background-size: 100% 100% !important;
         }
         .versusTag {
             position: absolute;
@@ -47,31 +50,66 @@
             -ms-transform: translate(-50%, -50%);
             -webkit-transform: translate(-50%, -50%);
         }
+        .radioRow {
+            padding-bottom: 8px;
+        }
     }
     .radioSinglePicContainer {
-        margin: -40px -40px 30px -40px;
+        margin: -40px -40px 20px -40px;
         .topImg {
-            height: 100px;
+            height: 120px;
             width: 100%;
-            background-size: cover;
+            background-size: cover !important;
+            background-position: center;
+        }
+        .radioRow {
+            padding-bottom: 8px;
         }
     }
 }
 
 .padB28 {
-    padding-bottom: 28px !important;
+    padding-bottom: 25px !important;
 }
 
 @media screen and (max-width: 340px) {
     .radioVersusContainer,
     .radioSinglePicContainer {
-        margin: -35px -35px 25px -35px !important;
+        margin: -35px -35px 20px -35px !important;
     }
 }
 
-@media screen and (min-height: 450px) and (max-height: 500px) {
+@media screen and (min-height: 440px) and (max-height: 500px) {
     .radioVersusContainer,
     .radioSinglePicContainer {
-        margin: -30px -30px 20px -30px !important;
+        margin: -30px -30px 15px -30px !important;
+        .topImg {
+            height: 110px !important;
+        }
+        .padB28 {
+            padding-bottom: 20px !important;
+        }
+    }
+    .radioVersusContainer ~ .padB28 {
+        padding-bottom: 20px !important;
+    }
+    .radioSinglePicContainer ~ .padB28 {
+        padding-bottom: 20px !important;
+    }
+    .radioSinglePicContainer ~ .answer .radioCirc {
+        margin-top: 7px;
+        margin-bottom: 7px;
+    }
+    .radioSinglePicContainer ~ .answer .optionTxt {
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+    .radioVersusContainer ~ .answer .radioCirc {
+        margin-top: 7px;
+        margin-bottom: 7px;
+    }
+    .radioVersusContainer ~ .answer .optionTxt {
+        padding-top: 7px;
+        padding-bottom: 7px;
     }
 }

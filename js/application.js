@@ -13,9 +13,11 @@
         SurveyServices = require('./util/surveyServices'),
         dataQues = {
 
-            "0": {
-                "questionText": "Which one is your favourate App?",
+            "10": {
+                "qid": 10,
+                "questionText": "q0 - Which one is your favourate App? Answer to get reward",
                 "type": "radio",
+                "skipTo": 4,
                 "options": [{
                     "text": "Whatsapp",
                     "child": "7",
@@ -27,20 +29,23 @@
                     "child": "3",
                 }, {
                     "text": "facebok",
-                    "child": "2",
+                    "child": "1",
                 }]
             },
 
-            "1": {
-                "questionText": "Describe yourself in one line!",
+            "9": {
+                "qid": 9,
+                "questionText": "q1- Describe yourself in one line!",
                 "type": "text",
                 "charLimit": 300,
                 "defaultMessage": "Describe yourself!"
             },
 
-            "2": {
-                "questionText": "Do you like the new Director of Engineering ? ",
+            "0": {
+                "qid": 0,
+                "questionText": "q2- Do you like the new Director of Engineering ? ",
                 "type": "imageOption1",
+                "skipTo": 8,
                 "options": [{
                     "text": "Yes",
                     "child": "5",
@@ -51,50 +56,45 @@
                     "type": "neutral"
                 }, {
                     "text": "No",
-                    "child": "7",
+                    "child": "8",
                     "type": "negative"
                 }]
             },
 
 
             "3": {
-                "questionText": "qid 3",
+                "qid": 3,
+                "questionText": "q3 - Checkbox",
                 "type": "checkbox",
                 "options": [{
-                    "text": "reason 1",
-                    "child": "5",
+                    "text": "reason 1"
                 }, {
-                    "text": "reason 2",
-                    "child": "6",
+                    "text": "reason 2"
                 }, {
-                    "text": "reason 3",
-                    "child": "7",
+                    "text": "reason 3"
                 }, {
-                    "text": "reason 4",
-                    "child": "8",
+                    "text": "reason 4"
                 }]
             },
 
             "4": {
-                "questionText": "qid 4",
+                "qid": 4,
+                "questionText": "q4 - checkbox",
                 "type": "checkbox",
                 "options": [{
-                    "text": "reason 1",
-                    "child": "5",
+                    "text": "reason 1"
                 }, {
-                    "text": "reason 2",
-                    "child": "6",
+                    "text": "reason 2"
                 }, {
-                    "text": "reason 3",
-                    "child": "7",
+                    "text": "reason 3"
                 }, {
-                    "text": "reason 4",
-                    "child": "8",
+                    "text": "reason 4"
                 }]
             },
 
             "5": {
-                "questionText": "qid 5",
+                "qid": 5,
+                "questionText": "q5- checkbox",
                 "type": "checkbox",
                 "options": [{
                     "text": "reason 1"
@@ -108,11 +108,12 @@
             },
 
             "6": {
-                "questionText": "qid 6",
+                "qid": 6,
+                "questionText": "q6 - checkbox",
                 "type": "checkbox",
+                "skipTo": 3,
                 "options": [{
                     "text": "reason 1"
-
                 }, {
                     "text": "reason 2"
                 }, {
@@ -122,8 +123,10 @@
                 }]
             },
             "7": {
+                "qid": 7,
                 "questionText": "qid 7",
                 "type": "rating",
+                "skipTo": 5,
                 "stars": [{
                     "child": "3"
                 }, {
@@ -139,19 +142,56 @@
 
 
             "8": {
+                "qid": 8,
                 "questionText": "qid 8",
                 "type": "radioVersus",
                 "leftImgURL": "https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-bronze.png",
                 "rightImgURL": "https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-bronze.png",
+                "skipTo": 5,
                 "options": [{
                     "text": "reason 1",
-                    "child": "3"
+                    "child": "4"
                 }, {
                     "text": "reason 2",
                     "child": "3"
                 }, {
                     "text": "reason 3",
+                    "child": "1"
+                }]
+            },
+
+            "1": {
+                "qid": 1,
+                "questionText": "qid 9",
+                "type": "radioSinglePic",
+                "imgURL": "http://s3-ap-southeast-1.amazonaws.com/hike-giscassets/capam.jpg",
+                "options": [{
+                    "text": "reason 1",
                     "child": "3"
+                }, {
+                    "text": "reason 2"
+                }, {
+                    "text": "reason 3"
+                }, {
+                    "text": "reason 4"
+                }]
+            },
+
+            "2": {
+                "qid": 2,
+                "questionText": "qid 8",
+                "type": "radioVersus",
+                "leftImgURL": "http://s3-ap-southeast-1.amazonaws.com/hike-giscassets/capam.jpg",
+                "rightImgURL": "http://s3-ap-southeast-1.amazonaws.com/hike-giscassets/ironman.jpg",
+                "options": [{
+                    "text": "reason 1",
+                    "child": "3"
+                }, {
+                    "text": "reason 2"
+                }, {
+                    "text": "reason 3"
+                }, {
+                    "text": "Wanna trap in loop again?",
                 }]
             }
 
@@ -162,10 +202,14 @@
     var platSDK = {
         "ftueDone": false,
         "questions": dataQues,
-        "currentQuesNum": "1",
-        "currentQuesId": "0",
+        "currentQuesNum": 1,
+        "currentQuesId": 0,
         "surveyType": "sequential",
-        "surveyId": 123
+        "surveyId": 123,
+        "quespath": [],
+        "userResponse": {
+
+        }
     }
 
 
@@ -336,20 +380,17 @@
 
         backPressTrigger: function() {
 
-            var dialogElement = document.getElementsByClassName('trophyOverlay')[0];
-            var dialogElement2 = document.getElementsByClassName('topTagOverlay')[0];
-
-            if (dialogElement && !dialogElement.classList.contains('hide')) {
-                dialogElement.classList.add('hide');
-                return;
-            } else if (dialogElement2 && !dialogElement2.classList.contains('hide')) {
-                dialogElement2.classList.add('hide');
+            if (platformSdk.appData.helperData.currentQuesId == 0 || document.getElementsByClassName('surveyDoneCard').length > 0) {
+                console.log('closing view');
+                PlatformBridge.closeWebView();
                 return;
             }
 
-            this.router.back();
-        },
+            events.publish('back.press');
 
+
+
+        },
 
         getRoute: function() {
             var that = this;
@@ -404,7 +445,7 @@
             });
 
             platformSdk.events.subscribe('onUpPressed', function() {
-                self.backPressTrigger();
+                // self.upPressTrigger();
             });
 
             // Home Screen Route
@@ -418,7 +459,7 @@
             this.router.route('/takeSurvey', function(data) {
                 self.container.innerHTML = '';
                 self.questionController.render(self.container, self, data);
-                utils.toggleBackNavigation(false);
+                utils.toggleBackNavigation(true);
             });
 
 

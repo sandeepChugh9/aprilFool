@@ -4279,14 +4279,14 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	( function (W, undefined) {
+	(function(W, undefined) {
 	    'use strict';
 
-	    HTMLElement.prototype.toggleClass = function (classToken, flag) {
+	    HTMLElement.prototype.toggleClass = function(classToken, flag) {
 	        var element = this;
 
-	        if ( flag !== undefined ) {
-	            if ( flag ) {
+	        if (flag !== undefined) {
+	            if (flag) {
 	                element.classList.add(classToken);
 	            } else {
 	                element.classList.remove(classToken);
@@ -4297,15 +4297,15 @@
 	    };
 
 	    var ConnTypes = __webpack_require__(5).ConnectionTypes,
-	        _extend = function ( toObj, fromObj ) {
-	            for( var key in fromObj ) {
-	                if ( fromObj.hasOwnProperty( key ) && toObj[key] === undefined ) {
+	        _extend = function(toObj, fromObj) {
+	            for (var key in fromObj) {
+	                if (fromObj.hasOwnProperty(key) && toObj[key] === undefined) {
 	                    toObj[key] = fromObj[key];
 	                }
 	            }
 	        },
 	        imageOptimizationConnTypes = [ConnTypes.NO_NETWORK, ConnTypes.UNKNOWN, ConnTypes.TWO_G],
-	        noop = function () {
+	        noop = function() {
 
 	        },
 	        memoizationCache = {},
@@ -4313,60 +4313,60 @@
 	        idCounter = 1;
 
 	    module.exports = {
-	        isFunction: function (fn) {
+	        isFunction: function(fn) {
 	            return typeof fn === 'function';
 	        },
 
-	        extend: function ( toObj, fromObj ) {
-	            _extend( toObj.prototype, fromObj.prototype );
-	            _extend( toObj, fromObj );
+	        extend: function(toObj, fromObj) {
+	            _extend(toObj.prototype, fromObj.prototype);
+	            _extend(toObj, fromObj);
 
 	            return toObj;
 	        },
 
-	        serializeParams: function ( params ) {
+	        serializeParams: function(params) {
 	            var serializedParams = [];
 
-	            for ( var key in params ) {
-	                if ( params.hasOwnProperty( key ) ) {
-	                    serializedParams.push( key + '=' + params[key] );
+	            for (var key in params) {
+	                if (params.hasOwnProperty(key)) {
+	                    serializedParams.push(key + '=' + params[key]);
 	                }
 	            }
 
-	            return serializedParams.join( '&' );
+	            return serializedParams.join('&');
 	        },
 
-	        empty: function ( element ) {
-	            while ( element.firstChild ) {
-	                element.removeChild( element.firstChild );
+	        empty: function(element) {
+	            while (element.firstChild) {
+	                element.removeChild(element.firstChild);
 	            }
 
 	            return element;
 	        },
 
-	        getUniqueId: function (prefix) {
+	        getUniqueId: function(prefix) {
 	            return (prefix || basePrefix) + idCounter++;
 	        },
 
-	        simpleClone: function (obj) {
+	        simpleClone: function(obj) {
 	            return JSON.parse(JSON.stringify(obj));
 	        },
 
-	        loadImage: function (params) {
+	        loadImage: function(params) {
 	            var imageEl = document.createElement('img');
 
 	            imageEl.src = params.src;
-	            
-	            imageEl.onload = function () {
-	                params.success(imageEl,params.src);
+
+	            imageEl.onload = function() {
+	                params.success(imageEl, params.src);
 	            };
 
-	            imageEl.onError = function(){
+	            imageEl.onError = function() {
 	                params.error(imageEl);
 	            };
 	        },
 
-	        toOptimizeForImages: function (connectionType) {
+	        toOptimizeForImages: function(connectionType) {
 	            if (memoizationCache[connectionType] === undefined) {
 	                memoizationCache[connectionType] = imageOptimizationConnTypes.indexOf(connectionType) !== -1;
 	            }
@@ -4374,17 +4374,17 @@
 	            return memoizationCache[connectionType];
 	        },
 
-	        getNodeIndex: function (elem) {
+	        getNodeIndex: function(elem) {
 	            var index = 0;
 
-	            while(elem == elem.previousElementSibling) {
+	            while (elem == elem.previousElementSibling) {
 	                index++;
 	            }
 
 	            return index;
 	        },
 
-	        createCustomEvent: function (eventName) {
+	        createCustomEvent: function(eventName) {
 	            var customEvent;
 
 	            if (W.CustomEvent) {
@@ -4402,21 +4402,21 @@
 
 	        // Toggle Back Navigation Set For Allowing Back and Up Press Inside The Application
 
-	        toggleBackNavigation: function (enable) {
-	            
+	        toggleBackNavigation: function(enable) {
+
 	            enable = enable ? 'true' : 'false';
 
 	            if (platformSdk.bridgeEnabled) {
 	                platformSdk.bridge.allowBackPress(enable);
-	                // Allow up press in only available since Platform Version 5
-	                platformSdk.bridge.allowUpPress && platformSdk.bridge.allowUpPress(enable);
 	            }
 	        },
+
 
 	        debounce: function(func, wait, immediate) {
 	            var timeout;
 	            return function() {
-	                var context = this, args = arguments;
+	                var context = this,
+	                    args = arguments;
 	                var later = function() {
 	                    timeout = null;
 	                    if (!immediate) func.apply(context, args);
@@ -4429,7 +4429,7 @@
 	        }
 	    };
 
-	} )(window);
+	})(window);
 
 /***/ },
 /* 5 */
@@ -4701,9 +4701,11 @@
 	        SurveyServices = __webpack_require__(23),
 	        dataQues = {
 
-	            "0": {
-	                "questionText": "Which one is your favourate App?",
+	            "10": {
+	                "qid": 10,
+	                "questionText": "q0 - Which one is your favourate App? Answer to get reward",
 	                "type": "radio",
+	                "skipTo": 4,
 	                "options": [{
 	                    "text": "Whatsapp",
 	                    "child": "7",
@@ -4715,20 +4717,23 @@
 	                    "child": "3",
 	                }, {
 	                    "text": "facebok",
-	                    "child": "2",
+	                    "child": "1",
 	                }]
 	            },
 
-	            "1": {
-	                "questionText": "Describe yourself in one line!",
+	            "9": {
+	                "qid": 9,
+	                "questionText": "q1- Describe yourself in one line!",
 	                "type": "text",
 	                "charLimit": 300,
 	                "defaultMessage": "Describe yourself!"
 	            },
 
-	            "2": {
-	                "questionText": "Do you like the new Director of Engineering ? ",
+	            "0": {
+	                "qid": 0,
+	                "questionText": "q2- Do you like the new Director of Engineering ? ",
 	                "type": "imageOption1",
+	                "skipTo": 8,
 	                "options": [{
 	                    "text": "Yes",
 	                    "child": "5",
@@ -4739,50 +4744,45 @@
 	                    "type": "neutral"
 	                }, {
 	                    "text": "No",
-	                    "child": "7",
+	                    "child": "8",
 	                    "type": "negative"
 	                }]
 	            },
 
 
 	            "3": {
-	                "questionText": "qid 3",
+	                "qid": 3,
+	                "questionText": "q3 - Checkbox",
 	                "type": "checkbox",
 	                "options": [{
-	                    "text": "reason 1",
-	                    "child": "5",
+	                    "text": "reason 1"
 	                }, {
-	                    "text": "reason 2",
-	                    "child": "6",
+	                    "text": "reason 2"
 	                }, {
-	                    "text": "reason 3",
-	                    "child": "7",
+	                    "text": "reason 3"
 	                }, {
-	                    "text": "reason 4",
-	                    "child": "8",
+	                    "text": "reason 4"
 	                }]
 	            },
 
 	            "4": {
-	                "questionText": "qid 4",
+	                "qid": 4,
+	                "questionText": "q4 - checkbox",
 	                "type": "checkbox",
 	                "options": [{
-	                    "text": "reason 1",
-	                    "child": "5",
+	                    "text": "reason 1"
 	                }, {
-	                    "text": "reason 2",
-	                    "child": "6",
+	                    "text": "reason 2"
 	                }, {
-	                    "text": "reason 3",
-	                    "child": "7",
+	                    "text": "reason 3"
 	                }, {
-	                    "text": "reason 4",
-	                    "child": "8",
+	                    "text": "reason 4"
 	                }]
 	            },
 
 	            "5": {
-	                "questionText": "qid 5",
+	                "qid": 5,
+	                "questionText": "q5- checkbox",
 	                "type": "checkbox",
 	                "options": [{
 	                    "text": "reason 1"
@@ -4796,11 +4796,12 @@
 	            },
 
 	            "6": {
-	                "questionText": "qid 6",
+	                "qid": 6,
+	                "questionText": "q6 - checkbox",
 	                "type": "checkbox",
+	                "skipTo": 3,
 	                "options": [{
 	                    "text": "reason 1"
-
 	                }, {
 	                    "text": "reason 2"
 	                }, {
@@ -4810,8 +4811,10 @@
 	                }]
 	            },
 	            "7": {
+	                "qid": 7,
 	                "questionText": "qid 7",
 	                "type": "rating",
+	                "skipTo": 5,
 	                "stars": [{
 	                    "child": "3"
 	                }, {
@@ -4827,19 +4830,56 @@
 
 
 	            "8": {
+	                "qid": 8,
 	                "questionText": "qid 8",
 	                "type": "radioVersus",
 	                "leftImgURL": "https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-bronze.png",
 	                "rightImgURL": "https://s3-ap-southeast-1.amazonaws.com/hike-giscassets/nixy/trophy-statusupdate-bronze.png",
+	                "skipTo": 5,
 	                "options": [{
 	                    "text": "reason 1",
-	                    "child": "3"
+	                    "child": "4"
 	                }, {
 	                    "text": "reason 2",
 	                    "child": "3"
 	                }, {
 	                    "text": "reason 3",
+	                    "child": "1"
+	                }]
+	            },
+
+	            "1": {
+	                "qid": 1,
+	                "questionText": "qid 9",
+	                "type": "radioSinglePic",
+	                "imgURL": "http://s3-ap-southeast-1.amazonaws.com/hike-giscassets/capam.jpg",
+	                "options": [{
+	                    "text": "reason 1",
 	                    "child": "3"
+	                }, {
+	                    "text": "reason 2"
+	                }, {
+	                    "text": "reason 3"
+	                }, {
+	                    "text": "reason 4"
+	                }]
+	            },
+
+	            "2": {
+	                "qid": 2,
+	                "questionText": "qid 8",
+	                "type": "radioVersus",
+	                "leftImgURL": "http://s3-ap-southeast-1.amazonaws.com/hike-giscassets/capam.jpg",
+	                "rightImgURL": "http://s3-ap-southeast-1.amazonaws.com/hike-giscassets/ironman.jpg",
+	                "options": [{
+	                    "text": "reason 1",
+	                    "child": "3"
+	                }, {
+	                    "text": "reason 2"
+	                }, {
+	                    "text": "reason 3"
+	                }, {
+	                    "text": "Wanna trap in loop again?",
 	                }]
 	            }
 
@@ -4850,10 +4890,14 @@
 	    var platSDK = {
 	        "ftueDone": false,
 	        "questions": dataQues,
-	        "currentQuesNum": "1",
-	        "currentQuesId": "0",
+	        "currentQuesNum": 1,
+	        "currentQuesId": 0,
 	        "surveyType": "sequential",
-	        "surveyId": 123
+	        "surveyId": 123,
+	        "quespath": [],
+	        "userResponse": {
+
+	        }
 	    }
 
 
@@ -5024,20 +5068,17 @@
 
 	        backPressTrigger: function() {
 
-	            var dialogElement = document.getElementsByClassName('trophyOverlay')[0];
-	            var dialogElement2 = document.getElementsByClassName('topTagOverlay')[0];
-
-	            if (dialogElement && !dialogElement.classList.contains('hide')) {
-	                dialogElement.classList.add('hide');
-	                return;
-	            } else if (dialogElement2 && !dialogElement2.classList.contains('hide')) {
-	                dialogElement2.classList.add('hide');
+	            if (platformSdk.appData.helperData.currentQuesId == 0 || document.getElementsByClassName('surveyDoneCard').length > 0) {
+	                console.log('closing view');
+	                PlatformBridge.closeWebView();
 	                return;
 	            }
 
-	            this.router.back();
-	        },
+	            events.publish('back.press');
 
+
+
+	        },
 
 	        getRoute: function() {
 	            var that = this;
@@ -5092,7 +5133,7 @@
 	            });
 
 	            platformSdk.events.subscribe('onUpPressed', function() {
-	                self.backPressTrigger();
+	                // self.upPressTrigger();
 	            });
 
 	            // Home Screen Route
@@ -5106,7 +5147,7 @@
 	            this.router.route('/takeSurvey', function(data) {
 	                self.container.innerHTML = '';
 	                self.questionController.render(self.container, self, data);
-	                utils.toggleBackNavigation(false);
+	                utils.toggleBackNavigation(true);
 	            });
 
 
@@ -5172,6 +5213,10 @@
 	        var $el = $(this.el);
 	        var logDataToSend = {};
 	        var btn = document.getElementsByClassName('homeScreenBtn')[0];
+	        var btmContainer = document.getElementsByClassName('bottomContainer')[0];
+	        var bottomVal = (window.innerHeight - btn.offsetTop - btn.offsetHeight) / 2 - (btmContainer.offsetHeight / 2);
+	        btmContainer.style.bottom = bottomVal + "px";
+
 
 	        btn.addEventListener('click', function() {
 
@@ -5234,7 +5279,7 @@
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"workSpaceContainer\">\n    <div class=\"hikeSurveyIcon backgroundImageGeneric\"> </div>\n    <div class=\"title\"> {{firstScreen.title}} </div>\n    <div class=\"subTitle\"> {{firstScreen.subtitle}} </div>\n    <div class=\"homeScreenBtn\"> {{firstScreen.CTAText}}</div>\n    <div>\n        <span class=\"timeIcon backgroundImageGeneric inlineBlock\"> </span> <span class=\"timeText\">{{firstScreen.bottomTitle}}</span>\n    </div>\n</div>"
+	module.exports = "<div class=\"workSpaceContainer\">\n    <div class=\"hikeSurveyIcon backgroundImageGeneric\"> </div>\n    <div class=\"title\"> {{firstScreen.title}} </div>\n    <div class=\"subTitle\"> {{firstScreen.subtitle}} </div>\n    <div class=\"homeScreenBtn\"> {{firstScreen.CTAText}}</div>\n    <div class=\"bottomContainer\">\n        <span class=\"timeIcon backgroundImageGeneric inlineBlock\"> </span> <span class=\"timeText\">{{firstScreen.bottomTitle}}</span>\n    </div>\n</div>"
 
 /***/ },
 /* 10 */
@@ -5273,7 +5318,16 @@
 	                    "questionBar": document.getElementsByClassName('questionBar')[0],
 	                    "initialH": 28,
 	                    "nextLinkClicked": false,
-	                    "noInternet": document.getElementById('nointernet')
+	                    "prevLinkClicked": false,
+	                    "noInternet": document.getElementById('nointernet'),
+	                    "lastHeight": window.innerHeight,
+	                    "intialCardH": '',
+	                    "intervals": [],
+	                    "quesContainer": document.getElementsByClassName('questionContainer')[0]
+
+
+
+
 
 	                },
 	                state = {};
@@ -5281,8 +5335,36 @@
 	            var api = {
 
 	                init: function() {
-	                    this.renderQuestion(data.currentQuesId);
-	                    this.bindHandlers();
+	                    var that = this;
+	                    that.renderQuestion(data.currentQuesId, -1, true);
+	                    that.bindHandlers();
+	                    cache.intialCardH = parseInt(window.getComputedStyle(document.getElementsByClassName('card')[0]).height);
+	                    events.subscribe('back.press', function() {
+	                        that.prevLinkFunctionality();
+	                    });
+	                },
+
+
+	                adjustTextHeight: function(card) {
+
+	                    if (card.querySelectorAll('.textRow').length > 0) {
+	                        var height = cache.nextLink.offsetTop - (card.querySelector('.question').offsetTop + card.querySelector('.question').clientHeight + 80);
+	                        card.querySelector('.textInput').style.maxHeight = height + "px";
+
+
+	                        if (parseInt(card.querySelector('.textInput').style.height) >= height) {
+	                            card.querySelector('.question').style.paddingBottom = "0px";
+	                            card.querySelector('.textRow').style.marginTop = "40px";
+	                            card.querySelector('.textRow').style.marginBottom = "40px";
+	                        } else {
+
+	                            card.querySelector('.question').style.paddingBottom = "48px";
+	                            card.querySelector('.textRow').style.marginTop = "60px";
+	                            card.querySelector('.textRow').style.marginBottom = "60px";
+	                        }
+
+	                    }
+
 	                },
 
 
@@ -5306,7 +5388,6 @@
 	                    }
 
 
-
 	                    for (var i = 0; i < imageOptions.length; i++) {
 	                        if (imageOptions[i].getAttribute('data-emotionType') == 'positive') {
 	                            imageOptions[i].classList.add("floatL");
@@ -5326,10 +5407,22 @@
 
 	                    var that = this;
 
+	                    window.onresize = function() {
+
+	                        window.setTimeout(function() {
+	                            that.adjustWindow();
+	                        }, 200);
+
+	                    }
+
 	                    document.querySelector('body').addEventListener('click', function(evt) {
 
 	                        var parent = evt.target.parentNode;
+	                        var qid;
+
 	                        if (parent.classList.contains('checkRow')) {
+
+	                            qid = parent.parentNode.parentNode.querySelector('.question').getAttribute('data-qid');
 
 	                            var checkbox = parent.querySelector('.checkRec');
 	                            var optionTxt = parent.querySelector('.optionTxt');
@@ -5346,55 +5439,111 @@
 	                                optionTxt.classList.remove('selectedTextColor');
 	                            }
 
-	                            that.toggleNavigateLink(parent.parentNode, "checkbox", child);
+	                            that.toggleNavigateLink(parent.parentNode, "checkbox", qid);
 
 	                        } else if (parent.classList.contains('radioRow')) {
+
+
+	                            qid = parent.parentNode.parentNode.querySelector('.question').getAttribute('data-qid');
 
 	                            var radioBox = parent.querySelector('.radioCirc');
 	                            var optionTxt = parent.querySelector('.optionTxt');
 	                            var child = parent.getAttribute('data-child');
 
 	                            if (radioBox.classList.contains('emptyCirc')) {
+
 	                                radioBox.classList.add('filledCirc');
 	                                radioBox.classList.remove('emptyCirc');
 	                                optionTxt.classList.add('selectedTextColor');
 	                                that.unselectRadioSublings(parent);
 	                            }
 
-	                            that.toggleNavigateLink(parent.parentNode, "radio", child);
+	                            that.toggleNavigateLink(parent.parentNode, "radio", qid);
 
 	                        } else if (evt.target.classList.contains('ratingRow')) {
 
+	                            var card = parent.parentNode.parentNode.parentNode;
+	                            qid = card.querySelector('.question').getAttribute('data-qid');
 	                            var child = evt.target.getAttribute('data-child');
 	                            that.fillStars(evt.target);
-	                            that.toggleNavigateLink(parent, "rating", child);
+	                            that.toggleNavigateLink(parent, "rating", qid);
 
 	                        } else if (parent.classList.contains('imgOption')) {
 
+	                            qid = parent.parentNode.parentNode.parentNode.querySelector('.question').getAttribute('data-qid');
 	                            var child = parent.getAttribute('data-child');
 	                            var imgRow = parent.querySelector('.imgRow');
 
 	                            if (imgRow.classList.contains('positiveHollow')) {
-	                                imgRow.classList.remove('positiveHollow');
-	                                imgRow.classList.add("filledEmo");
-	                                imgRow.classList.add("positiveFilled");
+	                                imgRow.classList.add("opacity03");
+
+
+	                                setTimeout(function() {
+	                                    imgRow.classList.add("opacity05");
+	                                    imgRow.classList.remove("opacity03");
+	                                    imgRow.classList.add("positiveFilled");
+	                                    imgRow.classList.remove('positiveHollow');
+
+	                                }, 100)
+
+	                                setTimeout(function() {
+	                                    imgRow.classList.remove("opacity05");
+	                                    imgRow.classList.add("filledEmo");
+	                                    that.toggleNavigateLink(parent, "imageOption1", qid);
+
+	                                }, 200)
+
+
+
 	                                that.unselectImgOptions(parent);
 
 	                            } else if (imgRow.classList.contains('negativeHollow')) {
-	                                imgRow.classList.remove('negativeHollow');
-	                                imgRow.classList.add("negativeFilled");
-	                                imgRow.classList.add("filledEmo");
+	                                imgRow.classList.add("opacity03");
+
+	                                setTimeout(function() {
+	                                    imgRow.classList.add("opacity05");
+	                                    imgRow.classList.remove("opacity03");
+	                                    imgRow.classList.add("negativeFilled");
+	                                    imgRow.classList.remove('negativeHollow');
+
+	                                }, 100)
+
+	                                setTimeout(function() {
+	                                    imgRow.classList.remove("opacity05");
+	                                    imgRow.classList.add("filledEmo");
+	                                    that.toggleNavigateLink(parent, "imageOption1", qid);
+
+	                                }, 200)
+
+
+
 	                                that.unselectImgOptions(parent);
 
+
 	                            } else if (imgRow.classList.contains('neutralHollow')) {
-	                                imgRow.classList.remove('neutralHollow');
-	                                imgRow.classList.add("neutralFilled");
-	                                imgRow.classList.add("filledEmo");
+	                                imgRow.classList.add("opacity03");
+
+	                                setTimeout(function() {
+	                                    imgRow.classList.add("opacity05");
+	                                    imgRow.classList.remove("opacity03");
+	                                    imgRow.classList.add("neutralFilled");
+	                                    imgRow.classList.remove('neutralHollow');
+
+	                                }, 100)
+
+	                                setTimeout(function() {
+	                                    imgRow.classList.remove("opacity05");
+	                                    imgRow.classList.add("filledEmo");
+	                                    that.toggleNavigateLink(parent, "imageOption1", qid);
+
+	                                }, 200)
+
+
 	                                that.unselectImgOptions(parent);
 
 	                            }
 
-	                            that.toggleNavigateLink(parent, "imageOption1", child);
+
 	                        }
 
 
@@ -5408,20 +5557,67 @@
 	                            return;
 
 	                        cache.nextLinkClicked = true;
+	                        var elems = cache.questionsCard.querySelectorAll('.card')
+	                        var curr, currentQuesId = parseInt(data.currentQuesId),
+	                            ques, foundFlag = 0,
+	                            currCard, isSkip, childElem;
 
-	                        var childElem = this.getAttribute('data-child');
-	                        var isSkip = this.getAttribute('data-skip');
+	                        //Getting the current card displayed on screen    
+	                        for (var i = 0; i < elems.length; i++) {
+	                            if (!elems[i].parentNode.classList.contains('hide'))
+	                                currCard = elems[i];
+	                        }
 
+	                        //Check whether user has given any answer for the queston. If no , set skip attribute to 'true'
+	                        if (!currCard.querySelectorAll('.filledEmo,.filledCirc,.filledRec').length &&
+	                            !currCard.querySelectorAll('.filledStar').length &&
+	                            (!currCard.querySelectorAll('.textInput').length || !currCard.querySelector('.textInput').value.trim().length)
 
-	                        that.collectLogForCurrent(data.questions[data.currentQuesId]);
-
-	                        // If survey type is branch and user skips the question
-	                        if (data.surveyType == "branch" && isSkip == "true") {
-	                            dataLocal.nextQuesId = data.questions[data.currentQuesId].skipTo;
-
-	                        } else if (data.surveyType == "branch" && (childElem == "undefined" || typeof childElem == 'undefined' || childElem == null)) {
-	                            App.router.navigateTo('/surveyDone');
+	                        ) {
+	                            this.setAttribute('data-skip', 'true');
+	                            isSkip = 'true';
 	                        } else {
+	                            this.setAttribute('data-skip', 'false');
+	                            isSkip = 'false';
+	                        }
+
+	                        /*
+	                                Resetting the child so that when user clicks next, he should be navigated to the correct branch
+	                                (This is the case where user has come to the question after clicking previous)         
+	                        */
+	                        if (isSkip == 'false' && data.surveyType == "branch") {
+
+	                            if (currCard.querySelectorAll('.filledEmo,.filledCirc').length > 0) {
+	                                this.setAttribute('data-child', currCard.querySelector('.filledEmo,.filledCirc').parentNode.getAttribute('data-child'));
+	                                childElem = this.getAttribute('data-child');
+	                            } else if (currCard.querySelectorAll('.filledStar').length) {
+	                                var totStar = currCard.querySelectorAll('.filledStar').length - 1;
+	                                this.setAttribute('data-child', currCard.querySelectorAll('.filledStar')[totStar].getAttribute('data-child'));
+	                                childElem = this.getAttribute('data-child');
+	                            }
+
+
+	                        }
+
+	                        //Log the response 
+	                        that.collectLogForCurrent(data.questions[data.currentQuesId], data.currentQuesId, isSkip, false);
+
+
+	                        // If survey type is branch and user skips the question , next question is specified in "SkipTo"
+	                        if (data.surveyType == "branch" && isSkip == "true") {
+	                            if (typeof data.questions[data.currentQuesId].skipTo != "undefined" || data.questions[data.currentQuesId].skipTo == null)
+	                                dataLocal.nextQuesId = data.questions[data.currentQuesId].skipTo;
+	                            else
+	                                dataLocal.nextQuesId = null;
+
+	                        }
+	                        // If survey type is branch and there is no branch further , then end the survey
+	                        else if (data.surveyType == "branch" && (childElem == "undefined" || typeof childElem == 'undefined' || childElem == null)) {
+	                            App.router.navigateTo('/surveyDone');
+	                        }
+
+	                        // If user does not skip the question , rather answers the question
+	                        else {
 	                            if (data.surveyType == "branch")
 	                                dataLocal.nextQuesId = this.getAttribute('data-child');
 	                            else if (data.surveyType == "sequential") {
@@ -5434,6 +5630,7 @@
 
 	                        dataLocal.nextQuesNum = parseInt(data.currentQuesNum) + 1;
 
+	                        //Updating the helper data with next question id and number
 	                        if (platformSdk.bridgeEnabled) {
 	                            platformSdk.appData.helperData.currentQuesId = dataLocal.nextQuesId;
 	                            platformSdk.appData.helperData.currentQuesNum = dataLocal.nextQuesNum;
@@ -5444,9 +5641,86 @@
 	                            data.currentQuesNum = dataLocal.nextQuesNum;
 	                        }
 
-	                        if (dataLocal.nextQuesId) {
-	                            that.renderQuestion(dataLocal.nextQuesId);
+	                        /*
+	                            Case :  Next question id exists
+	                                 -> Checking if the HTML template exists for the next question. If it does ,then hide other questions and show that question.
+	                                    if the HTML template does not exist , then creating and rendering the Question template. 
+	                                    
 
+	                            Case : Next question id does not exists
+	                                 ->  End the Survey
+	                        */
+	                        if (dataLocal.nextQuesId) {
+
+	                            for (var i = 0; i < elems.length; i++) {
+
+	                                ques = elems[i].querySelector('.question');
+	                                if (!elems[i].parentNode.classList.contains('hide')) {
+	                                    elems[i].parentNode.classList.add("animation_fadeout");
+	                                    elems[i].parentNode.classList.add("hide");
+	                                }
+
+	                                if (parseInt(ques.getAttribute('data-qid')) == dataLocal.nextQuesId) {
+	                                    elems[i].parentNode.classList.remove("animation_fadeout");
+	                                    elems[i].parentNode.classList.remove("hide");
+	                                    elems[i].querySelector('.question').setAttribute('data-parent', currentQuesId);
+	                                    that.adjustTextHeight(elems[i]);
+	                                    foundFlag = 1;
+	                                }
+	                            }
+	                            if (!foundFlag) {
+	                                if (!cache.prevLinkClicked) {
+
+	                                    if (platformSdk.bridgeEnabled) {
+	                                        if (platformSdk.appData.helperData.quespath[platformSdk.appData.helperData.quespath.length - 1] != parseInt(currentQuesId))
+	                                            platformSdk.appData.helperData.quespath.push(parseInt(currentQuesId));
+	                                        that.saveUserState(currentQuesId, isSkip);
+	                                        platformSdk.updateHelperData(platformSdk.appData.helperData);
+
+	                                    } else {
+	                                        if (data.quespath[data.quespath.length - 1] != parseInt(currentQuesId))
+	                                            data.quespath.push(parseInt(currentQuesId));
+	                                        that.saveUserState(currentQuesId, isSkip);
+	                                        console.log(data.quespath);
+	                                        console.log(data.userResponse);
+	                                    }
+	                                }
+	                                that.renderQuestion(dataLocal.nextQuesId, currentQuesId, false);
+
+	                            } else {
+	                                setTimeout(function() {
+	                                    cache.nextLinkClicked = false;
+	                                }, 500);
+
+	                                if (dataLocal.nextQuesId > 0)
+	                                    cache.prevLink.classList.add('animation_scale_1');
+	                                else
+	                                    cache.prevLink.classList.remove('animation_scale_1');
+
+
+	                                if (!cache.prevLinkClicked) {
+
+	                                    if (platformSdk.bridgeEnabled) {
+	                                        if (platformSdk.appData.helperData.quespath[platformSdk.appData.helperData.quespath.length - 1] != parseInt(currentQuesId))
+	                                            platformSdk.appData.helperData.quespath.push(parseInt(currentQuesId));
+
+	                                        if (platformSdk.appData.helperData.quespath[platformSdk.appData.helperData.quespath.length - 1] != parseInt(dataLocal.nextQuesId))
+	                                            platformSdk.appData.helperData.quespath.push(parseInt(dataLocal.nextQuesId));
+
+	                                        that.saveUserState(currentQuesId, isSkip);
+	                                        platformSdk.updateHelperData(platformSdk.appData.helperData);
+
+	                                    } else {
+	                                        if (data.quespath[data.quespath.length - 1] != parseInt(currentQuesId))
+	                                            data.quespath.push(parseInt(currentQuesId));
+	                                        else if (data.quespath[data.quespath.length - 1] != parseInt(dataLocal.nextQuesId))
+	                                            data.quespath.push(parseInt(dataLocal.nextQuesId));
+	                                        that.saveUserState(currentQuesId, isSkip);
+	                                        console.log(data.quespath);
+	                                        console.log(data.userResponse);
+	                                    }
+	                                }
+	                            }
 	                            if (data.surveyType == "sequential")
 	                                that.updateBar(dataLocal.nextQuesNum);
 
@@ -5458,38 +5732,251 @@
 	                    });
 
 
+	                    cache.prevLink.addEventListener('click', function() {
+	                        that.prevLinkFunctionality();
+	                    });
+
+
 	                    document.querySelector('body').addEventListener('keyup', function(evt) {
 
 	                        var parent = evt.target.parentNode;
 	                        var elem = evt.target;
 	                        var limitChar = elem.getAttribute('data-limit');
+
 	                        if (parent.classList.contains('textRow')) {
 
-	                            that.toggleNavigateLink(parent.parentNode, "text");
-	                            if (elem.value.length > limitChar)
+	                            var qid = parent.parentNode.parentNode.querySelector('.question').getAttribute('data-qid');
+	                            var card = parent.parentNode.parentNode;
+	                            that.toggleNavigateLink(parent.parentNode, "text", qid);
+	                            if (elem.value.length > parseInt(limitChar)) {
 	                                elem.value = elem.value.substr(0, limitChar);
+	                                elem.focus();
+	                                var v = elem.value;
+	                                elem.value = '';
+	                                elem.value = v;
+	                                card.querySelector('.textInput').scrollTop = card.querySelector('.textInput').scrollHeight;
+	                            } else {
+	                                var outerHeight = parseInt(window.getComputedStyle(elem).height, 10);
+	                                var diff = outerHeight - elem.clientHeight;
+	                                var txtContainer = parent.parentNode.parentNode;
+	                                var offset;
+	                                elem.style.height = 0;
+	                                var code = (evt.keyCode ? evt.keyCode : evt.which);
+	                                if (code == 13)
+	                                    offset = cache.initialH - 14;
+	                                else
+	                                    offset = 0;
+
+	                                elem.style.height = Math.max(cache.initialH, elem.scrollHeight + diff) + offset + 'px';
+	                                txtContainer.scrollTop = parseInt(elem.style.height);
+
+	                            }
+
+
+
+
+
 
 	                        }
 
 	                    }, true);
 
-
-	                    document.querySelector('body').addEventListener('keydown', function(evt) {
+	                    document.querySelector('body').addEventListener('keypress', function(evt) {
 
 	                        var parent = evt.target.parentNode;
 	                        var elem = evt.target;
-	                        var txtContainer = document.getElementsByClassName('textFormatContainer')[0];
 	                        var limitChar = elem.getAttribute('data-limit');
+
 	                        if (parent.classList.contains('textRow')) {
-	                            var outerHeight = parseInt(window.getComputedStyle(elem).height, 10);
-	                            var diff = outerHeight - elem.clientHeight;
-	                            elem.style.height = 0;
-	                            elem.style.height = Math.max(cache.initialH, elem.scrollHeight + diff) + 'px';
-	                            txtContainer.scrollTop = parseInt(elem.style.height);
+
+	                            var qid = parent.parentNode.parentNode.querySelector('.question').getAttribute('data-qid');
+	                            var card = parent.parentNode.parentNode;
+	                            that.toggleNavigateLink(parent.parentNode, "text", qid);
+
+	                            if (elem.value.length == parseInt(limitChar)) {
+	                                evt.preventDefault();
+	                            } else if (elem.value.length > parseInt(limitChar)) {
+	                                elem.value = elem.value.substr(0, limitChar);
+	                            } else {
+
+	                                var outerHeight = parseInt(window.getComputedStyle(elem).height, 10);
+	                                var diff = outerHeight - elem.clientHeight;
+	                                var txtContainer = parent.parentNode.parentNode;
+	                                var offset;
+	                                elem.style.height = 0;
+	                                var code = (evt.keyCode ? evt.keyCode : evt.which);
+	                                if (code == 13)
+	                                    offset = cache.initialH - 14;
+	                                else
+	                                    offset = 0;
+
+	                                elem.style.height = Math.max(cache.initialH, elem.scrollHeight + diff) + offset + 'px';
+	                                txtContainer.scrollTop = parseInt(elem.style.height);
+
+
+	                            }
 
 	                        }
 
 	                    }, true);
+
+
+	                    /* document.querySelector('body').addEventListener('keydown', function(evt) {
+
+	                         var parent = evt.target.parentNode;
+	                         var elem = evt.target;
+	                         var txtContainer = parent.parentNode.parentNode;
+	                         var limitChar = elem.getAttribute('data-limit');
+	                         var offset;
+	                         if (parent.classList.contains('textRow')) {
+	                             var outerHeight = parseInt(window.getComputedStyle(elem).height, 10);
+	                             var diff = outerHeight - elem.clientHeight;
+	                             elem.style.height = 0;
+	                             var code = (evt.keyCode ? evt.keyCode : evt.which);
+	                             if (code == 13)
+	                                 offset = cache.initialH - 14;
+	                             else
+	                                 offset = 0;
+
+	                             elem.style.height = Math.max(cache.initialH, elem.scrollHeight + diff) + offset + 'px';
+	                             txtContainer.scrollTop = parseInt(elem.style.height);
+
+
+	                         }
+
+	                     }, true);*/
+
+	                },
+
+
+	                prevLinkFunctionality: function() {
+
+	                    var that = this;
+
+	                    if (cache.prevLinkClicked)
+	                        return;
+
+	                    cache.prevLinkClicked = true;
+	                    var elems = cache.questionsCard.querySelectorAll('.card'),
+	                        curr, ques, foundFlag = 0,
+	                        popElem, currentQuesId = parseInt(data.currentQuesId);
+
+
+	                    if (platformSdk.bridgeEnabled) {
+	                        var popElem = platformSdk.appData.helperData.quespath.pop();
+	                        platformSdk.updateHelperData(platformSdk.appData.helperData);
+
+	                    } else {
+	                        var popElem = data.quespath.pop();
+	                        console.log(data.quespath);
+	                        console.log(data.userResponse);
+	                    }
+
+
+	                    // If survey type is sequential , then take user back to the previous question
+	                    if (data.surveyType == "sequential") {
+	                        dataLocal.nextQuesId = parseInt(data.currentQuesId) - 1;
+	                        dataLocal.nextQuesNum = parseInt(data.currentQuesNum) - 1;
+
+
+	                    } else {
+
+
+	                        //   If survey type is branch , then take user back to the parent question
+	                        for (var i = 0; i < elems.length; i++) {
+
+	                            if (!elems[i].parentNode.classList.contains('hide'))
+	                                dataLocal.nextQuesId = parseInt(elems[i].querySelector('.question').getAttribute('data-parent'));
+	                        }
+
+	                        if (dataLocal.nextQuesId == -1 && dataLocal.currentQuesNum != 1) {
+	                            if (platformSdk.bridgeEnabled) {
+	                                dataLocal.nextQuesId = platformSdk.appData.helperData.quespath[platformSdk.appData.helperData.quespath.length - 1]
+	                                platformSdk.appData.helperData.quespath.pop();
+	                                platformSdk.updateHelperData(platformSdk.appData.helperData);
+
+	                            } else {
+	                                dataLocal.nextQuesId = data.quespath[data.quespath.length - 1]
+	                                data.quespath.pop();
+
+	                            }
+
+
+	                        }
+	                        dataLocal.nextQuesNum = parseInt(data.currentQuesNum) - 1;
+	                    }
+
+	                    that.collectLogForCurrent(data.questions[data.currentQuesId], data.currentQuesId, "false", true);
+
+	                    // Update helper data with the new question id and number
+
+	                    if (platformSdk.bridgeEnabled) {
+	                        platformSdk.appData.helperData.currentQuesId = dataLocal.nextQuesId;
+	                        platformSdk.appData.helperData.currentQuesNum = dataLocal.nextQuesNum;
+	                        platformSdk.updateHelperData(platformSdk.appData.helperData);
+
+	                    } else {
+	                        data.currentQuesId = dataLocal.nextQuesId;
+	                        data.currentQuesNum = dataLocal.nextQuesNum;
+	                    }
+
+	                    /*
+	                        Case :  Next question id is not null
+	                             -> SHow the HTML template for the question and hide other questions. 
+	                                
+
+	                        Case : Next question id is null 
+	                             ->  End the Survey
+	                    */
+
+	                    if (dataLocal.nextQuesId == parseInt(dataLocal.nextQuesId, 10)) {
+
+	                        if (dataLocal.nextQuesId > 0)
+	                            cache.prevLink.classList.add('animation_scale_1');
+	                        else
+	                            cache.prevLink.classList.remove('animation_scale_1');
+
+
+
+	                        for (var i = 0; i < elems.length; i++) {
+
+	                            ques = elems[i].querySelector('.question');
+	                            if (!elems[i].parentNode.classList.contains('hide')) {
+	                                elems[i].parentNode.classList.add("animation_fadeout");
+	                                elems[i].parentNode.classList.add("hide");
+	                            }
+
+	                            if (parseInt(ques.getAttribute('data-qid')) == dataLocal.nextQuesId) {
+	                                elems[i].parentNode.classList.remove("animation_fadeout");
+	                                elems[i].parentNode.classList.remove("hide");
+	                                that.adjustTextHeight(elems[i]);
+	                                foundFlag = 1;
+	                            }
+	                        }
+
+	                        if (!foundFlag) {
+
+	                            that.renderQuestion(dataLocal.nextQuesId, -1, true);
+	                        } else {
+	                            setTimeout(function() {
+	                                cache.prevLinkClicked = false;
+	                            }, 500);
+
+	                        }
+
+
+
+
+
+	                        if (data.surveyType == "sequential")
+	                            that.updateBar(dataLocal.nextQuesNum);
+
+	                    } else
+	                        App.router.navigateTo('/surveyDone');
+
+
+
+
 
 	                },
 
@@ -5587,87 +6074,47 @@
 	                },
 
 
-	                toggleNavigateLink: function(container, type, child) {
-
-	                    /* if (type == 'checkbox') {
-	                         if (container.querySelector('.filledRec'))
-	                             cache.nextLink.classList.add('animation_scale_1')
-	                         else
-	                             cache.nextLink.classList.remove('animation_scale_1')
-	                     } else if (type == 'radio') {
-	                         if (container.querySelector('.filledCirc'))
-	                             cache.nextLink.classList.add('animation_scale_1')
-	                         else
-	                             cache.nextLink.classList.remove('animation_scale_1')
-	                     } else if (type == 'radioVersus') {
-	                         if (container.querySelector('.filledCirc'))
-	                             cache.nextLink.classList.add('animation_scale_1')
-	                         else
-	                             cache.nextLink.classList.remove('animation_scale_1')
-	                     } else if (type == 'radioSinglePic') {
-	                         if (container.querySelector('.filledCirc'))
-	                             cache.nextLink.classList.add('animation_scale_1')
-	                         else
-	                             cache.nextLink.classList.remove('animation_scale_1')
-	                     } else if (type == 'text') {
-	                         if (container.querySelector('.textInput').value.trim().length > 0)
-	                             cache.nextLink.classList.add('animation_scale_1')
-	                         else
-	                             cache.nextLink.classList.remove('animation_scale_1')
-	                     } else if (type == 'rating') {
-	                         if (container.querySelector('.filledStar'))
-	                             cache.nextLink.classList.add('animation_scale_1')
-	                         else
-	                             cache.nextLink.classList.remove('animation_scale_1')
-	                     } else if (type == 'imageOption1') {
-	                         if (container.querySelector('.filledEmo'))
-	                             cache.nextLink.classList.add('animation_scale_1')
-	                         else
-	                             cache.nextLink.classList.remove('animation_scale_1')
-	                     }
-
-	                     */
+	                toggleNavigateLink: function(container, type, qid) {
 
 	                    if (type == 'checkbox') {
 	                        if (container.querySelector('.filledRec'))
-	                            cache.nextLink.setAttribute('data-skip', 'false');
+	                            this.saveUserState(qid, "false");
 	                        else
-	                            cache.nextLink.setAttribute('data-skip', 'true');
+	                            this.saveUserState(qid, "true");
 	                    } else if (type == 'radio') {
 	                        if (container.querySelector('.filledCirc'))
-	                            cache.nextLink.setAttribute('data-skip', 'false');
+	                            this.saveUserState(qid, "false");
 	                        else
-	                            cache.nextLink.setAttribute('data-skip', 'true');
+	                            this.saveUserState(qid, "true");
 	                    } else if (type == 'radioVersus') {
 	                        if (container.querySelector('.filledCirc'))
-	                            cache.nextLink.setAttribute('data-skip', 'false');
+	                            this.saveUserState(qid, "false");
 	                        else
-	                            cache.nextLink.setAttribute('data-skip', 'true');
+	                            this.saveUserState(qid, "true");
 	                    } else if (type == 'radioSinglePic') {
 	                        if (container.querySelector('.filledCirc'))
-	                            cache.nextLink.setAttribute('data-skip', 'false');
+	                            this.saveUserState(qid, "false");
 	                        else
-	                            cache.nextLink.setAttribute('data-skip', 'true');
+	                            this.saveUserState(qid, "true");
 	                    } else if (type == 'text') {
 	                        if (container.querySelector('.textInput').value.trim().length > 0)
-	                            cache.nextLink.setAttribute('data-skip', 'false');
+	                            this.saveUserState(qid, "false");
 	                        else
-	                            cache.nextLink.setAttribute('data-skip', 'true');
+	                            this.saveUserState(qid, "true");
 	                    } else if (type == 'rating') {
 	                        if (container.querySelector('.filledStar'))
-	                            cache.nextLink.setAttribute('data-skip', 'false');
+	                            this.saveUserState(qid, "false");
 	                        else
-	                            cache.nextLink.setAttribute('data-skip', 'true');
+	                            this.saveUserState(qid, "true");
 	                    } else if (type == 'imageOption1') {
 	                        if (container.querySelector('.filledEmo'))
-	                            cache.nextLink.setAttribute('data-skip', 'false');
+	                            this.saveUserState(qid, "false");
 	                        else
-	                            cache.nextLink.setAttribute('data-skip', 'true');
+	                            this.saveUserState(qid, "true");
 	                    }
 
 
 
-	                    cache.nextLink.setAttribute('data-child', child)
 	                },
 
 	                getTemplate: function(type) {
@@ -5687,33 +6134,90 @@
 	                        return that.imgOptions1FormatTemplate;
 	                },
 
-	                renderQuestion: function(questionId) {
+	                renderQuestion: function(questionId, parentId, restoreAnswer) {
 	                    //Hide the previous card
 	                    var that = this;
 	                    var logDataToSend = {};
-	                    var elems = cache.questionsCard.querySelectorAll('.card')
-	                    var curr = elems[elems.length - 1];
+	                    var elems = cache.questionsCard.querySelectorAll('.card');
+	                    var curr;
 
-	                    if (dataLocal.nextQuesNum > 1)
+
+	                    //Getting the current card displayed on screen    
+	                    for (var i = 0; i < elems.length; i++) {
+	                        if (!elems[i].parentNode.classList.contains('hide'))
+	                            curr = elems[i];
+	                    }
+
+	                    if (questionId > 0)
 	                        cache.prevLink.classList.add('animation_scale_1');
+	                    else
+	                        cache.prevLink.classList.remove('animation_scale_1');
+
 	                    if (curr) {
 	                        curr.parentNode.classList.add("animation_fadeout");
 	                        curr.parentNode.classList.add("hide");
 	                    }
 
+
+
 	                    if (data.questions[questionId]) {
 	                        dataLocal.ques = data.questions[questionId];
 	                        dataLocal.div = document.createElement('div');
+	                        if (parentId != null)
+	                            dataLocal.ques.parentId = parentId;
+
+
+	                        if (platformSdk.bridgeEnabled) {
+
+	                            if (platformSdk.appData.helperData.quespath[platformSdk.appData.helperData.quespath.length - 1] != questionId)
+	                                platformSdk.appData.helperData.quespath.push(parseInt(questionId));
+
+	                            platformSdk.updateHelperData(platformSdk.appData.helperData);
+
+	                        } else {
+
+	                            if (data.quespath[data.quespath.length - 1] != questionId)
+	                                data.quespath.push(parseInt(questionId));
+	                            console.log(data.quespath);
+	                        }
+
+
+
+
 	                        dataLocal.div.innerHTML = Mustache.render(unescape(this.getTemplate(dataLocal.ques.type)), dataLocal.ques);
 	                        cache.questionsCard.appendChild(dataLocal.div);
-	                        cache.nextLink.setAttribute('data-skip', 'true');
+
+	                        var totCards = cache.questionsCard.querySelectorAll('.card');
+	                        var curr_card = totCards[totCards.length - 1];
+
+
+
+
+
+
+
+
+
+	                        if (platformSdk.bridgeEnabled) {
+
+	                            if (typeof platformSdk.appData.helperData.userResponse[dataLocal.ques.qid] != "undefined") {
+	                                that.setAnswers(dataLocal.ques.qid, platformSdk.appData.helperData.userResponse);
+	                            }
+	                        } else {
+	                            if (typeof data.userResponse[dataLocal.ques.qid] != "undefined")
+	                                that.setAnswers(dataLocal.ques.qid, data.userResponse);
+	                        }
+
+	                        that.adjustTextHeight(curr_card);
+
 
 	                        setTimeout(function() {
 	                            cache.nextLinkClicked = false;
+	                            cache.prevLinkClicked = false;
 	                        }, 500);
 
 
-	                        logDataToSend.uk = "scrn" + data.currentQuesNum + "_load";
+	                        logDataToSend.uk = "scrn1_load";
 	                        logDataToSend.c = "scrn_load";
 	                        logDataToSend.o = "scrn" + data.currentQuesNum;
 	                        logDataToSend.g = that.getFormatType(dataLocal.ques.type);
@@ -5730,6 +6234,150 @@
 	                        App.router.navigateTo('/surveyDone');
 
 
+	                },
+
+	                setAnswers: function(questionId, userResponse) {
+
+
+
+
+	                    var elems = cache.questionsCard.querySelectorAll('.card');
+	                    var card = elems[elems.length - 1];
+
+
+	                    if (typeof userResponse[questionId] === "undefined")
+	                        return;
+
+
+	                    var type = userResponse[questionId].type;
+	                    var response = userResponse[questionId].response;
+
+	                    if (this.isEmpty(response)) {
+	                        console.log("Question was skipped earlier. So resetting all options");
+	                        return;
+	                    }
+
+
+
+	                    if (type == "radioVersus" || type == "radioSinglePic" || type == "radio") {
+
+	                        response = response.split(',');
+
+
+
+	                        for (var i = 0; i < response.length; i++) {
+
+	                            if (response[i] == "1") {
+	                                card.querySelectorAll('.radioCirc')[i].classList.remove('emptyCirc');
+	                                card.querySelectorAll('.radioCirc')[i].classList.add('filledCirc');
+	                                card.querySelectorAll('.radioCirc')[i].nextElementSibling.classList.add('selectedTextColor');
+	                            }
+
+	                        }
+
+
+	                    } else if (type == "checkbox") {
+	                        response = response.split(',');
+
+	                        for (var i = 0; i < response.length; i++) {
+
+	                            if (response[i] == "1") {
+	                                card.querySelectorAll('.checkRec')[i].classList.add('emptyRec');
+	                                card.querySelectorAll('.checkRec')[i].classList.add('filledRec');
+	                                card.querySelectorAll('.checkRec')[i].nextElementSibling.classList.add('selectedTextColor');
+	                            }
+	                        }
+
+	                    } else if (type == "rating") {
+
+	                        var stars = card.querySelectorAll('.ratingRow');
+	                        response = parseInt(response);
+
+	                        for (var i = 0; i < response; i++) {
+	                            stars[i].classList.remove('emptyStar');
+	                            stars[i].classList.add('filledStar');
+	                        }
+
+	                    } else if (type == "text") {
+
+	                        var elem = card.querySelector('.textInput');
+	                        response = response.replace(/<br\/>/g, '\n');
+	                        elem.value = response;
+
+
+	                        var outerHeight = parseInt(window.getComputedStyle(elem).height, 10);
+	                        var diff = outerHeight - elem.clientHeight;
+	                        elem.style.height = 0;
+
+	                        elem.style.height = Math.max(cache.initialH, elem.scrollHeight + diff) + 'px';
+	                        card.scrollTop = parseInt(elem.style.height);
+
+
+
+	                    } else if (type == "imageOption1") {
+
+	                        response = response.split(',');
+	                        var imgRows = card.querySelectorAll('.imgRow');
+
+	                        for (var i = 0; i < imgRows.length; i++) {
+
+	                            if (response[i] == "1") {
+	                                imgRows[i].classList.add(imgRows[i].getAttribute('data-emotionType') + 'Filled');
+	                                imgRows[i].classList.add('filledEmo');
+	                            } else
+	                                imgRows[i].classList.add(imgRows[i].getAttribute('data-emotionType') + 'Hollow');
+
+	                        }
+	                    }
+	                },
+
+
+	                saveUserState: function(questionId, skipVal) {
+
+	                    console.log('save user');
+
+	                    if (platformSdk.bridgeEnabled) {
+
+
+
+	                        if (typeof platformSdk.appData.helperData.userResponse[questionId] == "undefined")
+	                            platformSdk.appData.helperData.userResponse[questionId] = {};
+
+
+
+	                        if (skipVal == "true") {
+	                            platformSdk.appData.helperData.userResponse[questionId].type = data.questions[questionId].type;
+	                            platformSdk.appData.helperData.userResponse[questionId].response = {};
+	                        } else {
+	                            platformSdk.appData.helperData.userResponse[questionId].type = data.questions[questionId].type;
+
+	                            var answer = this.getuserAnswers(data.currentQuesNum, data.questions[questionId].type, questionId);
+
+	                            if (data.questions[questionId].type == "text")
+	                                answer = answer.replace(/\n/g, '<br/>');
+
+	                            platformSdk.appData.helperData.userResponse[questionId].response = answer;
+
+	                        }
+
+	                        platformSdk.updateHelperData(platformSdk.appData.helperData);
+	                    } else {
+
+	                        if (typeof data.userResponse[questionId] == "undefined")
+	                            data.userResponse[questionId] = {};
+
+	                        if (skipVal == "true") {
+	                            data.userResponse[questionId].type = data.questions[questionId].type;
+	                            data.userResponse[questionId].response = {}
+	                        } else {
+	                            data.userResponse[questionId].type = data.questions[questionId].type;
+	                            data.userResponse[questionId].response = this.getuserAnswers(data.currentQuesNum, data.questions[questionId].type, questionId);
+	                        }
+
+	                        console.log("User response");
+	                        console.log(data.userResponse);
+
+	                    }
 	                },
 
 	                updateBar: function(questionNum) {
@@ -5773,6 +6421,15 @@
 
 	                },
 
+	                isEmpty: function(obj) {
+	                    for (var prop in obj) {
+	                        if (obj.hasOwnProperty(prop))
+	                            return false;
+	                    }
+
+	                    return true && JSON.stringify(obj) === JSON.stringify({});
+	                },
+
 	                getAnswerOptions: function(ques) {
 
 	                    var result = [];
@@ -5796,29 +6453,63 @@
 
 	                },
 
-	                collectLogForCurrent: function(ques) {
+	                collectLogForCurrent: function(ques, questionId, skipVal, prevLink) {
+
+
 	                    var logDataToSend = {};
-	                    logDataToSend.uk = "scrn" + data.currentQuesNum + "_sbmt";
-	                    logDataToSend.c = "click";
-	                    logDataToSend.o = "scrn" + data.currentQuesNum;
+
+	                    if (prevLink) {
+
+	                        logDataToSend.uk = "scr_bk";
+	                        logDataToSend.c = "back";
+	                        logDataToSend.ra = this.getuserAnswers(data.currentQuesNum, ques.type, questionId);
+
+
+	                    } else {
+
+	                        if (skipVal == "true") {
+	                            logDataToSend.c = "skip";
+	                        } else {
+	                            logDataToSend.c = "next";
+	                            logDataToSend.ra = this.getuserAnswers(data.currentQuesNum, ques.type, questionId);
+	                        }
+
+	                        logDataToSend.uk = "scrn1_sbmt";
+	                    }
+
+
+
+
+	                    logDataToSend.f = this.getAnswerOptions(ques);
 	                    logDataToSend.g = this.getFormatType(ques.type);
 	                    logDataToSend.s = this.getImageType(ques.type);
 	                    logDataToSend.v = ques.questionText;
-	                    logDataToSend.f = this.getAnswerOptions(ques);
-	                    logDataToSend.ra = this.getuserAnswers(data.currentQuesNum, ques.type);
+	                    logDataToSend.o = "scrn" + data.currentQuesNum;
+
 	                    if (ques.type == "rating")
 	                        logDataToSend.b = ques.stars.length;
-	                    App.surveyServices.logData(logDataToSend);
 
+	                    App.surveyServices.logData(logDataToSend);
 
 	                },
 
-	                getuserAnswers: function(currenQues, type) {
+	                getuserAnswers: function(currenQues, type, questionId) {
 
-	                    var elemNum = parseInt(currenQues) - 1;
-	                    var card = document.getElementsByClassName('card')[elemNum];
+
+	                    var elems = cache.questionsCard.querySelectorAll('.card');
+	                    var card, ques;
+
+	                    for (var i = 0; i < elems.length; i++) {
+
+	                        ques = elems[i].querySelector('.question');
+
+	                        if (parseInt(ques.getAttribute('data-qid')) == questionId) {
+	                            card = elems[i];
+	                        }
+	                    }
+
+
 	                    var answerRows = card.querySelectorAll('.answer > div');
-
 	                    var result = [];
 
 
@@ -5846,6 +6537,56 @@
 
 
 
+	                },
+
+	                adjustWindow: function(val) {
+
+	                    var elems = cache.questionsCard.querySelectorAll('.card');
+	                    var card;
+	                    var interValId;
+	                    var that = this;
+
+
+	                    for (var i = 0; i < elems.length; i++) {
+	                        if (!elems[i].parentNode.classList.contains('hide'))
+	                            card = elems[i];
+	                    }
+
+	                    if (window.innerHeight == cache.lastHeight) {
+
+
+
+	                        console.log('height restored');
+	                        card.style.height = cache.intialCardH + 'px';
+
+
+	                        card.querySelector('.answer').classList.remove('centerVertical');
+	                        card.querySelector('.textInput').classList.remove('maxHeight80');
+	                        cache.nextLink.classList.remove('hide');
+	                        cache.prevLink.classList.remove('hide');
+	                        that.adjustTextHeight(card);
+
+	                    } else {
+
+	                        console.log('height changed');
+	                        var newHeight = parseInt(window.getComputedStyle(cache.quesContainer).height) - (parseInt(window.getComputedStyle(card).paddingTop) * 2) - 32;
+	                        var textInput = card.querySelector('.textInput');
+	                        card.style.height = newHeight + 'px';
+	                        card.querySelector('.textRow').style.marginTop = "0px";
+	                        card.querySelector('.textRow').style.marginBottom = "0px";
+	                        card.querySelector('.question').style.paddingBottom = "0px";
+	                        card.querySelector('.answer').classList.add('centerVertical');
+	                        textInput.classList.add('maxHeight80');
+	                        cache.nextLink.classList.add('hide');
+	                        cache.prevLink.classList.add('hide');
+	                        card.scrollTop = parseInt(textInput.style.height);
+	                        textInput.focus();
+	                        var v = textInput.value;
+	                        textInput.value = '';
+	                        textInput.value = v;
+	                        textInput.scrollTop = textInput.scrollHeight;
+
+	                    }
 	                }
 
 
@@ -5896,43 +6637,43 @@
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"checkFormatContainer card\">\n    <div class=\"question\">\n        {{questionText}}\n    </div>\n    <div class=\"answer\">\n        {{#options}}\n        <div class=\"checkRow\" data-child=\"{{#child}}{{child}}{{/child}}\">\n            <span class=\"emptyRec checkRec backgroundImageGeneric\"> </span> <span class=\"optionTxt\"> {{text}} </span>\n        </div>\n        {{/options}}\n    </div>\n</div>"
+	module.exports = "<div class=\"checkFormatContainer card\">\n    <div class=\"question\" data-parent=\"{{parentId}}\" data-qid= \"{{qid}}\">\n        {{questionText}}\n    </div>\n    <div class=\"answer\">\n        {{#options}}\n        <div class=\"checkRow\" data-child=\"{{#child}}{{child}}{{/child}}\">\n            <span class=\"emptyRec checkRec backgroundImageGeneric\"> </span> <span class=\"optionTxt\"> {{text}} </span>\n        </div>\n        {{/options}}\n    </div>\n</div>"
 
 /***/ },
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"radioFormatContainer card\">\n    <div class=\"question\">\n        {{questionText}}\n    </div>\n    <div class=\"answer\">\n        {{#options}}\n        <div class=\"radioRow\" data-child=\"{{#child}}{{child}}{{/child}}\">\n            <span class=\"emptyCirc radioCirc backgroundImageGeneric\"> </span> <span class=\"optionTxt\"> {{text}} </span>\n        </div>\n        {{/options}}\n    </div>\n</div>"
+	module.exports = "<div class=\"radioFormatContainer card\">\n    <div class=\"question\" data-parent=\"{{parentId}}\" data-qid=\"{{qid}}\">\n        {{questionText}}\n    </div>\n    <div class=\"answer\">\n        {{#options}}\n        <div class=\"radioRow\" data-child=\"{{#child}}{{child}}{{/child}}\">\n            <span class=\"emptyCirc radioCirc backgroundImageGeneric\"> </span> <span class=\"optionTxt\"> {{text}} </span>\n        </div>\n        {{/options}}\n    </div>\n</div>"
 
 /***/ },
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"radioFormatContainer card\">\n    <div class=\"radioVersusContainer\">\n        <div class=\"leftPic floatL backgroundImageGeneric topImg\" data-url=\"{{leftImgURL}}\"> </div>\n        <div class=\"rightPic floatR backgroundImageGeneric topImg\" data-url=\"{{rightImgURL}}\"> </div>\n        <div class=\"versusTag\"> vs </div>\n    </div>\n    <div class=\"question padB28\">\n        {{questionText}}\n    </div>\n    <div class=\"answer\">\n        {{#options}}\n        <div class=\"radioRow\" data-child=\"{{#child}}{{child}}{{/child}}\">\n            <span class=\"emptyCirc radioCirc backgroundImageGeneric\"> </span> <span class=\"optionTxt\"> {{text}} </span>\n        </div>\n        {{/options}}\n    </div>\n</div>"
+	module.exports = "<div class=\"radioFormatContainer card\">\n    <div class=\"radioVersusContainer\">\n        <div class=\"leftPic floatL backgroundImageGeneric topImg\" data-url=\"{{leftImgURL}}\"> </div>\n        <div class=\"rightPic floatR backgroundImageGeneric topImg\" data-url=\"{{rightImgURL}}\"> </div>\n        <div class=\"versusTag\"> vs </div>\n    </div>\n    <div class=\"question padB28\" data-parent=\"{{parentId}}\" data-qid=\"{{qid}}\">\n        {{questionText}}\n    </div>\n    <div class=\"answer\">\n        {{#options}}\n        <div class=\"radioRow\" data-child=\"{{#child}}{{child}}{{/child}}\">\n            <span class=\"emptyCirc radioCirc backgroundImageGeneric\"> </span> <span class=\"optionTxt\"> {{text}} </span>\n        </div>\n        {{/options}}\n    </div>\n</div>"
 
 /***/ },
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"radioFormatContainer card\">\n    <div class=\"radioSinglePicContainer\">\n        <div class=\"backgroundImageGeneric topImg\" data-url=\"{{imgURL}}\"> </div>\n    </div>\n    <div class=\"question padB28\">\n        {{questionText}}\n    </div>\n    <div class=\"answer\">\n        {{#options}}\n        <div class=\"radioRow\" data-child=\"{{#child}}{{child}}{{/child}}\">\n            <span class=\"emptyCirc radioCirc backgroundImageGeneric\"> </span> <span class=\"optionTxt\"> {{text}} </span>\n        </div>\n        {{/options}}\n    </div>\n</div>"
+	module.exports = "<div class=\"radioFormatContainer card\">\n    <div class=\"radioSinglePicContainer\">\n        <div class=\"backgroundImageGeneric topImg\" data-url=\"{{imgURL}}\"> </div>\n    </div>\n    <div class=\"question padB28\" data-parent=\"{{parentId}}\" data-qid=\"{{qid}}\">\n        {{questionText}}\n    </div>\n    <div class=\"answer\">\n        {{#options}}\n        <div class=\"radioRow\" data-child=\"{{#child}}{{child}}{{/child}}\">\n            <span class=\"emptyCirc radioCirc backgroundImageGeneric\"> </span> <span class=\"optionTxt\"> {{text}} </span>\n        </div>\n        {{/options}}\n    </div>\n</div>"
 
 /***/ },
 /* 16 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"textFormatContainer card\">\n    <div class=\"question\">\n        {{questionText}}\n    </div>\n    <div class=\"answer\">\n        <div class=\"textRow\">\n            <textarea class=\"textInput\" rows=\"1\" placeholder=\"{{defaultMessage}}\" data-limit=\"{{charLimit}}\"></textarea>\n        </div>\n    </div>\n</div>"
+	module.exports = "<div class=\"textFormatContainer card\">\n    <div class=\"question\" data-parent=\"{{parentId}}\" data-qid=\"{{qid}}\">\n        {{questionText}}\n    </div>\n    <div class=\"answer\">\n        <div class=\"textRow\">\n            <textarea class=\"textInput\" rows=\"1\" placeholder=\"{{defaultMessage}}\" data-limit=\"{{charLimit}}\"></textarea>\n        </div>\n    </div>\n</div>"
 
 /***/ },
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"ratingFormatContainer card\">\n    <div class=\"question padBZero\">\n        {{questionText}}\n    </div>\n    <div class=\"parentAnswer\">\n        <div class=\"answer centreToScreenAnswer\">\n            {{#stars}}\n            <div class=\"ratingRow emptyStar backgroundImageGeneric\" data-child=\"{{#child}}{{child}}{{/child}}\">\n            </div>\n            {{/stars}}\n        </div>\n    </div>\n</div>"
+	module.exports = "<div class=\"ratingFormatContainer card\">\n    <div class=\"question padBZero\" data-parent=\"{{parentId}}\" data-qid=\"{{qid}}\">\n        {{questionText}}\n    </div>\n    <div class=\"parentAnswer\">\n        <div class=\"answer centreToScreenAnswer\">\n            {{#stars}}\n            <div class=\"ratingRow emptyStar backgroundImageGeneric\" data-child=\"{{#child}}{{child}}{{/child}}\">\n            </div>\n            {{/stars}}\n        </div>\n    </div>\n</div>"
 
 /***/ },
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"imageOption1Container card\">\n    <div class=\"question padBZero\">\n        {{questionText}}\n    </div>\n    <div class=\"parentAnswer\">\n        <div class=\"answer centreToScreenAnswer\">\n            {{#options}}\n            <div class=\"imgOption overhid\" data-child=\"{{#child}}{{child}}{{/child}}\">\n                <div class=\"imgRow backgroundImageGeneric\" data-emotionType=\"{{type}}\"> </div>\n                <div class=\"emoText\"> {{text}} </div>\n            </div>\n            {{/options}}\n        </div>\n    </div>\n</div>"
+	module.exports = "<div class=\"imageOption1Container card\">\n    <div class=\"question padBZero\" data-parent=\"{{parentId}}\" data-qid=\"{{qid}}\">\n        {{questionText}}\n    </div>\n    <div class=\"parentAnswer\">\n        <div class=\"answer centreToScreenAnswer\">\n            {{#options}}\n            <div class=\"imgOption overhid\" data-child=\"{{#child}}{{child}}{{/child}}\">\n                <div class=\"imgRow backgroundImageGeneric\" data-emotionType=\"{{type}}\"> </div>\n                <div class=\"emoText\"> {{text}} </div>\n            </div>\n            {{/options}}\n        </div>\n    </div>\n</div>"
 
 /***/ },
 /* 19 */

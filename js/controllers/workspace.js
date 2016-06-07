@@ -12,6 +12,10 @@
         var $el = $(this.el);
         var logDataToSend = {};
         var btn = document.getElementsByClassName('homeScreenBtn')[0];
+        var btmContainer = document.getElementsByClassName('bottomContainer')[0];
+        var bottomVal = (window.innerHeight - btn.offsetTop - btn.offsetHeight) / 2 - (btmContainer.offsetHeight / 2);
+        btmContainer.style.bottom = bottomVal + "px";
+
 
         btn.addEventListener('click', function() {
 

@@ -4,6 +4,7 @@
     animation-fill-mode: forwards;
     .checkRow {
         padding-bottom: 10px;
+        position: relative;
     }
     .emptyRec {
         background-color: white;
@@ -27,6 +28,7 @@
         display: inline-block;
         margin-top: 10px;
         margin-bottom: 10px;
+        position: absolute;
     }
 }
 
@@ -55,11 +57,7 @@
     width: 83%;
     display: inline-block;
     padding: 10px 0 10px 12px;
-}
-
-@media screen and (max-width: 340px) {
-    .question {
-        padding-bottom: 48px;
-        font-size: 19px;
-    }
+    position: relative;
+    left: -40px;
+    padding-left: 76px;
 }
